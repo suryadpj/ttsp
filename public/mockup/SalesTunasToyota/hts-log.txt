@@ -1,0 +1,31 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 08 Dec 2022 10:59:31 at https://www.enableds.com/products/appkit/v25/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qiC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.enableds.com/products/appkit/v25/ -O1 "D:\xampp\htdocs\source\tes\SalesTunasToyota" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/styles/bootstrap.css (from https://www.enableds.com/products/appkit/v25/)
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/fonts/css/fontawesome-all.min.css (from https://www.enableds.com/products/appkit/v25/)
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/_manifest.json (from https://www.enableds.com/products/appkit/v25/)
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/index.html (from https://www.enableds.com/products/appkit/v25/)
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/index-components.html (from https://www.enableds.com/products/appkit/v25/)
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/index-pages.html (from https://www.enableds.com/products/appkit/v25/)
+10:59:44	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/index-projects.html (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/images/pictures/31l.jpg (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/images/pictures/16l.jpg (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/images/pictures/6l.jpg (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/index-homepages.html (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/menu-footer.html (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/auto_generated (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/app/icons/icon-128x128.png (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/scripts/bootstrap.min.js (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/scripts/custom.js (from https://www.enableds.com/products/appkit/v25/)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/page-contact.html (from https://www.enableds.com/products/appkit/v25/menu-main.html)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/images/pictures/1s.jpg (from https://www.enableds.com/products/appkit/v25/menu-main.html)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/images/pictures/5s.jpg (from https://www.enableds.com/products/appkit/v25/menu-main.html)
+10:59:47	Error: 	"Forbidden" (403) at link https://www.enableds.com/products/appkit/v25/images/pictures/6s.jpg (from https://www.enableds.com/products/appkit/v25/menu-main.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 16 seconds : 24 links scanned, 3 files written (22311 bytes overall), 3 files updated [30790 bytes received at 1924 bytes/sec], 16488 bytes transferred using HTTP compression in 22 files, ratio 35%, 12.0 requests per connection
+(20 errors, 0 warnings, 0 messages)

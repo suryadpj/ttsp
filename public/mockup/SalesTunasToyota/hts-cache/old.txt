@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+10:58:41	139/139	---MCZ	403	error ('Forbidden')	text/html	date:Thu,%2008%20Dec%202022%2003:58:43%20GMT	https://www.enableds.com/products/appkit/v25/index.html	D:/xampp/htdocs/source/tes/SalesTunasToyota/www.enableds.com/products/appkit/v25/index.0.delayed	(from )
+10:58:42	147/147	---M-Z	200	added ('OK')	text/plain	date:Thu,%2008%20Dec%202022%2001:30:09%20GMT	https://www.enableds.com/robots.txt		(from )
