@@ -23,6 +23,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('dashboard');
+    }
+    public function salestool()
+    {
+        return view('salestool');
+    }
+    public function digitalcontent()
+    {
+        return view('digimar');
+    }
+    public function promo()
+    {
+        return view('promo');
+    }
+    public function tcare()
+    {
+        return view('tcare');
+    }
+    public function sosialmedia()
+    {
+        return view('sosialmedia');
     }
 }

@@ -19,5 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
+Route::get('/digitalcontent', [App\Http\Controllers\HomeController::class, 'digitalcontent'])->name('digitalcontent');
+Route::get('/promo', [App\Http\Controllers\HomeController::class, 'promo'])->name('promo');
+Route::get('/tcare', [App\Http\Controllers\HomeController::class, 'tcare'])->name('tcare');
+Route::get('/sosialmedia', [App\Http\Controllers\HomeController::class, 'sosialmedia'])->name('sosialmedia');
+Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
