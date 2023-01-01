@@ -168,7 +168,7 @@
         <!-- <p class="mb-n1 color-highlight font-600">Digital Marketing</p> -->
         <h1 class="font-26 font-800 mb-3">Digital Marketing Instagram</h1>
         </a>
-        <a href="https://www.instagram.com/p/CmDTuTDSs6V/" class="d-flex">
+        <a href="https://www.instagram.com/p/Cl8KWFjhsPU/" class="d-flex">
             <div class="me-auto">
                 <h5 class="font-600 pt-2">Get your best deal with EZDeal</h5>
                 <span class="color-highlight opacity-60">@tunas.toyota</span>
@@ -177,7 +177,7 @@
                 <img src="images/pictures/4.jpg" class="rounded-sm" width="100">
             </div>
         </a>
-        <a href="https://www.instagram.com/p/Cl8KWFjhsPU/" class="d-flex">
+        <a href="https://www.instagram.com/p/CmDTuTDSs6V/" class="d-flex">
             <div class="me-auto">
                 <h5 class="font-600 pt-2">Sejarah singkat Toyota Hybrid</h5>
                 <span class="color-highlight opacity-60">@tunas.toyota</span>
