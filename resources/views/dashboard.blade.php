@@ -81,7 +81,7 @@
 
                     <div class="d-flex">
                         <div class="me-3">
-                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/1.jpeg">
+                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/app-toyota.jpg">
                         </div>
                         <div>
                             <h2>POS</h2>
@@ -126,7 +126,7 @@
 
                     <div class="d-flex">
                         <div class="me-3">
-                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/6.jpg">
+                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tcare2.jpg">
                         </div>
                         <div>
                             <h2>T-Care</h2>
@@ -141,7 +141,7 @@
 
                     <div class="d-flex">
                         <div class="me-3">
-                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/5.jpg">
+                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/sosmed.png">
                         </div>
                         <div>
                             <h2>Sosial Media</h2>
@@ -156,7 +156,7 @@
 
                     <div class="d-flex">
                         <div class="me-3">
-                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/webcawang.jpg">
+                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tunascawang.jpg">
                         </div>
                         <div>
                             <h2>Tunas Toyota Cawang</h2>
