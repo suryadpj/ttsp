@@ -129,11 +129,26 @@
                             <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tcare2.jpg">
                         </div>
                         <div>
-                            <h2>T-Care</h2>
+                            <h2>T-Care Sales</h2>
                             <p class="mt-2">
-                                T-Care Tunas Toyota
+                                Informasi penjelasan service T-Care dari service ke 2 sampai ke 7
                             </p>
                             <a href="tcare" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
+                        </div>
+                    </div>
+
+                    <div class="divider mt-4"></div>
+
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tcare2.jpg">
+                        </div>
+                        <div>
+                            <h2>T-Care After Sales</h2>
+                            <p class="mt-2">
+                                Informasi T-Care Tunas Toyota setelah penjualan
+                            </p>
+                            <a href="https://aftersales.toyota.astra.co.id/t-care" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
                         </div>
                     </div>
 

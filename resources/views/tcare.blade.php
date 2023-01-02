@@ -21,9 +21,11 @@
 <body class="theme-light" data-highlight="highlight-red">
 <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 <div id="page">
-<div class="header header-auto-show header-fixed header-logo-center">
-            <a href="#" class="header-icon header-logo header-icon-1"><i class="fas color-white fa-envelope"></i><span class="badge bg-blue-dark">5</span></a>
-</div>
+    <div class="header header-auto-show header-fixed header-logo-center">
+        <a href="home" class="header-title">
+            <img src="images/pictures/logo-tunas.png" width="200">
+        </a>
+    </div>
 <div id="footer-bar" class="footer-bar-6">
 <!-- <a href="index-components.html"><i class="fa fa-layer-group"></i><span>Features</span></a> -->
 <!-- <a href="index-pages.html"><i class="fa fa-file"></i><span>Pages</span></a> -->
@@ -43,52 +45,6 @@
 <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-load="menu-share.html" data-menu-height="370"> </div>
 <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"></div>
 <div class="page-content">
-<div class="splide double-slider visible-slider slider-no-dots" id="double-slider-1">
-<div class="splide__track">
-<div class="splide__list">
-<!--<div class="splide__slide ps-3">
-<div data-card-height="220" class="card  shadow-xl rounded-m bg-16">
-<div class="card-bottom text-center">
-<h4 class="color-white font-800 mb-3">Bootstrap</h4>
-</div>
-<div class="card-overlay bg-gradient"></div>
-</div>
-</div> -->
-<div class="splide__slide ps-3">
-<div data-card-height="220" class="card  shadow-xl rounded-m bg-19">
-<div class="card-bottom text-center">
-<h4 class="color-white font-800 mb-3">Promo</h4>
-</div>
-<div class="card-overlay bg-gradient"></div>
-</div>
-</div>
-<div class="splide__slide ps-3">
-<div data-card-height="220" class="card  shadow-xl rounded-m bg-31">
-<div class="card-bottom text-center">
-<h4 class="color-white font-800 mb-3">POS</h4>
-</div>
-<div class="card-overlay bg-gradient"></div>
-</div>
-</div>
-<div class="splide__slide ps-3">
-<div data-card-height="220" class="card  shadow-xl rounded-m bg-33">
-<div class="card-bottom text-center">
-<h4 class="color-white font-800 mb-3">Web Tunas Toyota</h4>
-</div>
-<div class="card-overlay bg-gradient"></div>
-</div>
-</div>
-<div class="splide__slide ps-3">
-<div data-card-height="220" class="card  shadow-xl rounded-m bg-6">
-<div class="card-bottom text-center">
-<h4 class="color-white font-800 mb-3">T-Care</h4>
-</div>
-<div class="card-overlay bg-gradient"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div class="card ms-3 me-3 card-style mx-0 px-2 bg-32" data-card-height="350">
     <!-- <div class="card-top ps-3 pe-3">
         <p class="color-white opacity-50 font-600 mb-n1 pt-3">Dessert & Sweets</p>
@@ -105,7 +61,7 @@
 <div class="card card-style shadow-xl">
 <div class="content">
 <!-- <p class="color-highlight font-600 mb-n1">A Complete Solution</p> -->
-<h1 class="font-24 font-700 mb-2" align="center">Program T-Cares</h1>
+<h1 class="font-24 font-700 mb-2" align="center">Program T-Care</h1>
 <div align="center">
     Pilih proram sesuai periode service
 </div>

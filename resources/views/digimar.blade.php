@@ -77,8 +77,9 @@
 <div id="page">
 <div class="header header-auto-show header-fixed header-logo-center">
     <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-chevron-left"></i></a>
-    <a href="#" class="header-icon header-logo header-icon-1">
-    <i class="fas color-white fa-envelope"></i><span class="badge bg-blue-dark">5</span></a>
+    <a href="home" class="header-title">
+        <img src="images/pictures/logo-tunas.png" width="200">
+    </a>
 </div>
 <div id="footer-bar" class="footer-bar-6">
 <a href="home"><i class="fa fa-home"></i><span>Home</span></a>
