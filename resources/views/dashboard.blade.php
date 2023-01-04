@@ -84,7 +84,7 @@
                             <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/app-toyota.jpg">
                         </div>
                         <div>
-                            <h2>POS</h2>
+                            <h2>M-Quote</h2>
                             <p class="mt-2">
                                 Aplikasi Android Toyota
                             </p>
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="divider mt-4"></div>
-
+{{--
                     <div class="d-flex">
                         <div class="me-3">
                             <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tcare2.jpg">
@@ -137,16 +137,16 @@
                         </div>
                     </div>
 
-                    <div class="divider mt-4"></div>
+                    <div class="divider mt-4"></div> --}}
 
                     <div class="d-flex">
                         <div class="me-3">
                             <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tcare2.jpg">
                         </div>
                         <div>
-                            <h2>T-Care After Sales</h2>
+                            <h2>t-Care</h2>
                             <p class="mt-2">
-                                Informasi T-Care Tunas Toyota setelah penjualan
+                                Informasi t-Care Tunas Toyota setelah penjualan
                             </p>
                             <a href="https://aftersales.toyota.astra.co.id/t-care" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
                         </div>
