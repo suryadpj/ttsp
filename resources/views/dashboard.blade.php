@@ -153,6 +153,21 @@
                     </div>
 
                     <div class="divider mt-4"></div>
+                    <div class="d-flex">
+
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tintouch2.jpg">
+                    </div>
+                    <div>
+                        <h2>T-intouch</h2>
+                        <p class="mt-2">
+                            Advanced Connectivity Life With More Simplicity
+                        </p>
+                        <a href="https://fs.toyota.astra.co.id/u/lpPTKBIT0zmEk9Mp/e0455b9c-a13e-4ca2-beb3-247dec3c74df?l" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
+                    </div>
+                </div>
+
+                <div class="divider mt-4"></div>
 
                     <div class="d-flex">
                         <div class="me-3">
