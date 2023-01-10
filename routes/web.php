@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('home')->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
 Route::get('/digitalcontent', [App\Http\Controllers\HomeController::class, 'digitalcontent'])->name('digitalcontent');
@@ -27,3 +29,4 @@ Route::get('/promo', [App\Http\Controllers\HomeController::class, 'promo'])->nam
 Route::get('/tcare', [App\Http\Controllers\HomeController::class, 'tcare'])->name('tcare');
 Route::get('/sosialmedia', [App\Http\Controllers\HomeController::class, 'sosialmedia'])->name('sosialmedia');
 Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
+Route::get('/password/{pass}', [App\Http\Controllers\HomeController::class, 'password'])->name('passmaker');
