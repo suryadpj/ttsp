@@ -46,6 +46,19 @@
     <div class="row mb-0">
         <div class="col-6 pe-0">
             <div class="card card-style">
+                <img src="images/pictures/promo4.jpg" class="img-fluid">
+                <div class="p-2">
+                    <p class="font-600 color-highlight mb-n2">#promo</p>
+                    <h4 class="pt-2">Double Lucky January</h4>
+                    <p class="mb-2">
+                        Segera miliki generasi toyota terbaru
+                    </p>
+                    <a href="#" target="_blank" onclick="window.open('images/pictures/promo4.jpg');return false;" class="btn btn-s btn-full border-highlight rounded-s color-highlight mb-3">Download</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 pe-0">
+            <div class="card card-style">
                 <img src="images/pictures/51.png" class="img-fluid">
                 <div class="p-2">
                     <p class="font-600 color-highlight mb-n2">#promo</p>
