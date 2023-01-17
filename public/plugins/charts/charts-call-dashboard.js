@@ -1,4 +1,4 @@
-var dashboardChart = document.getElementById('dashboard-chart')
+ var dashboardChart = document.getElementById('dashboard-chart')
 
 var dashboardChart = new Chart(dashboardChart, {
     type: 'bar',
@@ -21,5 +21,5 @@ var dashboardChart = new Chart(dashboardChart, {
         legend: {display: true, position:'bottom', labels:{fontSize:13, padding:15,boxWidth:12},},
         title: {display: false}
     }
-});	
-    
+});
+

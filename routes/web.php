@@ -29,4 +29,8 @@ Route::get('/promo', [App\Http\Controllers\HomeController::class, 'promo'])->nam
 Route::get('/tcare', [App\Http\Controllers\HomeController::class, 'tcare'])->name('tcare');
 Route::get('/sosialmedia', [App\Http\Controllers\HomeController::class, 'sosialmedia'])->name('sosialmedia');
 Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboardadmin'])->name('dashboardadmin');
 Route::get('/password/{pass}', [App\Http\Controllers\HomeController::class, 'password'])->name('passmaker');
+Route::get('/sidebar', function () {
+    return view('sidebar');
+});

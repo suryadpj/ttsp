@@ -28,10 +28,12 @@
                 </a>
             </div>
             <div id="footer-bar" class="footer-bar-6">
+                <a href="#" data-menu="menu-main"><i class="fa fa-bars"></i><span>Menu</span></a>
                 <a href="home" class="circle-nav active-nav">
                     <i class="fa fa-home"></i>
                     <span>Welcome</span>
                 </a>
+                <a href="logout" data-menu="menu-main"><i class="fa fa-sign-out"></i><span>Logout</span></a>
             </div>
             <div class="page-title page-title-fixed">
                 <h1 style="font-size:large;">
@@ -218,6 +220,8 @@
                     </div>
                 </div>
             </a>
+
+    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="sidebar" data-menu-width="280" data-menu-active="nav-components"></div>
         </div>
         <br>
         <br>

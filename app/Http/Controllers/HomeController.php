@@ -15,10 +15,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Show the application dashboard.
@@ -78,6 +78,33 @@ class HomeController extends Controller
         'menu' => 'sosialmedia',
         ]);
         return view('sosialmedia');
+    }
+    public function dashboardadmin()
+    {
+        // DB::table('log')->insert([
+        // 'IDUser' => Auth::id(),
+        // 'menu' => 'dashboardadmin',
+        // ]);
+        //cek spv
+        $cek = DB::table('spv')->where('IDSpv',auth::id())->count();
+        if($cek > 0)
+        {
+            $belum_login = DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->where('created_at','like','%'.date('Y-m-d').'%')->distinct()->count('log.IDUser');
+            $totuser = DB::table('users')->leftjoin('spv','spv.IDUser','users.id')->where('spv.IDUser',Auth::id())->count();
+            $dikunjungi =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->first();
+            $visit =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->get();
+            $jarang =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','asc')->first();
+
+        }
+        else
+        {
+            $belum_login = DB::table('log')->where('log.IDUser',Auth::id())->where('created_at','like','%'.date('Y-m-d').'%')->distinct()->count('log.IDUser');
+            $totuser = DB::table('users')->where('id',Auth::id())->count();
+            $dikunjungi =DB::table('log')->where('log.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->first();
+            $visit =DB::table('log')->where('log.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->get();
+            $jarang =DB::table('log')->where('log.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','asc')->first();
+        }
+        return view('dashboardadmin',['blmlog' => $belum_login,'totuser' => $totuser,'dikunjungi'=> $dikunjungi,'jarang' => $jarang,'visit' => $visit]);
     }
     public function password($pass)
     {
