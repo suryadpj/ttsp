@@ -87,14 +87,22 @@ class HomeController extends Controller
         // ]);
         //cek spv
         $cek = DB::table('spv')->where('IDSpv',auth::id())->count();
-        if($cek > 0)
+        $cek2 = DB::table('spv')->where('IDSpv',auth::id())->where('level',1)->count();
+        if($cek2 > 0)
+        {
+            $belum_login = DB::table('log')->where('created_at','like','%'.date('Y-m-d').'%')->distinct()->count('log.IDUser');
+            $totuser = DB::table('users')->count();
+            $dikunjungi=DB::table('log')->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->first();
+            $visit =DB::table('log')->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->get();
+            $jarang =DB::table('log')->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','asc')->first();
+        }
+        elseif($cek > 0)
         {
             $belum_login = DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->where('created_at','like','%'.date('Y-m-d').'%')->distinct()->count('log.IDUser');
             $totuser = DB::table('users')->leftjoin('spv','spv.IDUser','users.id')->where('spv.IDUser',Auth::id())->count();
             $dikunjungi =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->first();
             $visit =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','desc')->get();
             $jarang =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDUser',Auth::id())->select('menu',DB::raw("count(log.id) as hitung"))->where('created_at','like','%'.date('Y-m-d').'%')->groupBy('menu')->orderBy('hitung','asc')->first();
-
         }
         else
         {

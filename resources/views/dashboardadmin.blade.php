@@ -37,7 +37,7 @@
             </div>
             <div class="page-title page-title-fixed">
                 <h1 style="font-size:large;">
-                    Hi, {{ auth::user()->name }} |
+                    Hi, {{ auth::user()->name }} | {{ date("d F Y") }}
                     <img src="images/pictures/logo_tunas.png" class="rounded-xl bg-green-dark" width="25">
                 </h1>
                 <a href="logout" class="page-title-icon shadow-xl bg-theme color-theme"><i class="fa fa-sign-out"></i></a>
