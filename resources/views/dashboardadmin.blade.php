@@ -46,6 +46,23 @@
 
 
     <div class="page-content">
+        @if(auth::id() ==  1 || auth::id() == 3)
+        <div class="card card-style">
+            <div class="content mb-0">
+                <h3>Filter Supervisor</h3>
+                <div class="row mb-0">
+                    <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
+                        <a href="dashboard" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">All</a>
+                        <a href="dashboard/51" data-bs-toggle="collapse" data-bs-target="#tab-2">Winsy</a>
+                        <a href="dashboard/52" data-bs-toggle="collapse" data-bs-target="#tab-3">James</a>
+                        <a href="dashboard/53" data-bs-toggle="collapse" data-bs-target="#tab-3">Dennis</a>
+                        <a href="dashboard/54" data-bs-toggle="collapse" data-bs-target="#tab-3">Furkon</a>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        @endif
 		<div class="content mt-0">
 			<div class="row mb-0">
 				<div class="col-6 pe-2">
