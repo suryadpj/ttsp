@@ -7,14 +7,14 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
         <title>TTSP - Tunas Toyota Sales Pocket</title>
-        <link rel="stylesheet" type="text/css" href="styles/bootstrapp2.css">
-        <link rel="stylesheet" type="text/css" href="styles/style3.css">
+        <link rel="stylesheet" type="text/css" href="../styles/bootstrapp2.css">
+        <link rel="stylesheet" type="text/css" href="../styles/style3.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+        <link rel="stylesheet" type="text/css" href="../fonts/css/fontawesome-all.min.css">
         <link rel="manifest" href="_manifest.json">
-        <link rel="apple-touch-icon" sizes="180x180" href="app/icons/logo_tunas.png">
-        <link rel="icon" href="app/icons/logo_tunas.png" sizes="32x32" type="image/png">
-        <link rel="icon" href="app/icons/logo_tunas.png" sizes="16x16" type="image/png">
+        <link rel="apple-touch-icon" sizes="180x180" href="../app/icons/logo_tunas.png">
+        <link rel="icon" href="../app/icons/logo_tunas.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="../app/icons/logo_tunas.png" sizes="16x16" type="image/png">
     </head>
     <body class="theme-light" data-highlight="highlight-red">
         <div id="preloader">
@@ -24,7 +24,7 @@
         <div id="page">
             <div class="header header-auto-show header-fixed header-logo-center">
                 <a href="home" class="header-title">
-                    <img src="images/pictures/logo-tunas.png" width="200">
+                    <img src="./images/pictures/logo-tunas.png" width="200">
                 </a>
             </div>
             <div id="footer-bar" class="footer-bar-6">
@@ -38,7 +38,7 @@
             <div class="page-title page-title-fixed">
                 <h1 style="font-size:large;">
                     Hi, {{ auth::user()->name }} | {{ date("d F Y") }}
-                    <img src="images/pictures/logo_tunas.png" class="rounded-xl bg-green-dark" width="25">
+                    <img src="../images/pictures/logo_tunas.png" class="rounded-xl bg-green-dark" width="25">
                 </h1>
                 <a href="logout" class="page-title-icon shadow-xl bg-theme color-theme"><i class="fa fa-sign-out"></i></a>
             </div>
@@ -52,11 +52,11 @@
                 <h3>Filter Supervisor</h3>
                 <div class="row mb-0">
                     <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
-                        <a href="dashboard" data-bs-toggle="collapse" data-bs-target="#tab-1">All</a>
-                        <a href="dashboard1" data-bs-toggle="collapse" data-bs-target="#tab-2">Winsy</a>
-                        <a href="dashboard2" data-bs-toggle="collapse" data-bs-target="#tab-3">James</a>
-                        <a href="dashboard3" data-bs-toggle="collapse" data-bs-target="#tab-3">Dennis</a>
-                        <a href="dashboard4" data-bs-toggle="collapse" data-bs-target="#tab-3">Furkon</a>
+                        <a href="dashboard" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">All</a>
+                        <a href="/ttsp/public/dashboard/51" data-bs-toggle="collapse" data-bs-target="#tab-2">Winsy</a>
+                        <a href="/ttsp/public/dashboard/52" data-bs-toggle="collapse" data-bs-target="#tab-3">James</a>
+                        <a href="/ttsp/public/dashboard/53" data-bs-toggle="collapse" data-bs-target="#tab-3">Dennis</a>
+                        <a href="/ttsp/public/dashboard/54" data-bs-toggle="collapse" data-bs-target="#tab-3">Furkon</a>
                     </div>
                 </div>
                 <br>
@@ -162,7 +162,7 @@
         <br>
         <br>
         <br>
-        <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-        <script type="text/javascript" src="scripts/custom.js"></script>
+        <script type="text/javascript" src="../scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../scripts/custom.js"></script>
     </body>
 </html>

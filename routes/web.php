@@ -30,7 +30,11 @@ Route::get('/tcare', [App\Http\Controllers\HomeController::class, 'tcare'])->nam
 Route::get('/sosialmedia', [App\Http\Controllers\HomeController::class, 'sosialmedia'])->name('sosialmedia');
 Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboardadmin'])->name('dashboardadmin');
-Route::get('/dashboard/{id}', [App\Http\Controllers\HomeController::class, 'dashboardadminfilter'])->name('dashboardadminfilter');
+Route::get('/dashboard1', [App\Http\Controllers\HomeController::class, 'dashboardadmin1'])->name('dashboardadmin1');
+Route::get('/dashboard2', [App\Http\Controllers\HomeController::class, 'dashboardadmin2'])->name('dashboardadmin2');
+Route::get('/dashboard3', [App\Http\Controllers\HomeController::class, 'dashboardadmin3'])->name('dashboardadmin3');
+Route::get('/dashboard4', [App\Http\Controllers\HomeController::class, 'dashboardadmin4'])->name('dashboardadmin4');
+Route::get('/dashboard/{id}/', [App\Http\Controllers\HomeController::class, 'dashboardadminfilter'])->name('dashboardadminfilter');
 Route::get('/password/{pass}', [App\Http\Controllers\HomeController::class, 'password'])->name('passmaker');
 Route::get('/sidebar', function () {
     return view('sidebar');
