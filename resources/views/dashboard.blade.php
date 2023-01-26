@@ -7,7 +7,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
         <title>TTSP - Tunas Toyota Sales Pocket</title>
-        <link rel="stylesheet" type="text/css" href="styles/bootstrapp2.css">
+        <link rel="stylesheet" type="text/css" href="styles/bootstrapp3.css">
         <link rel="stylesheet" type="text/css" href="styles/style3.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
@@ -74,13 +74,13 @@
                             <p class="mt-2">
                                 Form untuk simulasi harga kendaraan
                             </p>
-                            <a href="#" onclick="window.open('salestool');return false;" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
+                            <a href="salestool" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
                         </div>
                     </div>
 
                     <div class="divider mt-4"></div>
 
-                    <div class="d-flex">
+                    <div class="d-flex mquote2" id="mquote2">
                         <div class="me-3">
                             <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/app-toyota.jpg">
                         </div>
@@ -89,7 +89,9 @@
                             <p class="mt-2">
                                 Aplikasi Android Toyota
                             </p>
-                            <a href="https://play.google.com/store/apps/details?id=id.toyota.mquote" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
+                            {{-- <a id="mquote" href='https://play.google.com/store/apps/details?id=id.toyota.mquote&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Temukan di Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/id_badge_web_generic.png' width="100" height="50"/></a>
+                            <a href="mquote" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a> --}}
+                            <a href="#" onclick="window.open('https://play.google.com/store/apps/details?id=id.toyota.mquote&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1');return false;" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
                         </div>
                     </div>
 
@@ -226,7 +228,23 @@
         <br>
         <br>
         <br>
+        <script type="text/javascript" src="scripts/jquery.js"></script>
         <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/custom.js"></script>
+        <script>
+            $(document).on('click', '.mquote2', function(){
+                console.log('mquote')
+                $.ajax({
+                    url:"addmquote",
+                    dataType:"json",
+                    success:function(html)
+                    {
+                        console.log('sukses load')
+                    }
+                })
+            });
+            $(document).ready(function(){
+            });
+        </script>
     </body>
 </html>

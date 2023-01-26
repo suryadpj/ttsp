@@ -89,16 +89,16 @@
 <div class="card card-style shadow-xl">
 <div class="content">
 <!-- <p class="color-highlight font-600 mb-n1">A Complete Solution</p> -->
-<h1 class="font-24 font-700 mb-2">POS Tunas Toyota<i class="fa fa-star mt-n2 font-30 color-yellow-dark float-end me-2 scale-box"></i></h1>
+<h1 class="font-24 font-700 mb-2">M-Quote<i class="fa fa-star mt-n2 font-30 color-yellow-dark float-end me-2 scale-box"></i></h1>
 <p class="mb-1">
-Sistem POS Tunas Toyota
+Tools Sales dari Tunas Toyota
 </p>
 </div>
 </div>
 <div class="card card-style shadow-xl">
 <div class="videoWrapper">
 <!-- <p class="color-highlight font-600 mb-n1">A Complete Solution</p> -->
-    <iframe src="https://simulation.toyota.astra.co.id/" allowfullscreen></iframe>
+    <iframe src="https://play.google.com/store/apps/details?id=id.toyota.mquote" allowfullscreen></iframe>
 </div>
 </div>
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>

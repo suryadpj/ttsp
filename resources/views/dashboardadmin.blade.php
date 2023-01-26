@@ -107,8 +107,8 @@
 
         <div class="content mt-0 mb-0">
             <div class="row mb-0">
-                <div class="col-6">
-                    <div class="card mx-0 card-style" data-card-height="260">
+                <div class="col-12">
+                    <div class="card mx-0 card-style" data-card-height="400">
                         <div class="content">
                             <h5 class="font-14 opacity-50">Site Visit Detail</h5>
                             <div class="divider mb-3"></div>
@@ -120,15 +120,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
-                    <div class="card mx-0 card-style" data-card-height="260">
+                <div class="col-12">
+                    <div class="card mx-0 card-style" data-card-height="500">
                         <div class="content">
-                            <h5 class="font-14 opacity-50">App Visitor Statistik <a href="#" class="float-end color-highlight"><i class="fa fa-arrow-right"></i></a></h5>
+                            <h5 class="font-14 opacity-50">App Visitor Statistik M-Quote <a href="#" class="float-end color-highlight"><i class="fa fa-arrow-right"></i></a></h5>
                             <div class="divider mb-3"></div>
                         </div>
-                        <br>
-                        <div class="card-center text-center pb-4">
-                                <canvas class="dashboard-chart" id="dashboard-chart"/>
+                        <div class="card-center text-center">
+                                <canvas id="dashboard-chart2" width="20" height="380">
                         </div>
                     </div>
                 </div>
@@ -164,5 +163,41 @@
         <br>
         <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/custom.js"></script>
+        <script type="text/javascript" src="scripts/charts.js"></script>
+        <script>
+             var dashboardChart = document.getElementById('dashboard-chart2')
+
+            var dashboardChart = new Chart(dashboardChart, {
+                type: 'line',
+                data: {
+                labels: ["andri.antonio","kharismawati","sifa.fauziah","mulyano","arofah.kemal","fahrul.yusuf","novriwan.tarigan","ridho.yulia","arief.achmad","yossie.chandra","andikha.revindra","solahudin.amin","james.unggul","hermawan2","benny.adrian","mason.nicholas","muhammad.adil","rachdia.arle","ade.sulaeman","rahman.hakim","marthina.siahaan","reinhardt.parmonangan","andri.ferdian","septiani.indry","greace.adelina","joko.hadi","mahfud.madmori","saepul.bahri","umar.cholik","tuti.handayani","hikmah.anggraini","slamet.purwanto","ida.soleha","toga.maibang","yuni.suhartiningsih"],
+                datasets: [
+                    {
+                    label: "Sales",
+                    borderColor: "#A0D468",
+                    fill: "false",
+                    data: [32,20,10,20,10,12,3,14,15,2,2,12,5,11,10,2,0,19,17,21,14,6,16,10,0,5,18,10,0,1,29,1,4,1,8]
+                    }
+                ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio:false,
+                    legend: {display: true, position:'bottom', labels:{fontSize:13, padding:15,boxWidth:12},},
+                    title: {display: false},
+                    scaleShowValues: true,
+                    scales: {
+                        xAxes: [{
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 90,
+                            minRotation: 90
+                        }
+                        }]
+                    }
+                }
+            });
+
+
+        </script>
     </body>
 </html>

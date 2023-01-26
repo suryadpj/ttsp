@@ -47,6 +47,15 @@ class HomeController extends Controller
         ]);
         return view('salestool');
     }
+    public function addmquote()
+    {
+        DB::table('log')->insert([
+        'IDUser' => Auth::id(),
+        'menu' => 'mquote',
+        ]);
+        return response()->json(['sukses' => 'data berhasil disimpan']);
+
+    }
     public function digitalcontent()
     {
         DB::table('log')->insert([
