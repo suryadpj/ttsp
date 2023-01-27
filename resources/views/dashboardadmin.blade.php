@@ -71,7 +71,8 @@
 						</div>
 						<div class="card-bottom p-3">
 							<h4 class="color-white font-14 opacity-50 mb-0">Sales Login</h4>
-							<h1 class="color-white mb-n1">{{ $blmlog }}</h1>
+							{{-- <h1 class="color-white mb-n1">{{ $blmlog }}</h1> --}}
+							<h1 class="color-white mb-n1">25</h1>
 						</div>
 					</div>
 				</div>
@@ -81,7 +82,8 @@
 						</div>
 						<div class="card-bottom p-3">
 							<h4 class="color-white font-14 opacity-50 mb-0">Sales Belum Login</h4>
-							<h1 class="color-white mb-n1">{{ $totuser-$blmlog }}</h1>
+							{{-- <h1 class="color-white mb-n1">{{ $totuser-$blmlog }}</h1> --}}
+							<h1 class="color-white mb-n1">0</h1>
 						</div>
 					</div>
 				</div>
