@@ -169,6 +169,51 @@
         <!-- <p class="mb-n1 color-highlight font-600">Digital Marketing</p> -->
         <h1 class="font-26 font-800 mb-3">Digital Marketing Instagram</h1>
         </a>
+        <a href="https://www.instagram.com/p/Cn016m1OwXD/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Kijang Innova Zenix hemat bensin ?</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/4.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/CnvsUKMJpik/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Waspada, ini akibat kalau mobil pakai oli palsu</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/4.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/CnWYSNBuCEx/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Kenapa service di tunas toyota ?</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/4.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/Cng_mdMO4uE/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Buka bagasi pakai suara ?</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/4.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/CneOOGFuLGR/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">3 cara untuk menghilangkan baret pada mobil</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/4.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
         <a href="https://www.instagram.com/p/CnROOrkMlua/" class="d-flex">
             <div class="me-auto">
                 <h5 class="font-600 pt-2">Plat Nomor putih Akan Dipasang Chip ID</h5>

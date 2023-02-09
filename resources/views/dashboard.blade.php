@@ -63,7 +63,7 @@
             </div>
             <div class="card card-full shadow-xl">
                 <div class="content">
-                    <h1 class="font-24 font-700 mb-2">Daftar Menu Sales Toolkit</h1>
+                    <h1 class="font-24 font-700 mb-2">Daftar Menu Sales & Service Toolkit</h1>
                     <hr>
                     <div class="d-flex">
                         <div class="me-3">
@@ -197,6 +197,21 @@
                                 Website Tunas Toyota Cawang
                             </p>
                             <a href="https://tunastoyotacawang.co.id" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
+                        </div>
+                    </div>
+
+                    <div class="divider mt-4"></div>
+
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/database.jpg">
+                        </div>
+                        <div>
+                            <h2>Database Customer</h2>
+                            <p class="mt-2">
+                                Tools untuk menghubungi customer dan mencatat task
+                            </p>
+                            <a href="#" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
                         </div>
                     </div>
                 </div>
