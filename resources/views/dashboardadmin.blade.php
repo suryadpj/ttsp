@@ -353,8 +353,61 @@
                         alert( "error occured" );
                     });
                 });
+                $.ajax({
+                url:"dashboardnow",
+                dataType:"json",
+                beforeSend:function(){
+                    $('#load').html('<i disable class="fa fa-spinner fa-spin"></i>');
+                },
+                success:function(html)
+                {
+                    $('#saleslogin').html(html.blmlog);
+                    $('#salesbelumlogin').html(html.totuser);
+                    $('#seringdikunjungi').html(html.dikunjungi.menu);
+                    $('#jarangdikunjungi').html(html.jarang.menu);
+                    const isivisit = [];
+                    html.visit.forEach(x => isivisit.push('<div class="mb-4"><h5>' + x.menu + '<span class="opacity-30 float-end">' + x.hitung + '</span></h5></div>'));
+                    $('#sitevisit').html(isivisit);
+                    const isisummary = [];
+                    html.visitor.forEach(x => isisummary.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
+                    $('#summaryakses').html(isisummary);
+                    const mquotes = [];
+                    html.mquote.forEach(aa => mquotes.push('<tr><td>' + aa.name + '</td><td>' + aa.hitung + '</td></tr>'));
+                    $('#summarymquote').html(mquotes);
+                    const salestools = [];
+                    html.salestool.forEach(bb => salestools.push('<tr><td>' + bb.name + '</td><td>' + bb.hitung + '</td></tr>'));
+                    $('#summarysalestool').html(salestools);
+                    const promos = [];
+                    html.promo.forEach(cc => promos.push('<tr><td>' + cc.name + '</td><td>' + cc.hitung + '</td></tr>'));
+                    $('#summarypromo').html(promos);
+                    const digimars = [];
+                    html.digimar.forEach(dd => digimars.push('<tr><td>' + dd.name + '</td><td>' + dd.hitung + '</td></tr>'));
+                    $('#summarydigimar').html(digimars);
+                    const sosialmedias = [];
+                    html.sosialmedia.forEach(ee => sosialmedias.push('<tr><td>' + ee.name + '</td><td>' + ee.hitung + '</td></tr>'));
+                    $('#summarysosialmedia').html(sosialmedias);
+                }
+                });
+                $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: "dashboardchartnow", // This is the URL to the API
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                })
+                .done(function( data ) {
+                    dashboardChart.data.labels = data.label;
+                    dashboardChart.data.datasets[0].data = data.data;
+                    // dashboardChart.data.datasets[0].label = 'Data Pendapatan Parkir ' + area + ' Periode ' + month;
+                    dashboardChart.update();
+                })
+                .fail(function() {
+                    alert( "error occured" );
+                });
             }
         );
+
 
         </script>
     </body>

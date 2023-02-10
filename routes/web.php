@@ -32,6 +32,8 @@ Route::get('/tcare', [App\Http\Controllers\HomeController::class, 'tcare'])->nam
 Route::get('/sosialmedia', [App\Http\Controllers\HomeController::class, 'sosialmedia'])->name('sosialmedia');
 Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool'])->name('salestool');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboardadmin'])->name('dashboardadmin');
+Route::get('/dashboardnow', [App\Http\Controllers\HomeController::class, 'dashboardfilter5'])->name('dashboardfilter5');
+Route::get('/dashboardchartnow', [App\Http\Controllers\HomeController::class, 'dashboardfilter6'])->name('dashboardfilter6');
 Route::get('/dashboard/{periode}', [App\Http\Controllers\HomeController::class, 'dashboardfilter1'])->name('dashboardfilter1');
 Route::get('/dashboardchart/{periode}', [App\Http\Controllers\HomeController::class, 'dashboardfilter3'])->name('dashboardfilter3');
 Route::get('/dashboard/{periode}/{spv}', [App\Http\Controllers\HomeController::class, 'dashboardfilter2'])->name('dashboardfilter2');
