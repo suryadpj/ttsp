@@ -74,6 +74,8 @@
                                     <em></em>
                                 </div>
                             </div>
+                            @else
+                            <input type="hidden" id="spv_search" name="spv_search" value="">
                             @endif
                             <div class="form-button">
                                 {{-- <button type="submit" id="filter_button" class="btn btn-primary percent"><i class="fas fa-search"></i> | Cari</button> --}}
