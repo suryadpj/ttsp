@@ -121,7 +121,8 @@ class HomeController extends Controller
     }
     public function dashboardadmin()
     {
-        return view('dashboardadmin');
+        $dataspv = DB::table('users')->leftjoin('spv_data','spv_data.IDUser','users.id')->select('users.id','users.name','users.lokasi','spv_data.area')->whereNotNull('area')->orderby('users.lokasi','asc')->get();
+        return view('dashboardadmin',['dataspv' => $dataspv]);
     }
     public function dashboardfilter1($periode)
     {

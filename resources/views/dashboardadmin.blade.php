@@ -63,10 +63,9 @@
                                 <div class="input-style has-borders no-icon mb-4">
                                     <select id="spv_search" name="spv_search">
                                         <option value="" disabled selected>Semua Supervisor</option>
-                                        <option value="51">Winsy</option>
-                                        <option value="52">James</option>
-                                        <option value="53">Dennis</option>
-                                        <option value="54">Furkon</option>
+                                        @foreach ($dataspv as $a)
+                                        <option value="{{ $a->id }}">{{ $a->name }} - {{ $a->lokasi }}</option>
+                                        @endforeach
                                     </select>
                                     <span><i class="fa fa-chevron-down"></i></span>
                                     <i class="fa fa-check disabled valid color-green-dark"></i>
