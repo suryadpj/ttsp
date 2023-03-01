@@ -186,21 +186,22 @@
                     </div>
 
                     <div class="divider mt-4"></div>
-
-                    <div class="d-flex">
-                        <div class="me-3">
-                            <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tunascawang.jpg">
+                    @if (auth::user()->lokasi == "TOYOTA = DEWI SARTIKA")
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/tunascawang.jpg">
+                            </div>
+                            <div>
+                                <h2>Tunas Toyota Cawang</h2>
+                                <p class="mt-2">
+                                    Website Tunas Toyota Cawang
+                                </p>
+                                <a href="https://tunastoyotacawang.co.id" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
+                            </div>
                         </div>
-                        <div>
-                            <h2>Tunas Toyota Cawang</h2>
-                            <p class="mt-2">
-                                Website Tunas Toyota Cawang
-                            </p>
-                            <a href="https://tunastoyotacawang.co.id" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">Visit</a>
-                        </div>
-                    </div>
+                        <div class="divider mt-4"></div>
+                    @endif
 
-                    <div class="divider mt-4"></div>
 
                     <div class="d-flex">
                         <div class="me-3">
