@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="styles/style3.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-        <link rel="manifest" href="_manifest.json">
+        <link rel="manifest" href="mockup/_manifest.json">
         <link rel="apple-touch-icon" sizes="180x180" href="app/icons/logo_tunas.png">
         <link rel="icon" href="app/icons/logo_tunas.png" sizes="32x32" type="image/png">
         <link rel="icon" href="app/icons/logo_tunas.png" sizes="16x16" type="image/png">
@@ -59,13 +59,25 @@
                             </div>
                             @if(auth::id() ==  1 || auth::id() == 3)
                             <div class="form-field form-email">
+                                <label class="contactEmailField color-theme" for="contactEmailField">Lokasi:<span>(required)</span></label>
+                                <div class="input-style has-borders no-icon mb-4">
+                                    <select id="lokasi_search" name="lokasi_search">
+                                        <option value="all" disabled selected>Semua Lokasi</option>
+                                        @foreach ($dataspv as $a)
+                                        <option value="{{ $a->area }}">{{ $a->area }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span><i class="fa fa-chevron-down"></i></span>
+                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                    <em></em>
+                                </div>
+                            </div>
+                            <div class="form-field form-email">
                                 <label class="contactEmailField color-theme" for="contactEmailField">Supervisor:<span>(required)</span></label>
                                 <div class="input-style has-borders no-icon mb-4">
                                     <select id="spv_search" name="spv_search">
-                                        <option value="" disabled selected>Semua Supervisor</option>
-                                        @foreach ($dataspv as $a)
-                                        <option value="{{ $a->id }}">{{ $a->name }} - {{ $a->lokasi }}</option>
-                                        @endforeach
+                                        <option value="all" disabled selected>Semua Supervisor</option>
                                     </select>
                                     <span><i class="fa fa-chevron-down"></i></span>
                                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -87,7 +99,7 @@
         </div>
 		<div class="content mt-0">
 			<div class="row">
-				<div class="col-3 pe-2">
+				<div class="col-6 ps-2">
 					<div class="card card-style gradient-blue m-0" data-card-height="130">
 						<div class="card-top p-3">
 						</div>
@@ -98,7 +110,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-3 ps-2">
+				<div class="col-6 ps-2">
 					<div class="card card-style gradient-green mx-0 m-0" data-card-height="130">
 						<div class="card-top p-3">
 						</div>
@@ -109,7 +121,7 @@
 						</div>
 					</div>
 				</div>
-                <div class="col-3 ps-2">
+                <div class="col-6 ps-2">
                     <div class="card card-style mx-0 mb-2 p-3">
                         <h6 class="font-14">Paling Sering Dikunjungi</h6>
                         <br>
@@ -117,7 +129,7 @@
                         <br>
                     </div>
                 </div>
-                <div class="col-3 ps-2">
+                <div class="col-6 ps-2">
                     <div class="card card-style mx-0 mb-2 p-3">
                         <h6 class="font-14">Paling jarang Dikunjungi</h6>
                         <br>
@@ -255,6 +267,39 @@
         <script type="text/javascript" src="scripts/charts.js"></script>
         <script>
             $(document).ready(function(){
+                $("#lokasi_search").change(function()
+                {
+                    $(this).find("option:selected").each(function(){
+                        var optionValue = $(this).attr("value");
+                        console.log(optionValue)
+                        if(optionValue != "")
+                        {
+                            $.ajax({
+                            url:"dataspv/"+optionValue,
+                            dataType:"json",
+                            beforeSend:function(){
+                                $('#spv_search').prop("disabled", true);
+                                $("#spv_search option[class='tembusan']").remove();
+                                $('select[name="lokasi_search"]').attr('disabled', 'disabled');
+                                $('#spv_search')
+                                .find('option')
+                                .remove()
+                                .end()
+                                .append('<option value="all">Semua Supervisor</option>');
+                            ;
+                            },
+                            success:function(html)
+                            {
+                                const isispv = [];
+                                html.forEach(x => isispv.push('<option value="' + x.ID + '">' + x.name + '</option>'));
+                                $('#spv_search').append(isispv);
+                                $('#spv_search').prop("disabled", false);
+                                $('#lokasi_search').prop("disabled", false);
+                            }
+                            });
+                        }
+                    });
+                }).change();
                 var dashboardChart = document.getElementById('dashboard-chart2')
 
                 var dashboardChart = new Chart(dashboardChart, {
@@ -291,16 +336,25 @@
                 $(document).on('click', '#filter_button', function(){
                     console.log('filter')
                     var periode = document.getElementById("periode_search").value;
+                    var lokasi = document.getElementById("lokasi_search").value;
                     var spv = document.getElementById("spv_search").value;
-                    if(spv == null)
+                    if(spv == null && lokasi == null)
                     {
                         var periodes = periode;
+                    }
+                    else if(spv == null && lokasi != null)
+                    {
+                        var periodes = periode + '/' + lokasi + '/all';
+                    }
+                    else if(spv != null && lokasi != null)
+                    {
+                        var periodes = periode + '/' + lokasi + '/' + spv;
+                    console.log(periodes)
                     }
                     else
                     {
                         var periodes = periode + '/' + spv;
                     }
-                    console.log(periodes)
                     $.ajax({
                     url:"dashboard/"+periodes,
                     dataType:"json",
@@ -311,8 +365,14 @@
                     {
                         $('#saleslogin').html(html.blmlog);
                         $('#salesbelumlogin').html(html.totuser);
-                        $('#seringdikunjungi').html(html.dikunjungi.menu);
-                        $('#jarangdikunjungi').html(html.jarang.menu);
+                        if(html.dikunjungi != null)
+                        {
+                            $('#seringdikunjungi').html(html.dikunjungi.menu);
+                        }
+                        if(html.jarang != null)
+                        {
+                            $('#jarangdikunjungi').html(html.jarang.menu);
+                        }
                         const isivisit = [];
                         html.visit.forEach(x => isivisit.push('<div class="mb-4"><h5>' + x.menu + '<span class="opacity-30 float-end">' + x.hitung + '</span></h5></div>'));
                         $('#sitevisit').html(isivisit);
@@ -364,8 +424,14 @@
                 {
                     $('#saleslogin').html(html.blmlog);
                     $('#salesbelumlogin').html(html.totuser);
-                    $('#seringdikunjungi').html(html.dikunjungi.menu);
-                    $('#jarangdikunjungi').html(html.jarang.menu);
+                        if(html.dikunjungi != null)
+                        {
+                            $('#seringdikunjungi').html(html.dikunjungi.menu);
+                        }
+                        if(html.jarang != null)
+                        {
+                            $('#jarangdikunjungi').html(html.jarang.menu);
+                        }
                     const isivisit = [];
                     html.visit.forEach(x => isivisit.push('<div class="mb-4"><h5>' + x.menu + '<span class="opacity-30 float-end">' + x.hitung + '</span></h5></div>'));
                     $('#sitevisit').html(isivisit);

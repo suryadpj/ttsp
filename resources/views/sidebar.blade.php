@@ -58,8 +58,8 @@
     </a>
 </div>
 <h6 class="menu-divider mt-4">Administrator</h6>
-<div class="list-group list-custom-small list-menu">
-    <a href="dashboard" data-menu="menu-colors">
+<div onClick="window.location.href='dashboard'" class="list-group list-custom-small list-menu">
+    <a href="#">
         <i class="fa fa-brush gradient-highlight color-white"></i>
         <span>Dashboard</span>
         <i class="fa fa-angle-right"></i>

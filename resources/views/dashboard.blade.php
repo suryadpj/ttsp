@@ -11,7 +11,6 @@
         <link rel="stylesheet" type="text/css" href="styles/style3.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-        <link rel="manifest" href="_manifest.json">
         <link rel="apple-touch-icon" sizes="180x180" href="app/icons/logo_tunas.png">
         <link rel="icon" href="app/icons/logo_tunas.png" sizes="32x32" type="image/png">
         <link rel="icon" href="app/icons/logo_tunas.png" sizes="16x16" type="image/png">

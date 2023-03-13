@@ -121,7 +121,7 @@ class HomeController extends Controller
     }
     public function dashboardadmin()
     {
-        $dataspv = DB::table('users')->leftjoin('spv_data','spv_data.IDUser','users.id')->select('users.id','users.name','users.lokasi','spv_data.area')->whereNotNull('area')->orderby('users.lokasi','asc')->get();
+        $dataspv = DB::table('spv_data')->select('area')->whereNotNull('area')->orderby('spv_data.area','asc')->distinct()->get();
         return view('dashboardadmin',['dataspv' => $dataspv]);
     }
     public function dashboardfilter1($periode)
@@ -252,9 +252,25 @@ class HomeController extends Controller
             return response()->json(compact('label','data'));
         // }
     }
-    public function dashboardfilter2($periode,$spv)
+    public function dashboardfilter2($periode,$lokasi,$spv)
     {
-
+        if($spv == "all")
+        {
+            $belum_login = DB::table('log')->leftjoin('users','users.id','log.IDUser')->where('users.lokasi','like','%'.$lokasi.'%')->where('log.created_at','like','%'.$periode.'%')->distinct()->count('log.IDUser');
+            $totuser = DB::table('users')->leftjoin('spv','spv.IDUser','users.id')->where('users.lokasi','LIKE','%'.$lokasi.'%')->count();
+            $belum_loginnya = $totuser-$belum_login;
+            $dikunjungi =DB::table('log')->leftjoin('users','users.id','log.IDUser')->where('users.lokasi','LIKE','%'.$lokasi.'%')->select('menu',DB::raw("count(log.id) as hitung"))->where('log.created_at','like','%'.$periode.'%')->groupBy('menu')->orderBy('hitung','desc')->first();
+            $visit =DB::table('log')->leftjoin('users','users.id','log.IDUser')->where('users.lokasi','LIKE','%'.$lokasi.'%')->select('menu',DB::raw("count(log.id) as hitung"))->where('log.created_at','like','%'.$periode.'%')->groupBy('menu')->orderBy('hitung','desc')->get();
+            $jarang =DB::table('log')->leftjoin('users','users.id','log.IDUser')->where('users.lokasi','LIKE','%'.$lokasi.'%')->select('menu',DB::raw("count(log.id) as hitung"))->where('log.created_at','like','%'.$periode.'%')->groupBy('menu')->orderBy('hitung','asc')->first();
+            $visitor =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+            $visitor_mquote =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.menu','mquote')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+            $visitor_salestool =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.menu','salestool')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+            $visitor_promo =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.menu','promo')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+            $visitor_digimar =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.menu','digimar')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+            $visitor_sosialmedia =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.menu','sosialmedia')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+        }
+        else
+        {
             $belum_login = DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->where('spv.IDSpv',$spv)->where('created_at','like','%'.$periode.'%')->distinct()->count('log.IDUser');
             $totuser = DB::table('users')->leftjoin('spv','spv.IDUser','users.id')->where('spv.IDSpv',$spv)->count();
             $belum_loginnya = $totuser-$belum_login;
@@ -267,17 +283,23 @@ class HomeController extends Controller
             $visitor_promo =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('spv.IDSpv',$spv)->where('log.menu','promo')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
             $visitor_digimar =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('spv.IDSpv',$spv)->where('log.menu','digimar')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
             $visitor_sosialmedia =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('spv.IDSpv',$spv)->where('log.menu','sosialmedia')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+        }
 
         // if(request()->ajax())
         // {
             return response()->json(['blmlog' => $belum_login,'totuser' => $belum_loginnya,'dikunjungi'=> $dikunjungi,'jarang' => $jarang,'visit' => $visit,'visitor' => $visitor,'mquote' => $visitor_mquote,'salestool' => $visitor_salestool,'promo' => $visitor_promo,'digimar' => $visitor_digimar,'sosialmedia' => $visitor_sosialmedia]);
         // }
     }
-    public function dashboardfilter4($periode,$spv)
+    public function dashboardfilter4($periode,$lokasi,$spv)
     {
-
+        if($spv == "all")
+        {
+            $visitor_mquote =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('users.lokasi','LIKE','%'.$lokasi.'%')->where('log.menu','mquote')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
+        }
+        else
+        {
             $visitor_mquote =DB::table('log')->leftjoin('spv','spv.IDUser','log.IDUser')->leftjoin('users','users.id','log.IDUser')->select('name',DB::raw("count(log.id) as hitung"))->where('spv.IDSpv',$spv)->where('log.menu','mquote')->where('log.created_at','like','%'.$periode.'%')->groupBy('name')->orderBy('hitung','desc')->get();
-
+        }
         // if(request()->ajax())
         // {
             $label = $visitor_mquote->pluck('name');
@@ -408,5 +430,14 @@ class HomeController extends Controller
     public function password($pass)
     {
         return Hash::make($pass);
+    }
+    public function dataspvfilter($id)
+    {
+        $data = DB::table('spv_data')
+        ->leftjoin('users','users.id','spv_data.IDUser')
+        ->select('*','users.name')
+        ->where('spv_data.area', $id)
+        ->get();
+        return response()->json($data);
     }
 }
