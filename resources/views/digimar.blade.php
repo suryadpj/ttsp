@@ -169,6 +169,51 @@
         <!-- <p class="mb-n1 color-highlight font-600">Digital Marketing</p> -->
         <h1 class="font-26 font-800 mb-3">Digital Marketing Instagram</h1>
         </a>
+        <a href="https://www.instagram.com/p/CphTv-YBPYh" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Salah satu komponen yang kalau mau diganti, sering dalam kondisi mepet atau bahkan sudah kelewat batas seharusnya.</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/promo20230324_05.png" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/Cpe8rmiPXbx" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Temukan Dealer Tunas Toyota lebih dari 20 cabang yang tersebar.</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/promo20230324_04.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/CpcUdKuBL6Z" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">New Rush GR Sport : Partner kamu yang siap untuk nemenin kamu ke mana aja.</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/promo20230324_03.jpg" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/CpUOCezhZnp/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Pernah ngalamin hal ini nggak Tunas Friends? Ketika lagi nyetir kok kemudi setir sudah nggak lurus atau malah suka lari.</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/promo20230324_02.png" class="rounded-sm" width="100">
+            </div>
+        </a>
+        <a href="https://www.instagram.com/p/CpRwaEySdWk/" class="d-flex">
+            <div class="me-auto">
+                <h5 class="font-600 pt-2">Yuk main ke GR Zone Tunas Toyota!</h5>
+                <span class="color-highlight opacity-60">@tunas.toyota</span>
+            </div>
+            <div class="ms-4 mb-4">
+                <img src="images/pictures/promo2023032401.png" class="rounded-sm" width="100">
+            </div>
+        </a>
         <a href="https://www.instagram.com/p/Cn016m1OwXD/" class="d-flex">
             <div class="me-auto">
                 <h5 class="font-600 pt-2">Kijang Innova Zenix hemat bensin ?</h5>
