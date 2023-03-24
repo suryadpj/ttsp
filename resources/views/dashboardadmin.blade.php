@@ -7,7 +7,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
         <title>TTSP - Tunas Toyota Sales Pocket</title>
-        <link rel="stylesheet" type="text/css" href="styles/bootstrapp2.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap.css">
         <link rel="stylesheet" type="text/css" href="styles/style3.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
@@ -46,111 +46,117 @@
 
 
     <div class="page-content">
-        <div class="card card-style">
-            <div class="content mb-0">
-                <h3>Filter Dashboard</h3>
-                <div class="content">
-                    <form id="sample_form">
-                    @csrf
-                        <fieldset>
-                            <div class="form-field form-name">
-                                <label class="contactNameField color-theme" for="contactNameField">Periode:<span>(required)</span></label>
-                                <input type="month" class="form-control validate-text" id="periode_search" name="periode_search" value="{{ date('Y-m') }}" placeholder="Phone">
-                            </div>
-                            @if(auth::id() ==  1 || auth::id() == 3)
-                            <div class="form-field form-email">
-                                <label class="contactEmailField color-theme" for="contactEmailField">Lokasi:<span>(required)</span></label>
-                                <div class="input-style has-borders no-icon mb-4">
-                                    <select id="lokasi_search" name="lokasi_search">
-                                        <option value="all" disabled selected>Semua Lokasi</option>
-                                        @foreach ($dataspv as $a)
-                                        <option value="{{ $a->area }}">{{ $a->area }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span><i class="fa fa-chevron-down"></i></span>
-                                    <i class="fa fa-check disabled valid color-green-dark"></i>
-                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                    <em></em>
-                                </div>
-                            </div>
-                            <div class="form-field form-email">
-                                <label class="contactEmailField color-theme" for="contactEmailField">Supervisor:<span>(required)</span></label>
-                                <div class="input-style has-borders no-icon mb-4">
-                                    <select id="spv_search" name="spv_search">
-                                        <option value="all" disabled selected>Semua Supervisor</option>
-                                    </select>
-                                    <span><i class="fa fa-chevron-down"></i></span>
-                                    <i class="fa fa-check disabled valid color-green-dark"></i>
-                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                    <em></em>
-                                </div>
-                            </div>
-                            @else
-                            <input type="hidden" id="spv_search" name="spv_search" value="">
-                            @endif
-                            <div class="form-button">
-                                {{-- <button type="submit" id="filter_button" class="btn btn-primary percent"><i class="fas fa-search"></i> | Cari</button> --}}
-                                <button type="button" id="filter_button" class="btn bg-highlight text-uppercase font-900 btn-m btn-full rounded-sm  shadow-xl contactSubmitButton" value="Filter">Filter</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-		<div class="content mt-0">
-			<div class="row">
-				<div class="col-6 ps-2">
-					<div class="card card-style gradient-blue m-0" data-card-height="130">
-						<div class="card-top p-3">
-						</div>
-						<div class="card-bottom p-3">
-							<h4 class="color-white font-14 opacity-50 mb-0">Sales Login</h4>
-							{{-- <h1 class="color-white mb-n1">{{ $blmlog }}</h1> --}}
-							<h1 class="load color-white mb-n1" id="saleslogin"></h1>
-						</div>
-					</div>
-				</div>
-				<div class="col-6 ps-2">
-					<div class="card card-style gradient-green mx-0 m-0" data-card-height="130">
-						<div class="card-top p-3">
-						</div>
-						<div class="card-bottom p-3">
-							<h4 class="color-white font-14 opacity-50 mb-0">Sales Belum Login</h4>
-							{{-- <h1 class="color-white mb-n1">{{ $totuser-$blmlog }}</h1> --}}
-							<h1 class="load color-white mb-n1" id="salesbelumlogin"></h1>
-						</div>
-					</div>
-				</div>
-                <div class="col-6 ps-2">
+        <div class="content mb-0 mt-3">
+            <div class="row">
+                <div class="col-md-6">
                     <div class="card card-style mx-0 mb-2 p-3">
-                        <h6 class="font-14">Paling Sering Dikunjungi</h6>
-                        <br>
-                        <h5 class="load color-green-dark mb-0" id="seringdikunjungi"></h5>
-                        <br>
-                    </div>
-                </div>
-                <div class="col-6 ps-2">
-                    <div class="card card-style mx-0 mb-2 p-3">
-                        <h6 class="font-14">Paling jarang Dikunjungi</h6>
-                        <br>
-                        <h5 class="load color-green-dark mb-0" id="jarangdikunjungi"></h5>
-                        <br>
-                    </div>
-                </div>
-			</div>
-		</div>
-
-        <div class="content mt-0 mb-0">
-            <div class="row mb-0">
-                <div class="col-12">
-                    <div class="card mx-0 card-style" data-card-height="400">
-                        <div class="content">
-                            <h5 class="font-14 opacity-50">Site Visit Detail</h5>
-                            <div class="divider mb-3" id="sitevisit">
-                            </div>
+                        <h6 class="font-14">Site Visit Detail</h6>
+                        <div class="divider mb-3" id="sitevisit">
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card card-style mx-0 mb-2 p-3">
+                        <h6 class="font-14">Filter Data</h6>
+                        <form id="sample_form">
+                        @csrf
+                            <fieldset>
+                                <div class="form-field form-name">
+                                    <label class="contactNameField color-theme" for="contactNameField">Periode:<span>(required)</span></label>
+                                    <input type="month" class="form-control validate-text" id="periode_search" name="periode_search" value="{{ date('Y-m') }}" placeholder="Phone">
+                                </div>
+                                @if(auth::id() ==  1 || auth::id() == 3)
+                                <div class="form-field form-email">
+                                    <label class="contactEmailField color-theme" for="contactEmailField">Lokasi:<span>(required)</span></label>
+                                    <div class="input-style has-borders no-icon mb-4">
+                                        <select id="lokasi_search" name="lokasi_search">
+                                            <option value="all" disabled selected>Semua Lokasi</option>
+                                            @foreach ($dataspv as $a)
+                                            <option value="{{ $a->area }}">{{ $a->area }}</option>
+                                            @endforeach
+                                        </select>
+                                        <span><i class="fa fa-chevron-down"></i></span>
+                                        <i class="fa fa-check disabled valid color-green-dark"></i>
+                                        <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                        <em></em>
+                                    </div>
+                                </div>
+                                <div class="form-field form-email">
+                                    <label class="contactEmailField color-theme" for="contactEmailField">Supervisor:<span>(required)</span></label>
+                                    <div class="input-style has-borders no-icon mb-4">
+                                        <select id="spv_search" name="spv_search">
+                                            <option value="all" disabled selected>Semua Supervisor</option>
+                                        </select>
+                                        <span><i class="fa fa-chevron-down"></i></span>
+                                        <i class="fa fa-check disabled valid color-green-dark"></i>
+                                        <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                        <em></em>
+                                    </div>
+                                </div>
+                                @else
+                                <input type="hidden" id="spv_search" name="spv_search" value="">
+                                @endif
+                                <div class="form-button">
+                                    {{-- <button type="submit" id="filter_button" class="btn btn-primary percent"><i class="fas fa-search"></i> | Cari</button> --}}
+                                    <button type="button" id="filter_button" class="btn bg-highlight text-uppercase font-900 btn-m btn-full rounded-sm  shadow-xl contactSubmitButton" value="Filter">Filter</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content mb-0 mt-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-style mx-0 mb-2 p-3" data-card-height="500">
+                        <h6 class="font-14">KPI Sales Tools</h6>
+                        <canvas id="pie-chart-sales" width="20" height="2">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-style mx-0 mb-2 p-3" data-card-height="500">
+                        <h6 class="font-14">KPI T-intouch</h6>
+                        <canvas id="pie-chart-tintouch" width="20" height="380">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-style mx-0 mb-2 p-3" data-card-height="500">
+                        <h6 class="font-14">MQuote</h6>
+                        <canvas id="pie-chart-mquote" width="20" height="380">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-0">
+                <div class="col-6 pe-1">
+                    <div class="card card-style mx-0 mb-2 p-3">
+                        <h6 class="font-14">Sales Login</h6>
+                        <h3 class="color-green-dark mb-0" id="saleslogin">0</h3>
+                    </div>
+                </div>
+                <div class="col-6 ps-1">
+                    <div class="card card-style mx-0 mb-2 p-3">
+                        <h6 class="font-14">Sales Belum Login</h6>
+                        <h3 class="color-red-dark mb-0" id="salesbelumlogin">0</h3>
+                    </div>
+                </div>
+                <div class="col-6 pe-1">
+                    <div class="card card-style mx-0 p-3">
+                        <h6 class="font-14">Paling Sering Dikunjungi</h6>
+                        <h3 class="color-brown-dark mb-0" id="seringdikunjungi">0</h3>
+                    </div>
+                </div>
+                <div class="col-6 ps-1">
+                    <div class="card card-style mx-0 p-3">
+                        <h6 class="font-14">Paling Jarang Dikunjungi</h6>
+                        <h3 class="color-blue-dark mb-0" id="salesbelumlogin">0</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-0 mb-0">
+            <div class="row mb-0">
                 <div class="col-12">
                     <div class="card mx-0 card-style" data-card-height="500">
                         <div class="content">
@@ -301,6 +307,9 @@
                     });
                 }).change();
                 var dashboardChart = document.getElementById('dashboard-chart2')
+                var pieChart = document.getElementById('pie-chart-sales')
+                var pieChart2 = document.getElementById('pie-chart-tintouch')
+                var pieChart3 = document.getElementById('pie-chart-mquote')
 
                 var dashboardChart = new Chart(dashboardChart, {
                     type: 'line',
@@ -314,6 +323,204 @@
                         fill: "false",
                         data: []
                         // data: [32,20,10,20,10,12,3,14,15,2,2,12,5,11,10,2,0,19,17,21,14,6,16,10,0,5,18,10,0,1,29,1,4,1,8]
+                        }
+                    ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio:false,
+                        legend: {display: true, position:'bottom', labels:{fontSize:13, padding:15,boxWidth:12},},
+                        title: {display: false},
+                        scaleShowValues: true,
+                        scales: {
+                            xAxes: [{
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 90,
+                                minRotation: 90
+                            }
+                            }]
+                        }
+                    }
+                });
+                var pieChart = new Chart(pieChart, {
+                    type: 'bar',
+                    data: {
+                    // labels: [],
+                    labels: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],
+                    datasets: [
+                        {
+                        label: "Dewi Sartika",
+                        backgroundColor: "blue",
+                        // data: []
+                        data: [93,60,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "bekasi",
+                        backgroundColor: "green",
+                        // data: []
+                        data: [9,18,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Bintaro",
+                        backgroundColor: "red",
+                        // data: []
+                        data: [19,8,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Pecenongan",
+                        backgroundColor: "yellow",
+                        // data: []
+                        data: [9,3,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Tangerang",
+                        backgroundColor: "black",
+                        // data: []
+                        data: [3,5,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Cimindi",
+                        backgroundColor: "grey",
+                        // data: []
+                        data: [7,11,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Bandar Jaya",
+                        backgroundColor: "orange",
+                        // data: []
+                        data: [3,2,0,0,0,0,0,0,0,0,0,0]
+                        }
+                    ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio:false,
+                        legend: {display: true, position:'bottom', labels:{fontSize:13, padding:15,boxWidth:12},},
+                        title: {display: false},
+                        scaleShowValues: true,
+                        scales: {
+                            xAxes: [{
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 90,
+                                minRotation: 90
+                            }
+                            }]
+                        }
+                    }
+                });
+                var pieChart2 = new Chart(pieChart2, {
+                    type: 'bar',
+                    data: {
+                    // labels: [],
+                    labels: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],
+                    datasets: [
+                        {
+                        label: "Dewi Sartika",
+                        backgroundColor: "blue",
+                        // data: []
+                        data: [43,18,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "bekasi",
+                        backgroundColor: "green",
+                        // data: []
+                        data: [9,15,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Bintaro",
+                        backgroundColor: "red",
+                        // data: []
+                        data: [10,13,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Pecenongan",
+                        backgroundColor: "yellow",
+                        // data: []
+                        data: [9,13,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Tangerang",
+                        backgroundColor: "black",
+                        // data: []
+                        data: [0,5,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Cimindi",
+                        backgroundColor: "grey",
+                        // data: []
+                        data: [12,7,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Bandar Jaya",
+                        backgroundColor: "orange",
+                        // data: []
+                        data: [4,10,0,0,0,0,0,0,0,0,0,0]
+                        }
+                    ]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio:false,
+                        legend: {display: true, position:'bottom', labels:{fontSize:13, padding:15,boxWidth:12},},
+                        title: {display: false},
+                        scaleShowValues: true,
+                        scales: {
+                            xAxes: [{
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 90,
+                                minRotation: 90
+                            }
+                            }]
+                        }
+                    }
+                });
+                var pieChart3 = new Chart(pieChart3, {
+                    type: 'bar',
+                    data: {
+                    // labels: [],
+                    labels: ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],
+                    datasets: [
+                        {
+                        label: "Dewi Sartika",
+                        backgroundColor: "blue",
+                        // data: []
+                        data: [415,275,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "bekasi",
+                        backgroundColor: "green",
+                        // data: []
+                        data: [0,47,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Bintaro",
+                        backgroundColor: "red",
+                        // data: []
+                        data: [1,25,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Pecenongan",
+                        backgroundColor: "yellow",
+                        // data: []
+                        data: [4,6,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Tangerang",
+                        backgroundColor: "black",
+                        // data: []
+                        data: [0,37,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Cimindi",
+                        backgroundColor: "grey",
+                        // data: []
+                        data: [1,4,0,0,0,0,0,0,0,0,0,0]
+                        },
+                        {
+                        label: "Bandar Jaya",
+                        backgroundColor: "orange",
+                        // data: []
+                        data: [0,2,0,0,0,0,0,0,0,0,0,0]
                         }
                     ]
                     },
