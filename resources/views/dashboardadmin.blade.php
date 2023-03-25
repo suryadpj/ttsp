@@ -591,7 +591,7 @@
                             $('#jarangdikunjungi').html(html.jarang.menu);
                         }
                         const isivisit = [];
-                        html.visit.forEach(x => isivisit.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
+                        html.visit.forEach(x => isivisit.push('<tr><td>' + x.menu + '</td><td>' + x.hitung + '</td></tr>'));
                         $('#sitevisit').html(isivisit);
                         const isisummary = [];
                         html.visitor.forEach(x => isisummary.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
@@ -650,7 +650,7 @@
                             $('#jarangdikunjungi').html(html.jarang.menu);
                         }
                     const isivisit = [];
-                    html.visit.forEach(x => isivisit.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
+                    html.visit.forEach(x => isivisit.push('<tr><td>' + x.menu + '</td><td>' + x.hitung + '</td></tr>'));
                     $('#sitevisit').html(isivisit);
                     console.log('visitor' + isivisit)
                     const isisummary = [];
