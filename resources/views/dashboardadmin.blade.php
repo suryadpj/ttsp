@@ -642,6 +642,7 @@
                     const isivisit = [];
                     html.visit.forEach(x => isivisit.push('<div class="mb-4"><h5>' + x.menu + '<span class="opacity-30 float-end">' + x.hitung + '</span></h5></div>'));
                     $('#sitevisit').html(isivisit);
+                    console.log('visitor' + isivisit)
                     const isisummary = [];
                     html.visitor.forEach(x => isisummary.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
                     $('#summaryakses').html(isisummary);
