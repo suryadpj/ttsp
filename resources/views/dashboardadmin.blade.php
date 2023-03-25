@@ -50,14 +50,24 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card card-style mx-0 mb-2 p-3">
-                        <h6 class="font-14">Site Visit Detail</h6>
-                        <div class="divider mb-3" id="sitevisit">
+                        <h4>Site Visit Detail</h4>
+                        <div class="content mb-2">
+                            <table class="table table-borderless text-center rounded-sm shadow-l" style="overflow: hidden;">
+                                <thead>
+                                    <tr class="bg-blue-dark">
+                                        <th scope="col" class="color-white py-3 font-14">Nama</th>
+                                        <th scope="col" class="color-white py-3 font-14">Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="sitevisit">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card card-style mx-0 mb-2 p-3">
-                        <h6 class="font-14">Filter Data</h6>
+                        <h4>Filter Data</h4>
                         <form id="sample_form">
                         @csrf
                             <fieldset>
@@ -581,7 +591,7 @@
                             $('#jarangdikunjungi').html(html.jarang.menu);
                         }
                         const isivisit = [];
-                        html.visit.forEach(x => isivisit.push('<div class="mb-4"><h5>' + x.menu + '<span class="opacity-30 float-end">' + x.hitung + '</span></h5></div>'));
+                        html.visit.forEach(x => isivisit.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
                         $('#sitevisit').html(isivisit);
                         const isisummary = [];
                         html.visitor.forEach(x => isisummary.push('<tr><td>' + x.name + '</td><td>' + x.hitung + '</td></tr>'));
