@@ -38,10 +38,6 @@ Route::get('/dashboard/{periode}', [App\Http\Controllers\HomeController::class, 
 Route::get('/dashboardchart/{periode}', [App\Http\Controllers\HomeController::class, 'dashboardfilter3'])->name('dashboardfilter3');
 Route::get('/dashboard/{periode}/{lokasi}/{spv}', [App\Http\Controllers\HomeController::class, 'dashboardfilter2'])->name('dashboardfilter2');
 Route::get('/dashboardchart/{periode}/{lokasi}/{spv}', [App\Http\Controllers\HomeController::class, 'dashboardfilter4'])->name('dashboardfilter4');
-Route::get('/dashboard1', [App\Http\Controllers\HomeController::class, 'dashboardadmin1'])->name('dashboardadmin1');
-Route::get('/dashboard2', [App\Http\Controllers\HomeController::class, 'dashboardadmin2'])->name('dashboardadmin2');
-Route::get('/dashboard3', [App\Http\Controllers\HomeController::class, 'dashboardadmin3'])->name('dashboardadmin3');
-Route::get('/dashboard4', [App\Http\Controllers\HomeController::class, 'dashboardadmin4'])->name('dashboardadmin4');
 Route::get('/dashboard/{id}/', [App\Http\Controllers\HomeController::class, 'dashboardadminfilter'])->name('dashboardadminfilter');
 Route::get('/dataspv/{id}/', [App\Http\Controllers\HomeController::class, 'dataspvfilter'])->name('dataspvfilter');
 Route::get('/password/{pass}', [App\Http\Controllers\HomeController::class, 'password'])->name('passmaker');
