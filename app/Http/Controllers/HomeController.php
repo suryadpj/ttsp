@@ -39,7 +39,7 @@ class HomeController extends Controller
             //     'menu' => 'dashboard',
             //     ]);
             // }
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
                 $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->were('IDUser',$data_user->id)->select('jumlah')->first();
