@@ -27,6 +27,7 @@ Route::get('/salestool', [App\Http\Controllers\HomeController::class, 'salestool
 Route::get('/mquote', [App\Http\Controllers\HomeController::class, 'mquote'])->name('mquote');
 Route::get('/addmquote', [App\Http\Controllers\HomeController::class, 'addmquote'])->name('addmquote');
 Route::get('/digitalcontent', [App\Http\Controllers\HomeController::class, 'digitalcontent'])->name('digitalcontent');
+Route::post('/digitalcontent', [App\Http\Controllers\HomeController::class, 'storedigimar'])->name('digitalcontent.store');
 Route::get('/promo', [App\Http\Controllers\HomeController::class, 'promo'])->name('promo');
 Route::get('/tcare', [App\Http\Controllers\HomeController::class, 'tcare'])->name('tcare');
 Route::get('/sosialmedia', [App\Http\Controllers\HomeController::class, 'sosialmedia'])->name('sosialmedia');

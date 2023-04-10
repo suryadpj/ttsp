@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Validator;
 
 class HomeController extends Controller
 {
@@ -125,7 +127,56 @@ class HomeController extends Controller
                 ]);
             }
         }
-        return view('digimar');
+        $konten_tk = DB::table('digimar_content')->leftjoin('users','users.id','digimar_content.IDUser')->where('kategori',1)->orderby('digimar_content.id','desc')->get();
+        $konten_ig = DB::table('digimar_content')->leftjoin('users','users.id','digimar_content.IDUser')->where('kategori',2)->orderby('digimar_content.id','desc')->get();
+        return view('digimar',['tiktok' => $konten_tk,'instagram' => $konten_ig]);
+    }
+    public function storedigimar(request $request)
+    {
+        $messages = [
+            'nama.required' => 'Judul konten belum anda isi',
+            'link.required' => 'Alamat / link konten belum anda isi',
+            'jenis.required' => 'Jenis / Kategori sosial media konten belum anda isi',
+        ];
+
+        $rules = array(
+            'nama' => 'required',
+            'link' => 'required',
+            'jenis' => 'required',
+        );
+
+        $error = Validator::make($request->all(), $rules, $messages);
+
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $data_user = auth::user();
+        $nama = $request->nama;
+        $link = $request->link;
+        $jenis = $request->jenis;
+        switch($jenis)
+        {
+            case 1 : $kategori = 1; $name = 'tiktok'; $imgsrc = 'images/pictures/3.png'; break;
+            case 2 : $kategori = 2; $name = 'instagram'; $imgsrc = 'images/pictures/4.jpg'; break;
+        }
+        $tanggal = date('Y-m-d');
+
+        $form_data = array(
+            'IDUser'        =>  $data_user->id,
+            'tanggal'       =>  $tanggal,
+            'img_name'      =>  $name,
+            'img_src'       =>  $imgsrc,
+            'link'          =>  $link,
+            'kategori'      =>  $kategori,
+            'keterangan'    =>  $nama,
+            'deleted'       =>  '0'
+        );
+
+        DB::table('digimar_content')->insert($form_data);
+
+        return response()->json(['success' => 'Data berhasil disimpan, silahkan periksa data anda']);
     }
     public function promo()
     {
