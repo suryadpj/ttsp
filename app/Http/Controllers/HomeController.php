@@ -44,9 +44,9 @@ class HomeController extends Controller
             $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','dashboard')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'dashboard',
@@ -65,12 +65,12 @@ class HomeController extends Controller
             // 'IDUser' => Auth::id(),
             // 'menu' => 'salestool',
             // ]);
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','salestool')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','salestool')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','salestool')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','salestool')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','salestool')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','salestool')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'salestool',
@@ -89,12 +89,12 @@ class HomeController extends Controller
             // 'IDUser' => Auth::id(),
             // 'menu' => 'mquote',
             // ]);
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','mquote')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','mquote')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','mquote')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','mquote')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','mquote')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','mquote')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'mquote',
@@ -118,12 +118,12 @@ class HomeController extends Controller
             // 'IDUser' => Auth::id(),
             // 'menu' => 'digimar',
             // ]);
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','digimar')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','digimar')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','digimar')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','digimar')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','digimar')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','digimar')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'digimar',
@@ -191,12 +191,12 @@ class HomeController extends Controller
             // 'IDUser' => Auth::id(),
             // 'menu' => 'promo',
             // ]);
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','promo')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','promo')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','promo')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','promo')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','promo')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','promo')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'promo',
@@ -215,12 +215,12 @@ class HomeController extends Controller
             // 'IDUser' => Auth::id(),
             // 'menu' => 'tcare',
             // ]);
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','tcare')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','tcare')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','tcare')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','tcare')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','tcare')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','tcare')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'tcare',
@@ -239,12 +239,12 @@ class HomeController extends Controller
             // 'IDUser' => Auth::id(),
             // 'menu' => 'sosialmedia',
             // ]);
-            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','sosialmedia')->were('IDUser',$data_user->id)->count();
+            $cek = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','sosialmedia')->where('IDUser',$data_user->id)->count();
             if($cek > 0)
             {
-                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','sosialmedia')->were('IDUser',$data_user->id)->select('jumlah')->first();
+                $data = DB::table('logver2')->where('periode','like',$now.'%')->where('menu','sosialmedia')->where('IDUser',$data_user->id)->select('jumlah')->first();
                 $update = $data->jumlah + 1;
-                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','sosialmedia')->were('IDUser',$data_user->id)->update(['jumlah' => $update]);
+                DB::table('logver2')->where('periode','like',$now.'%')->where('menu','sosialmedia')->where('IDUser',$data_user->id)->update(['jumlah' => $update]);
                 DB::table('log')->insert([
                 'IDUser' => Auth::id(),
                 'menu' => 'sosialmedia',
