@@ -396,6 +396,7 @@
 
 @section('js')
     <script>
+
         $('#formdt').on('submit', function(event){
             event.preventDefault();
             console.log('submitkpimanual')

@@ -58,6 +58,7 @@ class HomeController extends Controller
     public function salestool()
     {
         $data_user = Auth::user();
+        $now = date("Y-m");
         if($data_user->id > 3)
         {
             // DB::table('log')->insert([
@@ -81,6 +82,7 @@ class HomeController extends Controller
     public function addmquote()
     {
         $data_user = Auth::user();
+        $now = date("Y-m");
         if($data_user->id > 3)
         {
             // DB::table('log')->insert([
@@ -109,6 +111,7 @@ class HomeController extends Controller
     public function digitalcontent()
     {
         $data_user = Auth::user();
+        $now = date("Y-m");
         if($data_user->id > 3)
         {
             // DB::table('log')->insert([
@@ -181,6 +184,7 @@ class HomeController extends Controller
     public function promo()
     {
         $data_user = Auth::user();
+        $now = date("Y-m");
         if($data_user->id > 3)
         {
             // DB::table('log')->insert([
@@ -204,6 +208,7 @@ class HomeController extends Controller
     public function tcare()
     {
         $data_user = Auth::user();
+        $now = date("Y-m");
         if($data_user->id > 3)
         {
             // DB::table('log')->insert([
@@ -227,6 +232,7 @@ class HomeController extends Controller
     public function sosialmedia()
     {
         $data_user = Auth::user();
+        $now = date("Y-m");
         if($data_user->id > 3)
         {
             // DB::table('log')->insert([

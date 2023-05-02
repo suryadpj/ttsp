@@ -318,11 +318,22 @@ return [
             // 'label_color' => 'success',
         ],
         [
-            'text'        => 'Form KPI Manual',
-            'url'         => 'formkpi/create',
+            'text'    => 'Form KPI',
             'icon'        => 'fas fa-edit',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Form KPI Sales',
+                    'url'  => 'formkpi/create',
+                ],
+                [
+                    'text' => 'Form KPI AfterSales',
+                    'url'  => 'formkpi/createaftersales',
+                ],
+                [
+                    'text' => 'Form KPI TradeIn',
+                    'url'  => 'formkpi/createtradein',
+                ],
+            ],
         ],
         [
             'text'        => 'Data KPI',
