@@ -318,7 +318,7 @@ return [
             // 'label_color' => 'success',
         ],
         [
-            'text'    => 'Form KPI',
+            'text'    => 'Form KPI v1',
             'icon'        => 'fas fa-edit',
             'submenu' => [
                 [
@@ -327,16 +327,41 @@ return [
                 ],
                 [
                     'text' => 'Form KPI AfterSales',
-                    'url'  => 'formkpi/createaftersales',
+                    'url'  => 'formkpiaftersales',
                 ],
                 [
                     'text' => 'Form KPI TradeIn',
-                    'url'  => 'formkpi/createtradein',
+                    'url'  => 'formkpitradein',
                 ],
             ],
         ],
         [
-            'text'        => 'Data KPI',
+            'text'    => 'Form KPI v2',
+            'icon'        => 'fas fa-edit',
+            'submenu' => [
+                [
+                    'text' => 'Form KPI Sales',
+                    'url'  => 'formkpisalesv2',
+                ],
+                [
+                    'text' => 'Form KPI AfterSales',
+                    'url'  => 'formkpiaftersalesv2',
+                ],
+                [
+                    'text' => 'Form KPI TradeIn',
+                    'url'  => 'formkpitradeinv2',
+                ],
+            ],
+        ],
+        [
+            'text'        => 'Data KPI v1',
+            'url'         => 'formkpi',
+            'icon'        => 'fas fa-file',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Data KPI v2',
             'url'         => 'formkpi',
             'icon'        => 'fas fa-file',
             // 'label'       => 4,
@@ -349,71 +374,71 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+        // ['header' => 'account_settings'],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
+        // [
+        //     'text'    => 'multilevel',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'level_one',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'level_two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
+        // ['header' => 'labels'],
+        // [
+        //     'text'       => 'important',
+        //     'icon_color' => 'red',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url'        => '#',
+        // ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*

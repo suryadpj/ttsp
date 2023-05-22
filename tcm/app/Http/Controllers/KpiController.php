@@ -144,6 +144,26 @@ class KpiController extends Controller
     {
         return view('formkpi');
     }
+    public function createaftersales()
+    {
+        return view('formkpiaftersales');
+    }
+    public function createtradein()
+    {
+        return view('formkpitradein');
+    }
+    public function createsalesv2()
+    {
+        return view('formkpiv2');
+    }
+    public function createaftersalesv2()
+    {
+        return view('formkpiaftersalesv2');
+    }
+    public function createtradeinv2()
+    {
+        return view('formkpitradeinv2');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -153,54 +173,93 @@ class KpiController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'required' => ':attribute harus diisi',
-            'min' => ':attribute harus diisi minimal :min karakter',
-            'max' => ':attribute harus diisi maksimal :max karakter',
-            'numeric' => ':attribute harus diisi angka',
-            'area.required' => 'area / tujuan disposisi wajib diisi',
-            'periode.required' => 'Preiode KPI harap diisi',
-            'formkpi.0.required' => 'KPI New Car Sales - AO Report Establishment belum diisi',
-            'formkpi.1.required' => 'KPI New Car Sales - Monthly SPK Achievement (vs Target) belum diisi',
-            'formkpi.2.required' => 'KPI New Car Sales - Stok Matching Ratio belum diisi',
-            'formkpi.3.required' => 'KPI New Car Sales - Monthly Sales Target Achievement belum diisi',
-            'formkpi.4.required' => 'KPI New Car Sales - Net Promoter Score (NPS) Sales belum diisi',
-            'formkpi.5.required' => 'KPI New Car Sales - Gross Profit/Unit(Vehicle, TCO, F&J Commission) belum diisi',
-            'formkpi.6.required' => 'KPI New Car Sales - TCO Installation Ratio belum diisi',
-            'formkpi.7.required' => 'KPI New Car Sales - Cash With Insurance belum diisi',
-            'formkpi.8.required' => 'KPI New Car Sales - Toyota Insurance Share belum diisi',
-            'formkpi.9.required' => 'KPI New Car Sales - Credit Ratio Sales belum diisi',
-            'formkpi.10.required' => 'KPI New Car Sales - MSCP belum diisi',
-            'formkpi.11.required' => 'KPI New Car Sales - M Quote Utilization Rate belum diisi',
-            'formkpi.12.required' => 'KPI New Car Sales - Insurance Renewal belum diisi',
-            'formkpi.13.required' => 'KPI Vehicle Deliver - 1st Service Booking Rate belum diisi',
-            'formkpi.14.required' => 'KPI Vehicle Deliver - Awareness Rate:T-care, T-intouch, insurance belum diisi',
-            'formkpi.15.required' => 'KPI Vehicle Deliver - Survey Customer Interest:T-Care, T-intouch belum diisi',
-            'formkpi.16.required' => 'KPI Vehicle Deliver - T-Intouch Activation Rate belum diisi',
-            'formkpi.17.required' => 'KPI People Development - Staff Productivity belum diisi',
-            'formkpi.18.required' => 'KPI People Development - Salesperson Turn over Ratio belum diisi',
-            'formkpi.19.required' => 'KPI Retention - PSP Service - Net Promoter Score (NPS) After Sales belum diisi',
-            'formkpi.20.required' => 'KPI Retention - PSP Service - Revenue per Service (Service, parts) belum diisi',
-            'formkpi.21.required' => 'KPI Retention - PSP Service - Service Ratio(1st - 7th service) belum diisi',
-            'formkpi.22.required' => 'KPI Retention - General Repair (GR) - Next Service Booking Ratio belum diisi',
-            'formkpi.23.required' => 'KPI Retention - General Repair (GR) - Up Selling Ratio (TMO) belum diisi',
-            'formkpi.24.required' => 'KPI Retention - General Repair (GR) - Cross Selling Ratio belum diisi',
-            'formkpi.25.required' => 'KPI Retention - General Repair (GR) - Realitation of Appraisal belum diisi',
-            'formkpi.26.required' => 'KPI Retention - General Repair (GR) - Service Lead Time belum diisi',
-            'formkpi.27.required' => 'KPI Retention - Body & Paint (BP) - Ontime Delivery Ratio (OTD) belum diisi',
-            'formkpi.28.required' => 'KPI Retention - Body & Paint (BP) - Return Job (RTJ) belum diisi',
-            'formkpi.29.required' => 'KPI Trade In - Trade In Ratio belum diisi',
-            'formkpi.30.required' => 'KPI Trade In - Appraisal Ratio to Prospect belum diisi',
-            'formkpi.31.required' => 'KPI Trade In - Deal Ratio to price Offer belum diisi',
-            'formkpi.32.required' => 'KPI Customer Database - Single ID (No. of Customer Valid) belum diisi',
-            'formkpi.33.required' => 'KPI Customer Database - Database Completeness belum diisi',
-            'formkpi.34.required' => 'KPI Customer Database - Database Contact Ratio (as Cust. Journey) belum diisi',
-        ];
+        //define kategori
+
 
         $rules = array(
+            'kategori' => 'required',
             'periode' => 'required',
             'formkpi.*' => 'required',
         );
+        if($request->kategori == "1-1")
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+                'formkpi.0.required' => 'KPI New Car Sales - AO Report Establishment belum diisi',
+                'formkpi.1.required' => 'KPI New Car Sales - Monthly SPK Achievement (vs Target) belum diisi',
+                'formkpi.2.required' => 'KPI New Car Sales - Stok Matching Ratio belum diisi',
+                'formkpi.3.required' => 'KPI New Car Sales - Monthly Sales Target Achievement belum diisi',
+                'formkpi.4.required' => 'KPI New Car Sales - Net Promoter Score (NPS) Sales belum diisi',
+                'formkpi.5.required' => 'KPI New Car Sales - Gross Profit/Unit(Vehicle, TCO, F&J Commission) belum diisi',
+                'formkpi.6.required' => 'KPI New Car Sales - TCO Installation Ratio belum diisi',
+                'formkpi.7.required' => 'KPI New Car Sales - Cash With Insurance belum diisi',
+                'formkpi.8.required' => 'KPI New Car Sales - Toyota Insurance Share belum diisi',
+                'formkpi.9.required' => 'KPI New Car Sales - Credit Ratio Sales belum diisi',
+                'formkpi.10.required' => 'KPI New Car Sales - MSCP belum diisi',
+                'formkpi.11.required' => 'KPI New Car Sales - M Quote Utilization Rate belum diisi',
+                'formkpi.12.required' => 'KPI New Car Sales - Insurance Renewal belum diisi',
+            ];
+        }
+        elseif($request->kategori == "1-2")
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+                'formkpi.0.required' => 'KPI Vehicle Deliver - 1st Service Booking Rate belum diisi',
+                'formkpi.1.required' => 'KPI Vehicle Deliver - Awareness Rate:T-care, T-intouch, insurance belum diisi',
+                'formkpi.2.required' => 'KPI Vehicle Deliver - Survey Customer Interest:T-Care, T-intouch belum diisi',
+                'formkpi.3.required' => 'KPI Vehicle Deliver - T-Intouch Activation Rate belum diisi',
+                'formkpi.4.required' => 'KPI People Development - Staff Productivity belum diisi',
+                'formkpi.5.required' => 'KPI People Development - Salesperson Turn over Ratio belum diisi',
+                'formkpi.6.required' => 'KPI Retention - PSP Service - Net Promoter Score (NPS) After Sales belum diisi',
+                'formkpi.7.required' => 'KPI Retention - PSP Service - Revenue per Service (Service, parts) belum diisi',
+                'formkpi.8.required' => 'KPI Retention - PSP Service - Service Ratio(1st - 7th service) belum diisi',
+                'formkpi.9.required' => 'KPI Retention - General Repair (GR) - Next Service Booking Ratio belum diisi',
+                'formkpi.10.required' => 'KPI Retention - General Repair (GR) - Up Selling Ratio (TMO) belum diisi',
+                'formkpi.11.required' => 'KPI Retention - General Repair (GR) - Cross Selling Ratio belum diisi',
+                'formkpi.12.required' => 'KPI Retention - General Repair (GR) - Realitation of Appraisal belum diisi',
+                'formkpi.13.required' => 'KPI Retention - General Repair (GR) - Service Lead Time belum diisi',
+                'formkpi.14.required' => 'KPI Retention - Body & Paint (BP) - Ontime Delivery Ratio (OTD) belum diisi',
+                'formkpi.15.required' => 'KPI Retention - Body & Paint (BP) - Return Job (RTJ) belum diisi',
+            ];
+        }
+        elseif($request->kategori == "1-3")
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+                'formkpi.0.required' => 'KPI Trade In - Trade In Ratio belum diisi',
+                'formkpi.1.required' => 'KPI Trade In - Appraisal Ratio to Prospect belum diisi',
+                'formkpi.2.required' => 'KPI Trade In - Deal Ratio to price Offer belum diisi',
+                'formkpi.3.required' => 'KPI Customer Database - Single ID (No. of Customer Valid) belum diisi',
+                'formkpi.4.required' => 'KPI Customer Database - Database Completeness belum diisi',
+                'formkpi.5.required' => 'KPI Customer Database - Database Contact Ratio (as Cust. Journey) belum diisi',
+            ];
+        }
+        else
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+            ];
+        }
 
         $error = Validator::make($request->all(), $rules, $messages);
 
@@ -213,13 +272,14 @@ class KpiController extends Controller
         $datakpi = $request->formkpi;
         $periode = $request->periode;
         $catatan = $request->catatan;
+        $kategori = explode("-",$request->kategori);
         $tanggal = date('Y-m-d');
         $format_tanggal = date('F Y', strtotime($tanggal));
         //cek KPI
-        $cek = DB::table('datakpi')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('deleted',0)->count();
+        $cek = DB::table('datakpi')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('deleted',0)->where('version',$kategori['0'])->where('kategori',$kategori['1'])->count();
         if($cek > 0)
         {
-            return response()->json(['duplicate' => 'Anda sudah mengisi KPI periode '.$format_tanggal.' sudah anda isi, silahkan cek di data KPI. Terima kasih']);
+            return response()->json(['duplicate' => 'Anda sudah mengisi KPI periode '.$format_tanggal.' ini, silahkan cek di data KPI. Terima kasih']);
         }
         for($count = 0; $count < count($datakpi); $count++)
         {
@@ -232,6 +292,8 @@ class KpiController extends Controller
                 'IDKantor'  => $data_user->IDKantor,
                 'nilai'     => $datakpi[$count],
                 'deleted'   => 0,
+                'version'   => $kategori['0'],
+                'kategori'  => $kategori['1'],
             );
             $insert_data2[] = $data2;
         }

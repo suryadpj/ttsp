@@ -9,7 +9,7 @@
 @section('content')
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
-<input type="hidden" name="kategori" value="1-1">
+<input type="hidden" name="kategori" value="2-1">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -39,46 +39,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">New Car Sales - Advanced Demand & Supply Management</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>AO Report Establishment</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Monthly SPK Achievement (vs Target)</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Stok Matching Ratio</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Monthly Sales Target Achievement</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">New Car Sales - PSP Sales</h3>
+                <h3 class="card-title">PSP Sales</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -90,7 +51,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Gross Profit/Unit(Vehicle, TCO, F&J Commission)</label>
+                            <label>GP Total Sales (per unit)  (mio)</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -98,13 +59,55 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>TCO Installation Ratio</label>
+                            <label>GP Total Sales Rasio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Cash With Insurance</label>
+                            <label>GP Vehicle (per unit)  (mio)</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>GP Vehicle Rasio</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>GP TCO (per unit)  (mio)</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>GP TCO Rasio</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>F&I Commision (per unit)  (mio)</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>M-Quote utilization rasio</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>TCO Installation Rasio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -118,7 +121,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Credit Ratio</label>
+                            <label>Credit Rasio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -126,13 +129,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>MSCP</label>
+                            <label>Market Share Credit Portion (MSCP)</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>M Quote Utilization Rate</label>
+                            <label>Trade In Rasio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -140,7 +143,80 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Insurance Renewal</label>
+                            <label>AO Report Establishment</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Monthly SPK Achievement (vs Target Rundown)</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Outstanding Matching to target Ratio (on AO25 Achievement) </label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Monthly Sales Target Achievement (Target Operation)</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Delivery Explanation</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>T-Intouch Activation Rate</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Awareness Rate - T-Care</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Awareness Rate - T-intouh</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Awareness Rate - Insurance</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Survey Customer Interest - T-Care</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Survey Customer Interest - T-Intouch</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -189,7 +265,6 @@
                         }
                         swal.fire({
                             icon: 'warning',
-                            width: '50em',
                             title: 'Data gagal disimpan',
                             html: html
                         })

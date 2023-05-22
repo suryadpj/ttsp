@@ -9,7 +9,7 @@
 @section('content')
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
-<input type="hidden" name="kategori" value="1-1">
+<input type="hidden" name="kategori" value="2-3">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -39,33 +39,13 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">New Car Sales - Advanced Demand & Supply Management</h3>
+                <h3 class="card-title">Trade In</h3>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>AO Report Establishment</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Monthly SPK Achievement (vs Target)</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Stok Matching Ratio</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Monthly Sales Target Achievement</label>
+                            <label>Trade In Ratio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -78,69 +58,25 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">New Car Sales - PSP Sales</h3>
+                <h3 class="card-title">Manpower</h3>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Net Promoter Score (NPS) Sales</label>
+                            <label>Salesperson Turn Over Ratio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Gross Profit/Unit(Vehicle, TCO, F&J Commission)</label>
+                            <label>Staff Productivity  - Sales (Unit/salesperson)</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>TCO Installation Ratio</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Cash With Insurance</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Toyota Insurance Share</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Credit Ratio</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>MSCP</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>M Quote Utilization Rate</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Insurance Renewal</label>
+                            <label>Staff Productivity  - Aftersales (Overall productivity)</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -189,7 +125,6 @@
                         }
                         swal.fire({
                             icon: 'warning',
-                            width: '50em',
                             title: 'Data gagal disimpan',
                             html: html
                         })
