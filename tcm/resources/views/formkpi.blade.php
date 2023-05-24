@@ -39,7 +39,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">New Car Sales - Advanced Demand & Supply Management</h3>
+                <h3 class="card-title">Advanced Demand & Supply Management (4 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -78,7 +78,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">New Car Sales - PSP Sales</h3>
+                <h3 class="card-title">PSP Sales (9 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -141,6 +141,62 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Insurance Renewal</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">People Development (2 KPI)</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Staff Productivity</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Salesperson Turn over Ratio</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Trade In (3 KPI)</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Trade In Ratio</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Appraisal Ratio to Prospect</label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Deal Ratio to price Offer</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>

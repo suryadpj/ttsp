@@ -31,7 +31,7 @@ class KpiController extends Controller
             {
                 return datatables()->of(DB::table('datakpi')
                 ->leftjoin('kantors','kantors.id','=','datakpi.IDKantor')
-                ->leftjoin('fields','fields.id','=','datakpi.IDField')
+                ->leftjoin('fields','fields.id_uniq','=','datakpi.id_uniq')
                 ->select('kantors.nama','datakpi.IDKantor','datakpi.periode',DB::raw('DATE_FORMAT(datakpi.periode,"%M %Y") as periodik'),DB::raw('SUM(IF(fields.IDSegmen=1,datakpi.nilai,0)) as nilai_a'),DB::raw('SUM(IF(fields.IDSegmen=2,datakpi.nilai,0)) as nilai_b'),DB::raw('SUM(IF(fields.IDSegmen=3,datakpi.nilai,0)) as nilai_c'),DB::raw('SUM(IF(fields.IDSegmen=4,datakpi.nilai,0)) as nilai_d'),DB::raw('SUM(IF(fields.IDSegmen=5,datakpi.nilai,0)) as nilai_e'),DB::raw('SUM(IF(fields.IDSegmen=6,datakpi.nilai,0)) as nilai_f'),DB::raw('SUM(datakpi.nilai) as total'))
                 ->where('datakpi.deleted','0')
                 ->groupby('kantors.nama','datakpi.IDKantor','periodik','periode'))
@@ -148,7 +148,7 @@ class KpiController extends Controller
     {
         return view('formkpiaftersales');
     }
-    public function createtradein()
+    public function createvehdev()
     {
         return view('formkpitradein');
     }
@@ -190,19 +190,24 @@ class KpiController extends Controller
                 'numeric' => ':attribute harus diisi angka',
                 'area.required' => 'area / tujuan disposisi wajib diisi',
                 'periode.required' => 'Preiode KPI harap diisi',
-                'formkpi.0.required' => 'KPI New Car Sales - AO Report Establishment belum diisi',
-                'formkpi.1.required' => 'KPI New Car Sales - Monthly SPK Achievement (vs Target) belum diisi',
-                'formkpi.2.required' => 'KPI New Car Sales - Stok Matching Ratio belum diisi',
-                'formkpi.3.required' => 'KPI New Car Sales - Monthly Sales Target Achievement belum diisi',
-                'formkpi.4.required' => 'KPI New Car Sales - Net Promoter Score (NPS) Sales belum diisi',
-                'formkpi.5.required' => 'KPI New Car Sales - Gross Profit/Unit(Vehicle, TCO, F&J Commission) belum diisi',
-                'formkpi.6.required' => 'KPI New Car Sales - TCO Installation Ratio belum diisi',
-                'formkpi.7.required' => 'KPI New Car Sales - Cash With Insurance belum diisi',
-                'formkpi.8.required' => 'KPI New Car Sales - Toyota Insurance Share belum diisi',
-                'formkpi.9.required' => 'KPI New Car Sales - Credit Ratio Sales belum diisi',
-                'formkpi.10.required' => 'KPI New Car Sales - MSCP belum diisi',
-                'formkpi.11.required' => 'KPI New Car Sales - M Quote Utilization Rate belum diisi',
-                'formkpi.12.required' => 'KPI New Car Sales - Insurance Renewal belum diisi',
+                'formkpi.0.required' => 'KPI Adv Demand & Supply mg - AO Report Establishment belum diisi',
+                'formkpi.1.required' => 'KPI Adv Demand & Supply mg - Monthly SPK Achievement (vs Target) belum diisi',
+                'formkpi.2.required' => 'KPI Adv Demand & Supply mg - Stok Matching Ratio belum diisi',
+                'formkpi.3.required' => 'KPI Adv Demand & Supply mg - Monthly Sales Target Achievement belum diisi',
+                'formkpi.4.required' => 'KPI PSP Sales - Net Promoter Score (NPS) Sales belum diisi',
+                'formkpi.5.required' => 'KPI PSP Sales - Gross Profit/Unit(Vehicle, TCO, F&J Commission) belum diisi',
+                'formkpi.6.required' => 'KPI PSP Sales - TCO Installation Ratio belum diisi',
+                'formkpi.7.required' => 'KPI PSP Sales - Cash With Insurance belum diisi',
+                'formkpi.8.required' => 'KPI PSP Sales - Toyota Insurance Share belum diisi',
+                'formkpi.9.required' => 'KPI PSP Sales - Credit Ratio Sales belum diisi',
+                'formkpi.10.required' => 'KPI PSP Sales - MSCP belum diisi',
+                'formkpi.11.required' => 'KPI PSP Sales - M Quote Utilization Rate belum diisi',
+                'formkpi.12.required' => 'KPI PSP Sales - Insurance Renewal belum diisi',
+                'formkpi.13.required' => 'KPI People Development - Staff Productivity belum diisi',
+                'formkpi.14.required' => 'KPI People Development - Salesperson Turn over Ratio belum diisi',
+                'formkpi.15.required' => 'KPI Trade In - Trade In Ratio belum diisi',
+                'formkpi.16.required' => 'KPI Trade In - Appraisal Ratio to Prospect belum diisi',
+                'formkpi.17.required' => 'KPI Trade In - Deal Ratio to price Offer belum diisi',
             ];
         }
         elseif($request->kategori == "1-2")
@@ -218,18 +223,6 @@ class KpiController extends Controller
                 'formkpi.1.required' => 'KPI Vehicle Deliver - Awareness Rate:T-care, T-intouch, insurance belum diisi',
                 'formkpi.2.required' => 'KPI Vehicle Deliver - Survey Customer Interest:T-Care, T-intouch belum diisi',
                 'formkpi.3.required' => 'KPI Vehicle Deliver - T-Intouch Activation Rate belum diisi',
-                'formkpi.4.required' => 'KPI People Development - Staff Productivity belum diisi',
-                'formkpi.5.required' => 'KPI People Development - Salesperson Turn over Ratio belum diisi',
-                'formkpi.6.required' => 'KPI Retention - PSP Service - Net Promoter Score (NPS) After Sales belum diisi',
-                'formkpi.7.required' => 'KPI Retention - PSP Service - Revenue per Service (Service, parts) belum diisi',
-                'formkpi.8.required' => 'KPI Retention - PSP Service - Service Ratio(1st - 7th service) belum diisi',
-                'formkpi.9.required' => 'KPI Retention - General Repair (GR) - Next Service Booking Ratio belum diisi',
-                'formkpi.10.required' => 'KPI Retention - General Repair (GR) - Up Selling Ratio (TMO) belum diisi',
-                'formkpi.11.required' => 'KPI Retention - General Repair (GR) - Cross Selling Ratio belum diisi',
-                'formkpi.12.required' => 'KPI Retention - General Repair (GR) - Realitation of Appraisal belum diisi',
-                'formkpi.13.required' => 'KPI Retention - General Repair (GR) - Service Lead Time belum diisi',
-                'formkpi.14.required' => 'KPI Retention - Body & Paint (BP) - Ontime Delivery Ratio (OTD) belum diisi',
-                'formkpi.15.required' => 'KPI Retention - Body & Paint (BP) - Return Job (RTJ) belum diisi',
             ];
         }
         elseif($request->kategori == "1-3")
@@ -241,12 +234,19 @@ class KpiController extends Controller
                 'numeric' => ':attribute harus diisi angka',
                 'area.required' => 'area / tujuan disposisi wajib diisi',
                 'periode.required' => 'Preiode KPI harap diisi',
-                'formkpi.0.required' => 'KPI Trade In - Trade In Ratio belum diisi',
-                'formkpi.1.required' => 'KPI Trade In - Appraisal Ratio to Prospect belum diisi',
-                'formkpi.2.required' => 'KPI Trade In - Deal Ratio to price Offer belum diisi',
-                'formkpi.3.required' => 'KPI Customer Database - Single ID (No. of Customer Valid) belum diisi',
-                'formkpi.4.required' => 'KPI Customer Database - Database Completeness belum diisi',
-                'formkpi.5.required' => 'KPI Customer Database - Database Contact Ratio (as Cust. Journey) belum diisi',
+                'formkpi.0.required' => 'KPI Customer Database - Single ID (No. of Customer Valid) belum diisi',
+                'formkpi.1.required' => 'KPI Customer Database - Database Completeness belum diisi',
+                'formkpi.2.required' => 'KPI Customer Database - Database Contact Ratio (as Cust. Journey) belum diisi',
+                'formkpi.3.required' => 'KPI Retention - Net Promoter Score (NPS) After Sales belum diisi',
+                'formkpi.4.required' => 'KPI Retention - Revenue per Service (Service, parts) belum diisi',
+                'formkpi.5.required' => 'KPI Retention - Service Ratio(1st - 7th service) belum diisi',
+                'formkpi.6.required' => 'KPI General Repair (GR) - Next Service Booking Ratio belum diisi',
+                'formkpi.7.required' => 'KPI General Repair (GR) - Up Selling Ratio (TMO) belum diisi',
+                'formkpi.8.required' => 'KPI General Repair (GR) - Cross Selling Ratio belum diisi',
+                'formkpi.9.required' => 'KPI General Repair (GR) - Realitation of Appraisal belum diisi',
+                'formkpi.10.required' => 'KPI General Repair (GR) - Service Lead Time belum diisi',
+                'formkpi.11.required' => 'KPI Body & Paint (BP) - Ontime Delivery Ratio (OTD) belum diisi',
+                'formkpi.12.required' => 'KPI Body & Paint (BP) - Return Job (RTJ) belum diisi',
             ];
         }
         else
@@ -294,6 +294,7 @@ class KpiController extends Controller
                 'deleted'   => 0,
                 'version'   => $kategori['0'],
                 'kategori'  => $kategori['1'],
+                'id_uniq'   => $kategori['1']."-".$nomorkpi,
             );
             $insert_data2[] = $data2;
         }

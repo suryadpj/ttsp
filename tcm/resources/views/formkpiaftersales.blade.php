@@ -9,7 +9,7 @@
 @section('content')
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
-<input type="hidden" name="kategori" value="1-2">
+<input type="hidden" name="kategori" value="1-3">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -39,33 +39,25 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Vehicle Delivery</h3>
+                <h3 class="card-title">Customer Database (3 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>1st Service Booking Rate</label>
+                            <label>Single ID (No. of Customer Valid)</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Awareness Rate:T-care, T-intouch, insurance</label>
+                            <label>Database Completeness</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Survey Customer Interest:T-Care, T-intouch</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>T-Intouch Activation Rate</label>
+                            <label>Database Contact Ratio (as Cust. Journey)</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
@@ -78,32 +70,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">People Development</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Staff Productivity</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Salesperson Turn over Ratio</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Retention - PSP Service</h3>
+                <h3 class="card-title">PSP Service (3 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -136,7 +103,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Retention - General Repair (GR)</h3>
+                <h3 class="card-title">General Repair (GR) (5 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -183,7 +150,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Retention - Body & Paint (BP)</h3>
+                <h3 class="card-title">Body & Paint (BP) (2 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">

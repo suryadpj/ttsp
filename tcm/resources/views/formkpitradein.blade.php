@@ -3,13 +3,13 @@
 @section('title', 'Form KPI')
 
 @section('content_header')
-    <h1>Form KPI</h1>
+    <h1>Form KPI - Vehicle Delivery</h1>
 @stop
 
 @section('content')
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
-<input type="hidden" name="kategori" value="1-3">
+<input type="hidden" name="kategori" value="1-2">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -39,56 +39,33 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Trade In</h3>
+                <h3 class="card-title">Vehicle Delivery (4 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Trade In Ratio</label>
+                            <label>1st Service Booking Rate</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Appraisal Ratio to Prospect</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Deal Ratio to price Offer</label>
+                            <label>Awareness Rate:T-care, T-intouch, insurance</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="card card-primary">
-            <div class="card-header">
-                <h3 class="card-title">Customer Database</h3>
-            </div>
-            <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Single ID (No. of Customer Valid)</label>
+                            <label>Survey Customer Interest:T-Care, T-intouch</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Database Completeness</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Database Contact Ratio (as Cust. Journey)</label>
+                            <label>T-Intouch Activation Rate</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>

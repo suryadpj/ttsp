@@ -318,55 +318,55 @@ return [
             // 'label_color' => 'success',
         ],
         [
-            'text'    => 'Form KPI v1',
+            'text'    => 'Form KPI',
             'icon'        => 'fas fa-edit',
             'submenu' => [
                 [
-                    'text' => 'Form KPI Sales',
+                    'text' => 'Sales',
                     'url'  => 'formkpi/create',
                 ],
                 [
-                    'text' => 'Form KPI AfterSales',
+                    'text' => 'Vehicle Delivery',
+                    'url'  => 'formkpivehdev',
+                ],
+                [
+                    'text' => 'After Sales',
                     'url'  => 'formkpiaftersales',
                 ],
-                [
-                    'text' => 'Form KPI TradeIn',
-                    'url'  => 'formkpitradein',
-                ],
             ],
         ],
+        // [
+        //     'text'    => 'Form KPI v2',
+        //     'icon'        => 'fas fa-edit',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Form KPI Sales',
+        //             'url'  => 'formkpisalesv2',
+        //         ],
+        //         [
+        //             'text' => 'Form KPI AfterSales',
+        //             'url'  => 'formkpiaftersalesv2',
+        //         ],
+        //         [
+        //             'text' => 'Form KPI TradeIn',
+        //             'url'  => 'formkpitradeinv2',
+        //         ],
+        //     ],
+        // ],
         [
-            'text'    => 'Form KPI v2',
-            'icon'        => 'fas fa-edit',
-            'submenu' => [
-                [
-                    'text' => 'Form KPI Sales',
-                    'url'  => 'formkpisalesv2',
-                ],
-                [
-                    'text' => 'Form KPI AfterSales',
-                    'url'  => 'formkpiaftersalesv2',
-                ],
-                [
-                    'text' => 'Form KPI TradeIn',
-                    'url'  => 'formkpitradeinv2',
-                ],
-            ],
-        ],
-        [
-            'text'        => 'Data KPI v1',
+            'text'        => 'Data KPI',
             'url'         => 'formkpi',
             'icon'        => 'fas fa-file',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        [
-            'text'        => 'Data KPI v2',
-            'url'         => 'formkpi',
-            'icon'        => 'fas fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
-        ],
+        // [
+        //     'text'        => 'Data KPI v2',
+        //     'url'         => 'formkpi',
+        //     'icon'        => 'fas fa-file',
+        //     // 'label'       => 4,
+        //     // 'label_color' => 'success',
+        // ],
         [
             'text'        => 'Report KPI Sales',
             'url'         => 'kpireport',
