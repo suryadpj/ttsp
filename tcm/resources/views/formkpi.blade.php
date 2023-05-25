@@ -214,6 +214,27 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <style type="text/css" media="screen">
+        .act-btn{
+            background:green;
+            display: block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            text-decoration: none;
+            transition: ease all 0.3s;
+            position: fixed;
+            right: 30px;
+            bottom:30px;
+            }
+        .act-btn:hover{background: blue}
+    </style>
 @stop
 
 @section('js')

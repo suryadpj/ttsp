@@ -109,11 +109,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'pictures/logo_tunas.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'pictures/tcm_utama.png',
+            'alt' => 'Preloader Image',
             'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'width' => 400,
+            'height' => 400,
         ],
     ],
 
