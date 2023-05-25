@@ -107,7 +107,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'pictures/tcm_utama.png',
             'alt' => 'Preloader Image',

@@ -7,6 +7,16 @@
 @stop
 
 @section('content')
+<div class="preloader flex-column justify-content-center align-items-center">
+
+
+    <img src="pictures/service-removebg-preview.png"
+         class="animation__shake"
+         alt="Preloader Image"
+         width="400"
+         height="400">
+
+</div>
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
 <input type="hidden" name="kategori" value="1-3">
