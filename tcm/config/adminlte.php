@@ -109,7 +109,7 @@ return [
     'preloader' => [
         'enabled' => false,
         'img' => [
-            'path' => 'pictures/tcm_utama.png',
+            'path' => 'pictures/tcm_new.png',
             'alt' => 'Preloader Image',
             'effect' => 'animation__shake',
             'width' => 400,
@@ -310,49 +310,81 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        // [
+        //     'text'        => 'Dashboard',
+        //     'url'         => 'home',
+        //     'icon'        => 'fas fa-tachometer-alt',
+        //     // 'label'       => 4,
+        //     // 'label_color' => 'success',
+        // ],
         [
-            'text'        => 'Dashboard',
-            'url'         => 'home',
+            'text'    => 'Dashboard',
             'icon'        => 'fas fa-tachometer-alt',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Sales',
+                    'url'         => 'home',
+                ],
+                [
+                    'text' => 'AF GR',
+                    'url'         => '#home2',
+                ],
+                [
+                    'text' => 'AF BP',
+                    'url'         => '#home3',
+                ],
+            ],
         ],
+        // [
+        //     'text'    => 'Form KPI',
+        //     'icon'        => 'fas fa-edit',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'Sales',
+        //             'url'  => 'formkpi/create',
+        //         ],
+        //         [
+        //             'text' => 'Vehicle Delivery',
+        //             'url'  => 'formkpivehdev',
+        //         ],
+        //         [
+        //             'text' => 'After Sales',
+        //             'url'  => 'formkpiaftersales',
+        //         ],
+        //     ],
+        // ],
         [
             'text'    => 'Form KPI',
             'icon'        => 'fas fa-edit',
             'submenu' => [
                 [
-                    'text' => 'Sales',
-                    'url'  => 'formkpi/create',
+                    'text' => 'Form KPI Sales',
+                    'url'  => 'formkpisalesv2',
                 ],
                 [
-                    'text' => 'Vehicle Delivery',
-                    'url'  => 'formkpivehdev',
+                    'text' => 'Form KPI AfterSales',
+                    'url'  => 'formkpiaftersalesv2',
                 ],
                 [
-                    'text' => 'After Sales',
-                    'url'  => 'formkpiaftersales',
+                    'text' => 'Form KPI TradeIn',
+                    'url'  => 'formkpitradeinv2',
                 ],
             ],
         ],
-        // [
-        //     'text'    => 'Form KPI v2',
-        //     'icon'        => 'fas fa-edit',
-        //     'submenu' => [
-        //         [
-        //             'text' => 'Form KPI Sales',
-        //             'url'  => 'formkpisalesv2',
-        //         ],
-        //         [
-        //             'text' => 'Form KPI AfterSales',
-        //             'url'  => 'formkpiaftersalesv2',
-        //         ],
-        //         [
-        //             'text' => 'Form KPI TradeIn',
-        //             'url'  => 'formkpitradeinv2',
-        //         ],
-        //     ],
-        // ],
+        [
+            'text'        => 'Cheksheet',
+            'url'         => '#checksheet/create',
+            'icon'        => 'fas fa-check-square',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Summary report',
+            'url'         => '#summaryreport',
+            'icon'        => 'fas fa-table',
+            // 'label'       => 4,
+            // 'label_color' => 'success',
+        ],
         [
             'text'        => 'Data KPI',
             'url'         => 'formkpi',

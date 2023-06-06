@@ -3,7 +3,7 @@
 @section('title', 'Form KPI')
 
 @section('content_header')
-    <h1>Form KPI</h1>
+    <h1>Form KPI - Trade In & People Dev</h1>
 @stop
 
 @section('content')
@@ -39,7 +39,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Trade In</h3>
+                <h3 class="card-title">Trade In (1 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -58,16 +58,10 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Manpower</h3>
+                <h3 class="card-title">Manpower (3 KPI)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Salesperson Turn Over Ratio</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
-                        </div>
-                    </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Staff Productivity  - Sales (Unit/salesperson)</label>
@@ -76,7 +70,13 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Staff Productivity  - Aftersales (Overall productivity)</label>
+                            <label>Staff Productivity  - Aftersales (Overall productivity)  </label>
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Salesperson Turn Over Ratio</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>

@@ -7,6 +7,16 @@
 @stop
 
 @section('content')
+<div class="preloader flex-column justify-content-center align-items-center">
+
+
+    <img src="pictures/tcm_utama.png"
+         class="animation__shake"
+         alt="Preloader Image"
+         width="400"
+         height="400">
+
+</div>
 <div class="row">
 <div class="col-lg-3 col-6">
 

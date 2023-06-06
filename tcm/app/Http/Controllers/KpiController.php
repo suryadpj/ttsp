@@ -249,6 +249,90 @@ class KpiController extends Controller
                 'formkpi.12.required' => 'KPI Body & Paint (BP) - Return Job (RTJ) belum diisi',
             ];
         }
+        elseif($request->kategori == "2-1")
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+                'formkpi.0.required' => 'Net Promoter Score (NPS) Sales belum diisi',
+                'formkpi.1.required' => 'GP Total Sales (per unit) (mio) belum diisi',
+                'formkpi.2.required' => 'GP Total Sales Rasio belum diisi',
+                'formkpi.3.required' => 'GP Vehicle (per unit) (mio) belum diisi',
+                'formkpi.4.required' => 'GP Vehicle Rasio belum diisi',
+                'formkpi.5.required' => 'GP TCO (per unit) (mio) belum diisi',
+                'formkpi.6.required' => 'GP TCO Rasio belum diisi',
+                'formkpi.7.required' => 'F&I Commision (per unit) (mio) belum diisi',
+                'formkpi.8.required' => 'Total Revenue per Unit (Vehicle + TCO) (mio) belum diisi',
+                'formkpi.9.required' => 'Total Revenue Amount (Vehicle + TCO) (mio) belum diisi',
+                'formkpi.10.required' => 'TCO Installation Rasio belum diisi',
+                'formkpi.11.required' => 'Toyota Insurance Share belum diisi',
+                'formkpi.12.required' => 'Credit Rasio belum diisi',
+                'formkpi.13.required' => 'Market Share Credit Portion (MSCP) belum diisi',
+                'formkpi.14.required' => 'M-Quote utilization rasio belum diisi',
+                'formkpi.15.required' => 'Monthly SPK Achievement (vs Target Rundown) belum diisi',
+                'formkpi.16.required' => 'AO Report Establishment belum diisi',
+                'formkpi.17.required' => 'Outstanding Matching to target Ratio (on AO25 Achievement) belum diisi',
+                'formkpi.18.required' => 'Monthly Sales Target Achievement (Target Operation) belum diisi',
+                'formkpi.19.required' => 'Awareness Rate - T-Care belum diisi',
+                'formkpi.20.required' => 'Awareness Rate - T-intouch belum diisi',
+                'formkpi.21.required' => 'Awareness Rate - Insurance belum diisi',
+                'formkpi.22.required' => 'Survey Customer Interest - T-Care belum diisi',
+                'formkpi.23.required' => 'Survey Customer Interest - T-Intouch belum diisi',
+                'formkpi.24.required' => 'T-Intouch Activation Rate belum diisi',
+            ];
+        }
+        elseif($request->kategori == "2-2")
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+                'formkpi.0.required' => 'Net Promoter Score (NPS) Aftersales GR belum diisi',
+                'formkpi.1.required' => 'Net Promoter Score (NPS) Aftersales BP belum diisi',
+                'formkpi.2.required' => 'Service Ratio (1st - 7th Service) - 1st Service T-care Lite Rate (LCGC) belum diisi',
+                'formkpi.3.required' => 'Service Ratio (1st - 7th Service) - 1st Service T-care Rate (non LCGC) belum diisi',
+                'formkpi.4.required' => 'Service Ratio (1st - 7th Service) - PM Rate T-Care Lite 2nd Service (LCGC) belum diisi',
+                'formkpi.5.required' => 'Service Ratio (1st - 7th Service) - PM Rate T-Care 2nd-3rd Service (Non LCGC) belum diisi',
+                'formkpi.6.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP GR Service per unit (mio) belum diisi',
+                'formkpi.7.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP GR Service Ratio belum diisi',
+                'formkpi.8.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP GR Parts per unit (mio) belum diisi',
+                'formkpi.9.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP GR Parts Ratio belum diisi',
+                'formkpi.10.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP BP Service per Unit (mio) belum diisi',
+                'formkpi.11.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP BP Service Ratio belum diisi',
+                'formkpi.12.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP BP parts per Unit (mio) belum diisi',
+                'formkpi.13.required' => 'Gross Profit/Unit/Ratio (service, parts) - GP BP parts Ratio belum diisi',
+                'formkpi.14.required' => 'Total Revenue per Unit (Parts + Service) (mio) belum diisi',
+                'formkpi.15.required' => 'Total Revenue Amount (Parts + Service) (mio) belum diisi',
+                'formkpi.16.required' => 'Service Lead Time belum diisi',
+                'formkpi.17.required' => 'Up Selling ratio (TMO) belum diisi',
+                'formkpi.18.required' => 'Cross Selling ratio (include BP) - Battery belum diisi',
+                'formkpi.19.required' => 'Cross Selling ratio (include BP) - Tire belum diisi',
+                'formkpi.20.required' => 'Ontime Delivery Ratio (OTD) belum diisi',
+                'formkpi.21.required' => 'Return Job (RTJ) belum diisi',
+            ];
+        }
+        elseif($request->kategori == "2-3")
+        {
+            $messages = [
+                'required' => ':attribute harus diisi',
+                'min' => ':attribute harus diisi minimal :min karakter',
+                'max' => ':attribute harus diisi maksimal :max karakter',
+                'numeric' => ':attribute harus diisi angka',
+                'area.required' => 'area / tujuan disposisi wajib diisi',
+                'periode.required' => 'Preiode KPI harap diisi',
+                'formkpi.0.required' => 'Trade In Ratiobelum diisi',
+                'formkpi.1.required' => 'Staff Productivity - Sales (Unit/salesperson) belum diisi',
+                'formkpi.2.required' => 'Staff Productivity - Aftersales (Overall productivity) belum diisi',
+                'formkpi.3.required' => 'Salesperson Turn Over Ratio belum diisi',
+            ];
+        }
         else
         {
             $messages = [
