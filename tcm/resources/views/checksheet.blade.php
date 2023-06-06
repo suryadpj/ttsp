@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="preloader flex-column justify-content-center align-items-center">
+{{-- <div class="preloader flex-column justify-content-center align-items-center">
 
 
     <img src="../pictures/sales_tcm-removebg-preview.png"
@@ -16,7 +16,7 @@
          width="400"
          height="400">
 
-</div>
+</div> --}}
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
 <input type="hidden" name="kategori" value="1-1">
@@ -49,14 +49,15 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Advanced Demand & Supply Management (4 KPI)</h3>
+                <h3 class="card-title">Sales Person Offering Process (16 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>AO Report Establishment</label>
-                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <label>Memastikan semua sales person meng-install & register M-Quote Apps di handphone masing masing</label>
+                            <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch>
+                            <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
                         </div>
                     </div>
                     <div class="col-sm-6">

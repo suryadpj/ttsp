@@ -313,9 +313,10 @@ class KpiController extends Controller
                 'formkpi.16.required' => 'Service Lead Time belum diisi',
                 'formkpi.17.required' => 'Up Selling ratio (TMO) belum diisi',
                 'formkpi.18.required' => 'Cross Selling ratio (include BP) - Battery belum diisi',
-                'formkpi.19.required' => 'Cross Selling ratio (include BP) - Tire belum diisi',
-                'formkpi.20.required' => 'Ontime Delivery Ratio (OTD) belum diisi',
-                'formkpi.21.required' => 'Return Job (RTJ) belum diisi',
+                'formkpi.19.required' => 'Cross Selling ratio (include BP) - Car Care belum diisi',
+                'formkpi.20.required' => 'Cross Selling ratio (include BP) - Tire belum diisi',
+                'formkpi.21.required' => 'Ontime Delivery Ratio (OTD) belum diisi',
+                'formkpi.22.required' => 'Return Job (RTJ) belum diisi',
             ];
         }
         elseif($request->kategori == "2-3")
