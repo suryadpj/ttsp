@@ -354,19 +354,19 @@ return [
         //     ],
         // ],
         [
-            'text'    => 'Form KPI',
+            'text'    => 'Parameter Monitoring',
             'icon'        => 'fas fa-edit',
             'submenu' => [
                 [
-                    'text' => 'Form KPI Sales',
+                    'text' => 'Sales',
                     'url'  => 'formkpisalesv2',
                 ],
                 [
-                    'text' => 'Form KPI AfterSales',
+                    'text' => 'AfterSales',
                     'url'  => 'formkpiaftersalesv2',
                 ],
                 [
-                    'text' => 'Form KPI TradeIn',
+                    'text' => 'TradeIn',
                     'url'  => 'formkpitradeinv2',
                 ],
             ],
