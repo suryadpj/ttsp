@@ -372,11 +372,22 @@ return [
             ],
         ],
         [
-            'text'        => 'Cheksheet',
-            'url'         => '#checksheet/create',
+            'text'    => 'Cheksheet',
             'icon'        => 'fas fa-check-square',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
+            'submenu' => [
+                [
+                    'text' => 'Monthly',
+                    'url'  => 'checksheet/create',
+                ],
+                [
+                    'text' => 'Weekly',
+                    'url'  => 'checksheetext/createmingguan',
+                ],
+                // [
+                //     'text' => 'TradeIn',
+                //     'url'  => 'formkpitradeinv2',
+                // ],
+            ],
         ],
         [
             'text'        => 'Summary report',

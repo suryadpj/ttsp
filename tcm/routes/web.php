@@ -30,6 +30,7 @@ Route::get('/formkpiaftersalesv2', [App\Http\Controllers\KpiController::class, '
 Route::get('/formkpitradeinv2', [App\Http\Controllers\KpiController::class, 'createtradeinv2'])->name('kpitradeinv2');
 
 Route::resource('checksheet', App\Http\Controllers\ChechsheetController::class);
+Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguan'])->name('checksheet.createmingguan');
 
 Route::get('/formkpiupload', [App\Http\Controllers\HomeController::class, 'formkpiupload'])->name('formkpiupload');
 Route::get('/kpireport', [App\Http\Controllers\HomeController::class, 'kpireport'])->name('kpireport');
