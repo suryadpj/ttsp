@@ -391,7 +391,7 @@ return [
         ],
         [
             'text'        => 'Summary report',
-            'url'         => '#summaryreport',
+            'url'         => 'summaryreport',
             'icon'        => 'fas fa-table',
             // 'label'       => 4,
             // 'label_color' => 'success',
