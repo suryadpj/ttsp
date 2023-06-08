@@ -207,7 +207,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Awareness Rate - T-intouh</label>
+                            <label>Awareness Rate - T-intouch</label>
                             <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
