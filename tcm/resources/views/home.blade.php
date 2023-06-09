@@ -18,7 +18,7 @@
 
 </div>
 <div class="row">
-<div class="col-lg-3 col-6">
+<div class="col-lg-4 col-6">
 
 <div class="small-box bg-info">
 <div class="inner">
@@ -32,12 +32,12 @@
 </div>
 </div>
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-4 col-6">
 
 <div class="small-box bg-success">
 <div class="inner">
-<h3>3<sup style="font-size: 20px">%</sup></h3>
-<p>Cabang Selesai input</p>
+<h3>3</h3>
+<p>Total Finish</p>
 </div>
 <div class="icon">
 <i class="ion ion-stats-bars"></i>
@@ -46,29 +46,15 @@
 </div>
 </div>
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-4 col-6">
 
 <div class="small-box bg-warning">
 <div class="inner">
 <h3>3</h3>
-<p>Cabang Belum Input</p>
+<p>Total Non Finish</p>
 </div>
 <div class="icon">
 <i class="ion ion-person-add"></i>
-</div>
-<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-</div>
-</div>
-
-<div class="col-lg-3 col-6">
-
-<div class="small-box bg-danger">
-<div class="inner">
-<h3>Tunas Toyota</h3>
-<p>Cabang Terbaik</p>
-</div>
-<div class="icon">
-<i class="ion ion-pie-graph"></i>
 </div>
 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
@@ -81,8 +67,8 @@
     <div class="card">
     <div class="card-header border-0">
     <div class="d-flex justify-content-between">
-    <h3 class="card-title">Gauge Speed</h3>
-    <a href="#">View Report</a>
+    <h3 class="card-title">Parameter TCM</h3>
+    {{-- <a href="#">View Report</a> --}}
     </div>
     </div>
     <div class="card-body">
@@ -95,7 +81,7 @@
 
     <div class="card">
     <div class="card-header border-0">
-    <h3 class="card-title">Cabang Terbaik</h3>
+    <h3 class="card-title">Data Cabang</h3>
     <div class="card-tools">
     <a href="#" class="btn btn-tool btn-sm">
     <i class="fas fa-download"></i>
@@ -110,8 +96,8 @@
     <thead>
     <tr>
     <th>Nama Cabang</th>
-    <th>Nilai KPI</th>
-    <th>KPI Terbaik</th>
+    <th>KPI Resource</th>
+    <th>KPI Proses</th>
     </tr>
     </thead>
     <tbody>
@@ -162,7 +148,7 @@
     <div class="card">
     <div class="card-header border-0">
     <div class="d-flex justify-content-between">
-    <h3 class="card-title">Statistik Pengisian</h3>
+    <h3 class="card-title">Penginputan KPI</h3>
     <a href="javascript:void(0);">View Report</a>
     </div>
     </div>
@@ -284,7 +270,6 @@ var randomData = function () {
   return [
     randomScalingFactor(),
     randomScalingFactor(),
-    randomScalingFactor(),
     randomScalingFactor()
   ];
 };
@@ -303,7 +288,7 @@ var config = {
     datasets: [{
       data: data,
       value: value,
-      backgroundColor: ['green', 'yellow', 'orange', 'red'],
+      backgroundColor: ['green', 'yellow', 'red'],
       borderWidth: 2
     }]
   },
@@ -311,7 +296,7 @@ var config = {
     responsive: true,
     title: {
       display: true,
-      text: 'Gauge chart KPI Tunas Toyota'
+      text: 'Gauge chart Parameter TCM'
     },
     layout: {
       padding: {
