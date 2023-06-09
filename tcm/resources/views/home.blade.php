@@ -22,7 +22,7 @@
 
 <div class="small-box bg-info">
 <div class="inner">
-<h3>6</h3>
+<h3>{{ $kantor }}</h3>
 <p>Total Cabang</p>
 </div>
 <div class="icon">
@@ -37,7 +37,7 @@
 <div class="small-box bg-success">
 <div class="inner">
 <h3>3</h3>
-<p>Total Finish</p>
+<p>Total Closed</p>
 </div>
 <div class="icon">
 <i class="ion ion-stats-bars"></i>
@@ -51,7 +51,7 @@
 <div class="small-box bg-warning">
 <div class="inner">
 <h3>3</h3>
-<p>Total Non Finish</p>
+<p>Total Open</p>
 </div>
 <div class="icon">
 <i class="ion ion-person-add"></i>
@@ -78,70 +78,6 @@
     </div>
     </div>
     </div>
-
-    <div class="card">
-    <div class="card-header border-0">
-    <h3 class="card-title">Data Cabang</h3>
-    <div class="card-tools">
-    <a href="#" class="btn btn-tool btn-sm">
-    <i class="fas fa-download"></i>
-    </a>
-    <a href="#" class="btn btn-tool btn-sm">
-    <i class="fas fa-bars"></i>
-    </a>
-    </div>
-    </div>
-    <div class="card-body table-responsive p-0">
-    <table class="table table-striped table-valign-middle">
-    <thead>
-    <tr>
-    <th>Nama Cabang</th>
-    <th>KPI Resource</th>
-    <th>KPI Proses</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-    <td>
-    Tunas Toyota A
-    </td>
-    <td>A</td>
-    <td>
-    Sales
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Tunas Toyota B
-    </td>
-    <td>A</td>
-    <td>
-    Aftersales
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Tunas Toyota C
-    </td>
-    <td>B</td>
-    <td>
-    Sales
-    </td>
-    </tr>
-    <tr>
-    <td>
-    Tunas Toyota D
-    </td>
-    <td>B</td>
-    <td>
-    Sales
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    </div>
-    </div>
-
     </div>
 
     <div class="col-lg-6">
@@ -165,75 +101,47 @@
     </div>
 
     <div class="position-relative mb-4">
-    <canvas id="sales-chart" height="200"></canvas>
+    <canvas id="sales-chart" height="366"></canvas>
     </div>
     </div>
     </div>
-
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
     <div class="card">
-    <div class="card-header border-0">
-    <h3 class="card-title">Cabang Terburuk</h3>
-    <div class="card-tools">
-    <a href="#" class="btn btn-sm btn-tool">
-    <i class="fas fa-download"></i>
-    </a>
-    <a href="#" class="btn btn-sm btn-tool">
-    <i class="fas fa-bars"></i>
-    </a>
-     </div>
-    </div>
-    <div class="card-body">
+        <div class="card-header border-0">
+        <h3 class="card-title">Data Cabang</h3>
+        <div class="card-tools">
+        <a href="#" class="btn btn-tool btn-sm">
+        <i class="fas fa-download"></i>
+        </a>
+        <a href="#" class="btn btn-tool btn-sm">
+        <i class="fas fa-bars"></i>
+        </a>
+        </div>
+        </div>
+        <div class="card-body table-responsive p-0">
         <table class="table table-striped table-valign-middle">
         <thead>
         <tr>
         <th>Nama Cabang</th>
-        <th>Nilai KPI</th>
-        <th>KPI Terburuk</th>
+        <th>KPI Resource</th>
+        <th>KPI Proses</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-        <td>
-        Tunas Toyota A
-        </td>
-        <td>A</td>
-        <td>
-        Sales
-        </td>
-        </tr>
-        <tr>
-        <td>
-        Tunas Toyota B
-        </td>
-        <td>A</td>
-        <td>
-        Aftersales
-        </td>
-        </tr>
-        <tr>
-        <td>
-        Tunas Toyota C
-        </td>
-        <td>B</td>
-        <td>
-        Sales
-        </td>
-        </tr>
-        <tr>
-        <td>
-        Tunas Toyota D
-        </td>
-        <td>B</td>
-        <td>
-        Sales
-        </td>
-        </tr>
+            @foreach ($datakantor as $a)
+            <tr>
+                <td>{{ $a->nama }}</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            @endforeach
         </tbody>
         </table>
-
-    </div>
-    </div>
-    </div>
+        </div>
+        </div>
 </div>
 @stop
 

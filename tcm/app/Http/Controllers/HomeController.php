@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Validator;
+use DataTables;
 
 class HomeController extends Controller
 {
@@ -23,7 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $kantor = DB::table('kantors')->orderBy('nama','asc')->count();
+        $kantor_data = DB::table('kantors')->orderBy('nama','asc')->get();
+        return view('home',['kantor' => $kantor,'datakantor' => $kantor_data]);
     }
 
     public function formkpi()
