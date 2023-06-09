@@ -19,7 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/homesales', [App\Http\Controllers\HomeController::class, 'homesales'])->name('homesales');
+Route::get('/homegr', [App\Http\Controllers\HomeController::class, 'homegr'])->name('homegr');
+Route::get('/homebp', [App\Http\Controllers\HomeController::class, 'homebp'])->name('homebp');
 
 Route::resource('formkpi', App\Http\Controllers\KpiController::class);
 Route::post('/submitkpi', [App\Http\Controllers\KpiController::class, 'store'])->name('submitkpi');

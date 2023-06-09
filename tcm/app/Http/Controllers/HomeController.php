@@ -33,6 +33,18 @@ class HomeController extends Controller
         $kantor_data = DB::table('kantors')->orderBy('nama','asc')->get();
         return view('home',['kantor' => $kantor,'datakantor' => $kantor_data]);
     }
+    public function homesales()
+    {
+        return view('homesales');
+    }
+    public function homegr()
+    {
+        return view('homegr');
+    }
+    public function homebp()
+    {
+        return view('homebp');
+    }
 
     public function formkpi()
     {

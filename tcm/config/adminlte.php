@@ -322,16 +322,20 @@ return [
             'icon'        => 'fas fa-tachometer-alt',
             'submenu' => [
                 [
-                    'text' => 'Sales',
+                    'text' => 'Dashboard',
                     'url'         => 'home',
                 ],
                 [
+                    'text' => 'Sales',
+                    'url'         => 'homesales',
+                ],
+                [
                     'text' => 'AF GR',
-                    'url'         => '#home2',
+                    'url'         => 'homegr',
                 ],
                 [
                     'text' => 'AF BP',
-                    'url'         => '#home3',
+                    'url'         => 'homebp',
                 ],
             ],
         ],
