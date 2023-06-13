@@ -48,7 +48,7 @@
             <div class="card-body">
                 <div class="card-body table-responsive p-0">
                     <table id="example1" class="table table-bordered">
-                        <thead>
+                        <thead style="font-weight: bold;">
                             <tr>
                                 <td rowspan="2">Activity TCM</td>
                                 <td colspan="4">Checksheet TCM</td>
