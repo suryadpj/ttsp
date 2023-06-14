@@ -47,7 +47,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-body table-responsive p-0">
-                    <table id="example1" class="table table-bordered">
+                    <table id="example1" class="table table-bordered cell-border">
                         <thead style="font-weight: bold;">
                             <tr>
                                 <td rowspan="2">Activity TCM</td>
@@ -706,6 +706,9 @@
                     </table> --}}
                 </div>
             </div>
+            <div class="card-footer">
+                <button type="submit" id="simpan" class="btn btn-primary">Simpan Data</button>
+            </div>
         </div>
     </div>
 </div>
@@ -747,7 +750,9 @@
         resize: vertical;
         min-width: 100px;
         min-height: 600px;
-    }
+    },table, th, td {
+  border: 1px solid black;
+}
 </style>
 @stop
 
@@ -762,8 +767,8 @@ $(document).ready(function(){
         dom: '<"html5buttons">Brtipl',
         "order": [[ 1, "desc" ]],
         buttons : [
-                    {extend: 'pdf', title:'Data KPI', "action": newexportaction},
-                    {extend: 'excel', title: 'Data KPI', "action": newexportaction},
+                    {extend: 'pdf', title:'Data KPI', },
+                    {extend: 'excel', title: 'Data KPI', },
                     {extend:'print',title: 'Data KPI'},
         ],
     });
@@ -843,6 +848,14 @@ $(document).ready(function(){
             }
         })
     });
+            $('#simpan').click(function(){
+                console.log('sukses')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sukses',
+                    text: 'Data berhasil disimpan',
+                })
+            });
 
 });
 </script>
