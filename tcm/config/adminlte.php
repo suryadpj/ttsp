@@ -210,7 +210,7 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -400,13 +400,13 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        [
-            'text'        => 'Data KPI',
-            'url'         => 'formkpi',
-            'icon'        => 'fas fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
-        ],
+        // [
+        //     'text'        => 'Data KPI',
+        //     'url'         => 'formkpi',
+        //     'icon'        => 'fas fa-file',
+        //     // 'label'       => 4,
+        //     // 'label_color' => 'success',
+        // ],
         // [
         //     'text'        => 'Data KPI v2',
         //     'url'         => 'formkpi',
@@ -414,13 +414,13 @@ return [
         //     // 'label'       => 4,
         //     // 'label_color' => 'success',
         // ],
-        [
-            'text'        => 'Report KPI Sales',
-            'url'         => 'kpireport',
-            'icon'        => 'fas fa-copy',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
-        ],
+        // [
+        //     'text'        => 'Report KPI Sales',
+        //     'url'         => 'kpireport',
+        //     'icon'        => 'fas fa-copy',
+        //     // 'label'       => 4,
+        //     // 'label_color' => 'success',
+        // ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

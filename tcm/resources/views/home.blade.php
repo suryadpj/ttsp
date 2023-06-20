@@ -36,7 +36,7 @@
 
 <div class="small-box bg-success">
 <div class="inner">
-<h3>3</h3>
+<h3>{{ $hitunginput->input }}</h3>
 <p>Total Closed</p>
 </div>
 <div class="icon">
@@ -50,7 +50,7 @@
 
 <div class="small-box bg-warning">
 <div class="inner">
-<h3>3</h3>
+<h3>@php echo $kantor-$hitunginput->input; @endphp</h3>
 <p>Total Open</p>
 </div>
 <div class="icon">
@@ -126,16 +126,137 @@
         <thead>
         <tr>
         <th>Nama Cabang</th>
-        <th>KPI Resource</th>
-        <th>KPI Proses</th>
+        <th>KPI Resource (60%)</th>
+        <th>KPI Proses (40%)</th>
+        <th>Result</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($datakantor as $a)
+                @php
+                    if($a->hasilnya >= 85)
+                    {
+                        $catrs8 = "Well Implemented";
+                        $catrs8bg = "green";
+                    }elseif($a->hasilnya >= 70)
+                    {
+                        $catrs8 = "Medium Implemented";
+                        $catrs8bg = "yellow";
+                    }elseif($a->hasilnya < 70)
+                    {
+                        $catrs8 = "low Implemented";
+                        $catrs8bg = "red";
+                    }
+                    else {
+                        $catrs8 = "-";
+                        $catrs8bg = "-";
+                    }
+
+                    //hitung KPI
+                    $evaluation1 = $a->result1;
+                    if($a->result3+$a->result5+$a->result7 >= 2)
+                    {
+                        $evaluation2 = "O";
+                        $evaluationshow2 = 1;
+                    }
+                    else {
+                        $evaluation2 = "X";
+                        $evaluationshow2 = 0;
+                    }
+                    $evaluation13 = $a->result25;
+                    if($a->result20+$a->result21+$a->result22 >= 2)
+                    {
+                        $evaluation14 = "O";
+                        $evaluationshow14 = 1;
+                    }
+                    else {
+                        $evaluation14 = "X";
+                        $evaluationshow14 = 0;
+                    }
+                    if($a->result26+$a->result27 >= 2)
+                    {
+                        $evaluation16 = "O";
+                        $evaluationshow16 = 1;
+                    }
+                    else {
+                        $evaluation16 = "X";
+                        $evaluationshow16 = 0;
+                    }
+                    if($a->result33+$a->result35+$a->result37+$a->result39 >= 3)
+                    {
+                        $evaluation17 = "O";
+                        $evaluationshow17 = 1;
+                    }
+                    else {
+                        $evaluation17 = "X";
+                        $evaluationshow17 = 0;
+                    }
+                    if($a->result28+$a->result29+$a->result31 >= 2)
+                    {
+                        $evaluation18 = "O";
+                        $evaluationshow18 = 1;
+                    }
+                    else {
+                        $evaluation18 = "X";
+                        $evaluationshow18 = 0;
+                    }
+                    if($a->result44+$a->result45+$a->result46 >= 2)
+                    {
+                        $evaluation19 = "O";
+                        $evaluationshow19 = 1;
+                    }
+                    else {
+                        $evaluation19 = "X";
+                        $evaluationshow19 = 0;
+                    }
+                    if($a->result50+$a->result51 >= 2)
+                    {
+                        $evaluation25 = "O";
+                        $evaluationshow25 = 1;
+                    }
+                    else {
+                        $evaluation25 = "X";
+                        $evaluationshow25 = 0;
+                    }
+                    $finalcat = ($evaluation1+$evaluationshow2+$a->result11+$a->result12+$a->result13+$a->result14+$a->result15+$a->result16+$a->result17+$a->result19+$a->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$a->result42+$a->result43+$evaluationshow19+$a->result47+$a->result48+$a->result49+$evaluationshow25+$a->result52)/24;
+
+                    if($finalcat*100 >= 85)
+                    {
+                        $finalcats = "Well Implemented";
+                        $finalcatsbg = "green";
+                    }elseif($finalcat*100 >= 70)
+                    {
+                        $finalcats = "Medium Implemented";
+                        $finalcatsbg = "yellow";
+                    }elseif($finalcat*100 < 70)
+                    {
+                        $finalcats = "low Implemented";
+                        $finalcatsbg = "red";
+                    }
+
+                    if($a->hasilnya == "") { $a->hasilnya = 0; }
+                @endphp
             <tr>
                 <td>{{ $a->nama }}</td>
-                <td>10</td>
-                <td>10</td>
+                <td>{{ $a->hasilnya }}%</td>
+                <td>{{ $finalcat*100 }}%</td>
+                    @if($a->hasilnya >= 60 && $finalcat*100 >= 40)
+                        <td bgcolor="green" fontcolor="white">
+                            High
+                        </td>
+                    @elseif($a->hasilnya >= 60 && $finalcat*100 < 40)
+                        <td bgcolor="yellow" fontcolor="white">
+                            Medium
+                        </td>
+                    @elseif($a->hasilnya < 60 && $finalcat*100 >= 40)
+                        <td bgcolor="yellow" fontcolor="white">
+                            Medium
+                        </td>
+                    @elseif($a->hasilnya < 60 && $finalcat*100 < 40)
+                        <td bgcolor="red" fontcolor="white">
+                            Low
+                        </td>
+                    @endif
             </tr>
             @endforeach
         </tbody>
@@ -196,7 +317,7 @@ var config = {
     datasets: [{
       data: data,
       value: value,
-      backgroundColor: ['green', 'yellow', 'red'],
+      backgroundColor: ['red', 'yellow', 'green'],
       borderWidth: 2
     }]
   },

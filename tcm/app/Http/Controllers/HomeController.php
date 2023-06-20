@@ -29,9 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $date = date('Y-m-')."01";
         $kantor = DB::table('kantors')->orderBy('nama','asc')->count();
-        $kantor_data = DB::table('kantors')->orderBy('nama','asc')->get();
-        return view('home',['kantor' => $kantor,'datakantor' => $kantor_data]);
+        $hitunginput = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$date)->select(DB::raw('count(users.IDKantor) as input'))->first();
+
+        $kantor_data = DB::table('kantors')->leftjoin('users','users.IDKantor','kantors.id')->leftjoin('datachecksheet_result','datachecksheet_result.IDUser','users.id')->leftjoin('datakpi_result','datakpi_result.IDUser','users.id')->select('nama','datachecksheet_result.result as hasilnya','datakpi_result.*')->orderBy('nama','asc')->get();
+        return view('home',['kantor' => $kantor,'datakantor' => $kantor_data,'hitunginput' => $hitunginput]);
     }
     public function homesales()
     {

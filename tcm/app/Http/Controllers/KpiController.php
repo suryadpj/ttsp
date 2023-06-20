@@ -154,7 +154,9 @@ class KpiController extends Controller
     }
     public function createsalesv2()
     {
-        return view('formkpiv2');
+        $daftarkpi1 = DB::table('fields')->where('version',2)->get();
+        $daftarkpi = json_encode($daftarkpi1);
+        return view('formkpiv2',['daftarkpi' => $daftarkpi]);
     }
     public function createaftersalesv2()
     {
@@ -366,9 +368,56 @@ class KpiController extends Controller
         {
             return response()->json(['duplicate' => 'Anda sudah mengisi KPI periode '.$format_tanggal.' ini, silahkan cek di data KPI. Terima kasih']);
         }
+        //cek result
+        $cek2 = DB::table('datakpi_result')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('deleted',0)->count();
+        if($cek2 == 0)
+        {
+            $create_result = array(
+                'IDUser'    => $data_user->id,
+                'periode'   => $periode."-01",
+            );
+
+            DB::table('datakpi_result')->insert($create_result);
+        }
+
         for($count = 0; $count < count($datakpi); $count++)
         {
+            if($kategori['1'] == 1)
+            {
+                $nomorresult =  $count + 1;
+            }
+            elseif($kategori['1'] == 2)
+            {
+                $nomorresult =  $count + 26;
+            }
+            elseif($kategori['1'] == 3)
+            {
+                $nomorresult =  $count + 49;
+            }
             $nomorkpi = $count + 1;
+
+            $cek_kpi = DB::table('fields')->where('version',2)->where('id_uniq',$kategori['1']."-".$nomorkpi)->select('target')->first();
+
+            if($cek_kpi->target == 0)
+            {
+                $target = 0;
+                $evaluation = 1;
+            }
+            elseif($cek_kpi->target > $datakpi[$count])
+            {
+                $target = $cek_kpi->target;
+                $evaluation = 0;
+            }
+            elseif($cek_kpi->target <= $datakpi[$count])
+            {
+                $target = $cek_kpi->target;
+                $evaluation = 1;
+            }
+            else
+            {
+                $target = $cek_kpi->target;
+                $evaluation = 0;
+            }
             $data2 = array(
                 'tanggal'   => $tanggal,
                 'periode'   => $periode."-01",
@@ -376,12 +425,23 @@ class KpiController extends Controller
                 'IDField'   => $nomorkpi,
                 'IDKantor'  => $data_user->IDKantor,
                 'nilai'     => $datakpi[$count],
+                'target'    => $target,
+                'evaluation'   => 0,
                 'deleted'   => 0,
                 'version'   => $kategori['0'],
                 'kategori'  => $kategori['1'],
                 'id_uniq'   => $kategori['1']."-".$nomorkpi,
             );
             $insert_data2[] = $data2;
+
+            $form_data_result = array(
+                'kpi'.$nomorresult  =>  $datakpi[$count],
+                'target'.$nomorresult        =>  $target,
+                'result'.$nomorresult     =>  $evaluation,
+            );
+            DB::table('datakpi_result')->where('periode',$periode."-01")->where('IDUser',$data_user->id)->update($form_data_result);
+
+
         }
         DB::table('datakpi')->insert($insert_data2);
 

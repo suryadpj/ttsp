@@ -323,6 +323,73 @@ class ChechsheetController extends Controller
         }
         DB::table('datachecksheet')->insert($insert_data2);
 
+        $a1 = DB::table('datachecksheet')->wherebetween('IDField',[1,14])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/14)*100,0) AS skor'))->first();
+        $a2 = DB::table('datachecksheet')->wherebetween('IDField',[15,18])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
+        $a = DB::table('datachecksheet')->wherebetween('IDField',[1,18])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/18)*100,0) AS skor'))->first();
+        $b1 = DB::table('datachecksheet')->wherebetween('IDField',[19,34])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/16)*100,0) AS skor'))->first();
+        $b2 = DB::table('datachecksheet')->wherebetween('IDField',[35,37])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $b = DB::table('datachecksheet')->wherebetween('IDField',[19,37])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/19)*100,0) AS skor'))->first();
+        $c1 = DB::table('datachecksheet')->wherebetween('IDField',[38,43])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+        $c2 = DB::table('datachecksheet')->wherebetween('IDField',[44,69])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/26)*100,0) AS skor'))->first();
+        $c3 = DB::table('datachecksheet')->wherebetween('IDField',[70,76])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
+        $c4 = DB::table('datachecksheet')->wherebetween('IDField',[77,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+        $c = DB::table('datachecksheet')->wherebetween('IDField',[38,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/45)*100,0) AS skor'))->first();
+        $d1 = DB::table('datachecksheet')->wherebetween('IDField',[83,85])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $d2 = DB::table('datachecksheet')->wherebetween('IDField',[86,96])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/11)*100,0) AS skor'))->first();
+        $d3 = DB::table('datachecksheet')->wherebetween('IDField',[97,100])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
+        $d = DB::table('datachecksheet')->wherebetween('IDField',[83,100])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/18)*100,0) AS skor'))->first();
+        $e1 = DB::table('datachecksheet')->wherebetween('IDField',[101,103])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $e2 = DB::table('datachecksheet')->wherebetween('IDField',[104,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
+        $e = DB::table('datachecksheet')->wherebetween('IDField',[101,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
+        $f1 = DB::table('datachecksheet')->wherebetween('IDField',[109,110])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
+        $f2 = DB::table('datachecksheet')->wherebetween('IDField',[111,113])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $f3 = DB::table('datachecksheet')->wherebetween('IDField',[114,115])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
+        $f = DB::table('datachecksheet')->wherebetween('IDField',[109,115])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
+        $g1 = DB::table('datachecksheet')->wherebetween('IDField',[116,118])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $g2 = DB::table('datachecksheet')->wherebetween('IDField',[119,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $g = DB::table('datachecksheet')->wherebetween('IDField',[116,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+        $all = DB::table('datachecksheet')->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
+
+        $data_result = array(
+            'periode'   => $periode."-01",
+            'IDUser'    => $data_user->id,
+            'result1'   => $a1->skor,
+            'result2'   => $a2->skor,
+            'grade1'    => $a->skor,
+            'result3'   => $b1->skor,
+            'result4'   => $b2->skor,
+            'grade2'    => $b->skor,
+            'result5'   => $c1->skor,
+            'result6'   => $c2->skor,
+            'result7'   => $c3->skor,
+            'result8'   => $c4->skor,
+            'grade3'    => $c->skor,
+            'result9'   => $d1->skor,
+            'result10'   => $d2->skor,
+            'result11'   => $d3->skor,
+            'grade4'   => $d->skor,
+            'result12'   => $e1->skor,
+            'result13'   => $e2->skor,
+            'grade5'   => $e->skor,
+            'result14'   => $f1->skor,
+            'result15'   => $f2->skor,
+            'result16'   => $f3->skor,
+            'grade6'   => $f->skor,
+            'result17'   => $g1->skor,
+            'result18'   => $g2->skor,
+            'grade7'   => $g->skor,
+            'result'    => $all->skor,
+            'deleted'   => 0,
+        );
+        if($request->kategori =="week")
+        {
+
+            $data_result = array_merge($data_result, [
+                'week' => $request->week,
+            ]);
+        }
+        DB::table('datachecksheet_result')->insert($data_result);
+
         return response()->json(['success' => 'Data Checksheet berhasil disimpan, silahkan periksa data anda']);
     }
 
