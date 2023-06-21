@@ -14,19 +14,35 @@ class SummaryReportController extends Controller
 {
     public function index()
     {
-        $kantor = DB::table('kantors')->orderBy('nama','asc')->get();
+        $data_user = Auth::user();
+        if($data_user->IDKantor == 1)
+        {
+            $kantor = DB::table('kantors')->orderBy('nama','asc')->get();
+        }
+        else
+        {
+            $kantor = DB::table('kantors')->orderBy('nama','asc')->where('id',$data_user->IDKantor)->get();
+        }
         return view('summaryreport',['kantor' => $kantor]);
     }
     public function summaryreportsearch(request $request)
     {
         //define
+        $data_user = Auth::user();
         $fkantor = $request->search_kantor;
         $fperiode = $request->search_periode;
         $resultkpi = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->first();
         $resultkpicount = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->count();
         $resultcheck = DB::table('datachecksheet_result')->leftjoin('users','users.id','datachecksheet_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->first();
         $resultcheckcount = DB::table('datachecksheet_result')->leftjoin('users','users.id','datachecksheet_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->count();
-        $kantor = DB::table('kantors')->orderBy('nama','asc')->get();
+        if($data_user->IDKantor == 1)
+        {
+            $kantor = DB::table('kantors')->orderBy('nama','asc')->get();
+        }
+        else
+        {
+            $kantor = DB::table('kantors')->orderBy('nama','asc')->where('id',$data_user->IDKantor)->get();
+        }
         if($fkantor == "")
         {
             return redirect()->back()->withInput(array('fperiode' => $fperiode, 'success' => 'Nama kantor belum diisi'));

@@ -85,23 +85,13 @@
     <div class="card-header border-0">
     <div class="d-flex justify-content-between">
     <h3 class="card-title">Penginputan KPI</h3>
-    <a href="javascript:void(0);">View Report</a>
+    {{-- <a href="javascript:void(0);">View Report</a> --}}
     </div>
     </div>
     <div class="card-body">
-    <div class="d-flex">
-    <p class="d-flex flex-column">
-    <span class="text-bold text-lg">10</span>
-    <span>Total KPI input</span>
-    </p>
-    <p class="ml-auto d-flex flex-column text-right">
-    <span class="text-bold text-lg">2</span>
-    <span class="text-muted">Total KPI Input terakhir</span>
-    </p>
-    </div>
 
     <div class="position-relative mb-4">
-    <canvas id="sales-chart" height="366"></canvas>
+    <canvas id="sales-chart" height="430"></canvas>
     </div>
     </div>
     </div>
