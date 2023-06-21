@@ -111,7 +111,7 @@
     <div class="col-md-12">
     <div class="card">
         <div class="card-header border-0">
-        <h3 class="card-title">Data Cabang</h3>
+        <h2 class="card-title">Data Cabang</h2>
         <div class="card-tools">
         <a href="#" class="btn btn-tool btn-sm">
         <i class="fas fa-download"></i>
@@ -122,7 +122,7 @@
         </div>
         </div>
         <div class="card-body table-responsive p-0">
-        <table class="table table-striped table-valign-middle">
+        <table class="table table-bordered table-striped" id="example1">
         <thead>
         <tr>
         <th>Nama Cabang</th>
@@ -241,20 +241,20 @@
                 <td>{{ $a->hasilnya }}%</td>
                 <td>{{ $finalcat*100 }}%</td>
                     @if($a->hasilnya >= 60 && $finalcat*100 >= 40)
-                        <td bgcolor="green" fontcolor="white">
-                            High
+                        <td>
+                            <h2><span class="badge badge-success">High</span></h2>
                         </td>
                     @elseif($a->hasilnya >= 60 && $finalcat*100 < 40)
-                        <td bgcolor="yellow" fontcolor="white">
-                            Medium
+                        <td>
+                            <h2><span class="badge badge-warning">Medium</span></h2>
                         </td>
                     @elseif($a->hasilnya < 60 && $finalcat*100 >= 40)
-                        <td bgcolor="yellow" fontcolor="white">
-                            Medium
+                        <td>
+                            <h2><span class="badge badge-warning">Medium</span></h2>
                         </td>
                     @elseif($a->hasilnya < 60 && $finalcat*100 < 40)
-                        <td bgcolor="red" fontcolor="white">
-                            Low
+                        <td>
+                            <h2><span class="badge badge-danger">Low</span></h2>
                         </td>
                     @endif
             </tr>
@@ -281,7 +281,23 @@
 @section('js')
 <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
 <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
-    <script> $(function(){'use strict'
+    <script>
+          $(function () {
+            $("#example1").DataTable({
+              "responsive": true, "lengthChange": false, "autoWidth": false,
+              "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+              "paging": true,
+              "lengthChange": false,
+              "searching": false,
+              "ordering": true,
+              "info": true,
+              "autoWidth": false,
+              "responsive": true,
+            });
+          });
+           $(function(){'use strict'
         var ticksStyle={fontColor:'#495057',fontStyle:'bold'}
         var mode='index'
         var intersect=true
