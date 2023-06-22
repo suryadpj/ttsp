@@ -857,8 +857,8 @@
                                     $catrs8bg = "yellow";
                                 }elseif($resultcheck->result < 70)
                                 {
-                                    $catrs9 = "low Implemented";
-                                    $catrs9bg = "red";
+                                    $catrs8 = "low Implemented";
+                                    $catrs8bg = "red";
                                 }
                             @endphp
                             <tr>
