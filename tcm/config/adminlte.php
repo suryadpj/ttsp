@@ -373,6 +373,10 @@ return [
                     'text' => 'TradeIn',
                     'url'  => 'formkpitradeinv2',
                 ],
+                [
+                    'text' => 'Rekap Data',
+                    'url'  => 'formkpi',
+                ],
             ],
         ],
         [
@@ -387,10 +391,10 @@ return [
                     'text' => 'Weekly',
                     'url'  => 'checksheetext/createmingguan',
                 ],
-                // [
-                //     'text' => 'TradeIn',
-                //     'url'  => 'formkpitradeinv2',
-                // ],
+                [
+                    'text' => 'Rekap Data',
+                    'url'  => 'checksheet',
+                ],
             ],
         ],
         [

@@ -22,110 +22,514 @@ class KpiController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(request $request)
     {
         $data_user = Auth::user();
         if(request()->ajax())
         {
             if($data_user->IDKantor == 1)
             {
-                return datatables()->of(DB::table('datakpi')
-                ->leftjoin('kantors','kantors.id','=','datakpi.IDKantor')
-                ->leftjoin('fields','fields.id_uniq','=','datakpi.id_uniq')
-                ->select('kantors.nama','datakpi.IDKantor','datakpi.periode',DB::raw('DATE_FORMAT(datakpi.periode,"%M %Y") as periodik'),DB::raw('SUM(IF(fields.IDSegmen=1,datakpi.nilai,0)) as nilai_a'),DB::raw('SUM(IF(fields.IDSegmen=2,datakpi.nilai,0)) as nilai_b'),DB::raw('SUM(IF(fields.IDSegmen=3,datakpi.nilai,0)) as nilai_c'),DB::raw('SUM(IF(fields.IDSegmen=4,datakpi.nilai,0)) as nilai_d'),DB::raw('SUM(IF(fields.IDSegmen=5,datakpi.nilai,0)) as nilai_e'),DB::raw('SUM(IF(fields.IDSegmen=6,datakpi.nilai,0)) as nilai_f'),DB::raw('SUM(datakpi.nilai) as total'))
-                ->where('datakpi.deleted','0')
-                ->groupby('kantors.nama','datakpi.IDKantor','periodik','periode'))
-                // ->filter(function ($data) use ($request) {
-                //     if (!empty($request->has('judul'))) {
-                //         $data->where('perihal', 'like', "%{$request->get('judul')}%");
-                //     }
+                return datatables()->of(DB::table('datakpi_result')
+                ->leftjoin('users','users.id','=','datakpi_result.IDUser')
+                ->leftjoin('kantors','kantors.id','=','users.IDKantor')
+                ->select('kantors.nama','users.IDKantor','datakpi_result.*',DB::raw('DATE_FORMAT(datakpi_result.periode,"%M %Y") as periodik'))
+                ->where('datakpi_result.deleted','0'))
+                ->filter(function ($data) use ($request) {
+                    if (!empty($request->judul)) {
+                        $data->where('periode', $request->judul."-01");
+                    }
 
-                //     if (!empty($request->has('nomor'))) {
-                //         $data->where('nota_dinas', 'like', "%{$request->get('nomor')}%");
-                //     }
-                //     if (!empty($request->has('nilainya'))) {
-                //         $data->where('nilai', 'like', "%{$request->get('nilainya')}%");
-                //     }
-                //     if (!empty($request->has('periode'))) {
-                //         $data->where('periode_penggunaan', 'like', "{$request->get('periode')}%");
-                //     }
-                //     if (!empty($request->has('kategori'))) {
-                //         $data->where('kategori', 'like', "{$request->get('kategori')}%");
-                //     }
-                //     if (!empty($request->lokasi)) {
-                //         $data->where('data_cost_control.IDArea', 'like', "{$request->get('lokasi')}");
-                //     }
+                    if (!empty($request->lokasi)) {
+                        $data->where('IDKantor',$request->lokasi);
+                    }
+                })
+                ->editColumn('grade1', function($data)
+                {
+                    $evaluation1 = $data->result1;
+                    if($data->result3+$data->result5+$data->result7 >= 2)
+                    {
+                        $evaluation2 = "O";
+                        $evaluationshow2 = 1;
+                    }
+                    else {
+                        $evaluation2 = "X";
+                        $evaluationshow2 = 0;
+                    }
+                    $cat1 =($evaluation1+$evaluationshow2+$data->result11+$data->result12+$data->result13+$data->result14+$data->result15+$data->result16+$data->result17+$data->result19+$data->result49)/12;
+                    if($cat1*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat1*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat1*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade2', function($data)
+                {
+                    $evaluation13 = $data->result25;
+                    if($data->result20+$data->result21+$data->result22 >= 2)
+                    {
+                        $evaluation14 = "O";
+                        $evaluationshow14 = 1;
+                    }
+                    else {
+                        $evaluation14 = "X";
+                        $evaluationshow14 = 0;
+                    }
+                    $cat2 =($evaluation13+$evaluationshow14)/2;
+                    if($cat2*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat2*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat2*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade3', function($data)
+                {
+                    if($data->result26+$data->result27 >= 2)
+                    {
+                        $evaluation16 = "O";
+                        $evaluationshow16 = 1;
+                    }
+                    else {
+                        $evaluation16 = "X";
+                        $evaluationshow16 = 0;
+                    }
+                    if($data->result33+$data->result35+$data->result37+$data->result39 >= 3)
+                    {
+                        $evaluation17 = "O";
+                        $evaluationshow17 = 1;
+                    }
+                    else {
+                        $evaluation17 = "X";
+                        $evaluationshow17 = 0;
+                    }
+                    if($data->result28+$data->result29+$data->result31 >= 2)
+                    {
+                        $evaluation18 = "O";
+                        $evaluationshow18 = 1;
+                    }
+                    else {
+                        $evaluation18 = "X";
+                        $evaluationshow18 = 0;
+                    }
+                    if($data->result44+$data->result45+$data->result46 >= 2)
+                    {
+                        $evaluation19 = "O";
+                        $evaluationshow19 = 1;
+                    }
+                    else {
+                        $evaluation19 = "X";
+                        $evaluationshow19 = 0;
+                    }
+                    $cat3 =($evaluationshow16+$evaluationshow17+$evaluationshow18+$data->result42+$data->result43+$evaluationshow19)/6;
+                    if($cat3*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat3*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat3*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade4', function($data)
+                {
+                    $cat4 =($data->result47+$data->result48)/2;
+                    if($cat4*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat4*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat4*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade5', function($data)
+                {
+                    return '-';
+                })
+                ->editColumn('grade6', function($data)
+                {
+                    if($data->result49 == 1)
+                    {
+                        return "High";
+                    }
+                    else
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade7', function($data)
+                {
+                    if($data->result50+$data->result51 >= 2)
+                    {
+                        $evaluation25 = "O";
+                        $evaluationshow25 = 1;
+                    }
+                    else {
+                        $evaluation25 = "X";
+                        $evaluationshow25 = 0;
+                    }
+                    $cat7 =($evaluationshow25+$data->result52)/3;
+                    if($cat7*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat7*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat7*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->addColumn('finalgrade', function($data) use($data_user){
+                    $evaluation1 = $data->result1;
+                    if($data->result3+$data->result5+$data->result7 >= 2)
+                    {
+                        $evaluation2 = "O";
+                        $evaluationshow2 = 1;
+                    }
+                    else {
+                        $evaluation2 = "X";
+                        $evaluationshow2 = 0;
+                    }
+                    $evaluation13 = $data->result25;
+                    if($data->result20+$data->result21+$data->result22 >= 2)
+                    {
+                        $evaluation14 = "O";
+                        $evaluationshow14 = 1;
+                    }
+                    else {
+                        $evaluation14 = "X";
+                        $evaluationshow14 = 0;
+                    }
+                    if($data->result26+$data->result27 >= 2)
+                    {
+                        $evaluation16 = "O";
+                        $evaluationshow16 = 1;
+                    }
+                    else {
+                        $evaluation16 = "X";
+                        $evaluationshow16 = 0;
+                    }
+                    if($data->result33+$data->result35+$data->result37+$data->result39 >= 3)
+                    {
+                        $evaluation17 = "O";
+                        $evaluationshow17 = 1;
+                    }
+                    else {
+                        $evaluation17 = "X";
+                        $evaluationshow17 = 0;
+                    }
+                    if($data->result28+$data->result29+$data->result31 >= 2)
+                    {
+                        $evaluation18 = "O";
+                        $evaluationshow18 = 1;
+                    }
+                    else {
+                        $evaluation18 = "X";
+                        $evaluationshow18 = 0;
+                    }
+                    if($data->result44+$data->result45+$data->result46 >= 2)
+                    {
+                        $evaluation19 = "O";
+                        $evaluationshow19 = 1;
+                    }
+                    else {
+                        $evaluation19 = "X";
+                        $evaluationshow19 = 0;
+                    }
+                    if($data->result50+$data->result51 >= 2)
+                    {
+                        $evaluation25 = "O";
+                        $evaluationshow25 = 1;
+                    }
+                    else {
+                        $evaluation25 = "X";
+                        $evaluationshow25 = 0;
+                    }
+                    $finalcat = ($evaluation1+$evaluationshow2+$data->result11+$data->result12+$data->result13+$data->result14+$data->result15+$data->result16+$data->result17+$data->result19+$data->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$data->result42+$data->result43+$evaluationshow19+$data->result47+$data->result48+$data->result49+$evaluationshow25+$data->result52)/24;
 
-                //     // if (!empty($request->area)) {
-                //     //     $data->where('IDArea', 'like', "%{$request->area}%");
-                //     // }
-
-                //     if(!empty($request->tanggal_a))
-                //     {
-                //         if($request->tanggal_a === $request->tanggal_b || empty($request->tanggal_b)){
-                //             $data->whereDate('tanggal_pengajuan','=', $request->tanggal_a)->get();
-                //         }else{
-                //             //kita filter dari tanggal awal ke akhir
-                //             $data->whereBetween('tanggal_pengajuan', array($request->tanggal_a, $request->tanggal_b))->get();
-                //         }
-                //     }
-                // })
+                    if($finalcat*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($finalcat*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($finalcat*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                        $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
-                        $button .= '<button type="button" name="delete" id="'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                        // $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
+                        $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     return $button;})
                 ->rawColumns(['action'])
                 ->make(true);
             }
             else
             {
-                return datatables()->of(DB::table('datakpi')
-                ->leftjoin('kantors','kantors.id','=','datakpi.IDKantor')
-                ->leftjoin('fields','fields.id','=','datakpi.IDField')
-                ->select('kantors.nama','datakpi.IDKantor','datakpi.periode',DB::raw('DATE_FORMAT(datakpi.periode,"%M %Y") as periodik'),DB::raw('SUM(IF(fields.IDSegmen=1,datakpi.nilai,0)) as nilai_a'),DB::raw('SUM(IF(fields.IDSegmen=2,datakpi.nilai,0)) as nilai_b'),DB::raw('SUM(IF(fields.IDSegmen=3,datakpi.nilai,0)) as nilai_c'),DB::raw('SUM(IF(fields.IDSegmen=4,datakpi.nilai,0)) as nilai_d'),DB::raw('SUM(IF(fields.IDSegmen=5,datakpi.nilai,0)) as nilai_e'),DB::raw('SUM(IF(fields.IDSegmen=6,datakpi.nilai,0)) as nilai_f'),DB::raw('SUM(datakpi.nilai) as total'))
-                ->where('datakpi.deleted','0')
-                ->where('datakpi.IDKantor',$data_user->IDKantor)
-                ->groupby('kantors.nama','datakpi.IDKantor','periodik','periode'))
-                // ->filter(function ($data) use ($request) {
-                //     if (!empty($request->has('judul'))) {
-                //         $data->where('perihal', 'like', "%{$request->get('judul')}%");
-                //     }
+                return datatables()->of(DB::table('datakpi_result')
+                ->leftjoin('users','users.id','=','datakpi_result.IDUser')
+                ->leftjoin('kantors','kantors.id','=','users.IDKantor')
+                ->select('kantors.nama','users.IDKantor','datakpi_result.*',DB::raw('DATE_FORMAT(datakpi_result.periode,"%M %Y") as periodik'))
+                ->where('datakpi_result.deleted','0')
+                ->where('datakpi.IDKantor',$data_user->IDKantor))
+                ->filter(function ($data) use ($request) {
+                    if (!empty($request->judul)) {
+                        $data->where('periode', $request->judul."-01");
+                    }
 
-                //     if (!empty($request->has('nomor'))) {
-                //         $data->where('nota_dinas', 'like', "%{$request->get('nomor')}%");
-                //     }
-                //     if (!empty($request->has('nilainya'))) {
-                //         $data->where('nilai', 'like', "%{$request->get('nilainya')}%");
-                //     }
-                //     if (!empty($request->has('periode'))) {
-                //         $data->where('periode_penggunaan', 'like', "{$request->get('periode')}%");
-                //     }
-                //     if (!empty($request->has('kategori'))) {
-                //         $data->where('kategori', 'like', "{$request->get('kategori')}%");
-                //     }
-                //     if (!empty($request->lokasi)) {
-                //         $data->where('data_cost_control.IDArea', 'like', "{$request->get('lokasi')}");
-                //     }
+                    if (!empty($request->lokasi)) {
+                        $data->where('IDKantor',$request->lokasi);
+                    }
+                })
+                ->editColumn('grade1', function($data)
+                {
+                    $evaluation1 = $data->result1;
+                    if($data->result3+$data->result5+$data->result7 >= 2)
+                    {
+                        $evaluation2 = "O";
+                        $evaluationshow2 = 1;
+                    }
+                    else {
+                        $evaluation2 = "X";
+                        $evaluationshow2 = 0;
+                    }
+                    $cat1 =($evaluation1+$evaluationshow2+$data->result11+$data->result12+$data->result13+$data->result14+$data->result15+$data->result16+$data->result17+$data->result19+$data->result49)/12;
+                    if($cat1*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat1*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat1*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade2', function($data)
+                {
+                    $evaluation13 = $data->result25;
+                    if($data->result20+$data->result21+$data->result22 >= 2)
+                    {
+                        $evaluation14 = "O";
+                        $evaluationshow14 = 1;
+                    }
+                    else {
+                        $evaluation14 = "X";
+                        $evaluationshow14 = 0;
+                    }
+                    $cat2 =($evaluation13+$evaluationshow14)/2;
+                    if($cat2*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat2*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat2*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade3', function($data)
+                {
+                    if($data->result26+$data->result27 >= 2)
+                    {
+                        $evaluation16 = "O";
+                        $evaluationshow16 = 1;
+                    }
+                    else {
+                        $evaluation16 = "X";
+                        $evaluationshow16 = 0;
+                    }
+                    if($data->result33+$data->result35+$data->result37+$data->result39 >= 3)
+                    {
+                        $evaluation17 = "O";
+                        $evaluationshow17 = 1;
+                    }
+                    else {
+                        $evaluation17 = "X";
+                        $evaluationshow17 = 0;
+                    }
+                    if($data->result28+$data->result29+$data->result31 >= 2)
+                    {
+                        $evaluation18 = "O";
+                        $evaluationshow18 = 1;
+                    }
+                    else {
+                        $evaluation18 = "X";
+                        $evaluationshow18 = 0;
+                    }
+                    if($data->result44+$data->result45+$data->result46 >= 2)
+                    {
+                        $evaluation19 = "O";
+                        $evaluationshow19 = 1;
+                    }
+                    else {
+                        $evaluation19 = "X";
+                        $evaluationshow19 = 0;
+                    }
+                    $cat3 =($evaluationshow16+$evaluationshow17+$evaluationshow18+$data->result42+$data->result43+$evaluationshow19)/6;
+                    if($cat3*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat3*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat3*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade4', function($data)
+                {
+                    $cat4 =($data->result47+$data->result48)/2;
+                    if($cat4*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat4*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat4*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade5', function($data)
+                {
+                    return '-';
+                })
+                ->editColumn('grade6', function($data)
+                {
+                    if($data->result49 == 1)
+                    {
+                        return "High";
+                    }
+                    else
+                    {
+                        return "Low";
+                    }
+                })
+                ->editColumn('grade7', function($data)
+                {
+                    if($data->result50+$data->result51 >= 2)
+                    {
+                        $evaluation25 = "O";
+                        $evaluationshow25 = 1;
+                    }
+                    else {
+                        $evaluation25 = "X";
+                        $evaluationshow25 = 0;
+                    }
+                    $cat7 =($evaluationshow25+$data->result52)/3;
+                    if($cat7*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($cat7*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($cat7*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
+                ->addColumn('finalgrade', function($data) use($data_user){
+                    $evaluation1 = $data->result1;
+                    if($data->result3+$data->result5+$data->result7 >= 2)
+                    {
+                        $evaluation2 = "O";
+                        $evaluationshow2 = 1;
+                    }
+                    else {
+                        $evaluation2 = "X";
+                        $evaluationshow2 = 0;
+                    }
+                    $evaluation13 = $data->result25;
+                    if($data->result20+$data->result21+$data->result22 >= 2)
+                    {
+                        $evaluation14 = "O";
+                        $evaluationshow14 = 1;
+                    }
+                    else {
+                        $evaluation14 = "X";
+                        $evaluationshow14 = 0;
+                    }
+                    if($data->result26+$data->result27 >= 2)
+                    {
+                        $evaluation16 = "O";
+                        $evaluationshow16 = 1;
+                    }
+                    else {
+                        $evaluation16 = "X";
+                        $evaluationshow16 = 0;
+                    }
+                    if($data->result33+$data->result35+$data->result37+$data->result39 >= 3)
+                    {
+                        $evaluation17 = "O";
+                        $evaluationshow17 = 1;
+                    }
+                    else {
+                        $evaluation17 = "X";
+                        $evaluationshow17 = 0;
+                    }
+                    if($data->result28+$data->result29+$data->result31 >= 2)
+                    {
+                        $evaluation18 = "O";
+                        $evaluationshow18 = 1;
+                    }
+                    else {
+                        $evaluation18 = "X";
+                        $evaluationshow18 = 0;
+                    }
+                    if($data->result44+$data->result45+$data->result46 >= 2)
+                    {
+                        $evaluation19 = "O";
+                        $evaluationshow19 = 1;
+                    }
+                    else {
+                        $evaluation19 = "X";
+                        $evaluationshow19 = 0;
+                    }
+                    if($data->result50+$data->result51 >= 2)
+                    {
+                        $evaluation25 = "O";
+                        $evaluationshow25 = 1;
+                    }
+                    else {
+                        $evaluation25 = "X";
+                        $evaluationshow25 = 0;
+                    }
+                    $finalcat = ($evaluation1+$evaluationshow2+$data->result11+$data->result12+$data->result13+$data->result14+$data->result15+$data->result16+$data->result17+$data->result19+$data->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$data->result42+$data->result43+$evaluationshow19+$data->result47+$data->result48+$data->result49+$evaluationshow25+$data->result52)/24;
 
-                //     // if (!empty($request->area)) {
-                //     //     $data->where('IDArea', 'like', "%{$request->area}%");
-                //     // }
-
-                //     if(!empty($request->tanggal_a))
-                //     {
-                //         if($request->tanggal_a === $request->tanggal_b || empty($request->tanggal_b)){
-                //             $data->whereDate('tanggal_pengajuan','=', $request->tanggal_a)->get();
-                //         }else{
-                //             //kita filter dari tanggal awal ke akhir
-                //             $data->whereBetween('tanggal_pengajuan', array($request->tanggal_a, $request->tanggal_b))->get();
-                //         }
-                //     }
-                // })
+                    if($finalcat*100 >= 85)
+                    {
+                        return "High";
+                    }elseif($finalcat*100 >= 70)
+                    {
+                        return "Medium";
+                    }elseif($finalcat*100 < 70)
+                    {
+                        return "Low";
+                    }
+                })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                    $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
-                    $button .= '<button type="button" name="delete" id="'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                    // $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
+                    $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     return $button;})
                 ->rawColumns(['action'])
                 ->make(true);
@@ -493,8 +897,7 @@ class KpiController extends Controller
      */
     public function destroy($id)
     {
-        $split = explode('_',$id);
-        DB::table('datakpi')->where('periode',$split[0])->where('IDKantor',$split[1])->update(['deleted' => 1]);
+        DB::table('datakpi_result')->where('id',$id)->update(['deleted' => 1]);
         return response()->json(['success' => 'Data berhasil dihapus.']);
     }
 }

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'TCM - Data KPI')
+@section('title', 'TCM - Data Checksheet')
 
 @section('content_header')
-    <h3>Data KPI</h3>
+    <h3>Data Checksheet</h3>
 @stop
 
 
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                        <select class="select2" name="search_kantor" id="search_kantor"  style="width: 100%;">
+                        <select class="form-control select2" name="search_kantor" id="search_kantor"  style="width: 100%;">
                             <option value=''>Pilih Kantor</option>
                             @foreach($kantor as $p)
                                 <option value="{{ $p->id }}">{{ $p->nama }}</option>
@@ -50,6 +50,7 @@
                 <span id="form_result_save"></span>
                     <div align="right">
                         <!-- <button type="button" name="create_barang" id="create_barang" class="btn btn-info btn-sm">Tambah Nama Barang</button> -->
+                        {{-- <a href='formkpi/create' name="create_record" id="create_record" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Tambah Data</a> --}}
                     </div>
                     <br>
                     <table id="user_table" class="table table-bordered table-hover">
@@ -59,10 +60,10 @@
                                 <th>Area</th>
                                 <th>Periode</th>
                                 <th>PSP Sales</th>
-                                <th>Dlvr Exp</th>
-                                <th>PSP Serv GR</th>
-                                <th>PSP Serv BP</th>
-                                <th>Cust Db</th>
+                                <th>Delvr Exp</th>
+                                <th>PSP Srv GR</th>
+                                <th>PSP Srv BP</th>
+                                <th>Cust Database</th>
                                 <th>Trade In</th>
                                 <th>Manpower</th>
                                 <th>Final Grade</th>
@@ -120,7 +121,7 @@ $(document).ready(function(){
                     {extend:'print',title: 'Data KPI'},
         ],
         ajax:{
-            url: "{{ route('formkpi.index') }}",
+            url: "{{ route('checksheet.index') }}",
             data: function (d) {
                 d.judul = $('input[name=search_periode]').val();
                 d.lokasi = $("#search_kantor option:selected").val();
@@ -232,7 +233,7 @@ $(document).ready(function(){
         e.preventDefault();
         var idd = $(this).data('id');
         Swal.fire({
-            title: "Apakah anda yakin akan menghapus KPI ini ?",
+            title: "Apakah anda yakin akan menghapus Checksheet ini ?",
             icon: "question",
             showCancelButton: true,
             confirmButtonText: 'Ya',
@@ -243,7 +244,7 @@ $(document).ready(function(){
                 var id = $(this).attr('id');
                 $.ajax({
                     type: "DELETE",
-                    url: "formkpi/"+id,
+                    url: "checksheet/"+id,
                     dataType: 'JSON',
                     data:{
                         'id': id,
