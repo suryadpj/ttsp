@@ -865,7 +865,7 @@
                              <td colspan=4>Final Grade</td>
                              <td bgcolor="{{ $catrs8bg }}">{{ $catrs8 }}</td>
                              <td colspan=6>Final Grade</td>
-                             <td bgcolor="{{ $finalcatsbg }}">{{ $finalcat }}</td>
+                             <td bgcolor="{{ $finalcatsbg }}">{{ $finalcats }}</td>
                              <td><textarea></textarea></td>
                              <td><textarea></textarea></td>
                             </tr>
