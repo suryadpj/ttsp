@@ -770,7 +770,7 @@ class KpiController extends Controller
         $cek = DB::table('datakpi')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('deleted',0)->where('version',$kategori['0'])->where('kategori',$kategori['1'])->count();
         if($cek > 0)
         {
-            return response()->json(['duplicate' => 'Anda sudah mengisi KPI periode '.$periode.' ini, silahkan cek di data KPI. Terima kasih']);
+            return response()->json(['duplicate' => 'Anda sudah mengisi KPI periode '.$format_tanggal.' ini, silahkan cek di data KPI. Terima kasih']);
         }
         //cek result
         $cek2 = DB::table('datakpi_result')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('deleted',0)->count();
