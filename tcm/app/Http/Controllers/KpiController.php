@@ -765,7 +765,7 @@ class KpiController extends Controller
         $catatan = $request->catatan;
         $kategori = explode("-",$request->kategori);
         $tanggal = date('Y-m-d');
-        $format_tanggal = date('F Y', strtotime($tanggal));
+        $format_tanggal = date('F Y', strtotime($periode));
         //cek KPI
         $cek = DB::table('datakpi')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('deleted',0)->where('version',$kategori['0'])->where('kategori',$kategori['1'])->count();
         if($cek > 0)
@@ -802,25 +802,45 @@ class KpiController extends Controller
 
             $cek_kpi = DB::table('fields')->where('version',2)->where('id_uniq',$kategori['1']."-".$nomorkpi)->select('target')->first();
 
-            if($cek_kpi->target == 0)
+            if($kategori['1']."-".$nomorkpi == "2-17")
             {
-                $target = 0;
-                $evaluation = 1;
-            }
-            elseif($cek_kpi->target > $datakpi[$count])
-            {
+                $isi = explode(":",$datakpi[$count]);
                 $target = $cek_kpi->target;
-                $evaluation = 0;
-            }
-            elseif($cek_kpi->target <= $datakpi[$count])
-            {
-                $target = $cek_kpi->target;
-                $evaluation = 1;
+                $isinya = $isi[0];
+                if($cek_kpi->target > $isinya)
+                {
+                    $target = $cek_kpi->target;
+                    $evaluation = 1;
+                }
+                elseif($cek_kpi->target <= $isinya)
+                {
+                    $target = $cek_kpi->target;
+                    $evaluation = 0;
+                }
             }
             else
             {
-                $target = $cek_kpi->target;
-                $evaluation = 0;
+                $isinya = $datakpi[$count];
+                if($cek_kpi->target == 0)
+                {
+                    $target = 0;
+                    $evaluation = 1;
+                }
+                elseif($cek_kpi->target > $isinya)
+                {
+                    $target = $cek_kpi->target;
+                    $evaluation = 0;
+                }
+                elseif($cek_kpi->target <= $isinya)
+                {
+                    $target = $cek_kpi->target;
+                    $evaluation = 1;
+                }
+                else
+                {
+                    $target = $cek_kpi->target;
+                    $evaluation = 0;
+                }
             }
             $data2 = array(
                 'tanggal'   => $tanggal,
@@ -828,7 +848,7 @@ class KpiController extends Controller
                 'IDUser'    => $data_user->id,
                 'IDField'   => $nomorkpi,
                 'IDKantor'  => $data_user->IDKantor,
-                'nilai'     => $datakpi[$count],
+                'nilai'     => $isinya,
                 'target'    => $target,
                 'evaluation'   => 0,
                 'deleted'   => 0,

@@ -88,7 +88,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Service per unit  (mio)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -102,7 +102,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Parts per unit  (mio)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -116,7 +116,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Gross Profit/Unit/Ratio (service, parts) - GP BP Service per Unit (mio)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -130,7 +130,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Gross Profit/Unit/Ratio (service, parts) - GP BP parts per Unit (mio)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -144,13 +144,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Total Revenue per Unit  (Parts + Service) (mio)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Total Revenue Amount (Parts + Service)  (mio)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Service Lead Time</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="time" step="2" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">

@@ -113,6 +113,18 @@ class ChechsheetController extends Controller
                             case ($skor < 70) : return "Low"; break;
                         }
                     })
+                    ->editColumn('periodik', function($data)
+                    {
+                        $week = $data->week;
+                        if($week == 0)
+                        {
+                            return $data->periodik;
+                        }
+                        else
+                        {
+                            return "Week ".$data->week." - ".$data->periodik;
+                        }
+                    })
                     ->addColumn('finalgrade', function($data) use($data_user){
                         $skor = $data->result;
                         switch(true)
@@ -616,8 +628,16 @@ class ChechsheetController extends Controller
         $kategori = $request->kategori;
         $tanggal = date('Y-m-d');
         $format_tanggal = date('F Y', strtotime($tanggal));
+        if($request->kategori =="week")
+        {
+            $kat = $request->week;
+        }
+        elseif($request->kategori =="month")
+        {
+            $kat = 0;
+        }
         //cek KPI
-        $cek = DB::table('datachecksheet')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->count();
+        $cek = DB::table('datachecksheet')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('week',$kat)->count();
         if($cek > 0)
         {
             return response()->json(['duplicate' => 'Anda sudah mengisi Checksheet periode '.$format_tanggal.' ini, silahkan cek di data Checksheet. Terima kasih']);
@@ -677,6 +697,7 @@ class ChechsheetController extends Controller
         $data_result = array(
             'periode'   => $periode."-01",
             'IDUser'    => $data_user->id,
+            'week'    => $kat,
             'result1'   => $a1->skor,
             'result2'   => $a2->skor,
             'grade1'    => $a->skor,

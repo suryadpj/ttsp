@@ -15,14 +15,25 @@
             @csrf
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <input  type="month" class="form-control datea" name="search_periode" id="search_periode" placeholder="Periode">
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
-                        <select class="form-control select2" name="search_kantor" id="search_kantor"  style="width: 100%;">
+                        <select class="form-control" name="search_kantor" id="search_kantor"  style="width: 100%;">
+                            <option value=''>1 Bulan Penuh</option>
+                            <option value="1">Minggu ke 1</option>
+                            <option value="2">Minggu ke 2</option>
+                            <option value="3">Minggu ke 3</option>
+                            <option value="4">Minggu ke 4</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                        <select class="form-control" name="search_kantor" id="search_kantor"  style="width: 100%;">
                             <option value=''>Pilih Kantor</option>
                             @foreach($kantor as $p)
                                 <option value="{{ $p->id }}">{{ $p->nama }}</option>
@@ -30,7 +41,7 @@
                         </select>
                         </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <button type="submit" id="filter_button" class="btn btn-primary percent"><i class="fas fa-search"></i></button>
                             <button type="button" id="reset_filter_button" class="btn percent"><i class="fas fa-undo"></i></button>
