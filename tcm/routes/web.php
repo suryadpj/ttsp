@@ -39,5 +39,12 @@ Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetContr
 Route::resource('summaryreport', App\Http\Controllers\SummaryReportController::class);
 Route::get('/summaryreportsearch', [App\Http\Controllers\SummaryReportController::class, 'summaryreportsearch'])->name('summaryreportsearch')->middleware('auth');
 
+
+Route::resource('dashboardsales', App\Http\Controllers\DashboardSalesController::class)->middleware('auth');
+
+Route::resource('dashboardgr', App\Http\Controllers\DashboardGRController::class)->middleware('auth');
+
+Route::resource('dashboardbp', App\Http\Controllers\DashboardBPController::class)->middleware('auth');
+
 Route::get('/formkpiupload', [App\Http\Controllers\HomeController::class, 'formkpiupload'])->name('formkpiupload');
 Route::get('/kpireport', [App\Http\Controllers\HomeController::class, 'kpireport'])->name('kpireport');

@@ -327,15 +327,15 @@ return [
                 ],
                 [
                     'text' => 'Sales',
-                    'url'         => 'homesales',
+                    'url'         => 'dashboardsales',
                 ],
                 [
                     'text' => 'AF GR',
-                    'url'         => 'homegr',
+                    'url'         => 'dashboardgr',
                 ],
                 [
                     'text' => 'AF BP',
-                    'url'         => 'homebp',
+                    'url'         => 'dashboardbp',
                 ],
             ],
         ],
@@ -598,12 +598,17 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
                     'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2',
                 ],
             ],
         ],

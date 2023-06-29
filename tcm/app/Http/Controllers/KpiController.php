@@ -778,6 +778,7 @@ class KpiController extends Controller
         {
             $create_result = array(
                 'IDUser'    => $data_user->id,
+                'IDKantor'    => $data_user->IDKantor,
                 'periode'   => $periode."-01",
             );
 
@@ -801,6 +802,8 @@ class KpiController extends Controller
             $nomorkpi = $count + 1;
 
             $cek_kpi = DB::table('fields')->where('version',2)->where('id_uniq',$kategori['1']."-".$nomorkpi)->select('target')->first();
+            $tanggal_sekarang = $periode."-01";
+            $tanggal_sebelumnya = date('Y-m-d', strtotime('-1 month', strtotime( $tanggal_sekarang )));
 
             if($kategori['1']."-".$nomorkpi == "2-17")
             {
@@ -842,6 +845,24 @@ class KpiController extends Controller
                     $evaluation = 0;
                 }
             }
+            $cek_kpi_sebelumnya = DB::table('datakpi')->where('version',2)->where('id_uniq',$kategori['1']."-".$nomorkpi)->where('periode',$tanggal_sebelumnya)->select('nilai')->first();
+            $cek_kpi_sebelumnya_hitung = DB::table('datakpi')->where('version',2)->where('id_uniq',$kategori['1']."-".$nomorkpi)->where('periode',$tanggal_sebelumnya)->select('nilai')->count();
+
+            if($cek_kpi_sebelumnya_hitung == 0)
+            {
+                $growth = 0;
+            }
+            else
+            {
+                if($isinya > $cek_kpi_sebelumnya->nilai)
+                {
+                    $growth = 1;
+                }
+                elseif($isinya <= $cek_kpi_sebelumnya->nilai)
+                {
+                    $growth = 0;
+                }
+            }
             $data2 = array(
                 'tanggal'   => $tanggal,
                 'periode'   => $periode."-01",
@@ -850,7 +871,8 @@ class KpiController extends Controller
                 'IDKantor'  => $data_user->IDKantor,
                 'nilai'     => $isinya,
                 'target'    => $target,
-                'evaluation'   => 0,
+                'evaluation'   => $evaluation,
+                'berkembang'   => $growth,
                 'deleted'   => 0,
                 'version'   => $kategori['0'],
                 'kategori'  => $kategori['1'],

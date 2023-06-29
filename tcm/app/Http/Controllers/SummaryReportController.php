@@ -31,10 +31,10 @@ class SummaryReportController extends Controller
         $data_user = Auth::user();
         $fkantor = $request->search_kantor;
         $fperiode = $request->search_periode;
-        $resultkpi = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->first();
-        $resultkpicount = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->count();
-        $resultcheck = DB::table('datachecksheet_result')->leftjoin('users','users.id','datachecksheet_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->first();
-        $resultcheckcount = DB::table('datachecksheet_result')->leftjoin('users','users.id','datachecksheet_result.IDUser')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->count();
+        $resultkpi = DB::table('datakpi_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->first();
+        $resultkpicount = DB::table('datakpi_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->count();
+        $resultcheck = DB::table('datachecksheet_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->first();
+        $resultcheckcount = DB::table('datachecksheet_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->count();
         if($data_user->IDKantor == 1)
         {
             $kantor = DB::table('kantors')->orderBy('nama','asc')->get();

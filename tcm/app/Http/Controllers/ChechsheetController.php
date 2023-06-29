@@ -25,9 +25,8 @@ class ChechsheetController extends Controller
             if($data_user->IDKantor == 1)
             {
                 return datatables()->of(DB::table('datachecksheet_result')
-                ->leftjoin('users','users.id','=','datachecksheet_result.IDUser')
-                ->leftjoin('kantors','kantors.id','=','users.IDKantor')
-                ->select('kantors.nama','users.IDKantor','datachecksheet_result.*',DB::raw('DATE_FORMAT(datachecksheet_result.periode,"%M %Y") as periodik'))
+                ->leftjoin('kantors','kantors.id','=','datachecksheet_result.IDKantor')
+                ->select('kantors.nama','datachecksheet_result.*',DB::raw('DATE_FORMAT(datachecksheet_result.periode,"%M %Y") as periodik'))
                 ->where('datachecksheet_result.deleted','0'))
                 ->filter(function ($data) use ($request) {
                     if (!empty($request->judul)) {
@@ -697,6 +696,7 @@ class ChechsheetController extends Controller
         $data_result = array(
             'periode'   => $periode."-01",
             'IDUser'    => $data_user->id,
+            'IDKantor'    => $data_user->IDKantor,
             'week'    => $kat,
             'result1'   => $a1->skor,
             'result2'   => $a2->skor,
