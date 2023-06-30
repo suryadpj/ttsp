@@ -183,7 +183,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Monthly Sales Target Achievement (Target Operation)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <input type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                 </div>
