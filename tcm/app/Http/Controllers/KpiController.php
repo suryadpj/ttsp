@@ -891,6 +891,80 @@ class KpiController extends Controller
         }
         DB::table('datakpi')->insert($insert_data2);
 
+        //analisa setelah input berhasil
+        $a = DB::table('datakpi_result')->where('periode',$periode."-01")->where('IDUser',$data_user->id)->first();
+        $evaluation1 = $a->result1;
+        if($a->result3+$a->result5+$a->result7 >= 2)
+        {
+            $evaluation2 = "O";
+            $evaluationshow2 = 1;
+        }
+        else {
+            $evaluation2 = "X";
+            $evaluationshow2 = 0;
+        }
+        $evaluation13 = $a->result25;
+        if($a->result20+$a->result21+$a->result22 >= 2)
+        {
+            $evaluation14 = "O";
+            $evaluationshow14 = 1;
+        }
+        else {
+            $evaluation14 = "X";
+            $evaluationshow14 = 0;
+        }
+        if($a->result26+$a->result27 >= 2)
+        {
+            $evaluation16 = "O";
+            $evaluationshow16 = 1;
+        }
+        else {
+            $evaluation16 = "X";
+            $evaluationshow16 = 0;
+        }
+        if($a->result33+$a->result35+$a->result37+$a->result39 >= 3)
+        {
+            $evaluation17 = "O";
+            $evaluationshow17 = 1;
+        }
+        else {
+            $evaluation17 = "X";
+            $evaluationshow17 = 0;
+        }
+        if($a->result28+$a->result29+$a->result31 >= 2)
+        {
+            $evaluation18 = "O";
+            $evaluationshow18 = 1;
+        }
+        else {
+            $evaluation18 = "X";
+            $evaluationshow18 = 0;
+        }
+        if($a->result44+$a->result45+$a->result46 >= 2)
+        {
+            $evaluation19 = "O";
+            $evaluationshow19 = 1;
+        }
+        else {
+            $evaluation19 = "X";
+            $evaluationshow19 = 0;
+        }
+        if($a->result50+$a->result51 >= 2)
+        {
+            $evaluation25 = "O";
+            $evaluationshow25 = 1;
+        }
+        else {
+            $evaluation25 = "X";
+            $evaluationshow25 = 0;
+        }
+        $finalcat = ($evaluation1+$evaluationshow2+$a->result11+$a->result12+$a->result13+$a->result14+$a->result15+$a->result16+$a->result17+$a->result19+$a->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$a->result42+$a->result43+$evaluationshow19+$a->result47+$a->result48+$a->result49+$evaluationshow25+$a->result52)/24;
+
+        $form_data_result2 = array(
+            'kpiproses'        =>  $finalcat*100,
+        );
+        DB::table('datasummary')->where('periode',$periode."-01")->where('IDUser',$data_user->id)->update($form_data_result2);
+
         return response()->json(['success' => 'Data KPI berhasil disimpan, silahkan periksa data anda']);
     }
 

@@ -116,159 +116,37 @@
         <thead>
         <tr>
         <th>Nama Cabang</th>
+        <th>Periode</th>
         <th>KPI Resource (60%)</th>
         <th>KPI Proses (40%)</th>
         <th>Result</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($datakantor as $b)
-                @php
-                    $date = date('Y-m-')."01";
-                    $aa = DB::table('kantors')->leftjoin('users','users.IDKantor','kantors.id')->leftjoin('datachecksheet_result','datachecksheet_result.IDUser','users.id')->leftjoin('datakpi_result','datakpi_result.IDUser','users.id')->where('datachecksheet_result.periode',$date)->where('datachecksheet_result.week',0)->where('datakpi_result.periode',$date)->where('kantors.id',$b->id)->select('nama','datachecksheet_result.result as hasilnya','datakpi_result.*')->orderBy('nama','asc')->count();
-                    if($aa == 0)
-                    {
-                @endphp
-                <tr>
-                    <td>{{ $b->nama }}</td>
-                    <td>0%</td>
-                    <td>0%</td>
-                    <td>
-                        <h2><span class="badge badge-danger">Low</span></h2>
-                    </td>
-                </tr>
-                @php
-                    }
-                    else
-                    {
-                        $a = DB::table('kantors')->leftjoin('users','users.IDKantor','kantors.id')->leftjoin('datachecksheet_result','datachecksheet_result.IDUser','users.id')->leftjoin('datakpi_result','datakpi_result.IDUser','users.id')->where('datachecksheet_result.periode',$date)->where('datachecksheet_result.week',0)->where('datakpi_result.periode',$date)->where('kantors.id',$b->id)->select('nama','datachecksheet_result.result as hasilnya','datakpi_result.*')->orderBy('nama','asc')->first();
-                        if($a->hasilnya >= 85)
-                        {
-                            $catrs8 = "Well Implemented";
-                            $catrs8bg = "green";
-                        }elseif($a->hasilnya >= 70)
-                        {
-                            $catrs8 = "Medium Implemented";
-                            $catrs8bg = "yellow";
-                        }elseif($a->hasilnya < 70)
-                        {
-                            $catrs8 = "low Implemented";
-                            $catrs8bg = "red";
-                        }
-                        else {
-                            $catrs8 = "-";
-                            $catrs8bg = "-";
-                        }
-                    //hitung KPI
-                    $evaluation1 = $a->result1;
-                    if($a->result3+$a->result5+$a->result7 >= 2)
-                    {
-                        $evaluation2 = "O";
-                        $evaluationshow2 = 1;
-                    }
-                    else {
-                        $evaluation2 = "X";
-                        $evaluationshow2 = 0;
-                    }
-                    $evaluation13 = $a->result25;
-                    if($a->result20+$a->result21+$a->result22 >= 2)
-                    {
-                        $evaluation14 = "O";
-                        $evaluationshow14 = 1;
-                    }
-                    else {
-                        $evaluation14 = "X";
-                        $evaluationshow14 = 0;
-                    }
-                    if($a->result26+$a->result27 >= 2)
-                    {
-                        $evaluation16 = "O";
-                        $evaluationshow16 = 1;
-                    }
-                    else {
-                        $evaluation16 = "X";
-                        $evaluationshow16 = 0;
-                    }
-                    if($a->result33+$a->result35+$a->result37+$a->result39 >= 3)
-                    {
-                        $evaluation17 = "O";
-                        $evaluationshow17 = 1;
-                    }
-                    else {
-                        $evaluation17 = "X";
-                        $evaluationshow17 = 0;
-                    }
-                    if($a->result28+$a->result29+$a->result31 >= 2)
-                    {
-                        $evaluation18 = "O";
-                        $evaluationshow18 = 1;
-                    }
-                    else {
-                        $evaluation18 = "X";
-                        $evaluationshow18 = 0;
-                    }
-                    if($a->result44+$a->result45+$a->result46 >= 2)
-                    {
-                        $evaluation19 = "O";
-                        $evaluationshow19 = 1;
-                    }
-                    else {
-                        $evaluation19 = "X";
-                        $evaluationshow19 = 0;
-                    }
-                    if($a->result50+$a->result51 >= 2)
-                    {
-                        $evaluation25 = "O";
-                        $evaluationshow25 = 1;
-                    }
-                    else {
-                        $evaluation25 = "X";
-                        $evaluationshow25 = 0;
-                    }
-                    $finalcat = ($evaluation1+$evaluationshow2+$a->result11+$a->result12+$a->result13+$a->result14+$a->result15+$a->result16+$a->result17+$a->result19+$a->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$a->result42+$a->result43+$evaluationshow19+$a->result47+$a->result48+$a->result49+$evaluationshow25+$a->result52)/24;
-
-                    if($finalcat*100 >= 85)
-                    {
-                        $finalcats = "Well Implemented";
-                        $finalcatsbg = "green";
-                    }elseif($finalcat*100 >= 70)
-                    {
-                        $finalcats = "Medium Implemented";
-                        $finalcatsbg = "yellow";
-                    }elseif($finalcat*100 < 70)
-                    {
-                        $finalcats = "low Implemented";
-                        $finalcatsbg = "red";
-                    }
-
-                    if($a->hasilnya == "") { $a->hasilnya = 0; }
-                @endphp
-                <tr>
-                    <td>{{ $a->nama }}</td>
-                    <td>{{ $a->hasilnya }}%</td>
-                    <td>{{ $finalcat*100 }}%</td>
-                        @if($a->hasilnya >= 60 && $finalcat*100 >= 40)
-                            <td>
-                                <h2><span class="badge badge-success">High</span></h2>
-                            </td>
-                        @elseif($a->hasilnya >= 60 && $finalcat*100 < 40)
-                            <td>
-                                <h2><span class="badge badge-warning">Medium</span></h2>
-                            </td>
-                        @elseif($a->hasilnya < 60 && $finalcat*100 >= 40)
-                            <td>
-                                <h2><span class="badge badge-warning">Medium</span></h2>
-                            </td>
-                        @elseif($a->hasilnya < 60 && $finalcat*100 < 40)
-                            <td>
-                                <h2><span class="badge badge-danger">Low</span></h2>
-                            </td>
-                        @endif
-                </tr>
-                @php
-                }
-
-                @endphp
+            @foreach ($datakantor as $a)
+            <tr>
+                <td>{{ $a->nama }}</td>
+                <td>{{ $a->bulan }}</td>
+                <td>{{ $a->kpiresource }}%</td>
+                <td>{{ $a->kpiproses }}%</td>
+                    @if($a->kpiresource >= 60 && $a->kpiproses >= 40)
+                        <td>
+                            <h2><span class="badge badge-success">High</span></h2>
+                        </td>
+                    @elseif($a->kpiresource >= 60 && $a->kpiproses < 40)
+                        <td>
+                            <h2><span class="badge badge-warning">Medium</span></h2>
+                        </td>
+                    @elseif($a->kpiresource < 60 && $a->kpiproses >= 40)
+                        <td>
+                            <h2><span class="badge badge-warning">Medium</span></h2>
+                        </td>
+                    @elseif($a->kpiresource < 60 && $a->kpiproses < 40)
+                        <td>
+                            <h2><span class="badge badge-danger">Low</span></h2>
+                        </td>
+                    @endif
+            </tr>
             @endforeach
         </tbody>
         </table>
@@ -292,7 +170,6 @@
 @section('js')
 <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
 <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
-<script src="vendor/apexjs/apexcharts.min.js"></script>
     <script>
           $(function () {
             $("#example1").DataTable({
@@ -314,9 +191,9 @@
         var mode='index'
         var intersect=true
         var $salesChart=$('#sales-chart')
-        var salesChart=new Chart($salesChart,{type:'bar',data:{labels:['JAN','FEB','MAR','APR','MEI','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],datasets:[{backgroundColor:'#007bff',borderColor:'#007bff',data:[{{ $chartinput->jan.",".$chartinput->jan.",".$chartinput->feb.",".$chartinput->mar.",".$chartinput->apr.",".$chartinput->mei.",".$chartinput->jun.",".$chartinput->jul.",".$chartinput->sep.",".$chartinput->okt.",".$chartinput->nov.",".$chartinput->des }}]}]},options:{maintainAspectRatio:false,tooltips:{mode:mode,intersect:intersect},hover:{mode:mode,intersect:intersect},legend:{display:false},scales:{yAxes:[{gridLines:{display:true,lineWidth:'4px',color:'rgba(0, 0, 0, .2)',zeroLineColor:'transparent'},ticks:$.extend({beginAtZero:true,callback:function(value){if(value>=1000){value/=1000
+        var salesChart=new Chart($salesChart,{type:'bar',data:{labels:['JUN','JUL','AUG','SEP','OCT','NOV','DEC'],datasets:[{backgroundColor:'#007bff',borderColor:'#007bff',data:[1000,2000,3000,2500,2700,2500,3000]}]},options:{maintainAspectRatio:false,tooltips:{mode:mode,intersect:intersect},hover:{mode:mode,intersect:intersect},legend:{display:false},scales:{yAxes:[{gridLines:{display:true,lineWidth:'4px',color:'rgba(0, 0, 0, .2)',zeroLineColor:'transparent'},ticks:$.extend({beginAtZero:true,callback:function(value){if(value>=1000){value/=1000
         value+='k'}
-        return value}},ticksStyle)}],xAxes:[{display:true,gridLines:{display:false},ticks:ticksStyle}]}}})
+        return '$'+value}},ticksStyle)}],xAxes:[{display:true,gridLines:{display:false},ticks:ticksStyle}]}}})
         var $visitorsChart=$('#visitors-chart')
         var visitorsChart=new Chart($visitorsChart,{data:{labels:['18th','20th','22nd','24th','26th','28th','30th'],datasets:[{type:'line',data:[100,120,170,167,180,177,160],backgroundColor:'transparent',borderColor:'#007bff',pointBorderColor:'#007bff',pointBackgroundColor:'#007bff',fill:false},{type:'line',data:[60,80,70,67,80,77,100],backgroundColor:'tansparent',borderColor:'#ced4da',pointBorderColor:'#ced4da',pointBackgroundColor:'#ced4da',fill:false}]},options:{maintainAspectRatio:false,tooltips:{mode:mode,intersect:intersect},hover:{mode:mode,intersect:intersect},legend:{display:false},scales:{yAxes:[{gridLines:{display:true,lineWidth:'4px',color:'rgba(0, 0, 0, .2)',zeroLineColor:'transparent'},ticks:$.extend({beginAtZero:true,suggestedMax:200},ticksStyle)}],xAxes:[{display:true,gridLines:{display:false},ticks:ticksStyle}]}}})});
         var randomScalingFactor = function() {
