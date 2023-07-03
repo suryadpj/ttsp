@@ -33,8 +33,10 @@ class HomeController extends Controller
         $kantor = DB::table('kantors')->orderBy('nama','asc')->count();
         $hitunginput = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$date)->select(DB::raw('count(users.IDKantor) as input'))->first();
 
-        $kantor_data = DB::table('kantors')->leftjoin('users','users.IDKantor','kantors.id')->leftjoin('datachecksheet_result','datachecksheet_result.IDUser','users.id')->leftjoin('datakpi_result','datakpi_result.IDUser','users.id')->where('datachecksheet_result.periode',$date)->where('datachecksheet_result.week',0)->where('datakpi_result.periode',$date)->select('nama','datachecksheet_result.result as hasilnya','datakpi_result.*')->orderBy('nama','asc')->get();
-        return view('home',['kantor' => $kantor,'datakantor' => $kantor_data,'hitunginput' => $hitunginput]);
+        $kantor_data = DB::table('kantors')->orderBy('nama','asc')->get();
+        $chart_input = DB::table('datakpi_result as a')->whereyear('periode',date('Y'))->where('deleted',0)->select(DB::raw('SUM(IF(a.periode="2023-01-01",1,0)) AS jan'),DB::raw('SUM(IF(a.periode="2023-02-01",1,0)) AS feb'),DB::raw('SUM(IF(a.periode="2023-03-01",1,0)) AS mar'),DB::raw('SUM(IF(a.periode="2023-04-01",1,0)) AS apr'),DB::raw('SUM(IF(a.periode="2023-05-01",1,0)) AS mei'),DB::raw('SUM(IF(a.periode="2023-06-01",1,0)) AS jun'),DB::raw('SUM(IF(a.periode="2023-07-01",1,0)) AS jul'),DB::raw('SUM(IF(a.periode="2023-08-01",1,0)) AS aug'),DB::raw('SUM(IF(a.periode="2023-09-01",1,0)) AS sep'),DB::raw('SUM(IF(a.periode="2023-10-01",1,0)) AS okt'),DB::raw('SUM(IF(a.periode="2023-11-01",1,0)) AS nov'),DB::raw('SUM(IF(a.periode="2023-12-01",1,0)) AS des'))->first();
+        // $kantor_data = DB::table('kantors')->leftjoin('users','users.IDKantor','kantors.id')->leftjoin('datachecksheet_result','datachecksheet_result.IDUser','users.id')->leftjoin('datakpi_result','datakpi_result.IDUser','users.id')->where('datachecksheet_result.periode',$date)->where('datachecksheet_result.week',0)->where('datakpi_result.periode',$date)->select('nama','datachecksheet_result.result as hasilnya','datakpi_result.*')->orderBy('nama','asc')->get();
+        return view('home',['kantor' => $kantor,'datakantor' => $kantor_data,'hitunginput' => $hitunginput,'chartinput' => $chart_input]);
     }
     public function homesales()
     {
