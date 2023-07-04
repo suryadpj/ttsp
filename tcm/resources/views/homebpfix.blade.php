@@ -283,10 +283,10 @@
           enabled: true,
         },
         series: [{
-            name: 'Total Revenue per Unit (Veh + TCO) (mio)',
+            name: 'Total Revenue per Unit (Parts + Service) (mio)',
             data: [{{ $data3->c2a1.",".$data3->c2a2.",".$data3->c2a3.",".$data3->c2a4.",".$data3->c2a5.",".$data3->c2a6.",".$data3->c2a7.",".$data3->c2a8.",".$data3->c2a9.",".$data3->c2a10.",".$data3->c2a11.",".$data3->c2a12.",".$data3->c2a12 }}]
         },{
-            name: 'Total Revenue Amount (Veh + TCO) (mio)',
+            name: 'Total Revenue Amount (Parts + Service) (mio)',
             data: [{{ $data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b11.",".$data4->c2b12.",".$data4->c2b12 }}]
         }],
         xaxis: {

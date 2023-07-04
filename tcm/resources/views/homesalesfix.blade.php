@@ -299,7 +299,7 @@
     }
     var options2 = {
         chart: {
-            type: 'bar',
+            type: 'line',
             width: "100%",
             height: "200%",
         },
@@ -327,7 +327,7 @@
     }
     var options3 = {
         chart: {
-            type: 'bar',
+            type: 'line',
             width: "100%",
             height: "200%",
             stacked: true,

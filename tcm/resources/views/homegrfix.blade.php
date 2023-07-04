@@ -130,6 +130,10 @@
             </div>
             <div class="card-body">
                 <div id="chart1"></div>
+                <br>
+                <hr>
+                <br>
+                <div id="chart1a"></div>
                 {{-- <canvas id="myChart" width="200" height="50"></canvas> --}}
             </div>
         </div>
@@ -296,6 +300,34 @@
             categories: ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sep", "Okt", "Nov", "Des"]
         }
     }
+    var options1a = {
+        chart: {
+            type: 'line',
+            width: "100%",
+            height: "75%",
+        },
+        responsive: [{
+            breakpoint: undefined,
+            options: {},
+        }],
+        dataLabels: {
+          enabled: true,
+        },
+        title: {
+          text: 'Service Lead Time',
+          align: 'center'
+        },
+        series: [{
+            name: 'Target',
+            data: [{{ $kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42.",".$kpires->target42 }}]
+        },{
+            name: 'KPI Skor',
+            data: [{{ $data17->c41.",".$data17->c42.",".$data17->c43.",".$data17->c44.",".$data17->c45.",".$data17->c46.",".$data17->c47.",".$data17->c48.",".$data17->c49.",".$data17->c410.",".$data17->c411.",".$data17->c412 }}]
+        }],
+        xaxis: {
+            categories: ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sep", "Okt", "Nov", "Des"]
+        }
+    }
     var options2 = {
         chart: {
             type: 'line',
@@ -314,10 +346,10 @@
           enabled: true,
         },
         series: [{
-            name: 'Total Revenue per Unit (Veh + TCO) (mio)',
+            name: 'Total Revenue per Unit (Parts + Service) (mio)',
             data: [{{ $data3->c2a1.",".$data3->c2a2.",".$data3->c2a3.",".$data3->c2a4.",".$data3->c2a5.",".$data3->c2a6.",".$data3->c2a7.",".$data3->c2a8.",".$data3->c2a9.",".$data3->c2a10.",".$data3->c2a11.",".$data3->c2a12.",".$data3->c2a12 }}]
         },{
-            name: 'Total Revenue Amount (Veh + TCO) (mio)',
+            name: 'Total Revenue Amount (Parts + Service) (mio)',
             data: [{{ $data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b11.",".$data4->c2b12.",".$data4->c2b12 }}]
         }],
         xaxis: {
@@ -349,10 +381,10 @@
           enabled: true,
         },
         series: [{
-            name: 'Total Revenue per Unit (Veh + TCO) (mio)',
+            name: 'Total Revenue per Unit (Parts + Service) (mio)',
             data: [{{ $data3->c2a1.",".$data3->c2a2.",".$data3->c2a3.",".$data3->c2a4.",".$data3->c2a5.",".$data3->c2a6.",".$data3->c2a7.",".$data3->c2a8.",".$data3->c2a9.",".$data3->c2a10.",".$data3->c2a11.",".$data3->c2a12.",".$data3->c2a12 }}]
         },{
-            name: 'Total Revenue Amount (Veh + TCO) (mio)',
+            name: 'Total Revenue Amount (Parts + Service) (mio)',
             data: [{{ $data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b1.",".$data4->c2b11.",".$data4->c2b12.",".$data4->c2b12 }}]
         }],
         xaxis: {
@@ -647,6 +679,7 @@
     }
 
     var chart = new ApexCharts(document.querySelector("#chart1"), options);
+    var chart1a = new ApexCharts(document.querySelector("#chart1a"), options1a);
     var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
     var chart3 = new ApexCharts(document.querySelector("#chart3"), options3);
     var chart4 = new ApexCharts(document.querySelector("#chart4"), options4);
@@ -664,6 +697,7 @@
     var chart16 = new ApexCharts(document.querySelector("#chart16"), options16);
 
     chart.render();
+    chart1a.render();
     chart2.render();
     chart3.render();
     chart4.render();

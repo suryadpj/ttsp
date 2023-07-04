@@ -48,6 +48,10 @@
     </div>
 </div>
 </form>
+<form role="form" id="formdt" method='post' enctype="multipart/form-data">
+{{ csrf_field() }}
+<input type="hidden" name="periode" value="{{ $fperiode }}">
+<input type="hidden" name="kantor" value="{{ $fkantor }}">
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -124,14 +128,14 @@
                                 <td align="center">{{ $resultkpi->target1 }}%</td>
                                 <td align="center">@if($resultkpi->result1 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                                 <td align="center" rowspan="18">{!! $catr1 !!}</td>
-                                <td rowspan="18"><textarea height="500" name="issue1"></textarea></td>
-                                <td rowspan="18"><textarea name="action1"></textarea></td>
+                                <td rowspan="18"><textarea height="500" name="issue1">{{ $summary->issue ?? '' }}</textarea></td>
+                                <td rowspan="18"><textarea name="action1">{{ $summary->action1 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                                 <td align="left" rowspan="7">2</td>
                                 <td rowspan="7">Gross Profit/Unit/Ratio (vehicle/TCO/F&I Commission)</td>
                                 <td>a. GP Total Sales (per unit)(mio)</td>
-                                <td align="center">{{ $resultkpi->kpi2 }}%</td>
+                                <td align="center">{{ $resultkpi->kpi2 }}</td>
                                 <td align="center">-</td>
                                 <td align="center" rowspan="7">{!! $evaluation2 !!}</td>
                             </tr>
@@ -142,7 +146,7 @@
                             </tr>
                             <tr>
                                 <td>c. GP Vehicle (per unit)(mio)</td>
-                                <td align="center">{{ $resultkpi->kpi4 }}%</td>
+                                <td align="center">{{ $resultkpi->kpi4 }}</td>
                                 <td align="center">-</td>
                             </tr>
                             <tr>
@@ -152,7 +156,7 @@
                             </tr>
                             <tr>
                                 <td>e. GP TCO (per unit)(mio)</td>
-                                <td align="center">{{ $resultkpi->kpi6 }}%</td>
+                                <td align="center">{{ $resultkpi->kpi6 }}</td>
                                 <td align="center">-</td>
                             </tr>
                             <tr>
@@ -162,7 +166,7 @@
                             </tr>
                             <tr>
                                 <td>g. F&I Commision (per unit)(mio)</td>
-                                <td align="center">{{ $resultkpi->kpi8 }}%</td>
+                                <td align="center">{{ $resultkpi->kpi8 }}</td>
                                 <td align="center">-</td>
                             </tr>
                             <tr>
@@ -218,8 +222,8 @@
                              <td align="center">9</td>
                              <td colspan=2 >AO Report
                              Establishment</td>
-                             <td align="center">{{ $resultkpi->kpi17 }}%</td>
-                             <td align="center">{{ $resultkpi->target17 }}%</td>
+                             <td align="center">{{ $resultkpi->kpi17 }}</td>
+                             <td align="center">{{ $resultkpi->target17 }}</td>
                              <td align="center">@if($resultkpi->result17 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
                             <tr>
@@ -298,8 +302,8 @@
                              <td align="center">{{ $resultkpi->target25 }}%</td>
                              <td align="center">@if($resultkpi->result25 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center" rowspan=6 >{!! $catr2 !!}</td>
-                             <td rowspan=6 ><textarea name="issue2"></textarea></td>
-                             <td rowspan=6><textarea name="action2"></textarea></td>
+                             <td rowspan=6 ><textarea name="issue2">{{ $summary->issue2  ?? ''}}</textarea></td>
+                             <td rowspan=6><textarea name="action2">{{ $summary->action2 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                              <td rowspan=5>B.2. Post
@@ -418,8 +422,8 @@
                              <td align="center">{{ $resultkpi->target26 }}%</td>
                              <td align="center" rowspan=2>{!! $evaluation16 !!}</td>
                              <td align="center" rowspan=22>{!! $catr3 !!}</td>
-                             <td rowspan=22><textarea name="issue3"></textarea></td>
-                             <td rowspan=22><textarea name="action3"></textarea></td>
+                             <td rowspan=22><textarea name="issue3">{{ $summary->issue3  ?? ''}}</textarea></td>
+                             <td rowspan=22><textarea name="action3">{{ $summary->action3 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                              <td>b. Net Promoter Score (NPS) Aftersales BP</td>
@@ -430,7 +434,7 @@
                              <td rowspan=8>17</td>
                              <td rowspan=8>Gross Profit/Unit/Ratio (service, parts)</td>
                              <td >a. GP GR Service per unit(mio)</td>
-                             <td align="center">{{ $resultkpi->kpi32 }}%</td>
+                             <td align="center">{{ $resultkpi->kpi32 }}</td>
                              <td align="center">-</td>
                              <td align="center" rowspan=8>{!! $evaluation17 !!}</td>
                             </tr>
@@ -441,7 +445,7 @@
                             </tr>
                             <tr>
                              <td>c. GP GR Parts per unit(mio)</td>
-                             <td align="center">{{ $resultkpi->kpi34 }}%</td>
+                             <td align="center">{{ $resultkpi->kpi34 }}</td>
                              <td align="center">-</td>
                             </tr>
                             <tr>
@@ -451,7 +455,7 @@
                             </tr>
                             <tr>
                              <td>e. GP BP Service per unit  (mio)</td>
-                             <td align="center">{{ $resultkpi->kpi36 }}%</td>
+                             <td align="center">{{ $resultkpi->kpi36 }}</td>
                              <td align="center">-</td>
                             </tr>
                             <tr>
@@ -461,7 +465,7 @@
                             </tr>
                             <tr>
                              <td>g. GP BP Parts per unit  (mio)</td>
-                             <td align="center">{{ $resultkpi->kpi38 }}%</td>
+                             <td align="center">{{ $resultkpi->kpi38 }}</td>
                              <td align="center">-</td>
                             </tr>
                             <tr>
@@ -599,8 +603,8 @@
                              <td align="center">{{ $resultkpi->target47 }}%</td>
                              <td align="center">@if($resultkpi->result47 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center" rowspan=5>{!! $catr4 !!}</td>
-                             <td rowspan=5><textarea name="issue4"></textarea></td>
-                             <td rowspan=5><textarea name="action4"></textarea></td>
+                             <td rowspan=5><textarea name="issue4">{{ $summary->issue4  ?? ''}}</textarea></td>
+                             <td rowspan=5><textarea name="action4">{{ $summary->action4 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                              <td >D.1. Reminder Process</td>
@@ -666,8 +670,8 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                              <td rowspan=3>&nbsp;</td>
-                             <td rowspan=3 ><textarea name="issue5"></textarea></td>
-                             <td rowspan=3><textarea name="issue6"></textarea></td>
+                             <td rowspan=3 ><textarea name="issue5">{{ $summary->issue5  ?? ''}}</textarea></td>
+                             <td rowspan=3><textarea name="action5">{{ $summary->action5 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                              <td>&nbsp;</td>
@@ -715,8 +719,8 @@
                              <td align="center">{{ $resultkpi->target49 }}%</td>
                              <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>Well Implemented</span> @else <span class='badge badge-danger'>Low implemented</span> @endif</td>
-                             <td rowspan=3><textarea></textarea></td>
-                             <td rowspan=3><textarea></textarea></td>
+                             <td rowspan=3><textarea name="issue6">{{ $summary->issue6  ?? ''}}</textarea></td>
+                             <td rowspan=3><textarea name="action6">{{ $summary->action6 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                              <td >F.2. Trade In Operation</td>
@@ -793,8 +797,8 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                              <td align="center">{!! $catr7 !!}</td>
-                             <td rowspan=5><textarea></textarea></td>
-                             <td rowspan=5><textarea></textarea></td>
+                             <td rowspan=5><textarea name="issue7">{{ $summary->issue7  ?? ''}}</textarea></td>
+                             <td rowspan=5><textarea name="action7">{{ $summary->action7 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
                              <td>22</td>
@@ -863,8 +867,6 @@
                              <td align="center">{!! $catrs8 !!}</td>
                              <td colspan=6>Final Grade</td>
                              <td align="center">{!! $finalcats !!}</td>
-                             <td><textarea></textarea></td>
-                             <td><textarea></textarea></td>
                             </tr>
                         </tbody>
                     </table>
@@ -875,52 +877,15 @@
                     </div>
                     <br>
 
-                    {{-- <table id="user_table" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">Aktivitas</th>
-                                <th colspan="4">Checksheet TCM</th>
-                                <th colspan="5">Parameter Result</th>
-                                <th rowspan="2">Issue</th>
-                                <th rowspan="2">Action Plan</th>
-                                <th rowspan="2">Action</th>
-                            </tr>
-                            <tr>
-                                <th>Item to be Genba</th>
-                                <th>Item Check</th>
-                                <th>Done</th>
-                                <th>Category</th>
-                                <th></th>
-                                <th>Actual</th>
-                                <th>Target</th>
-                                <th>Evaluation</th>
-                                <th>Category</th>
-                            </tr>
-                            <tr>
-                                <td rowspan="14">A. PSP Sales</td>
-                                <td rowspan="8">-</td>
-                                <td rowspan="8">-</td>
-                                <td rowspan="8">-</td>
-                                <td rowspan="18"><span class='badge badge-danger'>Low Implemented</span></td>
-                                <td>1</td>
-                                <td>Net Promoter Score (NPS) Sales</td>
-                                <td>90%</td>
-                                <td>90%</td>
-                                <td>O</td>
-                                <td rowspan="18">Low Implemen</td>
-                                <td rowspan="18"><textarea></textarea></td>
-                                <td rowspan="18"><textarea></textarea></td>
-                            </tr>
-                        </thead>
-                    </table> --}}
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" id="simpan" class="btn btn-primary">Simpan Data</button>
+                <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
             </div>
         </div>
     </div>
 </div>
+</form>
 @stop
 
 
@@ -934,106 +899,101 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    var oTable = $('#user_table').DataTable({
-        processing: true,
-        lengthMenu : [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        dom: '<"html5buttons">Brtipl',
-        "order": [[ 1, "desc" ]],
-        buttons : [
-                    {extend: 'pdf', title:'Data KPI', },
-                    {extend: 'excel', title: 'Data KPI', },
-                    {extend:'print',title: 'Data KPI'},
-        ],
-    });
-
-
-    $('#sample_form').on('submit', function(e) {
-        oTable.draw();
-        e.preventDefault();
+        $('#formdt').on('submit', function(event){
+            event.preventDefault();
+            console.log('submitkpimanual')
             $.ajax({
+                url:"{{ route('summaryreport.store') }}",
+                method:"POST",
+                data: new FormData(this),
+                contentType: false,
+                cache:false,
+                processData: false,
+                dataType:"json",
                 beforeSend:function(){
-                    $('#filter_button').html('<i disable class="fa fa-spinner fa-spin"></i>').attr('disabled', true);
+                    $('#action_button').html('<i disable class="fa fa-spinner fa-spin"></i>').attr('disabled', true);
                 },
-                success:function(){
-                        $('#filter_button').html('<i class="fas fa-search"></i>').attr('disabled', false);
+                success:function(data)
+                {
+                    var html = '';
+                    if(data.errors)
+                    {
+                        html = '';
+                        for(var count = 0; count < data.errors.length; count++)
+                        {
+                            html += data.errors[count] + '<br>';
+                        }
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            html: html
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
                     }
-                });
-    });
-    $('#reset_filter_button').click(function(){
-        $('#sample_form')[0].reset();
-        $('.select2').val(null).trigger('change');
-        oTable.draw();
-        $.ajax({
-            beforeSend:function(){
-                $('#reset_filter_button').html('<i class="fas fa-undo"></i>').attr('disabled', true);
-            },
-            success:function(){
-                    $('#reset_filter_button').html('<i class="fas fa-undo"></i>').attr('disabled', false);
+                    if(data.ektension)
+                    {
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            text: 'Ekstensi file yang diizinkan hanya PDF, JPG, PNG, DOCX'
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.duplicate)
+                    {
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            text: data.duplicate
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.success)
+                    {
+                        // $('#formdt')[0].reset();
+                        // $('.select3').val(null).trigger('change');
+                        // $('.select3').select2();
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                        swal.fire({
+                            icon: 'success',
+                            title: 'Data berhasil disimpan. Terima kasih',
+                            text: data.success
+                        })
+
+                        $.ajax({
+                            url:"badgedraft",
+                            dataType:"json",
+                            success:function(html)
+                            {
+                                $('#badgedraft').html(html.data)
+                            if(html.data == 0)
+                            {
+                                $('#badgedrafticon').hide();
+                            }
+                            else
+                            {
+                                $('#badgedrafticon').show();
+                            }
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ': ' + xhr.statusText
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Data gagal disimpan',
+                        text: errorMessage
+                    });
+                    console.log(xhr);
+                    $('#action_button').html('Save changes').attr('disabled', false);
                 }
-            });
-    });
-
-    //data catatan
-    $('#create_record').click(function(){
-        $('#sample_form2')[0].reset();
-        $('.select2').val(null).trigger('change');
-        $('.select2').select2();
-        $('#lampiran').html('');
-        // $('#cari').val(null).trigger('change');
-        // $('#area').val(null).trigger('change');
-        $('.modal-title').text("Data Cost Baru");
-        $('#action_button').val("Add");
-        $('#action').val("Add");
-        $('#modal_catatan').modal('show');
-    });
-
-    $(document).on('click', '.delete', function (e) {
-        e.preventDefault();
-        var idd = $(this).data('id');
-        Swal.fire({
-            title: "Apakah anda yakin akan menghapus KPI ini ?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: 'Ya',
-            cancelButtonText: 'Tidak',
-            }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                var id = $(this).attr('id');
-                $.ajax({
-                    type: "DELETE",
-                    url: "formkpi/"+id,
-                    dataType: 'JSON',
-                    data:{
-                        'id': id,
-                        '_token': '{{ csrf_token() }}',
-                    },
-                    success: function (data) {
-                        oTable.draw();
-                        Swal.fire('Data berhasil dihapus', '', 'success')
-                        console.log(id);
-                        document.getElementById("lampiran" + id).remove();
-                    },
-                    error: function (xhr) {
-                        console.log(xhr.responseText);
-                    }
-                });
-            }
-        })
-    });
-            $('#simpan').click(function(){
-                console.log('sukses')
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sukses',
-                    text: 'Data berhasil disimpan',
-                })
-            });
-
+            })
+        });
 });
 </script>
 @stop
 
 @section('footer')
-this
+Tunas Toyota Head Office &copy; 2023
 @stop
