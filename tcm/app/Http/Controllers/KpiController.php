@@ -274,7 +274,7 @@ class KpiController extends Controller
                 })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                        // $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
+                        $button .= '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button> &nbsp;';
                         $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     return $button;})
                 ->rawColumns(['action'])
@@ -528,7 +528,7 @@ class KpiController extends Controller
                 })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                    // $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
                     $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     return $button;})
                 ->rawColumns(['action'])
@@ -976,7 +976,8 @@ class KpiController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = DB::table('datakpi_result')->where('id',$id)->first();
+        return response()->json(['data' => $data]);
     }
 
     /**
