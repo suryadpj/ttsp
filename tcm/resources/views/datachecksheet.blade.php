@@ -106,12 +106,38 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="preview">
+    <div class="modal-dialog modal-xxl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Preview Checksheet</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="datachecksheet"></div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
 
 
 @section('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<style>
+    @media (min-width: 768px) {
+  .modal-xxl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+</style>
 @stop
 
 @section('js')
@@ -271,6 +297,22 @@ $(document).ready(function(){
                         console.log(xhr.responseText);
                     }
                 });
+            }
+        })
+    });
+
+    $(document).on('click', '.edit', function(){
+        var id = $(this).attr('id');
+        $('#preview').modal('show');
+        console.log(id)
+        $.ajax({
+            url:"checksheet/"+id,
+            dataType:"json",
+            success:function(html)
+            {
+               const isilampiran = [];
+               html.forEach( x => isilampiran.push('<div class="form-group row"><div class="col-sm-9">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-3">' + x.nilai + '</div></div><hr>'))
+               $('#datachecksheet').html(isilampiran)
             }
         })
     });

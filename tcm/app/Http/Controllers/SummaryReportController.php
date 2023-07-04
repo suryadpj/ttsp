@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Validator;
 use DataTables;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SummaryReportController extends Controller
 {

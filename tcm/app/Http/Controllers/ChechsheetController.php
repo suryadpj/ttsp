@@ -39,8 +39,8 @@ class ChechsheetController extends Controller
                 })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                        // $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
-                        $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
+                    $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     return $button;})
                     ->editColumn('grade1', function($data)
                     {
@@ -155,8 +155,8 @@ class ChechsheetController extends Controller
                 })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                    // $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
-                    $button .= '<button type="button" name="delete" id="'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
+                    $button .= '&nbsp; <button type="button" name="delete" id="'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     return $button;})
                 ->editColumn('grade1', function($data)
                 {
@@ -754,7 +754,9 @@ class ChechsheetController extends Controller
      */
     public function show($id)
     {
-        //
+        $split = explode('_',$id);
+        $data = DB::table('fields')->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')->where('periode',$split[0])->where('IDKantor',$split[1])->select('fields.*',DB::raw('if(datachecksheet.nilai=1,"Sudah Dilakukan",IF(datachecksheet.nilai=2,"Tidak Dilakukan","-")) as nilai'))->get();
+        return response()->json($data);
     }
 
     /**
