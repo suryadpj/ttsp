@@ -191,9 +191,9 @@
         var mode='index'
         var intersect=true
         var $salesChart=$('#sales-chart')
-        var salesChart=new Chart($salesChart,{type:'bar',data:{labels:['JUN','JUL','AUG','SEP','OCT','NOV','DEC'],datasets:[{backgroundColor:'#007bff',borderColor:'#007bff',data:[1000,2000,3000,2500,2700,2500,3000]}]},options:{maintainAspectRatio:false,tooltips:{mode:mode,intersect:intersect},hover:{mode:mode,intersect:intersect},legend:{display:false},scales:{yAxes:[{gridLines:{display:true,lineWidth:'4px',color:'rgba(0, 0, 0, .2)',zeroLineColor:'transparent'},ticks:$.extend({beginAtZero:true,callback:function(value){if(value>=1000){value/=1000
-        value+='k'}
-        return '$'+value}},ticksStyle)}],xAxes:[{display:true,gridLines:{display:false},ticks:ticksStyle}]}}})
+        var salesChart=new Chart($salesChart,{type:'bar',data:{labels:['JAN','FEB','MAR','APR','MEY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],datasets:[{backgroundColor:'#007bff',borderColor:'#007bff',data:[{{ $chartinput->jan.",".$chartinput->feb.",".$chartinput->mar.",".$chartinput->apr.",".$chartinput->mei.",".$chartinput->jun.",".$chartinput->jul.",".$chartinput->aug.",".$chartinput->sep.",".$chartinput->okt.",".$chartinput->nov.",".$chartinput->des }}]}]},options:{maintainAspectRatio:false,tooltips:{mode:mode,intersect:intersect},hover:{mode:mode,intersect:intersect},legend:{display:false},scales:{yAxes:[{gridLines:{display:true,lineWidth:'4px',color:'rgba(0, 0, 0, .2)',zeroLineColor:'transparent'},ticks:$.extend({beginAtZero:true,callback:function(value){if(value>=1000){value/=1000
+        }
+        return value+'%'}},ticksStyle)}],xAxes:[{display:true,gridLines:{display:false},ticks:ticksStyle}]}}})
         var $visitorsChart=$('#visitors-chart')
         var visitorsChart=new Chart($visitorsChart,{data:{labels:['18th','20th','22nd','24th','26th','28th','30th'],datasets:[{type:'line',data:[100,120,170,167,180,177,160],backgroundColor:'transparent',borderColor:'#007bff',pointBorderColor:'#007bff',pointBackgroundColor:'#007bff',fill:false},{type:'line',data:[60,80,70,67,80,77,100],backgroundColor:'tansparent',borderColor:'#ced4da',pointBorderColor:'#ced4da',pointBackgroundColor:'#ced4da',fill:false}]},options:{maintainAspectRatio:false,tooltips:{mode:mode,intersect:intersect},hover:{mode:mode,intersect:intersect},legend:{display:false},scales:{yAxes:[{gridLines:{display:true,lineWidth:'4px',color:'rgba(0, 0, 0, .2)',zeroLineColor:'transparent'},ticks:$.extend({beginAtZero:true,suggestedMax:200},ticksStyle)}],xAxes:[{display:true,gridLines:{display:false},ticks:ticksStyle}]}}})});
         var randomScalingFactor = function() {
@@ -218,15 +218,22 @@ var value = randomValue(data);
 var config = {
   type: 'gauge',
   data: {
-    //labels: ['Success', 'Warning', 'Warning', 'Error'],
+    labels: ['Low', 'Medium', 'High'],
     datasets: [{
-      data: data,
-      value: value,
+      data: [70,80,100],
+      value: [75],
       backgroundColor: ['red', 'yellow', 'green'],
       borderWidth: 2
     }]
   },
   options: {
+    legend: {
+      display: true,
+      position: "bottom",
+      labels: {
+        generateLabels: {}
+      }
+    },
     responsive: true,
     title: {
       display: true,
@@ -258,13 +265,5 @@ window.onload = function() {
   window.myGauge = new Chart(ctx, config);
 };
 
-document.getElementById('randomizeData').addEventListener('click', function() {
-  config.data.datasets.forEach(function(dataset) {
-    dataset.data = randomData();
-    dataset.value = randomValue(dataset.data);
-  });
-
-  window.myGauge.update();
-});
     </script>
 @stop
