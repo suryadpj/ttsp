@@ -128,7 +128,7 @@
                                 <td align="center">{{ $resultkpi->target1 }}%</td>
                                 <td align="center">@if($resultkpi->result1 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                                 <td align="center" rowspan="18">{!! $catr1 !!}</td>
-                                <td rowspan="18"><textarea height="500" name="issue1">{{ $summary->issue ?? '' }}</textarea></td>
+                                <td rowspan="18"><textarea height="500" name="issue1">{{ $summary->issue1 ?? '' }}</textarea></td>
                                 <td rowspan="18"><textarea name="action1">{{ $summary->action1 ?? '' }}</textarea></td>
                             </tr>
                             <tr>
