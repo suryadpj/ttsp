@@ -128,7 +128,7 @@
                 <td>{{ $a->nama }}</td>
                 <td>{{ $a->bulan }}</td>
                 <td>{{ $a->kpiresource }}%</td>
-                <td>{{ $a->kpiproses }}%</td>
+                <td>{{ round($a->kpiproses) }}%</td>
                     @if($a->kpiresource >= 60 && $a->kpiproses >= 40)
                         <td>
                             <h2><span class="badge badge-success">High</span></h2>
