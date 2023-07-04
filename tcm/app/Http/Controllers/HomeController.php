@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $date = date('Y-m-')."01";
         $kantor = DB::table('kantors')->orderBy('nama','asc')->count();
-        $hitunginput = DB::table('datakpi_result')->leftjoin('users','users.id','datakpi_result.IDUser')->where('periode',$date)->select(DB::raw('count(users.IDKantor) as input'))->first();
+        $hitunginput = DB::table('datakpi_result')->select('IDKantor',DB::raw('count(IDKantor) as input'))->GroupBy('IDKantor')->get();
 
         $kantor_data = DB::table('datasummary')->leftjoin('kantors','kantors.id','datasummary.IDKantor')->orderBy('nama','asc')->orderby('periode','asc')->select('*',DB::raw('DATE_FORMAT(periode,"%M %Y") as bulan'))->get();
         // $kantor_data = DB::table('kantors')->leftjoin('users','users.IDKantor','kantors.id')->leftjoin('datachecksheet_result','datachecksheet_result.IDUser','users.id')->leftjoin('datakpi_result','datakpi_result.IDUser','users.id')->where('datachecksheet_result.week',0)->select('nama','datachecksheet_result.result as hasilnya','datakpi_result.*')->orderBy('nama','asc')-->get();

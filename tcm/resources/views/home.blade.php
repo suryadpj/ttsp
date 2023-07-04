@@ -36,7 +36,7 @@
 
 <div class="small-box bg-success">
 <div class="inner">
-<h3>{{ $hitunginput->input }}</h3>
+<h3>{{ count($hitunginput) }}</h3>
 <p>Total Closed</p>
 </div>
 <div class="icon">
@@ -50,7 +50,7 @@
 
 <div class="small-box bg-warning">
 <div class="inner">
-<h3>@php echo $kantor-$hitunginput->input; @endphp</h3>
+<h3>@php echo $kantor-count($hitunginput); @endphp</h3>
 <p>Total Open</p>
 </div>
 <div class="icon">
