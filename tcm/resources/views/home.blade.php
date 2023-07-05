@@ -212,7 +212,7 @@ var config = {
     labels: ["Low", "Medium", "High"],
     datasets: [
       {
-        label: "Current Appeal Risk",
+        label: "TCM",
         data: data,
         value: value,
         minValue: 0,
