@@ -209,7 +209,7 @@ var value = 74;
 var config = {
   type: "gauge",
   data: {
-    labels: ["Low", "Medium", "High"],
+    labels: ["Low", "Medium", "Well"],
     datasets: [
       {
         label: "TCM",
