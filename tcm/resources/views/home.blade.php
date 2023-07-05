@@ -232,7 +232,7 @@ var config = {
     responsive: true,
     title: {
       display: true,
-      text: "Financial Risk"
+      text: "Gauge chart Parameter TCM"
     },
     layout: {
       padding: {
