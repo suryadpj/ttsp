@@ -881,7 +881,7 @@
             </div>
             <div class="card-footer">
                 <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
-                <a class="btn btn-success" onclick="exportTableToExcel('tblData')">Export to Excel</a>
+                <a class="btn btn-success" href="summaryreportexcel?periode={{ $fperiode }}&kantor={{ $fkantor }}">Export to Excel</a>
             </div>
         </div>
     </div>

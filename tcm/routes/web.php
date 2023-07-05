@@ -37,6 +37,7 @@ Route::get('checksheetdata', [App\Http\Controllers\ChechsheetController::class, 
 Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguan'])->name('checksheet.createmingguan');
 
 Route::resource('summaryreport', App\Http\Controllers\SummaryReportController::class);
+Route::get('/summaryreportexcel', [App\Http\Controllers\SummaryReportController::class, 'cetaklaporan'])->name('cetaklaporan')->middleware('auth');
 Route::get('/summaryreportsearch', [App\Http\Controllers\SummaryReportController::class, 'summaryreportsearch'])->name('summaryreportsearch')->middleware('auth');
 
 

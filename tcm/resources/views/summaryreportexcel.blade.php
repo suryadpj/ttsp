@@ -25,35 +25,35 @@
                                 $evaluation1 = $resultkpi->result1;
                                 if($resultkpi->result3+$resultkpi->result5+$resultkpi->result7 >= 2)
                                 {
-                                    $evaluation2 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation2 = "O";
                                     $evaluationshow2 = 1;
                                 }
                                 else {
-                                    $evaluation2 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation2 = "X";
                                     $evaluationshow2 = 0;
                                 }
                                 $cat1 =($evaluation1+$evaluationshow2+$resultkpi->result11+$resultkpi->result12+$resultkpi->result13+$resultkpi->result14+$resultkpi->result15+$resultkpi->result16+$resultkpi->result17+$resultkpi->result19+$resultkpi->result49)/12;
                                 if($cat1*100 >= 85)
                                 {
-                                    $catr1 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catr1 = "Well Implemented";
                                 }elseif($cat1*100 >= 70)
                                 {
-                                    $catr1 = "<span class='badge badge-warning'><span class='badge badge-warning'>Medium Implemented</span></span>";
+                                    $catr1 = "Medium Implemented";
                                 }elseif($cat1*100 < 70)
                                 {
-                                    $catr1 = "<span class='badge badge-danger'><span class='badge badge-danger'>Low Implemented</span></span>";
+                                    $catr1 = "Low Implemented";
                                 }
                                 if($resultcheck->grade1 >= 85)
                                 {
-                                    $catrs1 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs1 = "Well Implemented";
                                     $catrs1bg = "green";
                                 }elseif($resultcheck->grade1 >= 70)
                                 {
-                                    $catrs1 = "<span class='badge badge-warning'><span class='badge badge-warning'>Medium Implemented</span></span>";
+                                    $catrs1 = "Medium Implemented";
                                     $catrs1bg = "yellow";
                                 }elseif($resultcheck->grade1 < 70)
                                 {
-                                    $catrs1 = "<span class='badge badge-danger'><span class='badge badge-danger'>Low Implemented</span></span>";
+                                    $catrs1 = "Low Implemented";
                                     $catrs1bg = "red";
                                 }
 
@@ -68,7 +68,7 @@
                                 <td colspan="2">Net promoter Score (NPS) Sales</td>
                                 <td align="center">{{ $resultkpi->kpi1 }}%</td>
                                 <td align="center">{{ $resultkpi->target1 }}%</td>
-                                <td align="center">@if($resultkpi->result1 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                                <td align="center">@if($resultkpi->result1 == 1) O @else X @endif</td>
                                 <td align="center" rowspan="18">{!! $catr1 !!}</td>
                                 <td rowspan="18"><textarea height="500" name="issue1">{{ $summary->issue1 ?? '' }}</textarea></td>
                                 <td rowspan="18"><textarea name="action1">{{ $summary->action1 ?? '' }}</textarea></td>
@@ -119,42 +119,42 @@
                              <td colspan=2>M-Quote utilization ratio</td>
                              <td align="center">{{ $resultkpi->kpi15 }}%</td>
                              <td align="center">{{ $resultkpi->target15 }}%</td>
-                             <td align="center">@if($resultkpi->result15 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result15 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>4</td>
                              <td colspan=2>TCO Installation Ratio</td>
                              <td align="center">{{ $resultkpi->kpi11 }}%</td>
                              <td align="center">{{ $resultkpi->target11 }}%</td>
-                             <td align="center">@if($resultkpi->result11 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result11 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>5</td>
                              <td colspan=2>Toyota Insurance Share</td>
                              <td align="center">{{ $resultkpi->kpi12 }}%</td>
                              <td align="center">{{ $resultkpi->target12 }}%</td>
-                             <td align="center">@if($resultkpi->result12 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result12 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>6</td>
                              <td colspan=2>Credit Ratio</td>
                              <td align="center">{{ $resultkpi->kpi13 }}%</td>
                              <td align="center">{{ $resultkpi->target13 }}%</td>
-                             <td align="center">@if($resultkpi->result13 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result13 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>7</td>
                              <td colspan=2>Market Share Credit Portion (MSCP)</td>
                              <td align="center">{{ $resultkpi->kpi14 }}%</td>
                              <td align="center">{{ $resultkpi->target14 }}%</td>
-                             <td align="center">@if($resultkpi->result14 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result14 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>8</td>
                              <td colspan=2>Trade In Ratio</td>
                              <td align="center">{{ $resultkpi->kpi49 }}%</td>
                              <td align="center">{{ $resultkpi->target49 }}%</td>
-                             <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result49 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td rowspan=4>A.2. Advance Demand &amp; Supply
@@ -166,14 +166,14 @@
                              Establishment</td>
                              <td align="center">{{ $resultkpi->kpi17 }}</td>
                              <td align="center">{{ $resultkpi->target17 }}</td>
-                             <td align="center">@if($resultkpi->result17 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result17 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td align="center">10</td>
                              <td colspan=2>Monthly SPK Achievement (vs Target Rundown)</td>
                              <td align="center">{{ $resultkpi->kpi16 }}%</td>
                              <td align="center">{{ $resultkpi->target16 }}%</td>
-                             <td align="center">@if($resultkpi->result16 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result16 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>11</td>
@@ -189,44 +189,44 @@
                              Operation)</td>
                              <td align="center">{{ $resultkpi->kpi19 }}%</td>
                              <td align="center">{{ $resultkpi->target19 }}%</td>
-                             <td align="center">@if($resultkpi->result19 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result19 == 1) O @else X @endif</td>
                             </tr>
                             @php
                                 $evaluation13 = $resultkpi->result25;
                                 if($resultkpi->result20+$resultkpi->result21+$resultkpi->result22 >= 2)
                                 {
-                                    $evaluation14 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation14 = "O";
                                     $evaluationshow14 = 1;
                                 }
                                 else {
-                                    $evaluation14 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation14 = "X";
                                     $evaluationshow14 = 0;
                                 }
                                 $cat2 =($evaluation13+$evaluationshow14)/2;
                                 if($cat2*100 >= 85)
                                 {
-                                    $catr2 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catr2 = "Well Implemented";
                                     $catr2bg = "green";
                                 }elseif($cat2*100 >= 70)
                                 {
-                                    $catr2 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catr2 = "Medium Implemented";
                                     $catr2bg = "yellow";
                                 }elseif($cat2*100 < 70)
                                 {
-                                    $catr2 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catr2 = "low Implemented";
                                     $catr2bg = "red";
                                 }
                                 if($resultcheck->grade2 >= 85)
                                 {
-                                    $catrs2 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs2 = "Well Implemented";
                                     $catrs2bg = "green";
                                 }elseif($resultcheck->grade2 >= 70)
                                 {
-                                    $catrs2 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs2 = "Medium Implemented";
                                     $catrs2bg = "yellow";
                                 }elseif($resultcheck->grade2 < 70)
                                 {
-                                    $catrs2 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs2 = "low Implemented";
                                     $catrs2bg = "red";
                                 }
 
@@ -242,7 +242,7 @@
                              <td colspan=2>T-Intouch Activation Rate</td>
                              <td align="center">{{ $resultkpi->kpi25 }}%</td>
                              <td align="center">{{ $resultkpi->target25 }}%</td>
-                             <td align="center">@if($resultkpi->result25 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result25 == 1) O @else X @endif</td>
                              <td align="center" rowspan=6 >{!! $catr2 !!}</td>
                              <td rowspan=6 ><textarea name="issue2">{{ $summary->issue2  ?? ''}}</textarea></td>
                              <td rowspan=6><textarea name="action2">{{ $summary->action2 ?? '' }}</textarea></td>
@@ -285,65 +285,65 @@
                             @php
                                 if($resultkpi->result26+$resultkpi->result27 >= 2)
                                 {
-                                    $evaluation16 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation16 = "O";
                                     $evaluationshow16 = 1;
                                 }
                                 else {
-                                    $evaluation16 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation16 = "X";
                                     $evaluationshow16 = 0;
                                 }
                                 if($resultkpi->result33+$resultkpi->result35+$resultkpi->result37+$resultkpi->result39 >= 3)
                                 {
-                                    $evaluation17 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation17 = "O";
                                     $evaluationshow17 = 1;
                                 }
                                 else {
-                                    $evaluation17 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation17 = "X";
                                     $evaluationshow17 = 0;
                                 }
                                 if($resultkpi->result28+$resultkpi->result29+$resultkpi->result31 >= 2)
                                 {
-                                    $evaluation18 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation18 = "O";
                                     $evaluationshow18 = 1;
                                 }
                                 else {
-                                    $evaluation18 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation18 = "X";
                                     $evaluationshow18 = 0;
                                 }
                                 if($resultkpi->result44+$resultkpi->result45+$resultkpi->result46 >= 2)
                                 {
-                                    $evaluation19 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation19 = "O";
                                     $evaluationshow19 = 1;
                                 }
                                 else {
-                                    $evaluation19 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation19 = "X";
                                     $evaluationshow19 = 0;
                                 }
                                 $cat3 =($evaluationshow16+$evaluationshow17+$evaluationshow18+$resultkpi->result42+$resultkpi->result43+$evaluationshow19)/6;
                                 if($cat3*100 >= 85)
                                 {
-                                    $catr3 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catr3 = "Well Implemented";
                                     $catr3bg = "green";
                                 }elseif($cat3*100 >= 70)
                                 {
-                                    $catr3 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catr3 = "Medium Implemented";
                                     $catr3bg = "yellow";
                                 }elseif($cat3*100 < 70)
                                 {
-                                    $catr3 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catr3 = "low Implemented";
                                     $catr3bg = "red";
                                 }
                                 if($resultcheck->grade3 >= 85)
                                 {
-                                    $catrs3 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs3 = "Well Implemented";
                                     $catrs3bg = "green";
                                 }elseif($resultcheck->grade3 >= 70)
                                 {
-                                    $catrs3 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs3 = "Medium Implemented";
                                     $catrs3bg = "yellow";
                                 }elseif($resultcheck->grade3 < 70)
                                 {
-                                    $catrs3 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs3 = "low Implemented";
                                     $catrs3bg = "red";
                                 }
 
@@ -443,7 +443,7 @@
                              <td colspan=2>Service Lead Time</td>
                              <td align="center">{{ $resultkpi->kpi42 }}</td>
                              <td align="center">02:30:00</td>
-                             <td align="center">@if($resultkpi->result42 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result42 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td>C.1. Reminder Activity by MRA</td>
@@ -481,7 +481,7 @@
                              <td colspan=2>Up Selling ratio(TMO)</td>
                              <td align="center">{{ $resultkpi->kpi43 }}%</td>
                              <td align="center">{{ $resultkpi->target43 }}%</td>
-                             <td align="center">@if($resultkpi->result43 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result43 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td >C.3. Production Process</td>
@@ -507,28 +507,28 @@
                                 $cat4 =($resultkpi->result47+$resultkpi->result48)/2;
                                 if($cat4*100 >= 85)
                                 {
-                                    $catr4 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catr4 = "Well Implemented";
                                     $catr4bg = "green";
                                 }elseif($cat4*100 >= 70)
                                 {
-                                    $catr4 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catr4 = "Medium Implemented";
                                     $catr4bg = "yellow";
                                 }elseif($cat4*100 < 70)
                                 {
-                                    $catr4 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catr4 = "low Implemented";
                                     $catr4bg = "red";
                                 }
                                 if($resultcheck->grade4 >= 85)
                                 {
-                                    $catrs4 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs4 = "Well Implemented";
                                     $catrs4bg = "green";
                                 }elseif($resultcheck->grade4 >= 70)
                                 {
-                                    $catrs4 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs4 = "Medium Implemented";
                                     $catrs4bg = "yellow";
                                 }elseif($resultcheck->grade4 < 70)
                                 {
-                                    $catrs4 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs4 = "low Implemented";
                                     $catrs4bg = "red";
                                 }
 
@@ -543,7 +543,7 @@
                              <td colspan="2">Ontime Delivery Ratio (OTD)</td>
                              <td align="center">{{ $resultkpi->kpi47 }}%</td>
                              <td align="center">{{ $resultkpi->target47 }}%</td>
-                             <td align="center">@if($resultkpi->result47 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result47 == 1) O @else X @endif</td>
                              <td align="center" rowspan=5>{!! $catr4 !!}</td>
                              <td rowspan=5><textarea name="issue4">{{ $summary->issue4  ?? ''}}</textarea></td>
                              <td rowspan=5><textarea name="action4">{{ $summary->action4 ?? '' }}</textarea></td>
@@ -582,20 +582,20 @@
                              <td colspan="2">Return Job (RTJ)</td>
                              <td align="center">{{ $resultkpi->kpi48 }}%</td>
                              <td align="center">{{ $resultkpi->target48 }}%</td>
-                             <td align="center">@if($resultkpi->result48 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result48 == 1) O @else X @endif</td>
                             </tr>
                             @php
                                 if($resultcheck->grade5 >= 85)
                                 {
-                                    $catrs5 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs5 = "Well Implemented";
                                     $catrs5bg = "green";
                                 }elseif($resultcheck->grade5 >= 70)
                                 {
-                                    $catrs5 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs5 = "Medium Implemented";
                                     $catrs5bg = "yellow";
                                 }elseif($resultcheck->grade5 < 70)
                                 {
-                                    $catrs5 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs5 = "low Implemented";
                                     $catrs5bg = "red";
                                 }
 
@@ -635,15 +635,15 @@
                             @php
                                 if($resultcheck->grade6 >= 85)
                                 {
-                                    $catrs6 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs6 = "Well Implemented";
                                     $catrs6bg = "green";
                                 }elseif($resultcheck->grade6 >= 70)
                                 {
-                                    $catrs6 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs6 = "Medium Implemented";
                                     $catrs6bg = "yellow";
                                 }elseif($resultcheck->grade6 < 70)
                                 {
-                                    $catrs6 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs6 = "low Implemented";
                                     $catrs6bg = "red";
                                 }
 
@@ -659,8 +659,8 @@
                              <td colspan=2>Trade In Ratio</td>
                              <td align="center">{{ $resultkpi->kpi49 }}%</td>
                              <td align="center">{{ $resultkpi->target49 }}%</td>
-                             <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
-                             <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>Well Implemented</span> @else <span class='badge badge-danger'>Low implemented</span> @endif</td>
+                             <td align="center">@if($resultkpi->result49 == 1) O @else X @endif</td>
+                             <td align="center">@if($resultkpi->result49 == 1) Well Implemented @else Low implemented @endif</td>
                              <td rowspan=3><textarea name="issue6">{{ $summary->issue6  ?? ''}}</textarea></td>
                              <td rowspan=3><textarea name="action6">{{ $summary->action6 ?? '' }}</textarea></td>
                             </tr>
@@ -691,38 +691,38 @@
                             @php
                                 if($resultkpi->result50+$resultkpi->result51 >= 2)
                                 {
-                                    $evaluation25 = "<span class='badge badge-success'>O</span>";
+                                    $evaluation25 = "O";
                                     $evaluationshow25 = 1;
                                 }
                                 else {
-                                    $evaluation25 = "<span class='badge badge-danger'>X</span>";
+                                    $evaluation25 = "X";
                                     $evaluationshow25 = 0;
                                 }
                                 $cat7 =($evaluationshow25+$resultkpi->result52)/3;
                                 if($cat7*100 >= 85)
                                 {
-                                    $catr7 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catr7 = "Well Implemented";
                                     $catr7bg = "green";
                                 }elseif($cat7*100 >= 70)
                                 {
-                                    $catr7 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catr7 = "Medium Implemented";
                                     $catr7bg = "yellow";
                                 }elseif($cat7*100 < 70)
                                 {
-                                    $catr7 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catr7 = "low Implemented";
                                     $catr7bg = "red";
                                 }
                                 if($resultcheck->grade7 >= 85)
                                 {
-                                    $catrs7 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs7 = "Well Implemented";
                                     $catrs7bg = "green";
                                 }elseif($resultcheck->grade7 >= 70)
                                 {
-                                    $catrs7 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs7 = "Medium Implemented";
                                     $catrs7bg = "yellow";
                                 }elseif($resultcheck->grade7 < 70)
                                 {
-                                    $catrs7 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs7 = "low Implemented";
                                     $catrs7bg = "red";
                                 }
 
@@ -747,7 +747,7 @@
                              <td colspan=2>Salesperson Turn Over Ratio</td>
                              <td align="center">{{ $resultkpi->kpi52 }}%</td>
                              <td align="center">{{ $resultkpi->target52 }}%</td>
-                             <td align="center">@if($resultkpi->result52 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result52 == 1) O @else X @endif</td>
                             </tr>
                             <tr>
                              <td rowspan=2>23</td>
@@ -778,29 +778,29 @@
 
                                 if($finalcat*100 >= 85)
                                 {
-                                    $finalcats = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $finalcats = "Well Implemented";
                                     $finalcatsbg = "green";
                                 }elseif($finalcat*100 >= 70)
                                 {
-                                    $finalcats = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $finalcats = "Medium Implemented";
                                     $finalcatsbg = "yellow";
                                 }elseif($finalcat*100 < 70)
                                 {
-                                    $finalcats = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $finalcats = "low Implemented";
                                     $finalcatsbg = "red";
                                 }
 
                                 if($resultcheck->result >= 85)
                                 {
-                                    $catrs8 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs8 = "Well Implemented";
                                     $catrs8bg = "green";
                                 }elseif($resultcheck->result >= 70)
                                 {
-                                    $catrs8 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs8 = "Medium Implemented";
                                     $catrs8bg = "yellow";
                                 }elseif($resultcheck->result < 70)
                                 {
-                                    $catrs8 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs8 = "low Implemented";
                                     $catrs8bg = "red";
                                 }
                             @endphp

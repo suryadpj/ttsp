@@ -158,6 +158,7 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.css">
     <style>
         canvas {
             -moz-user-select: none;
@@ -168,8 +169,10 @@
 @stop
 
 @section('js')
-<script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 <script src="https://unpkg.com/chartjs-gauge@0.3.0/dist/chartjs-gauge.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+<script src="https://raw.githubusercontent.com/emn178/chartjs-plugin-labels/master/src/chartjs-plugin-labels.js"></script>
     <script>
           $(function () {
             $("#example1").DataTable({
@@ -200,31 +203,23 @@
   return Math.round(Math.random() * 100);
 };
 
-var randomData = function () {
-  return [
-    randomScalingFactor(),
-    randomScalingFactor(),
-    randomScalingFactor()
-  ];
-};
-
-var randomValue = function (data) {
-  return Math.max.apply(null, data) * Math.random();
-};
-
-var data = randomData();
-var value = randomValue(data);
+var data = [40, 76, 100];
+var value = 74;
 
 var config = {
-  type: 'gauge',
+  type: "gauge",
   data: {
-    labels: ['Low', 'Medium', 'High'],
-    datasets: [{
-      data: [70,80,100],
-      value: [75],
-      backgroundColor: ['red', 'yellow', 'green'],
-      borderWidth: 2
-    }]
+    labels: ["Low", "Medium", "High"],
+    datasets: [
+      {
+        label: "Current Appeal Risk",
+        data: data,
+        value: value,
+        minValue: 0,
+        backgroundColor: ["red", "orange", "green"],
+        borderWidth: 2
+      }
+    ]
   },
   options: {
     legend: {
@@ -237,25 +232,53 @@ var config = {
     responsive: true,
     title: {
       display: true,
-      text: 'Gauge chart Parameter TCM'
+      text: "Financial Risk"
     },
     layout: {
       padding: {
-        bottom: 30
+        bottom: 20
       }
     },
     needle: {
-      // Needle circle radius as the percentage of the chart area width
-      radiusPercentage: 2,
-      // Needle width as the percentage of the chart area width
-      widthPercentage: 3.2,
-      // Needle length as the percentage of the interval between inner radius (0%) and outer radius (100%) of the arc
-      lengthPercentage: 80,
-      // The color of the needle
-      color: 'rgba(0, 0, 0, 1)'
+      radiusPercentage: 1,
+      widthPercentage: 1,
+      lengthPercentage: 60,
+      color: "rgba(0, 0, 0, 1)"
     },
     valueLabel: {
-      formatter: Math.round
+      fontSize: 12,
+    },
+    plugins: {
+      datalabels: {
+        display: "auto",
+        formatter: function (value, context) {
+          // debugger;
+          return context.chart.data.labels[context.dataIndex];
+          // return context.dataIndex===0?'Normal':context.dataIndex===1?'Warning':'Critical';
+          // return '< ' + Math.round(value);
+        },
+        color: function (context) {
+          return "white";
+        },
+        //color: 'rgba(255, 255, 255, 1.0)',
+        // backgroundColor: 'rgba(0, 0, 0, 1.0)',
+        // borderWidth: 0,
+        // borderRadius: 5,
+        font: function (context) {
+          var innerRadius = Math.round(context.chart.innerRadius);
+          console.log(innerRadius);
+          var size = Math.round(innerRadius / 8);
+
+          return {
+            weight: "normal",
+            size: size
+          };
+        }
+        // font: {
+        //   weight: 'normal',
+        //   size:16
+        // }
+      }
     }
   }
 };
@@ -263,6 +286,9 @@ var config = {
 window.onload = function() {
   var ctx = document.getElementById('chart').getContext('2d');
   window.myGauge = new Chart(ctx, config);
+  myGauge.update();
+    const val = setTimeout(() => console.log(myGauge.toBase64Image()), 800);
+
 };
 
     </script>

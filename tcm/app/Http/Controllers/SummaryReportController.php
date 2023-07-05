@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Validator;
 use DataTables;
-use Maatwebsite\Excel\Facades\Excel;
+use Excel;
+use App\Exports\SummaryReportExport;
 
 class SummaryReportController extends Controller
 {
@@ -67,6 +68,16 @@ class SummaryReportController extends Controller
             return view('summaryreportsearch',['summary' => $summary,'kantor' => $kantor,'fperiode' => $fperiode,'fkantor' => $fkantor,'resultkpi' => $resultkpi,'resultcheck' => $resultcheck]);
         }
 
+    }
+
+    public function cetaklaporan(request $request)
+    {
+        $data_user = Auth::user();
+        $fkantor = $request->kantor;
+        $fperiode = $request->periode;
+        libxml_use_internal_errors(true);
+        $nama_file = 'Summary Report '.$fperiode.'.xlsx';
+        return Excel::download(new SummaryReportExport($fperiode,$fkantor), $nama_file);
     }
 
     public function store(request $request)
