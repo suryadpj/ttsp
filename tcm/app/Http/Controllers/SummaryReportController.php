@@ -56,11 +56,11 @@ class SummaryReportController extends Controller
         }
         elseif($resultkpicount == 0)
         {
-            return redirect()->back()->withInput(array('fperiode' => $fperiode,'fkantor' => $fkantor, 'success' => 'Anda belum mengerjakan KPI periode tersebut'));
+            return redirect()->back()->withInput(array('fperiode' => $fperiode,'fkantor' => $fkantor, 'success' => ' Belum ada KPI yang dikerjakan pada periode tersebut'));
         }
         elseif($resultcheckcount == 0)
         {
-            return redirect()->back()->withInput(array('fperiode' => $fperiode,'fkantor' => $fkantor, 'success' => 'Anda belum mengerjakan Cheksheet periode tersebut'));
+            return redirect()->back()->withInput(array('fperiode' => $fperiode,'fkantor' => $fkantor, 'success' => 'Belum ada Cheksheet yang dikerjakan pada periode tersebut'));
         }
         else
         {

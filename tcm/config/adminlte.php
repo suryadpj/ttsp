@@ -360,40 +360,49 @@ return [
         [
             'text'    => 'Parameter Monitoring',
             'icon'        => 'fas fa-edit',
+            'can'        => 'kpi',
             'submenu' => [
                 [
                     'text' => 'Sales',
                     'url'  => 'formkpisalesv2',
+                    'can'  => 'kpi_input',
                 ],
                 [
                     'text' => 'AfterSales',
                     'url'  => 'formkpiaftersalesv2',
+                    'can'  => 'kpi_input',
                 ],
                 [
                     'text' => 'TradeIn',
                     'url'  => 'formkpitradeinv2',
+                    'can'  => 'kpi_input',
                 ],
                 [
                     'text' => 'Rekap Data',
                     'url'  => 'formkpi',
+                    'can'  => 'kpi_data',
                 ],
             ],
         ],
         [
             'text'    => 'Cheksheet',
             'icon'        => 'fas fa-check-square',
+            'can'        => 'checksheet',
             'submenu' => [
                 [
                     'text' => 'Monthly',
                     'url'  => 'checksheet/create',
+                    'can'  => 'checksheet_input',
                 ],
                 [
                     'text' => 'Weekly',
                     'url'  => 'checksheetext/createmingguan',
+                    'can'  => 'checksheet_input',
                 ],
                 [
                     'text' => 'Rekap Data',
                     'url'  => 'checksheet',
+                    'can'  => 'checksheet_data',
                 ],
             ],
         ],
@@ -401,6 +410,7 @@ return [
             'text'        => 'Summary report',
             'url'         => 'summaryreport',
             'icon'        => 'fas fa-table',
+            'can'         => 'summary_report',
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],

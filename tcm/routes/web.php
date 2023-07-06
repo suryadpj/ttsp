@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,61 @@ Route::resource('dashboardbp', App\Http\Controllers\DashboardBPController::class
 
 Route::get('/formkpiupload', [App\Http\Controllers\HomeController::class, 'formkpiupload'])->name('formkpiupload');
 Route::get('/kpireport', [App\Http\Controllers\HomeController::class, 'kpireport'])->name('kpireport');
+
+
+//peraturan
+Route::get('/rulesadm', function()
+{
+    auth()->user()->assignRole('ho'); //memberikan akses
+});
+Route::get('/cekadm', function()
+{
+    if(auth()->user()->hasRole('ho')) //cek akses
+    {
+        return 'oke';
+    }
+    else
+    {
+        return 'you dont have access';
+    }
+});
+// Route::get('/remove', function()
+// {
+//     if(auth()->user()->removeRole('admin')) //hapus akses
+//     {
+//         return 'oke';
+//     }
+//     else
+//     {
+//         return 'you dont have access';
+//     }
+// });
+// Route::get('/sync', function()
+// {
+//     if(auth()->user()->syncRoles('admin')) //synkron akses
+//     {
+//         return 'oke';
+//     }
+//     else
+//     {
+//         return 'you dont have access';
+//     }
+// });
+
+// //perijinan
+// Route::get('/giveper', function()
+// {
+//     auth()->user()->givePermissionTo('operasional_approve_vp'); //add permision
+// });
+Route::get('/cekper', function()
+{
+    dd(auth()->user()->hasPermissionTo('users_all_div')); //cek permision
+});
+// Route::get('/delete', function()
+// {
+//     auth()->user()->revokePermissionTo('pr'); //hapus permision
+// });
+// // Route::get('/sync', function()
+// // {
+// //     auth()->user()->syncPermissions(['*data_surat*','*add_surat*','*delete_surat*']); //add permision
+// // });

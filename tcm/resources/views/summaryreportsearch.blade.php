@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'TCM - Data KPI')
+@section('title', 'TCM - Data Summary Report')
 
 @section('content_header')
     <h3>Summary TCM Evaluation</h3>
@@ -128,8 +128,13 @@
                                 <td align="center">{{ $resultkpi->target1 }}%</td>
                                 <td align="center">@if($resultkpi->result1 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                                 <td align="center" rowspan="18">{!! $catr1 !!}</td>
-                                <td rowspan="18"><textarea height="500" name="issue1">{{ $summary->issue1 ?? '' }}</textarea></td>
-                                <td rowspan="18"><textarea name="action1">{{ $summary->action1 ?? '' }}</textarea></td>
+                                @if(auth()->user()->can('summary_report_input'))
+                                    <td rowspan="18"><textarea height="500" name="issue1">{{ $summary->issue1 ?? '' }}</textarea></td>
+                                    <td rowspan="18"><textarea name="action1">{{ $summary->action1 ?? '' }}</textarea></td>
+                                @else
+                                    <td rowspan="18">{{ $summary->issue1 ?? '' }}</td>
+                                    <td rowspan="18">{{ $summary->action1 ?? '' }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td align="left" rowspan="7">2</td>
@@ -302,8 +307,13 @@
                              <td align="center">{{ $resultkpi->target25 }}%</td>
                              <td align="center">@if($resultkpi->result25 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center" rowspan=6 >{!! $catr2 !!}</td>
-                             <td rowspan=6 ><textarea name="issue2">{{ $summary->issue2  ?? ''}}</textarea></td>
-                             <td rowspan=6><textarea name="action2">{{ $summary->action2 ?? '' }}</textarea></td>
+                             @if(auth()->user()->can('summary_report_input'))
+                                <td rowspan=6 ><textarea name="issue2">{{ $summary->issue2  ?? ''}}</textarea></td>
+                                <td rowspan=6><textarea name="action2">{{ $summary->action2 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="6">{{ $summary->issue2 ?? '' }}</td>
+                                 <td rowspan="6">{{ $summary->action2 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td rowspan=5>B.2. Post
@@ -422,8 +432,13 @@
                              <td align="center">{{ $resultkpi->target26 }}%</td>
                              <td align="center" rowspan=2>{!! $evaluation16 !!}</td>
                              <td align="center" rowspan=22>{!! $catr3 !!}</td>
-                             <td rowspan=22><textarea name="issue3">{{ $summary->issue3  ?? ''}}</textarea></td>
-                             <td rowspan=22><textarea name="action3">{{ $summary->action3 ?? '' }}</textarea></td>
+                             @if(auth()->user()->can('summary_report_input'))
+                                <td rowspan=22><textarea name="issue3">{{ $summary->issue3  ?? ''}}</textarea></td>
+                                <td rowspan=22><textarea name="action3">{{ $summary->action3 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="22">{{ $summary->issue3 ?? '' }}</td>
+                                 <td rowspan="22">{{ $summary->action3 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td>b. Net Promoter Score (NPS) Aftersales BP</td>
@@ -603,8 +618,13 @@
                              <td align="center">{{ $resultkpi->target47 }}%</td>
                              <td align="center">@if($resultkpi->result47 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center" rowspan=5>{!! $catr4 !!}</td>
+                             @if(auth()->user()->can('summary_report_input'))
                              <td rowspan=5><textarea name="issue4">{{ $summary->issue4  ?? ''}}</textarea></td>
                              <td rowspan=5><textarea name="action4">{{ $summary->action4 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="5">{{ $summary->issue4 ?? '' }}</td>
+                                 <td rowspan="5">{{ $summary->action4 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td >D.1. Reminder Process</td>
@@ -670,8 +690,13 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                              <td rowspan=3>&nbsp;</td>
+                             @if(auth()->user()->can('summary_report_input'))
                              <td rowspan=3 ><textarea name="issue5">{{ $summary->issue5  ?? ''}}</textarea></td>
                              <td rowspan=3><textarea name="action5">{{ $summary->action5 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="3">{{ $summary->issue5 ?? '' }}</td>
+                                 <td rowspan="3">{{ $summary->action5 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td>&nbsp;</td>
@@ -719,8 +744,13 @@
                              <td align="center">{{ $resultkpi->target49 }}%</td>
                              <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>Well Implemented</span> @else <span class='badge badge-danger'>Low implemented</span> @endif</td>
+                             @if(auth()->user()->can('summary_report_input'))
                              <td rowspan=3><textarea name="issue6">{{ $summary->issue6  ?? ''}}</textarea></td>
                              <td rowspan=3><textarea name="action6">{{ $summary->action6 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="3">{{ $summary->issue6 ?? '' }}</td>
+                                 <td rowspan="3">{{ $summary->action6 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td >F.2. Trade In Operation</td>
@@ -797,8 +827,13 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                              <td align="center">{!! $catr7 !!}</td>
+                             @if(auth()->user()->can('summary_report_input'))
                              <td rowspan=5><textarea name="issue7">{{ $summary->issue7  ?? ''}}</textarea></td>
                              <td rowspan=5><textarea name="action7">{{ $summary->action7 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="5">{{ $summary->issue7 ?? '' }}</td>
+                                 <td rowspan="5">{{ $summary->action7 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td>22</td>

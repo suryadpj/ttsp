@@ -40,8 +40,11 @@ class ChechsheetController extends Controller
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
                     $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
-                    $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
-                    return $button;})
+                    if(auth()->user()->can('kpi_input'))
+                    {
+                        $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                    }
+                        return $button;})
                     ->editColumn('grade1', function($data)
                     {
                         $skor = $data->grade1;
@@ -156,7 +159,10 @@ class ChechsheetController extends Controller
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
                     $button .= '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
-                    $button .= '&nbsp; <button type="button" name="delete" id="'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                    if(auth()->user()->can('kpi_input'))
+                    {
+                        $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                    }
                     return $button;})
                 ->editColumn('grade1', function($data)
                 {
