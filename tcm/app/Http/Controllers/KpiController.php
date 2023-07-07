@@ -315,13 +315,13 @@ class KpiController extends Controller
                     $cat1 =($evaluation1+$evaluationshow2+$data->result11+$data->result12+$data->result13+$data->result14+$data->result15+$data->result16+$data->result17+$data->result19+$data->result49)/12;
                     if($cat1*100 >= 85)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$cat1*100 ."%";
                     }elseif($cat1*100 >= 70)
                     {
-                        return "Medium - ".$cat*100 ."%";
+                        return "Medium - ".$cat1*100 ."%";
                     }elseif($cat1*100 < 70)
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$cat1*100 ."%";
                     }
                 })
                 ->editColumn('grade2', function($data)
@@ -339,13 +339,13 @@ class KpiController extends Controller
                     $cat2 =($evaluation13+$evaluationshow14)/2;
                     if($cat2*100 >= 85)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$cat2*100 ."%";
                     }elseif($cat2*100 >= 70)
                     {
-                        return "Medium - ".$cat*100 ."%";
+                        return "Medium - ".$cat2*100 ."%";
                     }elseif($cat2*100 < 70)
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$cat2*100 ."%";
                     }
                 })
                 ->editColumn('grade3', function($data)
@@ -389,13 +389,13 @@ class KpiController extends Controller
                     $cat3 =($evaluationshow16+$evaluationshow17+$evaluationshow18+$data->result42+$data->result43+$evaluationshow19)/6;
                     if($cat3*100 >= 85)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$cat3*100 ."%";
                     }elseif($cat3*100 >= 70)
                     {
-                        return "Medium - ".$cat*100 ."%";
+                        return "Medium - ".$cat3*100 ."%";
                     }elseif($cat3*100 < 70)
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$cat3*100 ."%";
                     }
                 })
                 ->editColumn('grade4', function($data)
@@ -403,13 +403,13 @@ class KpiController extends Controller
                     $cat4 =($data->result47+$data->result48)/2;
                     if($cat4*100 >= 85)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$cat4*100 ."%";
                     }elseif($cat4*100 >= 70)
                     {
-                        return "Medium - ".$cat*100 ."%";
+                        return "Medium - ".$cat4*100 ."%";
                     }elseif($cat4*100 < 70)
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$cat4*100 ."%";
                     }
                 })
                 ->editColumn('grade5', function($data)
@@ -420,11 +420,11 @@ class KpiController extends Controller
                 {
                     if($data->result49 == 1)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$data->result49 ."%";
                     }
                     else
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$data->result49 ."%";
                     }
                 })
                 ->editColumn('grade7', function($data)
@@ -441,13 +441,13 @@ class KpiController extends Controller
                     $cat7 =($evaluationshow25+$data->result52)/3;
                     if($cat7*100 >= 85)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$cat7*100 ."%";
                     }elseif($cat7*100 >= 70)
                     {
-                        return "Medium - ".$cat*100 ."%";
+                        return "Medium - ".$cat7*100 ."%";
                     }elseif($cat7*100 < 70)
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$cat7*100 ."%";
                     }
                 })
                 ->addColumn('finalgrade', function($data) use($data_user){
@@ -520,13 +520,13 @@ class KpiController extends Controller
 
                     if($finalcat*100 >= 85)
                     {
-                        return "High - ".$cat*100 ."%";
+                        return "High - ".$finalcat*100 ."%";
                     }elseif($finalcat*100 >= 70)
                     {
-                        return "Medium - ".$cat*100 ."%";
+                        return "Medium - ".$finalcat*100 ."%";
                     }elseif($finalcat*100 < 70)
                     {
-                        return "Low - ".$cat*100 ."%";
+                        return "Low - ".$finalcat*100 ."%";
                     }
                 })
                 ->addColumn('action', function($data) use($data_user){
