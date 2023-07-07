@@ -756,7 +756,7 @@ class ChechsheetController extends Controller
             DB::raw('if(datachecksheet.IDKantor=16,IF(datachecksheet.nilai=1,"O",IF(datachecksheet.nilai=2,"X","-")),"-") as u'),
             DB::raw('if(datachecksheet.IDKantor=4,IF(datachecksheet.nilai=1,"O",IF(datachecksheet.nilai=2,"X","-")),"-") as v'),
         )
-        ->groupBy('fields.nama','datachecksheet.IDKantor','tcmdata.datachecksheet.nilai')
+        ->groupBy('fields.nama','datachecksheet.IDKantor','datachecksheet.nilai')
         ->get();
         if($fperiode == "")
         {
