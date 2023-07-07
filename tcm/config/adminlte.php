@@ -404,6 +404,11 @@ return [
                     'url'  => 'checksheet',
                     'can'  => 'checksheet_data',
                 ],
+                [
+                    'text' => 'Rekap Data per Bulan',
+                    'url'  => 'checksheetmonthly',
+                    'can'  => 'checksheetmonthly',
+                ],
             ],
         ],
         [

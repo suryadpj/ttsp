@@ -41,6 +41,8 @@ Route::resource('checksheet', App\Http\Controllers\ChechsheetController::class);
 Route::get('checksheetdata', [App\Http\Controllers\ChechsheetController::class, 'datatable'])->name('checksheet.datatable');
 Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguan'])->name('checksheet.createmingguan');
 Route::get('/checksheetexport', [App\Http\Controllers\ChechsheetController::class, 'exportexcel'])->name('checksheetexport');
+Route::get('/checksheetmonthly', [App\Http\Controllers\ChechsheetController::class, 'checksheetmonthly'])->name('checksheetmonthly');
+Route::get('/checksheetmonthlysearch', [App\Http\Controllers\ChechsheetController::class, 'checksheetmonthlysearch'])->name('checksheetmonthlysearch');
 
 Route::resource('summaryreport', App\Http\Controllers\SummaryReportController::class);
 Route::get('/summaryreportexcel', [App\Http\Controllers\SummaryReportController::class, 'cetaklaporan'])->name('cetaklaporan')->middleware('auth');
