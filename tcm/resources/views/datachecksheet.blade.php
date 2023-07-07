@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
-                        <select class="form-control" name="search_kantor" id="search_kantor"  style="width: 100%;">
+                        <select class="form-control" name="search_minggu" id="search_minggu"  style="width: 100%;">
                             <option value=''>1 Bulan Penuh</option>
                             <option value="1">Minggu ke 1</option>
                             <option value="2">Minggu ke 2</option>
@@ -34,7 +34,7 @@
                     <div class="col-sm-3">
                         <div class="form-group">
                         <select class="form-control" name="search_kantor" id="search_kantor"  style="width: 100%;">
-                            <option value=''>Pilih Kantor</option>
+                            @if(auth()->user()->IDKantor == 1)<option value=''>Semua Cabang</option> @endif
                             @foreach($kantor as $p)
                                 <option value="{{ $p->id }}">{{ $p->nama }}</option>
                             @endforeach
@@ -163,6 +163,7 @@ $(document).ready(function(){
             data: function (d) {
                 d.judul = $('input[name=search_periode]').val();
                 d.lokasi = $("#search_kantor option:selected").val();
+                d.week = $("#search_minggu option:selected").val();
             }
         },
         columns: [
