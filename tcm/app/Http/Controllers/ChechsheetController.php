@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Validator;
 use DataTables;
+use Excel;
+use App\Exports\ChecksheetExport;
 
 class ChechsheetController extends Controller
 {
@@ -798,5 +800,16 @@ class ChechsheetController extends Controller
     {
         DB::table('datachecksheet_result')->where('id',$id)->update(['deleted' => 1]);
         return response()->json(['success' => 'Data berhasil dihapus.']);
+    }
+    public function exportexcel(request $request)
+    {
+        $split = explode('_',$request->id);
+        $data_user = Auth::user();
+        $fid = $split[1];
+        $fper = $split[0];
+        $fperiode = date("F Y",strtotime($split[0]));
+        libxml_use_internal_errors(true);
+        $nama_file = 'Data Checksheet periode '.$fperiode.'.xlsx';
+        return Excel::download(new ChecksheetExport($fid,$fper), $nama_file);
     }
 }

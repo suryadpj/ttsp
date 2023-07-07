@@ -1030,7 +1030,7 @@ class KpiController extends Controller
     {
         $data_user = Auth::user();
         $fid = $request->id;
-        $fperiode = date("d F Y",strtotime($request->periode));
+        $fperiode = date("F Y",strtotime($request->periode));
         libxml_use_internal_errors(true);
         $nama_file = 'Data KPI Periode '.$fperiode.'.xlsx';
         return Excel::download(new KPIExport($fid), $nama_file);

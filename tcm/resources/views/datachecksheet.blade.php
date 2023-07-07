@@ -120,6 +120,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <a class="btn btn-success" id="exportexcel" href="#">Export as Excel</a>
             </div>
         </div>
     </div>
@@ -313,6 +314,7 @@ $(document).ready(function(){
                const isilampiran = [];
                html.forEach( x => isilampiran.push('<div class="form-group row"><div class="col-sm-9">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-3">' + x.nilai + '</div></div><hr>'))
                $('#datachecksheet').html(isilampiran)
+                document.getElementById("exportexcel").href="checksheetexport?id=" + id;
             }
         })
     });

@@ -40,6 +40,7 @@ Route::get('/kpiexport', [App\Http\Controllers\KpiController::class, 'exportexce
 Route::resource('checksheet', App\Http\Controllers\ChechsheetController::class);
 Route::get('checksheetdata', [App\Http\Controllers\ChechsheetController::class, 'datatable'])->name('checksheet.datatable');
 Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguan'])->name('checksheet.createmingguan');
+Route::get('/checksheetexport', [App\Http\Controllers\ChechsheetController::class, 'exportexcel'])->name('checksheetexport');
 
 Route::resource('summaryreport', App\Http\Controllers\SummaryReportController::class);
 Route::get('/summaryreportexcel', [App\Http\Controllers\SummaryReportController::class, 'cetaklaporan'])->name('cetaklaporan')->middleware('auth');
