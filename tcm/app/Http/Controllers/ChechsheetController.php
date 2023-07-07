@@ -148,7 +148,7 @@ class ChechsheetController extends Controller
                 ->leftjoin('kantors','kantors.id','=','users.IDKantor')
                 ->select('kantors.nama','users.IDKantor','datachecksheet_result.*',DB::raw('DATE_FORMAT(datachecksheet_result.periode,"%M %Y") as periodik'))
                 ->where('datachecksheet_result.deleted','0')
-                ->where('datakpi.IDKantor',$data_user->IDKantor))
+                ->where('datachecksheet_result.IDKantor',$data_user->IDKantor))
                 ->filter(function ($data) use ($request) {
                     if (!empty($request->has('search_periode'))) {
                         $data->where('periode', 'like', $request->get('search_periode')."%");
