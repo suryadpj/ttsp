@@ -561,6 +561,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <a class="btn btn-success" id="exportexcel" href="#">Export as Excel</a>
             </div>
         </div>
     </div>
@@ -756,6 +757,7 @@ $(document).ready(function(){
                 $('.modal-title').text("Preview Data");
                 $('#action_button').val("Edit");
                 $('#action').val("Edit");
+                document.getElementById("exportexcel").href="kpiexport?id=" + html.data.id + "&periode=" + html.data.periode;
                 $('#preview').modal('show');
             }
         })

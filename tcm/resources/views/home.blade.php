@@ -204,7 +204,7 @@
 };
 
 var data = [40, 76, 100];
-var value = 74;
+var value = 40;
 
 var config = {
   type: "gauge",

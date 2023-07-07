@@ -17,6 +17,9 @@ use Spatie\Permission\Models\Role;
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
+Route::get('/tes', function () {
+    return view('kpiexport');
+})->middleware('auth');
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -32,6 +35,7 @@ Route::get('/formkpivehdev', [App\Http\Controllers\KpiController::class, 'create
 Route::get('/formkpisalesv2', [App\Http\Controllers\KpiController::class, 'createsalesv2'])->name('kpisalesv2');
 Route::get('/formkpiaftersalesv2', [App\Http\Controllers\KpiController::class, 'createaftersalesv2'])->name('kpiaftersalesv2');
 Route::get('/formkpitradeinv2', [App\Http\Controllers\KpiController::class, 'createtradeinv2'])->name('kpitradeinv2');
+Route::get('/kpiexport', [App\Http\Controllers\KpiController::class, 'exportexcel'])->name('kpiexport');
 
 Route::resource('checksheet', App\Http\Controllers\ChechsheetController::class);
 Route::get('checksheetdata', [App\Http\Controllers\ChechsheetController::class, 'datatable'])->name('checksheet.datatable');

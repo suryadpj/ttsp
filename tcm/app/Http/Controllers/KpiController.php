@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 use Validator;
 use DataTables;
 use App\User;
+use Excel;
+use App\Exports\KPIExport;
 
 class KpiController extends Controller
 {
@@ -1023,5 +1025,14 @@ class KpiController extends Controller
     {
         DB::table('datakpi_result')->where('id',$id)->update(['deleted' => 1]);
         return response()->json(['success' => 'Data berhasil dihapus.']);
+    }
+    public function exportexcel(request $request)
+    {
+        $data_user = Auth::user();
+        $fid = $request->id;
+        $fperiode = date("d F Y",strtotime($request->periode));
+        libxml_use_internal_errors(true);
+        $nama_file = 'Data KPI Periode '.$fperiode.'.xlsx';
+        return Excel::download(new KPIExport($fid), $nama_file);
     }
 }
