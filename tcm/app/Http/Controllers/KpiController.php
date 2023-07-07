@@ -293,7 +293,7 @@ class KpiController extends Controller
                 ->leftjoin('kantors','kantors.id','=','users.IDKantor')
                 ->select('kantors.nama','users.IDKantor','datakpi_result.*',DB::raw('DATE_FORMAT(datakpi_result.periode,"%M %Y") as periodik'))
                 ->where('datakpi_result.deleted','0')
-                ->where('datakpi.IDKantor',$data_user->IDKantor))
+                ->where('datakpi_result.IDKantor',$data_user->IDKantor))
                 ->filter(function ($data) use ($request) {
                     if (!empty($request->judul)) {
                         $data->where('periode', $request->judul."-01");
