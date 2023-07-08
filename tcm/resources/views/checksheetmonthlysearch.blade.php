@@ -44,6 +44,9 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
+            <div class="card-header">
+                <a class="btn btn-success" href="checksheetmonthexport?periode={{ $fperiode }}">Export to Excel</a>
+            </div>
             <div class="card-body">
                 <div class="card-body table-responsive p-0">
                     <table class="table-bordered cell-border" width="100%" id="tblData">

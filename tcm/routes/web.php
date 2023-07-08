@@ -43,6 +43,7 @@ Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetContr
 Route::get('/checksheetexport', [App\Http\Controllers\ChechsheetController::class, 'exportexcel'])->name('checksheetexport');
 Route::get('/checksheetmonthly', [App\Http\Controllers\ChechsheetController::class, 'checksheetmonthly'])->name('checksheetmonthly');
 Route::get('/checksheetmonthlysearch', [App\Http\Controllers\ChechsheetController::class, 'checksheetmonthlysearch'])->name('checksheetmonthlysearch');
+Route::get('/checksheetmonthexport', [App\Http\Controllers\ChechsheetController::class, 'monthexportexcel'])->name('checksheetmonthexport');
 
 Route::resource('summaryreport', App\Http\Controllers\SummaryReportController::class);
 Route::get('/summaryreportexcel', [App\Http\Controllers\SummaryReportController::class, 'cetaklaporan'])->name('cetaklaporan')->middleware('auth');

@@ -6,11 +6,7 @@
     @foreach ($resultdata as $a)
         <tr>
             <td>{{ $a->nama }}</td>
-            @if($a->nilai == 1)
-                Sudah Dilakukan
-            @elseif($a->nilai == 2)
-                Tidak Dilakukan
-            @endif
+            <td>{{ $a->nilai }}</td>
         </tr>
     @endforeach
 </table>

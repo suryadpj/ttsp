@@ -11,6 +11,7 @@ use Validator;
 use DataTables;
 use Excel;
 use App\Exports\ChecksheetExport;
+use App\Exports\ChecksheetMonthExport;
 
 class ChechsheetController extends Controller
 {
@@ -771,5 +772,14 @@ class ChechsheetController extends Controller
             return view('checksheetmonthlysearch',['data' => $data,'fperiode' => $fperiode,'fperiodes' => $fperiodeformat]);
         }
 
+    }
+    public function monthexportexcel(request $request)
+    {
+        $data_user = Auth::user();
+        $fperiode = $request->periode;
+        $fperiodeformat = date("F Y",strtotime($fperiode));
+        libxml_use_internal_errors(true);
+        $nama_file = 'Data Checksheet All Branch periode '.$fperiodeformat.'.xlsx';
+        return Excel::download(new ChecksheetMonthExport($fperiode), $nama_file);
     }
 }
