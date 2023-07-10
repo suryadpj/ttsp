@@ -746,17 +746,16 @@ class ChechsheetController extends Controller
             DB::raw('SUM(IF(IDKantor=11,nilai,0)) as j'),
             DB::raw('SUM(IF(IDKantor=12,nilai,0)) as k'),
             DB::raw('SUM(IF(IDKantor=13,nilai,0)) as l'),
-            DB::raw('SUM(IF(IDKantor=15,nilai,0)) as m'),
-            DB::raw('SUM(IF(IDKantor=16,nilai,0)) as n'),
-            DB::raw('SUM(IF(IDKantor=17,nilai,0)) as o'),
-            DB::raw('SUM(IF(IDKantor=18,nilai,0)) as p'),
-            DB::raw('SUM(IF(IDKantor=19,nilai,0)) as q'),
-            DB::raw('SUM(IF(IDKantor=20,nilai,0)) as r'),
-            DB::raw('SUM(IF(IDKantor=21,nilai,0)) as s'),
+            DB::raw('SUM(IF(IDKantor=14,nilai,0)) as m'),
+            DB::raw('SUM(IF(IDKantor=15,nilai,0)) as n'),
+            DB::raw('SUM(IF(IDKantor=16,nilai,0)) as o'),
+            DB::raw('SUM(IF(IDKantor=17,nilai,0)) as p'),
+            DB::raw('SUM(IF(IDKantor=18,nilai,0)) as q'),
+            DB::raw('SUM(IF(IDKantor=19,nilai,0)) as r'),
+            DB::raw('SUM(IF(IDKantor=20,nilai,0)) as s'),
             DB::raw('SUM(IF(IDKantor=22,nilai,0)) as t'),
             DB::raw('SUM(IF(IDKantor=23,nilai,0)) as u'),
-            DB::raw('SUM(IF(IDKantor=24,nilai,0)) as v'),
-            DB::raw('SUM(IF(IDKantor=1,nilai,0)) as w')
+            DB::raw('SUM(IF(IDKantor=21,nilai,0)) as v'),
         )
         ->groupBy('fields.nama')
         ->orderBy('iddata','asc')
