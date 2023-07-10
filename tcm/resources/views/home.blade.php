@@ -117,8 +117,10 @@
         <tr>
         <th>Nama Cabang</th>
         <th>Periode</th>
-        <th>KPI Resource (60%)</th>
-        <th>KPI Proses (40%)</th>
+        <th>KPI Resource</th>
+        <th>Final Grade</th>
+        <th>KPI Proses</th>
+        <th>Final Grade</th>
         <th>Result</th>
         </tr>
         </thead>
@@ -128,6 +130,23 @@
                 <td>{{ $a->nama }}</td>
                 <td>{{ $a->bulan }}</td>
                 <td>{{ $a->kpiresource }}%</td>
+                @if($a->kpiresource >= 60 && $a->kpiproses >= 40)
+                    <td>
+                        <h2><span class="badge badge-success">High</span></h2>
+                    </td>
+                @elseif($a->kpiresource >= 60 && $a->kpiproses < 40)
+                    <td>
+                        <h2><span class="badge badge-warning">Medium</span></h2>
+                    </td>
+                @elseif($a->kpiresource < 60 && $a->kpiproses >= 40)
+                    <td>
+                        <h2><span class="badge badge-warning">Medium</span></h2>
+                    </td>
+                @elseif($a->kpiresource < 60 && $a->kpiproses < 40)
+                    <td>
+                        <h2><span class="badge badge-danger">Low</span></h2>
+                    </td>
+                @endif
                 <td>{{ round($a->kpiproses) }}%</td>
                     @if($a->kpiresource >= 60 && $a->kpiproses >= 40)
                         <td>
