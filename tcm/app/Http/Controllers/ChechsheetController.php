@@ -758,7 +758,8 @@ class ChechsheetController extends Controller
             DB::raw('SUM(IF(IDKantor=24,nilai,0)) as v'),
             DB::raw('SUM(IF(IDKantor=1,nilai,0)) as w')
         )
-        ->groupBy('fields.nama','datachecksheet.IDKantor','datachecksheet.nilai')
+        ->groupBy('fields.nama')
+        ->orderBy('iddata','asc')
         ->get();
         if($fperiode == "")
         {
