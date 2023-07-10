@@ -121,7 +121,6 @@
         <th>Final Grade</th>
         <th>KPI Proses</th>
         <th>Final Grade</th>
-        <th>Result</th>
         </tr>
         </thead>
         <tbody>
@@ -130,41 +129,33 @@
                 <td>{{ $a->nama }}</td>
                 <td>{{ $a->bulan }}</td>
                 <td>{{ $a->kpiresource }}%</td>
-                @if($a->kpiresource >= 60 && $a->kpiproses >= 40)
+                @if($a->kpiresource >= 85)
                     <td>
                         <h2><span class="badge badge-success">High</span></h2>
                     </td>
-                @elseif($a->kpiresource >= 60 && $a->kpiproses < 40)
+                @elseif($a->kpiresource >= 70)
                     <td>
                         <h2><span class="badge badge-warning">Medium</span></h2>
                     </td>
-                @elseif($a->kpiresource < 60 && $a->kpiproses >= 40)
-                    <td>
-                        <h2><span class="badge badge-warning">Medium</span></h2>
-                    </td>
-                @elseif($a->kpiresource < 60 && $a->kpiproses < 40)
+                @elseif($a->kpiresource < 70)
                     <td>
                         <h2><span class="badge badge-danger">Low</span></h2>
                     </td>
                 @endif
                 <td>{{ round($a->kpiproses) }}%</td>
-                    @if($a->kpiresource >= 60 && $a->kpiproses >= 40)
-                        <td>
-                            <h2><span class="badge badge-success">High</span></h2>
-                        </td>
-                    @elseif($a->kpiresource >= 60 && $a->kpiproses < 40)
-                        <td>
-                            <h2><span class="badge badge-warning">Medium</span></h2>
-                        </td>
-                    @elseif($a->kpiresource < 60 && $a->kpiproses >= 40)
-                        <td>
-                            <h2><span class="badge badge-warning">Medium</span></h2>
-                        </td>
-                    @elseif($a->kpiresource < 60 && $a->kpiproses < 40)
-                        <td>
-                            <h2><span class="badge badge-danger">Low</span></h2>
-                        </td>
-                    @endif
+                @if($a->kpiproses >= 85)
+                    <td>
+                        <h2><span class="badge badge-success">High</span></h2>
+                    </td>
+                @elseif($a->kpiproses >= 70)
+                    <td>
+                        <h2><span class="badge badge-warning">Medium</span></h2>
+                    </td>
+                @elseif($a->kpiproses < 70)
+                    <td>
+                        <h2><span class="badge badge-danger">Low</span></h2>
+                    </td>
+                @endif
             </tr>
             @endforeach
         </tbody>
