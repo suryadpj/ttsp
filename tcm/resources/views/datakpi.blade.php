@@ -538,19 +538,19 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Staff Productivity  - Sales (Unit/salesperson)</label>
-                                            <input  type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi50" placeholder="Isi skor KPI disini">
+                                            <input  type="text" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi50" placeholder="Isi skor KPI disini">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Staff Productivity  - Aftersales (Overall productivity)  </label>
-                                            <input  type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi51" placeholder="Isi skor KPI disini">
+                                            <input  type="text" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi51" placeholder="Isi skor KPI disini">
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Salesperson Turn Over Ratio</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi52" placeholder="Isi skor KPI disini">
+                                            <input type="text" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi52" placeholder="Isi skor KPI disini">
                                         </div>
                                     </div>
                                 </div>
