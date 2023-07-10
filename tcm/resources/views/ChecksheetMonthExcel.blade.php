@@ -4,6 +4,7 @@
         <tr>
             <td>{{ $fperiodes }}</td>
             <td>Balaraja</td>
+            <td>Bandar Jaya</td>
             <td>Bekasi</td>
             <td>Bintaro</td>
             <td>Cakung</td>
@@ -32,6 +33,7 @@
             <tr>
                 <td>{{ $a->nama }}</td>
                 <td>{{ $a->a }}</td>
+                <td>{{ $a->w }}</td>
                 <td>{{ $a->b }}</td>
                 <td>{{ $a->c }}</td>
                 <td>{{ $a->d }}</td>

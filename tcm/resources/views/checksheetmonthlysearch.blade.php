@@ -54,6 +54,7 @@
                             <tr>
                                 <td>{{ $fperiodes }}</td>
                                 <td>Balaraja</td>
+                                <td>Bandar Jaya</td>
                                 <td>Bekasi</td>
                                 <td>Bintaro</td>
                                 <td>Cakung</td>
@@ -81,28 +82,213 @@
                             @foreach ($data as $a)
                                 <tr>
                                     <td>{{ $a->nama }}</td>
-                                    <td>{{ $a->a }}</td>
-                                    <td>{{ $a->b }}</td>
-                                    <td>{{ $a->c }}</td>
-                                    <td>{{ $a->d }}</td>
-                                    <td>{{ $a->e }}</td>
-                                    <td>{{ $a->f }}</td>
-                                    <td>{{ $a->g }}</td>
-                                    <td>{{ $a->h }}</td>
-                                    <td>{{ $a->i }}</td>
-                                    <td>{{ $a->j }}</td>
-                                    <td>{{ $a->k }}</td>
-                                    <td>{{ $a->l }}</td>
-                                    <td>{{ $a->m }}</td>
-                                    <td>{{ $a->n }}</td>
-                                    <td>{{ $a->o }}</td>
-                                    <td>{{ $a->p }}</td>
-                                    <td>{{ $a->q }}</td>
-                                    <td>{{ $a->r }}</td>
-                                    <td>{{ $a->s }}</td>
-                                    <td>{{ $a->t }}</td>
-                                    <td>{{ $a->u }}</td>
-                                    <td>{{ $a->v }}</td>
+                                    <td>
+                                        @if ($a->a == 1 )
+                                            O
+                                        @elseif($a->a == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->w == 1 )
+                                            O
+                                        @elseif($a->w == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->b == 1 )
+                                            O
+                                        @elseif($a->b == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->c == 1 )
+                                            O
+                                        @elseif($a->c == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->d == 1 )
+                                            O
+                                        @elseif($a->d == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->e == 1 )
+                                            O
+                                        @elseif($a->e == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->f == 1 )
+                                            O
+                                        @elseif($a->f == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->g == 1 )
+                                            O
+                                        @elseif($a->g == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->h == 1 )
+                                            O
+                                        @elseif($a->h == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->i == 1 )
+                                            O
+                                        @elseif($a->i == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->j == 1 )
+                                            O
+                                        @elseif($a->j == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->k == 1 )
+                                            O
+                                        @elseif($a->k == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->l == 1 )
+                                            O
+                                        @elseif($a->l == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->m == 1 )
+                                            O
+                                        @elseif($a->m == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->n == 1 )
+                                            O
+                                        @elseif($a->n == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->o == 1 )
+                                            O
+                                        @elseif($a->o == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->p == 1 )
+                                            O
+                                        @elseif($a->p == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->q == 1 )
+                                            O
+                                        @elseif($a->q == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->r == 1 )
+                                            O
+                                        @elseif($a->r == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->s == 1 )
+                                            O
+                                        @elseif($a->s == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->t == 1 )
+                                            O
+                                        @elseif($a->t == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->u == 1 )
+                                            O
+                                        @elseif($a->u == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->v == 1 )
+                                            O
+                                        @elseif($a->v == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
