@@ -117,9 +117,9 @@
         <tr>
         <th>Nama Cabang</th>
         <th>Periode</th>
-        <th>KPI Resource</th>
+        <th>Chekchsheet TCM</th>
         <th>Final Grade</th>
-        <th>KPI Proses</th>
+        <th>Parameter Result</th>
         <th>Final Grade</th>
         </tr>
         </thead>
