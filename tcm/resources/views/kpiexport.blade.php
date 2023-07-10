@@ -75,7 +75,7 @@
     </tr>
     <tr>
         <td>AO Report Establishment</td>
-        <td>{{ $resultkpi->kpi7 }}</td>
+        <td>{{ $resultkpi->kpi17 }}</td>
     </tr>
     <tr>
         <td>Outstanding Matching to target Ratio (on AO25 Achievement)</td>
