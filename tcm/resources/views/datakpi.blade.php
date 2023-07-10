@@ -252,7 +252,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Monthly Sales Target Achievement (Target Operation)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi19" placeholder="Isi skor KPI disini">
+                                            <input disable readonly type="text" class="form-control-plaintext" name="formkpi[]" id="kpi19" placeholder="Isi skor KPI disini">
                                         </div>
                                     </div>
                                 </div>
@@ -721,6 +721,7 @@ $(document).ready(function(){
                 $('#kpi17').val(html.data.kpi17);
                 $('#kpi18').val(html.data.kpi18+'%');
                 $('#kpi19').val(html.data.kpi19+'%');
+                console.log(html.data.kpi19)
                 $('#kpi20').val(html.data.kpi20+'%');
                 $('#kpi21').val(html.data.kpi21+'%');
                 $('#kpi22').val(html.data.kpi22+'%');
