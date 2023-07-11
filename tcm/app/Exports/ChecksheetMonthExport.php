@@ -49,7 +49,7 @@ class ChecksheetMonthExport implements  FromView, ShouldAutoSize, WithStyles
     }
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:W122')->applyFromArray([
+        $sheet->getStyle('A1:X122')->applyFromArray([
             'borders' => [
                 'allBorders' => [
                     'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
