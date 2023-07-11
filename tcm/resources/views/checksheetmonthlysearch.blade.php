@@ -92,15 +92,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($a->w == 1 )
-                                            O
-                                        @elseif($a->w == 2)
-                                            X
-                                        @else
-                                            -
-                                        @endif
-                                    </td>
-                                    <td>
                                         @if ($a->b == 1 )
                                             O
                                         @elseif($a->b == 2)
@@ -284,6 +275,15 @@
                                         @if ($a->v == 1 )
                                             O
                                         @elseif($a->v == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->w == 1 )
+                                            O
+                                        @elseif($a->w == 2)
                                             X
                                         @else
                                             -
