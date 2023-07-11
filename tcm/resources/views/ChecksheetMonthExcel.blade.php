@@ -42,9 +42,9 @@
                 @endif
             </td>
             <td>
-                @if ($a->v == 1 )
+                @if ($a->w == 1 )
                     O
-                @elseif($a->v == 2)
+                @elseif($a->w == 2)
                     X
                 @else
                     -
@@ -225,6 +225,15 @@
                 @if ($a->u == 1 )
                     O
                 @elseif($a->u == 2)
+                    X
+                @else
+                    -
+                @endif
+            </td>
+            <td>
+                @if ($a->v == 1 )
+                    O
+                @elseif($a->v == 2)
                     X
                 @else
                     -
