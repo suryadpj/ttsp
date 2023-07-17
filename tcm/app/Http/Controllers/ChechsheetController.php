@@ -746,10 +746,16 @@ class ChechsheetController extends Controller
         //define
         $data_user = Auth::user();
         $fperiode = $request->search_periode;
+        $fweek = $request->search_week;
+        if($fweek == null)
+        {
+            $fweek = 0;
+        }
         $fperiodeformat = date("F Y",strtotime($fperiode));
         $data = DB::table('fields')
         ->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')
         ->where('periode',$fperiode."-01")
+        ->where('week',$fweek)
         ->where('kategori',4)
         ->select(
             'fields.nama',
@@ -790,7 +796,7 @@ class ChechsheetController extends Controller
         }
         else
         {
-            return view('checksheetmonthlysearch',['data' => $data,'fperiode' => $fperiode,'fperiodes' => $fperiodeformat]);
+            return view('checksheetmonthlysearch',['data' => $data,'fperiode' => $fperiode,'fweek' => $fweek,'fperiodes' => $fperiodeformat]);
         }
 
     }

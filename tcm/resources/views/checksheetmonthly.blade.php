@@ -28,6 +28,17 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
+                            <select class="form-control select2" name="search_week" style="width: 100%;">
+                            <option value="0" @if(old('fweek') == 0) selected @endif>1 Bulan</option>
+                            <option value="1" @if(old('fweek') == 1) selected @endif>Minggu ke 1</option>
+                            <option value="2" @if(old('fweek') == 2) selected @endif>Minggu ke 2</option>
+                            <option value="3" @if(old('fweek') == 3) selected @endif>Minggu ke 3</option>
+                            <option value="4" @if(old('fweek') == 4) selected @endif>Minggu ke 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
                             <button type="submit" id="filter_button" class="btn btn-primary percent"><i class="fas fa-search"></i></button>
                             <button type="button" id="reset_filter_button" class="btn percent"><i class="fas fa-undo"></i></button>
                         </div>
