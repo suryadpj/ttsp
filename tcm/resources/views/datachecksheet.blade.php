@@ -110,7 +110,7 @@
     <div class="modal-dialog modal-xxl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Preview Checksheet</h4>
+                <h4 class="modal-title">Data Checksheet</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -124,6 +124,32 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="edit">
+    <form role="form" id="formdt" method='post' enctype="multipart/form-data">
+        {{ csrf_field() }}
+        <input type="hidden" name="periode" id="hiddenperiode">
+        <input type="hidden" name="kategori" id="hiddenkategori">
+        <input type="hidden" name="week" id="hiddenweek">
+        <input type="hidden" name="act" id="hiddenact">
+        <div class="modal-dialog modal-xxl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Data Checksheet</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="datachecksheet2"></div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                    <button type="submit" id="action_button" class="btn btn-success">Simpan Perubahan Data</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 @stop
 
@@ -254,20 +280,6 @@ $(document).ready(function(){
             });
     });
 
-    //data catatan
-    $('#create_record').click(function(){
-        $('#sample_form2')[0].reset();
-        $('.select2').val(null).trigger('change');
-        $('.select2').select2();
-        $('#lampiran').html('');
-        // $('#cari').val(null).trigger('change');
-        // $('#area').val(null).trigger('change');
-        $('.modal-title').text("Data Cost Baru");
-        $('#action_button').val("Add");
-        $('#action').val("Add");
-        $('#modal_catatan').modal('show');
-    });
-
     $(document).on('click', '.delete', function (e) {
         e.preventDefault();
         var idd = $(this).data('id');
@@ -316,10 +328,124 @@ $(document).ready(function(){
                html.forEach( x => isilampiran.push('<div class="form-group row"><div class="col-sm-9">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-3">' + x.nilai + '</div></div><hr>'))
                $('#datachecksheet').html(isilampiran)
                 document.getElementById("exportexcel").href="checksheetexport?id=" + id;
+                $('.modal-title').text("Preview Data Checksheet");
+            }
+        })
+    });
+    $(document).on('click', '.editdata', function(){
+        var id = $(this).attr('id');
+        $('#edit').modal('show');
+        console.log(id)
+        $.ajax({
+            url:"checksheet/"+id,
+            dataType:"json",
+            success:function(html)
+            {
+               const isilampiran = [];
+            //    html.forEach( x => isilampiran.push('<div class="form-group row"><div class="col-sm-9">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-3">' + x.nilai + '</div></div><hr>'))
+               html.forEach(function(x)
+               {
+                    if(x.diisi == 1)
+                    {
+                        isilampiran.push('<div class="form-group row"><div class="col-sm-8">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-4"><input type="radio" id="radioPrimary' + x.iddata + 'a" name="checksheet[' + x.iddata + ']" value="1" checked><label for="radioPrimary' + x.iddata + 'a">O:Sudah Dilakukan</label> &nbsp; <input type="radio" id="radioPrimary' + x.iddata + 'b" name="checksheet[' + x.iddata + ']" value="2"><label for="radioPrimary' + x.iddata + 'b">X:Tidak Dilakukan</label></div></div><hr>');
+                    }
+                    else if(x.diisi == 2)
+                    {
+                        isilampiran.push('<div class="form-group row"><div class="col-sm-8">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-4"><input type="radio" id="radioPrimary' + x.iddata + 'a" name="checksheet[' + x.iddata + ']" value="1"><label for="radioPrimary' + x.iddata + 'a">O:Sudah Dilakukan</label> &nbsp; <input type="radio" id="radioPrimary' + x.iddata + 'b" name="checksheet[' + x.iddata + ']" value="2" checked><label for="radioPrimary' + x.iddata + 'b">X:Tidak Dilakukan</label></div></div><hr>');
+                    }
+                    $('#hiddenperiode').val(x.periode);
+                    $('#hiddenweek').val(x.week);
+                    if(x.week == 0)
+                    {
+                        $('#hiddenkategori').val('month');
+                    }
+                    else
+                    {
+                        $('#hiddenkategori').val('week');
+                    }
+               })
+               $('#datachecksheet2').html(isilampiran);
+               $('#hiddenact').val('edit');
+                document.getElementById("exportexcel").href="checksheetexport?id=" + id;
+                $('.modal-title').text("Edit Data Checksheet");
             }
         })
     });
 
+    $('#formdt').on('submit', function(event){
+            event.preventDefault();
+            $.ajax({
+                url:"{{ route('checksheet.store') }}",
+                method:"POST",
+                data: new FormData(this),
+                contentType: false,
+                cache:false,
+                processData: false,
+                dataType:"json",
+                beforeSend:function(){
+                    $('#action_button').html('<i disable class="fa fa-spinner fa-spin"></i>').attr('disabled', true);
+                },
+                success:function(data)
+                {
+                    var html = '';
+                    if(data.errors)
+                    {
+                        html = '';
+                        for(var count = 0; count < data.errors.length; count++)
+                        {
+                            html += data.errors[count] + '<br>';
+                        }
+                        swal.fire({
+                            icon: 'warning',
+                            width: '50em',
+                            title: 'Data gagal disimpan',
+                            html: html
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.ektension)
+                    {
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            text: 'Ekstensi file yang diizinkan hanya PDF, JPG, PNG, DOCX'
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.duplicate)
+                    {
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            text: data.duplicate
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.success)
+                    {
+                        // $('#formdt')[0].reset();
+                        // $('.select3').val(null).trigger('change');
+                        // $('.select3').select2();
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                        swal.fire({
+                            icon: 'success',
+                            title: 'Data berhasil disimpan. Terima kasih',
+                            text: data.success
+                        })
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ': ' + xhr.statusText
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Data gagal disimpan',
+                        text: errorMessage
+                    });
+                    console.log(xhr);
+                    $('#action_button').html('Save changes').attr('disabled', false);
+                }
+            })
+        });
 });
 </script>
 @stop

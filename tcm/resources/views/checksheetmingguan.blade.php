@@ -20,6 +20,7 @@
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
 <input type="hidden" name="kategori" value="week">
+<input type="hidden" name="act" value="submit">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">

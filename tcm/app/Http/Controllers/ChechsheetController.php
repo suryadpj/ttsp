@@ -43,6 +43,10 @@ class ChechsheetController extends Controller
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
                     $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
+                    if($data_user->id == $data->IDUser)
+                    {
+                        $button .= ' &nbsp; <button type="button" name="editdata" id="'.$data->periode.'_'.$data->IDKantor.'" class="editdata btn btn-success btn-sm"><i title="Edit Data" class="fas fa-edit"></i></button>';
+                    }
                     if(auth()->user()->can('kpi_input'))
                     {
                         $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
@@ -535,7 +539,14 @@ class ChechsheetController extends Controller
 
         $data_user = auth::user();
         $datakpi = $request->checksheet;
-        $periode = $request->periode;
+        if($request->act == "edit")
+        {
+            $periode = $request->periode;
+        }
+        elseif($request->act == "submit")
+        {
+            $periode = $request->periode."-01";
+        }
         $catatan = $request->catatan;
         $kategori = $request->kategori;
         $tanggal = date('Y-m-d');
@@ -549,17 +560,25 @@ class ChechsheetController extends Controller
             $kat = 0;
         }
         //cek KPI
-        $cek = DB::table('datachecksheet')->where('IDUser',$data_user->id)->where('periode',$periode.'-01')->where('week',$kat)->count();
+        $cek = DB::table('datachecksheet')->where('IDUser',$data_user->id)->where('periode',$periode)->where('week',$kat)->count();
         if($cek > 0)
         {
-            return response()->json(['duplicate' => 'Anda sudah mengisi Checksheet periode '.$format_tanggal.' ini, silahkan cek di data Checksheet. Terima kasih']);
+            if($request->act == "submit")
+            {
+                return response()->json(['duplicate' => 'Anda sudah mengisi Checksheet periode '.$format_tanggal.' ini, silahkan cek di data Checksheet. Terima kasih']);
+            }
+            elseif($request->act == "edit")
+            {
+                DB::table('datachecksheet')->where('IDUser',$data_user->id)->where('periode',$periode)->where('week',$kat)->update(['deleted' => 1]);
+                DB::table('datachecksheet_result')->where('IDUser',$data_user->id)->where('periode',$periode)->where('week',$kat)->update(['deleted' => 1]);
+            }
         }
         for($count = 0; $count < count($datakpi); $count++)
         {
             $nomorkpi = $count+1;
             $data2 = array(
                 'tanggal'   => $tanggal,
-                'periode'   => $periode."-01",
+                'periode'   => $periode,
                 'IDUser'    => $data_user->id,
                 'IDField'   => $nomorkpi,
                 'IDKantor'  => $data_user->IDKantor,
@@ -579,35 +598,35 @@ class ChechsheetController extends Controller
         }
         DB::table('datachecksheet')->insert($insert_data2);
 
-        $a1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[1,14])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/14)*100,0) AS skor'))->first();
-        $a2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[15,18])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
-        $a = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[1,18])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/18)*100,0) AS skor'))->first();
-        $b1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[19,34])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/16)*100,0) AS skor'))->first();
-        $b2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[35,37])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-        $b = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[19,37])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/19)*100,0) AS skor'))->first();
-        $c1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[38,43])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
-        $c2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[44,69])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/26)*100,0) AS skor'))->first();
-        $c3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[70,76])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
-        $c4 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[77,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
-        $c = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[38,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/45)*100,0) AS skor'))->first();
-        $d1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[83,85])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-        $d2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[86,96])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/11)*100,0) AS skor'))->first();
-        $d3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[97,100])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
-        $d = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[83,100])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/18)*100,0) AS skor'))->first();
-        $e1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[101,103])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-        $e2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[104,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
-        $e = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[101,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
-        $f1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[109,110])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
-        $f2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[111,113])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-        $f3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[114,115])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
-        $f = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[109,115])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
-        $g1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[116,118])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-        $g2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[119,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-        $g = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->wherebetween('IDField',[116,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
-        $all = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode."-01")->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
+        $a1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[1,14])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/14)*100,0) AS skor'))->first();
+        $a2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[15,18])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
+        $a = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[1,18])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/18)*100,0) AS skor'))->first();
+        $b1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[19,34])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/16)*100,0) AS skor'))->first();
+        $b2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[35,37])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $b = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[19,37])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/19)*100,0) AS skor'))->first();
+        $c1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[38,43])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+        $c2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[44,69])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/26)*100,0) AS skor'))->first();
+        $c3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[70,76])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
+        $c4 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[77,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+        $c = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[38,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/45)*100,0) AS skor'))->first();
+        $d1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[83,85])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $d2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[86,96])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/11)*100,0) AS skor'))->first();
+        $d3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[97,100])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
+        $d = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[83,100])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/18)*100,0) AS skor'))->first();
+        $e1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[101,103])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $e2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[104,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
+        $e = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[101,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
+        $f1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[109,110])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
+        $f2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[111,113])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $f3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[114,115])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
+        $f = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[109,115])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
+        $g1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[116,118])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $g2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[119,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+        $g = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->wherebetween('IDField',[116,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+        $all = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
 
         $data_result = array(
-            'periode'   => $periode."-01",
+            'periode'   => $periode,
             'IDUser'    => $data_user->id,
             'IDKantor'    => $data_user->IDKantor,
             'week'    => $kat,
@@ -668,7 +687,7 @@ class ChechsheetController extends Controller
     public function show($id)
     {
         $split = explode('_',$id);
-        $data = DB::table('fields')->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')->where('periode',$split[0])->where('IDKantor',$split[1])->select('fields.*',DB::raw('if(datachecksheet.nilai=1,"Sudah Dilakukan",IF(datachecksheet.nilai=2,"Tidak Dilakukan","-")) as nilai'))->get();
+        $data = DB::table('fields')->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')->where('datachecksheet.deleted',0)->where('periode',$split[0])->where('IDKantor',$split[1])->select('fields.*','datachecksheet.nilai as diisi',DB::raw('if(datachecksheet.nilai=1,"Sudah Dilakukan",IF(datachecksheet.nilai=2,"Tidak Dilakukan","-")) as nilai'),'datachecksheet.periode','datachecksheet.week')->get();
         return response()->json($data);
     }
 
