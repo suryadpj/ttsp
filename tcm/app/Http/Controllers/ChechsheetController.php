@@ -550,7 +550,7 @@ class ChechsheetController extends Controller
         $catatan = $request->catatan;
         $kategori = $request->kategori;
         $tanggal = date('Y-m-d');
-        $format_tanggal = date('F Y', strtotime($tanggal));
+        $format_tanggal = date('F Y', strtotime($periode));
         if($request->kategori =="week")
         {
             $kat = $request->week;

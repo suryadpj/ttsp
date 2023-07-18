@@ -279,7 +279,7 @@ class KpiController extends Controller
                     $button .= '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button> &nbsp;';
                     if(auth()->user()->can('kpi_input'))
                     {
-                        $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                        $button .= '<button type="button" name="delete" id="'.$data->id.'_'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     }
                     return $button;})
                 ->rawColumns(['action'])
@@ -534,7 +534,7 @@ class KpiController extends Controller
                     $button .= '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button> &nbsp;';
                     if(auth()->user()->can('kpi_input'))
                     {
-                        $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
+                        $button .= '<button type="button" name="delete" id="'.$data->id.'_'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     }
                     return $button;})
                 ->rawColumns(['action'])
@@ -1027,7 +1027,9 @@ class KpiController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('datakpi_result')->where('id',$id)->update(['deleted' => 1]);
+        $split = explode('_',$id);
+        DB::table('datakpi')->where('periode',$split[1])->where('IDKantor',$split[2])->update(['deleted' => 1]);
+        DB::table('datakpi_result')->where('periode',$split[1])->where('IDKantor',$split[2])->update(['deleted' => 1]);
         return response()->json(['success' => 'Data berhasil dihapus.']);
     }
     public function exportexcel(request $request)
