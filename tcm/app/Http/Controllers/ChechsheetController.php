@@ -175,7 +175,10 @@ class ChechsheetController extends Controller
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
                     $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
-                    if(auth()->user()->can('kpi_input'))
+                    if($data_user->id == $data->IDUser)
+                    {
+                        $button .= ' &nbsp; <button type="button" name="editdata" id="'.$data->periode.'_'.$data->IDKantor.'" class="editdata btn btn-success btn-sm"><i title="Edit Data" class="fas fa-edit"></i></button>';
+                    }if(auth()->user()->can('kpi_input'))
                     {
                         $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
                     }
