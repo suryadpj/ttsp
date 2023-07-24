@@ -24,6 +24,7 @@ Route::get('/tes', function () {
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/settlesummary/{idcabang}/{periode}', [App\Http\Controllers\HomeController::class, 'settlesummary'])->name('settlesummary');
 Route::get('/homesales', [App\Http\Controllers\HomeController::class, 'homesales'])->name('homesales');
 Route::get('/homegr', [App\Http\Controllers\HomeController::class, 'homegr'])->name('homegr');
 Route::get('/homebp', [App\Http\Controllers\HomeController::class, 'homebp'])->name('homebp');

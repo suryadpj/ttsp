@@ -675,7 +675,7 @@ class ChechsheetController extends Controller
             $form_data_result2 = array(
                 'kpiresource'        =>  $all->skor,
             );
-            DB::table('datasummary')->where('periode',$periode."-01")->where('IDUser',$data_user->id)->update($form_data_result2);
+            DB::table('datasummary')->where('periode',$periode."-01")->where('IDKantor',$data_user->IDKantor)->update($form_data_result2);
         }
 
         return response()->json(['success' => 'Data Checksheet berhasil disimpan, silahkan periksa data anda']);

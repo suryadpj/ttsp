@@ -64,4 +64,128 @@ class HomeController extends Controller
     {
         return view('kpireport');
     }
+
+    public function settlesummary($idcabang,$periode)
+    {
+        $data_user = auth::user();
+        //get data KPI
+        $ha = DB::table('datakpi_result')->where('periode',$periode)->where('IDUser',$data_user->id)->count();
+        if($ha == 0)
+        {
+            $error = 1;
+            $kpiproses = 0;
+        }
+        else
+        {
+            $error = 1;
+            $a = DB::table('datakpi_result')->where('periode',$periode)->where('IDUser',$data_user->id)->first();
+            $evaluation1 = $a->result1;
+            if($a->result3+$a->result5+$a->result7 >= 2)
+            {
+                $evaluation2 = "O";
+                $evaluationshow2 = 1;
+            }
+            else {
+                $evaluation2 = "X";
+                $evaluationshow2 = 0;
+            }
+            $evaluation13 = $a->result25;
+            if($a->result20+$a->result21+$a->result22 >= 2)
+            {
+                $evaluation14 = "O";
+                $evaluationshow14 = 1;
+            }
+            else {
+                $evaluation14 = "X";
+                $evaluationshow14 = 0;
+            }
+            if($a->result26+$a->result27 >= 2)
+            {
+                $evaluation16 = "O";
+                $evaluationshow16 = 1;
+            }
+            else {
+                $evaluation16 = "X";
+                $evaluationshow16 = 0;
+            }
+            if($a->result33+$a->result35+$a->result37+$a->result39 >= 3)
+            {
+                $evaluation17 = "O";
+                $evaluationshow17 = 1;
+            }
+            else {
+                $evaluation17 = "X";
+                $evaluationshow17 = 0;
+            }
+            if($a->result28+$a->result29+$a->result31 >= 2)
+            {
+                $evaluation18 = "O";
+                $evaluationshow18 = 1;
+            }
+            else {
+                $evaluation18 = "X";
+                $evaluationshow18 = 0;
+            }
+            if($a->result44+$a->result45+$a->result46 >= 2)
+            {
+                $evaluation19 = "O";
+                $evaluationshow19 = 1;
+            }
+            else {
+                $evaluation19 = "X";
+                $evaluationshow19 = 0;
+            }
+            if($a->result50+$a->result51 >= 2)
+            {
+                $evaluation25 = "O";
+                $evaluationshow25 = 1;
+            }
+            else {
+                $evaluation25 = "X";
+                $evaluationshow25 = 0;
+            }
+            $finalcat = ($evaluation1+$evaluationshow2+$a->result11+$a->result12+$a->result13+$a->result14+$a->result15+$a->result16+$a->result17+$a->result19+$a->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$a->result42+$a->result43+$evaluationshow19+$a->result47+$a->result48+$a->result49+$evaluationshow25+$a->result52)/24;
+
+            $kpiproses = $finalcat*100;
+        }
+
+        //get data checksheet
+        $hall = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->count();
+        if($hall == 0)
+        {
+            $error2 = 1;
+            $kpiresource = 0;
+        }
+        else
+        {
+            $error2 = 0;
+            $all = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
+            $kpiresource = $all->skor;
+        }
+        $form_data_result2 = array(
+            'kpiproses'        =>  $kpiproses,
+            'kpiresource'        =>  $kpiresource,
+        );
+        DB::table('datasummary')->where('periode',$periode)->where('IDKantor',$data_user->IDKantor)->update($form_data_result2);
+        if($error == 1)
+        {
+            if($error2 == 1)
+            {
+                return response()->json(['Informasi' => 'Data kosong, tidak ada summary yang di update']);
+            }
+            else
+            {
+                return response()->json(['Informasi' => 'Data Summary KPI berhasil di update. Data Summary Checksheet kosong.']);
+            }
+        }
+        elseif($error2 == 1)
+        {
+            return response()->json(['Informasi' => 'Data Summary Checksheet berhasil di update. Data Summary KPI kosong.']);
+        }
+        else
+        {
+            return response()->json(['Informasi' => 'Data Summary berhasil di update.']);
+        }
+
+    }
 }
