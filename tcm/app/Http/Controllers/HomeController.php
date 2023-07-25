@@ -77,7 +77,7 @@ class HomeController extends Controller
         }
         else
         {
-            $error = 1;
+            $error = 0;
             $a = DB::table('datakpi_result')->where('periode',$periode)->where('IDKantor',$idcabang)->first();
             $evaluation1 = $a->result1;
             if($a->result3+$a->result5+$a->result7 >= 2)
@@ -175,12 +175,12 @@ class HomeController extends Controller
             }
             else
             {
-                return response()->json(['Informasi' => 'Data Summary KPI berhasil di update. Data Summary Checksheet kosong.']);
+                return response()->json(['Informasi' => 'Data Checksheet berhasil di update. Data KPI kosong.']);
             }
         }
         elseif($error2 == 1)
         {
-            return response()->json(['Informasi' => 'Data Summary Checksheet berhasil di update. Data Summary KPI kosong.']);
+            return response()->json(['Informasi' => 'Data KPI berhasil di update. Data Checksheet kosong.']);
         }
         else
         {
