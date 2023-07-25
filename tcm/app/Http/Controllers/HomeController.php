@@ -69,7 +69,7 @@ class HomeController extends Controller
     {
         $data_user = auth::user();
         //get data KPI
-        $ha = DB::table('datakpi_result')->where('periode',$periode)->where('IDUser',$data_user->id)->count();
+        $ha = DB::table('datakpi_result')->where('periode',$periode)->where('IDKantor',$idcabang)->count();
         if($ha == 0)
         {
             $error = 1;
@@ -78,7 +78,7 @@ class HomeController extends Controller
         else
         {
             $error = 1;
-            $a = DB::table('datakpi_result')->where('periode',$periode)->where('IDUser',$data_user->id)->first();
+            $a = DB::table('datakpi_result')->where('periode',$periode)->where('IDKantor',$idcabang)->first();
             $evaluation1 = $a->result1;
             if($a->result3+$a->result5+$a->result7 >= 2)
             {
@@ -150,7 +150,7 @@ class HomeController extends Controller
         }
 
         //get data checksheet
-        $hall = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->count();
+        $hall = DB::table('datachecksheet')->where('IDKantor',$idcabang)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->count();
         if($hall == 0)
         {
             $error2 = 1;
@@ -159,14 +159,14 @@ class HomeController extends Controller
         else
         {
             $error2 = 0;
-            $all = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
+            $all = DB::table('datachecksheet')->where('IDKantor',$idcabang)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
             $kpiresource = $all->skor;
         }
         $form_data_result2 = array(
             'kpiproses'        =>  $kpiproses,
             'kpiresource'        =>  $kpiresource,
         );
-        DB::table('datasummary')->where('periode',$periode)->where('IDKantor',$data_user->IDKantor)->update($form_data_result2);
+        DB::table('datasummary')->where('periode',$periode)->where('IDKantor',$idcabang)->update($form_data_result2);
         if($error == 1)
         {
             if($error2 == 1)
