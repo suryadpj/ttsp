@@ -131,7 +131,7 @@
                 <td>{{ $a->kpiresource }}%</td>
                 @if($a->kpiresource >= 85)
                     <td>
-                        <h2><span class="badge badge-success">High</span></h2>
+                        <h2><span class="badge badge-success">Well</span></h2>
                     </td>
                 @elseif($a->kpiresource >= 70)
                     <td>
@@ -145,7 +145,7 @@
                 <td>{{ round($a->kpiproses) }}%</td>
                 @if($a->kpiproses >= 85)
                     <td>
-                        <h2><span class="badge badge-success">High</span></h2>
+                        <h2><span class="badge badge-success">Well</span></h2>
                     </td>
                 @elseif($a->kpiproses >= 70)
                     <td>
