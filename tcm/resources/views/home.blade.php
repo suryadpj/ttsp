@@ -186,8 +186,15 @@
     <script>
           $(function () {
             $("#example1").DataTable({
-              "responsive": true, "lengthChange": false, "autoWidth": false,
-              "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+              "responsive": true,
+              "lengthChange": false,
+              "autoWidth": false,
+                "order": [[ 3, "desc" ],[ 5, "desc" ]],
+                buttons : [
+                            {extend: 'pdf', title:'Data Summary'},
+                            {extend: 'excel', title: 'Data Summary'},
+                            {extend:'print',title: 'Data Summary'},
+                ],
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
               "paging": true,
