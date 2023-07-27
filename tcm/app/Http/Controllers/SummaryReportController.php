@@ -14,6 +14,10 @@ use App\Exports\SummaryReportExport;
 
 class SummaryReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $data_user = Auth::user();
