@@ -540,7 +540,7 @@ class KpiController extends Controller
                     {
                         if($data_user->id == $data->IDUser)
                         {
-                            $button .= '<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-success btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button>';
+                            $button .= '<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-success btn-sm"><i title="Rubah Data" class="fas fa-edit"></i></button> &nbsp;';
                         }
                         $button .= '<button type="button" name="delete" id="'.$data->id.'_'.$data->periode.'_'.$data->IDKantor.'" class="delete btn btn-danger btn-sm"><i title="Hapus Data" class="fas fa-trash"></i></button>';
                     }
