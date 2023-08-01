@@ -95,125 +95,468 @@
     </div>
 </div>
 <div class="modal fade" id="preview">
-    <div class="modal-dialog modal-xxl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Preview KPI</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">PSP Sales (15 KPI)</h3>
+    <form role="form" id="formdt" method='post' enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <input type="hidden" name="kategori" value="all">
+    <input type="hidden" name="periode" id="periode">
+    <input type="hidden" name="catatan" id="catatan">
+        <div class="modal-dialog modal-xxl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Preview KPI</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">PSP Sales (15 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Net Promoter Score (NPS) Sales</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi1" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>GP Total Sales (per unit)  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi2" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>GP Total Sales Rasio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi3" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>GP Vehicle (per unit)  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi4" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>GP Vehicle Rasio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi5" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>GP TCO (per unit)  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi6" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>GP TCO Rasio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi7" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>F&I Commision (per unit)  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi8" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Total Revenue per Unit  (Vehicle + TCO) (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi9" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Total Revenue Amount (Vehicle + TCO) (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi10" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>TCO Installation Rasio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi11" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Toyota Insurance Share</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi12" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Credit Rasio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi13" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Market Share Credit Portion (MSCP)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi14" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>M-Quote utilization rasio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi15" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Net Promoter Score (NPS) Sales</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi1" placeholder="Isi skor KPI disini">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Advanced Demand & Supply Management (4 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Monthly SPK Achievement (vs Target Rundown)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi16" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>AO Report Establishment</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi17" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>GP Total Sales (per unit)  (mio)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi2" placeholder="Isi skor KPI disini">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Outstanding Matching to target Ratio (on AO25 Achievement) </label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi18" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Monthly Sales Target Achievement (Target Operation)</label>
+                                                <input type="text" class="modalview form-control-plaintext" name="formkpi[]" id="kpi19" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>GP Total Sales Rasio</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi3" placeholder="Isi skor KPI disini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Delivery Explanation (6 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Awareness Rate - T-Care</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi20" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Awareness Rate - T-intouch</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi21" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>GP Vehicle (per unit)  (mio)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi4" placeholder="Isi skor KPI disini">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Awareness Rate - Insurance</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi22" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Survey Customer Interest - T-Care</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi23" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Survey Customer Interest - T-Intouch</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi24" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>T-Intouch Activation Rate</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi25" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>GP Vehicle Rasio</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi5" placeholder="Isi skor KPI disini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">PSP Service (16 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Net Promoter Score (NPS) Aftersales GR</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi26" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Net Promoter Score (NPS) Aftersales BP</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi27" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>GP TCO (per unit)  (mio)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi6" placeholder="Isi skor KPI disini">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Service Ratio (1st - 7th Service) - 1st Service T-care Lite Rate (LCGC)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi28" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Service Ratio (1st - 7th Service) - 1st Service T-care Rate (non LCGC)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi29" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Service Ratio (1st - 7th Service) - PM Rate T-Care Lite 2nd Service (LCGC)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi30" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Service Ratio (1st - 7th Service) - PM Rate T-Care 2nd-3rd Service (Non LCGC)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi31" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Service per unit  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi32" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Service Ratio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi33" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Parts per unit  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi34" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Parts Ratio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi35" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP BP Service per Unit (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi36" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP BP Service Ratio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi37" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP BP parts per Unit (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi38" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Gross Profit/Unit/Ratio (service, parts) - GP BP parts Ratio</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi39" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Total Revenue per Unit  (Parts + Service) (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi40" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Total Revenue Amount (Parts + Service)  (mio)</label>
+                                                <input type="number" class="modalview form-control-plaintext" name="formkpi[]" id="kpi41" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>GP TCO Rasio</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi7" placeholder="Isi skor KPI disini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">General Repair (4 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Service Lead Time</label>
+                                                <input type="time" step="2" class="modalview form-control-plaintext" name="formkpi[]" id="kpi42" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Up Selling ratio  (TMO)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi43" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>F&I Commision (per unit)  (mio)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi8" placeholder="Isi skor KPI disini">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Cross Selling ratio (include BP) - Battery</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi44" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Cross Selling ratio (include BP) - Car Care</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi45" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Cross Selling ratio (include BP) - Tire</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi46" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Total Revenue per Unit  (Vehicle + TCO) (mio)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi9" placeholder="Isi skor KPI disini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Body & Paint (2 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Ontime Delivery Ratio (OTD)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi47" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Total Revenue Amount (Vehicle + TCO) (mio)</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi10" placeholder="Isi skor KPI disini">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Return Job (RTJ)</label>
+                                                <input type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi48" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>TCO Installation Rasio</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi11" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Toyota Insurance Share</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi12" placeholder="Isi skor KPI disini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Trade In (1 KPI)</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Trade In Ratio</label>
+                                                <input  type="tel" class="modalview form-control-plaintext" name="formkpi[]" id="kpi49" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Credit Rasio</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi13" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Market Share Credit Portion (MSCP)</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi14" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Manpower (3 KPI)</h3>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>M-Quote utilization rasio</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi15" placeholder="Isi skor KPI disini">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Staff Productivity  - Sales (Unit/salesperson)</label>
+                                                <input  type="text" class="modalview form-control-plaintext" name="formkpi[]" id="kpi50" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Staff Productivity  - Aftersales (Overall productivity)  </label>
+                                                <input  type="text" class="modalview form-control-plaintext" name="formkpi[]" id="kpi51" placeholder="Isi skor KPI disini">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Salesperson Turn Over Ratio</label>
+                                                <input type="text" class="modalview form-control-plaintext" name="formkpi[]" id="kpi52" placeholder="Isi skor KPI disini">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -221,350 +564,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Advanced Demand & Supply Management (4 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Monthly SPK Achievement (vs Target Rundown)</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi16" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>AO Report Establishment</label>
-                                            <input disable readonly type="number" class="form-control-plaintext" name="formkpi[]" id="kpi17" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Outstanding Matching to target Ratio (on AO25 Achievement) </label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi18" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Monthly Sales Target Achievement (Target Operation)</label>
-                                            <input disable readonly type="text" class="form-control-plaintext" name="formkpi[]" id="kpi19" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <span id="buttonsub"></span>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Delivery Explanation (6 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Awareness Rate - T-Care</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi20" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Awareness Rate - T-intouch</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi21" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Awareness Rate - Insurance</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi22" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Survey Customer Interest - T-Care</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi23" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Survey Customer Interest - T-Intouch</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi24" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>T-Intouch Activation Rate</label>
-                                            <input disable readonly type="tel" class="form-control-plaintext" name="formkpi[]" id="kpi25" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">PSP Service (16 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Net Promoter Score (NPS) Aftersales GR</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi26" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Net Promoter Score (NPS) Aftersales BP</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi27" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Service Ratio (1st - 7th Service) - 1st Service T-care Lite Rate (LCGC)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi28" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Service Ratio (1st - 7th Service) - 1st Service T-care Rate (non LCGC)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi29" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Service Ratio (1st - 7th Service) - PM Rate T-Care Lite 2nd Service (LCGC)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi30" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Service Ratio (1st - 7th Service) - PM Rate T-Care 2nd-3rd Service (Non LCGC)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi31" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Service per unit  (mio)</label>
-                                            <input type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi32" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Service Ratio</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi33" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Parts per unit  (mio)</label>
-                                            <input type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi34" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP GR Parts Ratio</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi35" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP BP Service per Unit (mio)</label>
-                                            <input type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi36" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP BP Service Ratio</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi37" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP BP parts per Unit (mio)</label>
-                                            <input type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi38" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Gross Profit/Unit/Ratio (service, parts) - GP BP parts Ratio</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi39" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Total Revenue per Unit  (Parts + Service) (mio)</label>
-                                            <input type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi40" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Total Revenue Amount (Parts + Service)  (mio)</label>
-                                            <input type="number" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi41" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">General Repair (4 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Service Lead Time</label>
-                                            <input type="time" step="2" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi42" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Up Selling ratio  (TMO)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi43" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Cross Selling ratio (include BP) - Battery</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi44" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Cross Selling ratio (include BP) - Car Care</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi45" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Cross Selling ratio (include BP) - Tire</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi46" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Body & Paint (2 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Ontime Delivery Ratio (OTD)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi47" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Return Job (RTJ)</label>
-                                            <input type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi48" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Trade In (1 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Trade In Ratio</label>
-                                            <input  type="tel" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi49" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Manpower (3 KPI)</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Staff Productivity  - Sales (Unit/salesperson)</label>
-                                            <input  type="text" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi50" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Staff Productivity  - Aftersales (Overall productivity)  </label>
-                                            <input  type="text" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi51" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <label>Salesperson Turn Over Ratio</label>
-                                            <input type="text" class="form-control-plaintext" disable readonly name="formkpi[]" id="kpi52" placeholder="Isi skor KPI disini">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                <a class="btn btn-success" id="exportexcel" href="#">Export as Excel</a>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 @stop
 
@@ -702,6 +708,79 @@ $(document).ready(function(){
             dataType:"json",
             success:function(html)
             {
+                $('#kpi1').val(html.data.kpi1);
+                $('#kpi2').val(html.data.kpi2);
+                $('#kpi3').val(html.data.kpi3);
+                $('#kpi4').val(html.data.kpi4);
+                $('#kpi5').val(html.data.kpi5);
+                $('#kpi6').val(html.data.kpi6);
+                $('#kpi7').val(html.data.kpi7);
+                $('#kpi8').val(html.data.kpi8);
+                $('#kpi9').val(html.data.kpi9);
+                $('#kpi10').val(html.data.kpi10);
+                $('#kpi11').val(html.data.kpi11);
+                $('#kpi12').val(html.data.kpi12);
+                $('#kpi13').val(html.data.kpi13);
+                $('#kpi14').val(html.data.kpi14);
+                $('#kpi15').val(html.data.kpi15);
+                $('#kpi16').val(html.data.kpi16);
+                $('#kpi17').val(html.data.kpi17);
+                $('#kpi18').val(html.data.kpi18);
+                $('#kpi19').val(html.data.kpi19);
+                console.log(html.data.kpi19)
+                $('#kpi20').val(html.data.kpi20);
+                $('#kpi21').val(html.data.kpi21);
+                $('#kpi22').val(html.data.kpi22);
+                $('#kpi23').val(html.data.kpi23);
+                $('#kpi24').val(html.data.kpi24);
+                $('#kpi25').val(html.data.kpi25);
+                $('#kpi26').val(html.data.kpi26);
+                $('#kpi27').val(html.data.kpi27);
+                $('#kpi28').val(html.data.kpi28);
+                $('#kpi29').val(html.data.kpi29);
+                $('#kpi30').val(html.data.kpi30);
+                $('#kpi31').val(html.data.kpi31);
+                $('#kpi32').val(html.data.kpi32);
+                $('#kpi33').val(html.data.kpi33);
+                $('#kpi34').val(html.data.kpi34);
+                $('#kpi35').val(html.data.kpi35);
+                $('#kpi36').val(html.data.kpi36);
+                $('#kpi37').val(html.data.kpi37);
+                $('#kpi38').val(html.data.kpi38);
+                $('#kpi39').val(html.data.kpi39);
+                $('#kpi40').val(html.data.kpi40);
+                $('#kpi41').val(html.data.kpi41);
+                $('#kpi42').val(html.data.kpi42);
+                $('#kpi43').val(html.data.kpi43);
+                $('#kpi44').val(html.data.kpi44);
+                $('#kpi45').val(html.data.kpi45);
+                $('#kpi46').val(html.data.kpi46);
+                $('#kpi47').val(html.data.kpi47);
+                $('#kpi48').val(html.data.kpi48);
+                $('#kpi49').val(html.data.kpi49);
+                $('#kpi50').val(html.data.kpi50);
+                $('#kpi51').val(html.data.kpi51);
+                $('#kpi52').val(html.data.kpi52);
+                $('#periode').val(html.data.periode);
+                $('#catatan').val('revisi KPI periode ' + html.data.periode);
+                $('.modal-title').text("Preview Data");
+                $('#action_button').val("Edit");
+                $('#action').val("Edit");
+                $('.modalview').addClass('form-control simpanedit').removeClass('form-control-plaintext');
+                $('#buttonsub').html('<button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>');
+
+                $('#preview').modal('show');
+            }
+        })
+    });
+    $(document).on('click', '.preview', function(){
+        var id = $(this).attr('id');
+        console.log(id)
+        $.ajax({
+            url:"formkpi/"+id,
+            dataType:"json",
+            success:function(html)
+            {
                 $('#kpi1').val(html.data.kpi1+'%');
                 $('#kpi2').val(html.data.kpi2);
                 $('#kpi3').val(html.data.kpi3+'%');
@@ -757,7 +836,9 @@ $(document).ready(function(){
                 $('#kpi52').val(html.data.kpi52+'%');
                 $('.modal-title').text("Preview Data");
                 $('#action_button').val("Edit");
+                $('.modalview').addClass('form-control-plaintext').removeClass('form-control');
                 $('#action').val("Edit");
+                $('#buttonsub').html('<a class="btn btn-success" id="exportexcel" href="#">Export as Excel</a>');
                 document.getElementById("exportexcel").href="kpiexport?id=" + html.data.id + "&periode=" + html.data.periode;
                 $('#preview').modal('show');
             }
@@ -798,6 +879,97 @@ $(document).ready(function(){
             }
         })
     });
+        $('#formdt').on('submit', function(event){
+            event.preventDefault();
+            console.log('submitkpimanual')
+            $.ajax({
+                url:"{{ route('formkpi.store') }}",
+                method:"POST",
+                data: new FormData(this),
+                contentType: false,
+                cache:false,
+                processData: false,
+                dataType:"json",
+                beforeSend:function(){
+                    $('#action_button').html('<i disable class="fa fa-spinner fa-spin"></i>').attr('disabled', true);
+                },
+                success:function(data)
+                {
+                    var html = '';
+                    if(data.errors)
+                    {
+                        html = '';
+                        for(var count = 0; count < data.errors.length; count++)
+                        {
+                            html += data.errors[count] + '<br>';
+                        }
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            html: html
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.ektension)
+                    {
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            text: 'Ekstensi file yang diizinkan hanya PDF, JPG, PNG, DOCX'
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.duplicate)
+                    {
+                        swal.fire({
+                            icon: 'warning',
+                            title: 'Data gagal disimpan',
+                            text: data.duplicate
+                        })
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                    }
+                    if(data.success)
+                    {
+                        // $('#formdt')[0].reset();
+                        // $('.select3').val(null).trigger('change');
+                        // $('.select3').select2();
+                        $('#action_button').html('<i class="fa fa-paper-plane"></i> Send').attr('disabled', false);
+                        swal.fire({
+                            icon: 'success',
+                            title: 'Data berhasil disimpan. Terima kasih',
+                            text: data.success
+                        })
+
+                        $.ajax({
+                            url:"badgedraft",
+                            dataType:"json",
+                            success:function(html)
+                            {
+                                $('#badgedraft').html(html.data)
+                            if(html.data == 0)
+                            {
+                                $('#badgedrafticon').hide();
+                            }
+                            else
+                            {
+                                $('#badgedrafticon').show();
+                            }
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errorMessage = xhr.status + ': ' + xhr.statusText
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Data gagal disimpan',
+                        text: errorMessage
+                    });
+                    console.log(xhr);
+                    $('#action_button').html('Save changes').attr('disabled', false);
+                }
+            })
+        });
 
 });
 </script>
