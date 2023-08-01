@@ -294,7 +294,8 @@ class KpiController extends Controller
                 return datatables()->of(DB::table('datakpi_result')
                 ->leftjoin('kantors','kantors.id','=','datakpi_result.IDKantor')
                 ->select('kantors.nama','datakpi_result.IDKantor','datakpi_result.*',DB::raw('DATE_FORMAT(datakpi_result.periode,"%M %Y") as periodik'))
-                ->where('datakpi_result.deleted','0'))
+                ->where('datakpi_result.deleted','0')
+                ->where('IDKantor',$data_user->IDKantor))
                 ->filter(function ($data) use ($request) {
                     if (!empty($request->judul)) {
                         $data->where('periode', $request->judul."-01");
