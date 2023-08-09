@@ -776,6 +776,7 @@ class ChechsheetController extends Controller
         ->where('periode',$fperiode."-01")
         ->where('week',$fweek)
         ->where('kategori',4)
+        ->where('deleted',0)
         ->select(
             'fields.nama',
             DB::raw('SUM(IF(IDKantor=14,nilai,0)) as a'),
@@ -823,9 +824,10 @@ class ChechsheetController extends Controller
     {
         $data_user = Auth::user();
         $fperiode = $request->periode;
+        $fweek = $request->week;
         $fperiodeformat = date("F Y",strtotime($fperiode));
         libxml_use_internal_errors(true);
         $nama_file = 'Data Checksheet All Branch periode '.$fperiodeformat.'.xlsx';
-        return Excel::download(new ChecksheetMonthExport($fperiode), $nama_file);
+        return Excel::download(new ChecksheetMonthExport($fperiode,$fweek), $nama_file);
     }
 }

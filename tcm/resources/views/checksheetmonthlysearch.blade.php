@@ -52,11 +52,12 @@
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
 <input type="hidden" name="periode" value="{{ $fperiode }}">
+<input type="hidden" name="week" value="{{ $fweek }}">
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-success" href="checksheetmonthexport?periode={{ $fperiode }}">Export to Excel</a>
+                <a class="btn btn-success" href="checksheetmonthexport?periode={{ $fperiode }}&week={{ $fweek }}">Export to Excel</a>
             </div>
             <div class="card-body">
                 <div class="card-body table-responsive p-0">

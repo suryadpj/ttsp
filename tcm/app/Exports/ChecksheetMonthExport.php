@@ -10,14 +10,17 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class ChecksheetMonthExport implements  FromView, ShouldAutoSize, WithStyles
 {
-    protected $fperiode;
+    protected $fperiode, $fweek;
 
-    function __construct($fperiode) {
+    function __construct($fperiode, $fweek) {
            $this->periode = $fperiode;
+           $this->week = $fweek;
            $this->data = DB::table('fields')
            ->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')
            ->where('periode',$this->periode."-01")
            ->where('kategori',4)
+           ->where('week',$this->week)
+           ->where('deleted',0)
            ->select(
                'fields.nama',
                DB::raw('SUM(IF(IDKantor=14,nilai,0)) as a'),
