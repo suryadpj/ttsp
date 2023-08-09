@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <select class="form-control select2" name="seach_week" style="width: 100%;">
+                            <select class="form-control select2" name="search_week" style="width: 100%;">
                             <option value="0" @if($fweek == 0) selected @endif>1 Bulan</option>
                             <option value="1" @if($fweek == 1) selected @endif>Minggu ke 1</option>
                             <option value="2" @if($fweek == 2) selected @endif>Minggu ke 2</option>
