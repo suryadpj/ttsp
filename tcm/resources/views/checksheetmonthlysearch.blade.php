@@ -64,7 +64,7 @@
                     <table class="table-bordered cell-border" width="100%" id="tblData">
                         <thead style="font-weight: bold;">
                             <tr>
-                                <td>{{ $fperiodes }}</td>
+                                <td>{{ $fperiodes }} @if($fweek != 0 || $fweek != "") - Minggu ke {{ $fweek }} @endif</td>
                                 <td>Balaraja</td>
                                 <td>Bandar Jaya</td>
                                 <td>Bekasi</td>
