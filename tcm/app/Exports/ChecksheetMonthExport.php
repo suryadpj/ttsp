@@ -20,7 +20,7 @@ class ChecksheetMonthExport implements  FromView, ShouldAutoSize, WithStyles
            ->where('periode',$this->periode."-01")
            ->where('kategori',4)
            ->where('week',$this->week)
-           ->where('deleted',0)
+           ->where('datachecksheet.deleted',0)
            ->select(
                'fields.nama',
                DB::raw('SUM(IF(IDKantor=14,nilai,0)) as a'),

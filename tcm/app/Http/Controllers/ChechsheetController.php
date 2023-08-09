@@ -776,7 +776,7 @@ class ChechsheetController extends Controller
         ->where('periode',$fperiode."-01")
         ->where('week',$fweek)
         ->where('kategori',4)
-        ->where('deleted',0)
+        ->where('datachecksheet.deleted',0)
         ->select(
             'fields.nama',
             DB::raw('SUM(IF(IDKantor=14,nilai,0)) as a'),
