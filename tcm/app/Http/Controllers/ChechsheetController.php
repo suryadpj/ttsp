@@ -147,7 +147,7 @@ class ChechsheetController extends Controller
                             case ($skor < 70) : return "Low"; break;
                         }
                     })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','periodik'])
                 ->make(true);
             }
             else
@@ -264,6 +264,18 @@ class ChechsheetController extends Controller
                         case ($skor >= 85) : return "High"; break;
                         case ($skor >= 70) : return "Medium"; break;
                         case ($skor < 70) : return "Low"; break;
+                    }
+                })
+                ->editColumn('periodik', function($data)
+                {
+                    $week = $data->week;
+                    if($week == 0)
+                    {
+                        return $data->periodik;
+                    }
+                    else
+                    {
+                        return "Week ".$data->week." - ".$data->periodik;
                     }
                 })
                 ->rawColumns(['action'])
