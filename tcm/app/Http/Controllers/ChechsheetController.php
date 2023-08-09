@@ -46,10 +46,10 @@ class ChechsheetController extends Controller
                 })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                    $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'_'.$data->week.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
                     if($data_user->id == $data->IDUser)
                     {
-                        $button .= ' &nbsp; <button type="button" name="editdata" id="'.$data->periode.'_'.$data->IDKantor.'" class="editdata btn btn-success btn-sm"><i title="Edit Data" class="fas fa-edit"></i></button>';
+                        $button .= ' &nbsp; <button type="button" name="editdata" id="'.$data->periode.'_'.$data->IDKantor.'_'.$data->week.'" class="editdata btn btn-success btn-sm"><i title="Edit Data" class="fas fa-edit"></i></button>';
                     }
                     if(auth()->user()->can('kpi_input'))
                     {
@@ -178,10 +178,10 @@ class ChechsheetController extends Controller
                 })
                 ->addColumn('action', function($data) use($data_user){
                     $button = '<div class="btn-group">';
-                    $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
+                    $button .= '<button type="button" name="edit" id="'.$data->periode.'_'.$data->IDKantor.'_'.$data->week.'" class="edit btn btn-primary btn-sm"><i title="Periksa Data" class="fas fa-search"></i></button>';
                     if($data_user->id == $data->IDUser)
                     {
-                        $button .= ' &nbsp; <button type="button" name="editdata" id="'.$data->periode.'_'.$data->IDKantor.'" class="editdata btn btn-success btn-sm"><i title="Edit Data" class="fas fa-edit"></i></button>';
+                        $button .= ' &nbsp; <button type="button" name="editdata" id="'.$data->periode.'_'.$data->IDKantor.'_'.$data->week.'" class="editdata btn btn-success btn-sm"><i title="Edit Data" class="fas fa-edit"></i></button>';
                     }if(auth()->user()->can('kpi_input'))
                     {
                         $button .= '&nbsp; <button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm"><i title="Rubah Data" class="fas fa-trash"></i></button>';
@@ -706,7 +706,7 @@ class ChechsheetController extends Controller
     public function show($id)
     {
         $split = explode('_',$id);
-        $data = DB::table('fields')->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')->where('datachecksheet.deleted',0)->where('periode',$split[0])->where('IDKantor',$split[1])->select('fields.*','datachecksheet.nilai as diisi',DB::raw('if(datachecksheet.nilai=1,"Sudah Dilakukan",IF(datachecksheet.nilai=2,"Tidak Dilakukan","-")) as nilai'),'datachecksheet.periode','datachecksheet.week')->get();
+        $data = DB::table('fields')->leftjoin('datachecksheet','datachecksheet.id_uniq','fields.id_uniq')->where('datachecksheet.deleted',0)->where('periode',$split[0])->where('IDKantor',$split[1])->where('week',$split[2])->select('fields.*','datachecksheet.nilai as diisi',DB::raw('if(datachecksheet.nilai=1,"Sudah Dilakukan",IF(datachecksheet.nilai=2,"Tidak Dilakukan","-")) as nilai'),'datachecksheet.periode','datachecksheet.week')->get();
         return response()->json($data);
     }
 
