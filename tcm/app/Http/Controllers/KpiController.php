@@ -789,7 +789,7 @@ class KpiController extends Controller
         $format_tanggal = date('F Y', strtotime($periode));
         if($request->kategori != "all")
         {
-            $periodeset = $period.'-01';
+            $periodeset = $periode.'-01';
             $kategori = explode("-",$request->kategori);
             //cek KPI
             $cek = DB::table('datakpi')->where('IDUser',$data_user->id)->where('periode',$periodeset)->where('deleted',0)->where('version',$kategori['0'])->where('kategori',$kategori['1'])->count();
