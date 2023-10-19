@@ -40,6 +40,9 @@
                     </div>
                 </div>
             </div>
+            <div class="card-footer">
+                <button type="submit" id="action_button" class="btn btn-primary">Proses Periode Checksheet</button>
+            </div>
         </div>
     </div>
 </div>
