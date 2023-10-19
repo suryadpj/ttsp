@@ -340,6 +340,143 @@ class ChechsheetController extends Controller
             'data_r' => $data_r,
         ]);
     }
+    public function createbulanan(request $request)
+    {
+        if($request->periode."01" < "2023-11-01")
+        {
+            $periode = $request->periode;
+            $catatan = $request->catatan;
+            $data_a = DB::table('fields')->where('IDSegmen',17)->get();
+            $data_b = DB::table('fields')->where('IDSegmen',18)->get();
+            $data_c = DB::table('fields')->where('IDSegmen',19)->get();
+            $data_d = DB::table('fields')->where('IDSegmen',20)->get();
+            $data_e = DB::table('fields')->where('IDSegmen',21)->get();
+            $data_f = DB::table('fields')->where('IDSegmen',22)->get();
+            $data_g = DB::table('fields')->where('IDSegmen',23)->get();
+            $data_h = DB::table('fields')->where('IDSegmen',24)->get();
+            $data_i = DB::table('fields')->where('IDSegmen',25)->get();
+            $data_j = DB::table('fields')->where('IDSegmen',26)->get();
+            $data_k = DB::table('fields')->where('IDSegmen',27)->get();
+            $data_l = DB::table('fields')->where('IDSegmen',28)->get();
+            $data_m = DB::table('fields')->where('IDSegmen',29)->get();
+            $data_n = DB::table('fields')->where('IDSegmen',30)->get();
+            $data_o = DB::table('fields')->where('IDSegmen',31)->get();
+            $data_p = DB::table('fields')->where('IDSegmen',32)->get();
+            $data_q = DB::table('fields')->where('IDSegmen',33)->get();
+            $data_r = DB::table('fields')->where('IDSegmen',34)->get();
+
+            return view('checksheetdetail',[
+                'data_a' => $data_a,
+                'data_b' => $data_b,
+                'data_c' => $data_c,
+                'data_d' => $data_d,
+                'data_e' => $data_e,
+                'data_f' => $data_f,
+                'data_g' => $data_g,
+                'data_h' => $data_h,
+                'data_i' => $data_i,
+                'data_j' => $data_j,
+                'data_k' => $data_k,
+                'data_l' => $data_l,
+                'data_m' => $data_m,
+                'data_n' => $data_n,
+                'data_o' => $data_o,
+                'data_p' => $data_p,
+                'data_q' => $data_q,
+                'data_r' => $data_r,
+                'periode' => $periode,
+                'catatan' => $catatan,
+            ]);
+        }
+        else
+        {
+            $periode = $request->periode;
+            $catatan = $request->catatan;
+            $data_a = DB::table('fields')->where('IDSegmen',35)->get();
+            $data_b = DB::table('fields')->where('IDSegmen',36)->get();
+            $data_c = DB::table('fields')->where('IDSegmen',37)->get();
+            $data_d = DB::table('fields')->where('IDSegmen',38)->get();
+            $data_e = DB::table('fields')->where('IDSegmen',39)->get();
+            $data_f = DB::table('fields')->where('IDSegmen',40)->get();
+            $data_g = DB::table('fields')->where('IDSegmen',41)->get();
+            $data_h = DB::table('fields')->where('IDSegmen',42)->get();
+            $data_i = DB::table('fields')->where('IDSegmen',43)->get();
+            $data_j = DB::table('fields')->where('IDSegmen',44)->get();
+            $data_k = DB::table('fields')->where('IDSegmen',45)->get();
+            $data_l = DB::table('fields')->where('IDSegmen',46)->get();
+            $data_m = DB::table('fields')->where('IDSegmen',47)->get();
+            $data_n = DB::table('fields')->where('IDSegmen',48)->get();
+            $data_o = DB::table('fields')->where('IDSegmen',49)->get();
+            $data_p = DB::table('fields')->where('IDSegmen',50)->get();
+            $data_q = DB::table('fields')->where('IDSegmen',52)->get();
+            $data_r = DB::table('fields')->where('IDSegmen',53)->get();
+            $data_s = DB::table('fields')->where('IDSegmen',54)->get();
+
+            return view('checksheetdetailnew',[
+                'data_a' => $data_a,
+                'data_b' => $data_b,
+                'data_c' => $data_c,
+                'data_d' => $data_d,
+                'data_e' => $data_e,
+                'data_f' => $data_f,
+                'data_g' => $data_g,
+                'data_h' => $data_h,
+                'data_i' => $data_i,
+                'data_j' => $data_j,
+                'data_k' => $data_k,
+                'data_l' => $data_l,
+                'data_m' => $data_m,
+                'data_n' => $data_n,
+                'data_o' => $data_o,
+                'data_p' => $data_p,
+                'data_q' => $data_q,
+                'data_r' => $data_r,
+                'data_s' => $data_s,
+                'periode' => $periode,
+                'catatan' => $catatan,
+            ]);
+        }
+        // }
+        // $data_a = DB::table('fields')->where('IDSegmen',17)->get();
+        // $data_b = DB::table('fields')->where('IDSegmen',18)->get();
+        // $data_c = DB::table('fields')->where('IDSegmen',19)->get();
+        // $data_d = DB::table('fields')->where('IDSegmen',20)->get();
+        // $data_e = DB::table('fields')->where('IDSegmen',21)->get();
+        // $data_f = DB::table('fields')->where('IDSegmen',22)->get();
+        // $data_g = DB::table('fields')->where('IDSegmen',23)->get();
+        // $data_h = DB::table('fields')->where('IDSegmen',24)->get();
+        // $data_i = DB::table('fields')->where('IDSegmen',25)->get();
+        // $data_j = DB::table('fields')->where('IDSegmen',26)->get();
+        // $data_k = DB::table('fields')->where('IDSegmen',27)->get();
+        // $data_l = DB::table('fields')->where('IDSegmen',28)->get();
+        // $data_m = DB::table('fields')->where('IDSegmen',29)->get();
+        // $data_n = DB::table('fields')->where('IDSegmen',30)->get();
+        // $data_o = DB::table('fields')->where('IDSegmen',31)->get();
+        // $data_p = DB::table('fields')->where('IDSegmen',32)->get();
+        // $data_q = DB::table('fields')->where('IDSegmen',33)->get();
+        // $data_r = DB::table('fields')->where('IDSegmen',34)->get();
+
+        // return view('checksheetmingguan',[
+        //     'data_a' => $data_a,
+        //     'data_b' => $data_b,
+        //     'data_c' => $data_c,
+        //     'data_d' => $data_d,
+        //     'data_e' => $data_e,
+        //     'data_f' => $data_f,
+        //     'data_g' => $data_g,
+        //     'data_h' => $data_h,
+        //     'data_i' => $data_i,
+        //     'data_j' => $data_j,
+        //     'data_k' => $data_k,
+        //     'data_l' => $data_l,
+        //     'data_m' => $data_m,
+        //     'data_n' => $data_n,
+        //     'data_o' => $data_o,
+        //     'data_p' => $data_p,
+        //     'data_q' => $data_q,
+        //     'data_r' => $data_r,
+        // ]);
+    }
     public function createmingguan()
     {
         $data_a = DB::table('fields')->where('IDSegmen',17)->get();

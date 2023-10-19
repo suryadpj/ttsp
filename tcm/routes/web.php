@@ -39,6 +39,7 @@ Route::get('/formkpitradeinv2', [App\Http\Controllers\KpiController::class, 'cre
 Route::get('/kpiexport', [App\Http\Controllers\KpiController::class, 'exportexcel'])->name('kpiexport');
 
 Route::resource('checksheet', App\Http\Controllers\ChechsheetController::class);
+Route::get('/checksheetdetaildata', [App\Http\Controllers\ChechsheetController::class, 'createbulanan'])->name('checksheetdetaildata');
 Route::get('checksheetdata', [App\Http\Controllers\ChechsheetController::class, 'datatable'])->name('checksheet.datatable');
 Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguan'])->name('checksheet.createmingguan');
 Route::get('/checksheetexport', [App\Http\Controllers\ChechsheetController::class, 'exportexcel'])->name('checksheetexport');
