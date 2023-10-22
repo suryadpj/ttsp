@@ -130,6 +130,8 @@
         {{ csrf_field() }}
         <input type="hidden" name="periode" id="hiddenperiode">
         <input type="hidden" name="kategori" id="hiddenkategori">
+        <input type="hidden" name="versi" id="hiddenversi">
+        <input type="hidden" name="kategorikantor" id="hiddenkategorikantor">
         <input type="hidden" name="week" id="hiddenweek">
         <input type="hidden" name="act" id="hiddenact">
         <div class="modal-dialog modal-xxl">
@@ -354,6 +356,7 @@ $(document).ready(function(){
                         isilampiran.push('<div class="form-group row"><div class="col-sm-8">' + x.iddata + '. ' + x.nama + '</div><div class="col-sm-4"><input type="radio" id="radioPrimary' + x.iddata + 'a" name="checksheet[' + x.iddata + ']" value="1"><label for="radioPrimary' + x.iddata + 'a">O:Sudah Dilakukan</label> &nbsp; <input type="radio" id="radioPrimary' + x.iddata + 'b" name="checksheet[' + x.iddata + ']" value="2" checked><label for="radioPrimary' + x.iddata + 'b">X:Tidak Dilakukan</label></div></div><hr>');
                     }
                     $('#hiddenperiode').val(x.periode);
+                    $('#hiddenperiode').val(x.periode);
                     $('#hiddenweek').val(x.week);
                     if(x.week == 0)
                     {
@@ -363,6 +366,18 @@ $(document).ready(function(){
                     {
                         $('#hiddenkategori').val('week');
                     }
+                    if(x.kategori == 5)
+                    {
+                        $('#hiddenversi').val('new');
+                        $('#hiddenkategorikantor').val(x.tipekantor);
+                    }
+                    else
+                    {
+                        $('#hiddenversi').val('old');
+                        $('#hiddenkategorikantor').val('0');
+                    }
+
+
                })
                $('#datachecksheet2').html(isilampiran);
                $('#hiddenact').val('edit');

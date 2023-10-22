@@ -42,6 +42,7 @@ Route::resource('checksheet', App\Http\Controllers\ChechsheetController::class);
 Route::get('/checksheetdetaildata', [App\Http\Controllers\ChechsheetController::class, 'createbulanan'])->name('checksheetdetaildata');
 Route::get('checksheetdata', [App\Http\Controllers\ChechsheetController::class, 'datatable'])->name('checksheet.datatable');
 Route::get('checksheetext/createmingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguan'])->name('checksheet.createmingguan');
+Route::get('/checksheetdetaildatamingguan', [App\Http\Controllers\ChechsheetController::class, 'createmingguanshow'])->name('checksheet.checksheetdetaildatamingguan');
 Route::get('/checksheetexport', [App\Http\Controllers\ChechsheetController::class, 'exportexcel'])->name('checksheetexport');
 Route::get('/checksheetmonthly', [App\Http\Controllers\ChechsheetController::class, 'checksheetmonthly'])->name('checksheetmonthly');
 Route::get('/checksheetmonthlysearch', [App\Http\Controllers\ChechsheetController::class, 'checksheetmonthlysearch'])->name('checksheetmonthlysearch');

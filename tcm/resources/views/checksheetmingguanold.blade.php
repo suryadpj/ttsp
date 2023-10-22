@@ -17,7 +17,7 @@
          height="400">
 
 </div> --}}
-<form action="checksheetdetaildata" method="get">
+<form action="checksheetdetaildatamingguan" method="get">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -26,13 +26,25 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Periode</label>
+                            <label>Bulan</label>
                             <input type="month" class="form-control" value="{{$periode}}" name="periode" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Minggu ke </label>
+                            <select class="form-control select2" name="week" style="width: 100%;">
+                            <option value="" selected="selected">Pilih salah satu</option>
+                            <option value="1" @if($week == 1) selected @endif>1</option>
+                            <option value="2" @if($week == 2) selected @endif>2</option>
+                            <option value="3" @if($week == 3) selected @endif>3</option>
+                            <option value="4" @if($week == 4) selected @endif>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label>Catatan</label>
                             <input type="text" class="form-control" value="{{$catatan}}" name="catatan" placeholder="Catatan dari KPI">
@@ -49,10 +61,11 @@
 </form>
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
-<input type="hidden" name="kategori" value="month">
+<input type="hidden" name="kategori" value="week">
 <input type="hidden" name="versi" value="old">
 <input type="hidden" name="kategorikantor" value="0">
 <input type="hidden" name="periode" value="{{$periode}}">
+<input type="hidden" name="week" value="{{$week}}">
 <input type="hidden" name="act" value="submit">
 <div class="row">
     <div class="col-md-12">

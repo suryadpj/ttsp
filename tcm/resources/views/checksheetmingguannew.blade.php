@@ -17,7 +17,7 @@
          height="400">
 
 </div> --}}
-<form action="checksheetdetaildata" method="get">
+<form action="checksheetdetaildatamingguan" method="get">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -26,13 +26,25 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Periode</label>
+                            <label>Bulan</label>
                             <input type="month" class="form-control" value="{{$periode}}" name="periode" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Minggu ke </label>
+                            <select class="form-control select2" name="week" style="width: 100%;">
+                            <option value="" selected="selected">Pilih salah satu</option>
+                            <option value="1" @if($week == 1) selected @endif>1</option>
+                            <option value="2" @if($week == 2) selected @endif>2</option>
+                            <option value="3" @if($week == 3) selected @endif>3</option>
+                            <option value="4" @if($week == 4) selected @endif>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
                         <div class="form-group">
                             <label>Catatan</label>
                             <input type="text" class="form-control" value="{{$catatan}}" name="catatan" placeholder="Catatan dari KPI">
@@ -49,16 +61,17 @@
 </form>
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
-<input type="hidden" name="kategori" value="month">
-<input type="hidden" name="versi" value="old">
-<input type="hidden" name="kategorikantor" value="0">
+<input type="hidden" name="kategori" value="week">
+<input type="hidden" name="versi" value="new">
+<input type="hidden" name="kategorikantor" value="{{$kantor->kategori}}">
 <input type="hidden" name="periode" value="{{$periode}}">
+<input type="hidden" name="week" value="{{$week}}">
 <input type="hidden" name="act" value="submit">
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Delivery Explaination (DEC) by Salesperson (14 Checksheet)</h3>
+                <h3 class="card-title">A.1. Sales Person Offering Process (16 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -100,7 +113,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Advance Demand & Supply Management (4 Checksheet)</h3>
+                <h3 class="card-title">A.2. Advance Demand & Supply Management (4 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -139,7 +152,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Sales Person Offering Process (16 Checksheet)</h3>
+                <h3 class="card-title">B.1. Pre-DEC (4 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -178,7 +191,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Post Delivery Follow Up (PDFU) by CRC (3 Checksheet)</h3>
+                <h3 class="card-title">B.2. Delivery Explaination (DEC) (12 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -217,7 +230,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Reminder Activity by MRA (6 Checksheet)</h3>
+                <h3 class="card-title">B.3. Post Delivery Follow Up (PDFU) by CRC (4 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -252,11 +265,12 @@
         </div>
     </div>
 </div>
+@if($kantor->kategori == 2 || $kantor->kategori == 3)
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Reception [R] And Delivery [D] Process (26 Checksheet)</h3>
+                <h3 class="card-title">C.1. Reminder Activity (8 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -295,7 +309,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Production Process (7 Checksheet)</h3>
+                <h3 class="card-title">C.2. Reception [R] And Delivery [D] Process (21 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -334,7 +348,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Post Service Follow Up (PSFU) (6 Checksheet)</h3>
+                <h3 class="card-title">C.3. Production Process (7 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -374,7 +388,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Reminder Process (3 Checksheet)</h3>
+                <h3 class="card-title">C.4. Post Service Follow Up (PSFU) (6 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -410,11 +424,24 @@
         </div>
     </div>
 </div>
+@else
+    @php
+        $numbernew = count($data_f);
+        $no = $no + $numbernew;
+        $numbernew = count($data_g);
+        $no = $no + $numbernew;
+        $numbernew = count($data_h);
+        $no = $no + $numbernew;
+        $numbernew = count($data_i);
+        $no = $no + $numbernew;
+    @endphp
+@endif
+@if($kantor->kategori == 3)
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Reception [R] And Delivery [D] After Service Process (11 Checksheet)</h3>
+                <h3 class="card-title">D.1. Reminder Process (3 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -454,7 +481,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Post Service Follow Up (PSFU) (4 Checksheet)</h3>
+                <h3 class="card-title">D.2. Reception [R] And Delivery [D] After Service Process (11 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -494,7 +521,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Cleansing, Validitas, & Struktur Data (3 Checksheet)</h3>
+                <h3 class="card-title">D.3. Post Service Follow Up (PSFU) (5 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -530,11 +557,21 @@
         </div>
     </div>
 </div>
+@else
+    @php
+        $numbernew = count($data_j);
+        $no = $no + $numbernew;
+        $numbernew = count($data_k);
+        $no = $no + $numbernew;
+        $numbernew = count($data_l);
+        $no = $no + $numbernew;
+    @endphp
+@endif
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Penggunaan Database (5 Checksheet)</h3>
+                <h3 class="card-title">E.1. Cleansing, Validitas, & Struktur Data (3 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -574,7 +611,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Trade In Capability (2 Checksheet)</h3>
+                <h3 class="card-title">E.2. Penggunaan Database (5 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -614,7 +651,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Trade In Operation (3 Checksheet)</h3>
+                <h3 class="card-title">F.1. Trade In Capability (2 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -654,7 +691,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Trade In Facility (2 Checksheet)</h3>
+                <h3 class="card-title">F.2. Trade In Operation (3 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -694,7 +731,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Manpower Productivity (3 Checksheet)</h3>
+                <h3 class="card-title">G.1. Manpower Productivity (3 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -734,7 +771,7 @@
     <div class="col-md-12">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Training Manpower Activity (3 Checksheet)</h3>
+                <h3 class="card-title">G.2. Training Manpower Activity (3 Checksheet)</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -766,8 +803,48 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">H.1. PDCA Activity (3 Checksheet)</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        @foreach ($data_s as $s)
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-9 col-form-label">{{ $no }}. {!! $s->nama !!}</label>
+                                <div class="col-sm-3">
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-primary d-inline">
+                                            <input type="radio" id="radioPrimary{{ $no }}a" name="checksheet[{{ $no }}]" value="1">
+                                            <label for="radioPrimary{{ $no }}a">
+                                                O:Sudah Dilakukan
+                                            </label>
+                                        </div>
+                                        &nbsp;
+                                        <div class="icheck-primary d-inline">
+                                            <input type="radio" id="radioPrimary{{ $no }}b" name="checksheet[{{ $no }}]" value="2">
+                                            <label for="radioPrimary{{ $no }}b">
+                                                X:Tidak Dilakukan
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            @php $no = $no+1; @endphp
+                        @endforeach
+                    </div>
+                </div>
+            </div>
             <div class="card-footer">
-                <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
+                Total Checksheet : {{$no}} &nbsp; <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
             </div>
         </div>
     </div>

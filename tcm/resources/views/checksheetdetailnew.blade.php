@@ -50,6 +50,9 @@
 <form role="form" id="formdt" method='post' enctype="multipart/form-data">
 {{ csrf_field() }}
 <input type="hidden" name="kategori" value="month">
+<input type="hidden" name="versi" value="new">
+<input type="hidden" name="kategorikantor" value="{{$kantor->kategori}}">
+<input type="hidden" name="periode" value="{{$periode}}">
 <input type="hidden" name="act" value="submit">
 <div class="row">
     <div class="col-md-12">
@@ -249,6 +252,7 @@
         </div>
     </div>
 </div>
+@if($kantor->kategori == 2 || $kantor->kategori == 3)
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -407,6 +411,19 @@
         </div>
     </div>
 </div>
+@else
+    @php
+        $numbernew = count($data_f);
+        $no = $no + $numbernew;
+        $numbernew = count($data_g);
+        $no = $no + $numbernew;
+        $numbernew = count($data_h);
+        $no = $no + $numbernew;
+        $numbernew = count($data_i);
+        $no = $no + $numbernew;
+    @endphp
+@endif
+@if($kantor->kategori == 3)
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -527,6 +544,16 @@
         </div>
     </div>
 </div>
+@else
+    @php
+        $numbernew = count($data_j);
+        $no = $no + $numbernew;
+        $numbernew = count($data_k);
+        $no = $no + $numbernew;
+        $numbernew = count($data_l);
+        $no = $no + $numbernew;
+    @endphp
+@endif
 <div class="row">
     <div class="col-md-12">
         <div class="card card-primary">
@@ -804,7 +831,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
+                Total Checksheet : {{$no}} &nbsp; <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
             </div>
         </div>
     </div>
