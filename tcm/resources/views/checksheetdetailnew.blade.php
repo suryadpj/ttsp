@@ -831,7 +831,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                Total Checksheet : {{$no}} &nbsp; <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
+                <button type="submit" id="action_button" class="btn btn-primary">Simpan Data</button>
             </div>
         </div>
     </div>
