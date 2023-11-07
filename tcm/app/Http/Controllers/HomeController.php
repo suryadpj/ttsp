@@ -159,7 +159,14 @@ class HomeController extends Controller
         else
         {
             $error2 = 0;
-            $all = DB::table('datachecksheet')->where('IDKantor',$idcabang)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
+            if($periode < "2023-11-01")
+            {
+                $all = DB::table('datachecksheet')->where('IDKantor',$idcabang)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
+            }
+            else
+            {
+                $all = DB::table('datachecksheet')->where('IDKantor',$idcabang)->where('week',0)->where('periode',$periode)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/124)*100,0) AS skor'))->first();
+            }
             $kpiresource = $all->skor;
         }
         $form_data_result2 = array(
