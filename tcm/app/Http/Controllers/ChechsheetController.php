@@ -604,6 +604,9 @@ class ChechsheetController extends Controller
                     'checksheet.38' => 'required',
                     'checksheet.39' => 'required',
                     'checksheet.40' => 'required',
+                    'checksheet.99' => 'required',
+                    'checksheet.100' => 'required',
+                    'checksheet.101' => 'required',
                     'checksheet.102' => 'required',
                     'checksheet.103' => 'required',
                     'checksheet.104' => 'required',
@@ -624,9 +627,6 @@ class ChechsheetController extends Controller
                     'checksheet.119' => 'required',
                     'checksheet.120' => 'required',
                     'checksheet.121' => 'required',
-                    'checksheet.122' => 'required',
-                    'checksheet.123' => 'required',
-                    'checksheet.124' => 'required',
                 );
             }
             elseif($request->kategorikantor == 2)
@@ -714,12 +714,29 @@ class ChechsheetController extends Controller
                     'checksheet.78' => 'required',
                     'checksheet.79' => 'required',
                     'checksheet.80' => 'required',
-                    'checksheet.81' => 'required',
-                    'checksheet.82' => 'required',
+                    'checksheet.99' => 'required',
+                    'checksheet.100' => 'required',
+                    'checksheet.101' => 'required',
                     'checksheet.102' => 'required',
                     'checksheet.103' => 'required',
                     'checksheet.104' => 'required',
                     'checksheet.105' => 'required',
+                    'checksheet.106' => 'required',
+                    'checksheet.107' => 'required',
+                    'checksheet.108' => 'required',
+                    'checksheet.109' => 'required',
+                    'checksheet.110' => 'required',
+                    'checksheet.111' => 'required',
+                    'checksheet.112' => 'required',
+                    'checksheet.113' => 'required',
+                    'checksheet.114' => 'required',
+                    'checksheet.115' => 'required',
+                    'checksheet.116' => 'required',
+                    'checksheet.117' => 'required',
+                    'checksheet.118' => 'required',
+                    'checksheet.119' => 'required',
+                    'checksheet.120' => 'required',
+                    'checksheet.121' => 'required',
                 );
             }
             else
@@ -848,9 +865,6 @@ class ChechsheetController extends Controller
                     'checksheet.119' => 'required',
                     'checksheet.120' => 'required',
                     'checksheet.121' => 'required',
-                    'checksheet.122' => 'required',
-                    'checksheet.123' => 'required',
-                    'checksheet.124' => 'required',
                 );
             }
         }
@@ -1010,14 +1024,15 @@ class ChechsheetController extends Controller
         }
 
         $data_user = auth::user();
-        if($request->versi == "new")
-        {
-            $hitungan = 124;
-        }
-        elseif($request->versi == "old")
-        {
-            $hitungan = 121;
-        }
+        $hitungan = 121;
+        // if($request->versi == "new")
+        // {
+        //     $hitungan = 124;
+        // }
+        // elseif($request->versi == "old")
+        // {
+        //     $hitungan = 121;
+        // }
         $datakpi = $request->checksheet;
         if($request->act == "edit")
         {
@@ -1060,7 +1075,7 @@ class ChechsheetController extends Controller
             {
                 if($request->kategorikantor == 1)
                 {
-                    if($count  >= 40 && $count < 101)
+                    if($count  >= 40 && $count < 98)
                     {
                         $data2 = array(
                             'tanggal'   => $tanggal,
@@ -1089,7 +1104,7 @@ class ChechsheetController extends Controller
                 }
                 elseif($request->kategorikantor == 2)
                 {
-                    if($count  >= 82 && $count < 101)
+                    if($count  >= 80 && $count < 98)
                     {
                         $data2 = array(
                             'tanggal'   => $tanggal,
@@ -1227,26 +1242,26 @@ class ChechsheetController extends Controller
             $b2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[25,36])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/12)*100,0) AS skor'))->first();
             $b3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[37,40])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
             $b = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[21,40])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/20)*100,0) AS skor'))->first();
-            $c1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[41,48])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
-            $c2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[49,69])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/21)*100,0) AS skor'))->first();
-            $c3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[70,76])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
-            $c4 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[77,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
-            $c = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[41,82])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/42)*100,0) AS skor'))->first();
-            $d1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[83,85])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-            $d2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[86,96])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/11)*100,0) AS skor'))->first();
-            $d3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[97,101])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
-            $d = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[83,101])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/19)*100,0) AS skor'))->first();
-            $e1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[102,104])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-            $e2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[105,109])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
-            $e = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[102,109])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
-            $f1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[110,111])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
-            $f2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[112,114])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-            $f = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[110,114])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
-            $g1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[115,117])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-            $g2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[118,120])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
-            $g = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[115,120])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
-            $h = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[121,124])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
-            $all = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/124)*100,0) AS skor'))->first();
+            $c1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[41,46])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
+            $c2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[47,67])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/21)*100,0) AS skor'))->first();
+            $c3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[68,74])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/7)*100,0) AS skor'))->first();
+            $c4 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[75,80])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+            $c = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[41,80])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/42)*100,0) AS skor'))->first();
+            $d1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[81,83])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+            $d2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[84,94])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/11)*100,0) AS skor'))->first();
+            $d3 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[95,98])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
+            $d = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[81,98])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/19)*100,0) AS skor'))->first();
+            $e1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[99,101])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+            $e2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[102,106])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
+            $e = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[102,106])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/8)*100,0) AS skor'))->first();
+            $f1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[107,108])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/2)*100,0) AS skor'))->first();
+            $f2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[109,111])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+            $f = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[107,111])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/5)*100,0) AS skor'))->first();
+            $g1 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[112,114])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+            $g2 = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[115,117])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/3)*100,0) AS skor'))->first();
+            $g = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[112,117])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/6)*100,0) AS skor'))->first();
+            $h = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->wherebetween('IDField',[118,121])->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/4)*100,0) AS skor'))->first();
+            $all = DB::table('datachecksheet')->where('IDKantor',$data_user->IDKantor)->where('periode',$periode)->where('week',$kat)->where('deleted',0)->select(DB::raw('ROUND((SUM(IF(nilai=1,1,0))/121)*100,0) AS skor'))->first();
 
             $data_result = array(
                 'periode'   => $periode,
