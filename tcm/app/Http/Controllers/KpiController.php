@@ -1088,7 +1088,7 @@ class KpiController extends Controller
      */
     public function edit($id)
     {
-        $id = explode('_',$id);
+        $split = explode('_',$id);
         $data = DB::table('datakpi')->where('periode',$split[0])->where('IDKantor',$split[1])->get();
         $kantor = DB::table('kantors')->orderBy('nama','asc')->get();
         return view('editkpi',['kantor' => $kantor,'data' => $data]);
