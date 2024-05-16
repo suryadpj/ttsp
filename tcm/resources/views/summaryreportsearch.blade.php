@@ -186,9 +186,9 @@
                             </tr>
                             <tr>
                              <td>4</td>
-                             <td colspan=2>TCO Installation Ratio</td>
-                             <td align="center">{{ $resultkpi->kpi11 }}%</td>
-                             <td align="center">{{ $resultkpi->target11 }}%</td>
+                             <td colspan=2>Total Revenue</td>
+                             <td align="center">{{ $resultkpi->kpi11 }}</td>
+                             <td align="center">{{ $resultkpi->target11 }}</td>
                              <td align="center">@if($resultkpi->result11 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
                             <tr>
