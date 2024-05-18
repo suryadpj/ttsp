@@ -186,7 +186,7 @@
                             </tr>
                             <tr>
                              <td>4</td>
-                             <td colspan=2>Total Revenue</td>
+                             <td colspan=2>TCO Sales Amount</td>
                              <td align="center">{{ $resultkpi->kpi11 }}</td>
                              <td align="center">{{ $resultkpi->target11 }}</td>
                              <td align="center">@if($resultkpi->result11 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
@@ -213,11 +213,11 @@
                              <td align="center">@if($resultkpi->result14 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
                             <tr>
-                             <td>8</td>
-                             <td colspan=2>Trade In Ratio</td>
-                             <td align="center">{{ $resultkpi->kpi49 }}%</td>
-                             <td align="center">{{ $resultkpi->target49 }}%</td>
-                             <td align="center">@if($resultkpi->result49 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td></td>
+                             <td colspan=2></td>
+                             <td align="center"></td>
+                             <td align="center"></td>
+                             <td align="center"></td>
                             </tr>
                             <tr>
                              <td rowspan=4>A.2. Advance Demand &amp; Supply
@@ -342,13 +342,13 @@
                              <td rowspan=2>Survey Customer Interest:</td>
                              <td>a. Survey Customer Interest: T-Care</td>
                              <td align="center">{{ $resultkpi->kpi23 }}%</td>
-                             <td align="center">{{ $resultkpi->target23 }}%</td>
+                             <td align="center">0%</td>
                              <td rowspan=2>&nbsp;</td>
                             </tr>
                             <tr>
                              <td>b. Survey Customer Interest: T-Intouch</td>
                              <td align="center">{{ $resultkpi->kpi24 }}%</td>
-                             <td align="center">{{ $resultkpi->target24 }}%</td>
+                             <td align="center">0%</td>
                             </tr>
                             @php
                                 if($resultkpi->result26+$resultkpi->result27 >= 2)

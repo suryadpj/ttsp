@@ -221,8 +221,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Return Job (RTJ)</label>
-                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <label>Return Job (RTJ) maksimal dibawah 1%</label>
+                            <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini (maksimal dibawah 1%)">
                         </div>
                     </div>
                 </div>

@@ -76,8 +76,8 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Salesperson Turn Over Ratio</label>
-                            <input  type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
+                            <label>Salesperson Turn Over Ratio (maksimal dibawah 3.5%)</label>
+                            <input  type="number" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini (maksimal dibawah 3.5%)">
                         </div>
                     </div>
                 </div>
