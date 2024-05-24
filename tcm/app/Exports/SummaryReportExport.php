@@ -14,6 +14,7 @@ class SummaryReportExport implements FromView, ShouldAutoSize
     function __construct($fperiode,$fkantor) {
            $this->fperiode = $fperiode;
            $this->fkantor = $fkantor;
+           $this->resultkantor = DB::table('kantors')->where('id',$fkantor)->first();
            $this->resultkpi = DB::table('datakpi_result')->where('periode',$this->fperiode."-01")->where('IDKantor',$this->fkantor);
            $this->resultcheck = DB::table('datachecksheet_result')->where('periode',$this->fperiode."-01")->where('IDKantor',$this->fkantor);
            $this->summary = DB::table('summaryreport')->where('IDKantor',$this->fkantor)->where('periode',$this->fperiode.'-01');
@@ -23,7 +24,8 @@ class SummaryReportExport implements FromView, ShouldAutoSize
         return view('summaryreportexcel', [
             'summary' => $this->summary->first(),
             'resultkpi' => $this->resultkpi->first(),
-            'resultcheck' => $this->resultcheck->first()
+            'resultcheck' => $this->resultcheck->first(),
+            'resultkantor' => $this->resultkantor->first()
         ]);
     }
 }

@@ -173,7 +173,7 @@ class HomeController extends Controller
             'kpiproses'        =>  $kpiproses,
             'kpiresource'        =>  $kpiresource,
         );
-        DB::table('datasummary')->where('periode',$periode)->where('IDKantor',$idcabang)->update($form_data_result2);
+        $update = DB::table('datasummary')->where('periode',$periode)->where('IDKantor',$idcabang)->update($form_data_result2);
         if($error == 1)
         {
             if($error2 == 1)
@@ -191,6 +191,7 @@ class HomeController extends Controller
         }
         else
         {
+            dd($update);
             return response()->json(['Informasi' => 'Data Summary berhasil di update.']);
         }
 
