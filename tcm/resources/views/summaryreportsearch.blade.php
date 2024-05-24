@@ -578,7 +578,11 @@
                             </tr>
                             @php
                                 $cat4 =($resultkpi->result47+$resultkpi->result48)/2;
-                                if($cat4*100 >= 85)
+                                if($resultkantor->kategori == 1 || $resultkantor->kategori == 2)
+                                {
+                                    $catr4 = "";
+                                    $catr4bg = "";
+                                }elseif($cat4*100 >= 85)
                                 {
                                     $catr4 = "<span class='badge badge-success'>Well Implemented</span>";
                                     $catr4bg = "green";
@@ -591,7 +595,11 @@
                                     $catr4 = "<span class='badge badge-danger'>low Implemented</span>";
                                     $catr4bg = "red";
                                 }
-                                if($resultcheck->grade4 >= 85)
+                                if($resultkantor->kategori == 1 || $resultkantor->kategori == 2)
+                                {
+                                    $catrs4 = "";
+                                    $catrs4bg = "";
+                                }elseif($resultcheck->grade4 >= 85)
                                 {
                                     $catrs4 = "<span class='badge badge-success'>Well Implemented</span>";
                                     $catrs4bg = "green";
@@ -607,34 +615,24 @@
 
                             @endphp
                             <tr>
-                             <td rowspan=5>D. PSP SERVICE BP</td>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td align="center" rowspan=5 >{!! $catrs4 !!}</td>
+                             <td rowspan=4>D. PSP SERVICE BP</td>
+                             <td >D.1. Reminder Process</td>
+                             <td>3</td>
+                             <td>{{ $resultcheck->result9 }}%</td>
+                             <td align="center" rowspan=4 >{!! $catrs4 !!}</td>
                              <td>22</td>
                              <td colspan="2">Ontime Delivery Ratio (OTD)</td>
                              <td align="center">{{ $resultkpi->kpi47 }}%</td>
                              <td align="center">{{ $resultkpi->target47 }}%</td>
-                             <td align="center">@if($resultkpi->result47 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
-                             <td align="center" rowspan=5>{!! $catr4 !!}</td>
+                             <td align="center">@if($resultkpi->result47 == 1) <span class='badge badge-success'>O</span> @elseif($resultkantor->kategori == 1 || $resultkantor->kategori == 2) @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center" rowspan=4>{!! $catr4 !!}</td>
                              @if(auth()->user()->can('summary_report_input'))
-                             <td rowspan=5><textarea name="issue4">{{ $summary->issue4  ?? ''}}</textarea></td>
-                             <td rowspan=5><textarea name="action4">{{ $summary->action4 ?? '' }}</textarea></td>
+                             <td rowspan=4><textarea name="issue4">{{ $summary->issue4  ?? ''}}</textarea></td>
+                             <td rowspan=4><textarea name="action4">{{ $summary->action4 ?? '' }}</textarea></td>
                              @else
-                                 <td rowspan="5">{{ $summary->issue4 ?? '' }}</td>
-                                 <td rowspan="5">{{ $summary->action4 ?? '' }}</td>
+                                 <td rowspan="4">{{ $summary->issue4 ?? '' }}</td>
+                                 <td rowspan="4">{{ $summary->action4 ?? '' }}</td>
                              @endif
-                            </tr>
-                            <tr>
-                             <td >D.1. Reminder Process</td>
-                             <td>3</td>
-                             <td>{{ $resultcheck->result9 }}%</td>
-                             <td>&nbsp;</td>
-                             <td colspan="2">&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
                             </tr>
                             <tr>
                              <td rowspan="2">D.2. Reception [R] And Delivery [D] After Service Process</td>
@@ -660,7 +658,7 @@
                              <td colspan="2">Return Job (RTJ)</td>
                              <td align="center">{{ $resultkpi->kpi48 }}%</td>
                              <td align="center">{{ $resultkpi->target48 }}%</td>
-                             <td align="center">@if($resultkpi->result48 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->result48 == 1) <span class='badge badge-success'>O</span> @elseif($resultkantor->kategori == 1 || $resultkantor->kategori == 2) @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
                             @php
                                 if($resultcheck->grade5 >= 85)
@@ -813,34 +811,40 @@
                                     $catrs7 = "<span class='badge badge-danger'>low Implemented</span>";
                                     $catrs7bg = "red";
                                 }
+                                if($resultcheck->grade8 >= 85)
+                                {
+                                    $catrs8 = "<span class='badge badge-success'>Well Implemented</span>";
+                                    $catrs8bg = "green";
+                                }elseif($resultcheck->grade8 >= 70)
+                                {
+                                    $catrs8 = "<span class='badge badge-warning'>Medium Implemented</span>";
+                                    $catrs8bg = "yellow";
+                                }elseif($resultcheck->grade8 < 70)
+                                {
+                                    $catrs8 = "<span class='badge badge-danger'>low Implemented</span>";
+                                    $catrs8bg = "red";
+                                }
 
                             @endphp
                             <tr>
-                             <td rowspan=5>G. MANPOWER</td>
-                             <td rowspan=4>G.1. Manpower Productivity</td>
-                             <td rowspan=4>3</td>
-                             <td rowspan=4>{{ $resultcheck->result17 }}%</td>
-                             <td align="center" rowspan=5>{!! $catrs7 !!}</td>
-                             <td>&nbsp;</td>
-                             <td colspan=2>&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td>&nbsp;</td>
-                             <td align="center">{!! $catr7 !!}</td>
-                             @if(auth()->user()->can('summary_report_input'))
-                             <td rowspan=5><textarea name="issue7">{{ $summary->issue7  ?? ''}}</textarea></td>
-                             <td rowspan=5><textarea name="action7">{{ $summary->action7 ?? '' }}</textarea></td>
-                             @else
-                                 <td rowspan="5">{{ $summary->issue7 ?? '' }}</td>
-                                 <td rowspan="5">{{ $summary->action7 ?? '' }}</td>
-                             @endif
-                            </tr>
-                            <tr>
+                             <td rowspan=4>G. MANPOWER</td>
+                             <td rowspan=3>G.1. Manpower Productivity</td>
+                             <td rowspan=3>3</td>
+                             <td rowspan=3>{{ $resultcheck->result17 }}%</td>
+                             <td align="center" rowspan=4>{!! $catrs7 !!}</td>
                              <td>22</td>
                              <td colspan=2>Salesperson Turn Over Ratio</td>
                              <td align="center">{{ $resultkpi->kpi52 }}%</td>
                              <td align="center">{{ $resultkpi->target52 }}%</td>
                              <td align="center">@if($resultkpi->result52 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">{!! $catr7 !!}</td>
+                             @if(auth()->user()->can('summary_report_input'))
+                             <td rowspan=4><textarea name="issue7">{{ $summary->issue7  ?? ''}}</textarea></td>
+                             <td rowspan=4><textarea name="action7">{{ $summary->action7 ?? '' }}</textarea></td>
+                             @else
+                                 <td rowspan="4">{{ $summary->issue7 ?? '' }}</td>
+                                 <td rowspan="4">{{ $summary->action7 ?? '' }}</td>
+                             @endif
                             </tr>
                             <tr>
                              <td rowspan=2>23</td>
@@ -866,8 +870,33 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                             </tr>
+                            <tr>
+                             <td>H. PDCA</td>
+                             <td>H.1. PDCA Activity</td>
+                             <td>4</td>
+                             <td>{{ $resultcheck->result18 }}%</td>
+                             <td>{!! $catrs8 !!}</td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             <td></td>
+                             @if(auth()->user()->can('summary_report_input'))
+                             <td><textarea name="issue7">{{ $summary->issue7  ?? ''}}</textarea></td>
+                             <td><textarea name="action7">{{ $summary->action7 ?? '' }}</textarea></td>
+                             @else
+                                 <td>{{ $summary->issue7 ?? '' }}</td>
+                                 <td>{{ $summary->action7 ?? '' }}</td>
+                             @endif
+                            </tr>
                             @php
-                                $finalcat = ($evaluation1+$evaluationshow2+$resultkpi->result11+$resultkpi->result12+$resultkpi->result13+$resultkpi->result14+$resultkpi->result15+$resultkpi->result16+$resultkpi->result17+$resultkpi->result19+$resultkpi->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$resultkpi->result42+$resultkpi->result43+$evaluationshow19+$resultkpi->result47+$resultkpi->result48+$resultkpi->result49+$evaluationshow25+$resultkpi->result52)/24;
+                                if($resultkantor->kategori == 1 || $resultkantor->kategori == 2) {
+                                    $finalcat = ($evaluation1+$evaluationshow2+$resultkpi->result11+$resultkpi->result12+$resultkpi->result13+$resultkpi->result14+$resultkpi->result15+$resultkpi->result16+$resultkpi->result17+$resultkpi->result19+$resultkpi->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$resultkpi->result42+$resultkpi->result43+$evaluationshow19+$resultkpi->result49+$evaluationshow25+$resultkpi->result52)/22;
+                                } else {
+                                    $finalcat = ($evaluation1+$evaluationshow2+$resultkpi->result11+$resultkpi->result12+$resultkpi->result13+$resultkpi->result14+$resultkpi->result15+$resultkpi->result16+$resultkpi->result17+$resultkpi->result19+$resultkpi->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$resultkpi->result42+$resultkpi->result43+$evaluationshow19+$resultkpi->result47+$resultkpi->result48+$resultkpi->result49+$evaluationshow25+$resultkpi->result52)/24;
+                                }
 
                                 if($finalcat*100 >= 85)
                                 {

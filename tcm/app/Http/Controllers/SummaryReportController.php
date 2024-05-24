@@ -37,6 +37,7 @@ class SummaryReportController extends Controller
         $data_user = Auth::user();
         $fkantor = $request->search_kantor;
         $fperiode = $request->search_periode;
+        $resultkantor = DB::table('kantors')->where('id',$fkantor)->first();
         $resultkpi = DB::table('datakpi_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->where('deleted',0)->first();
         $resultkpicount = DB::table('datakpi_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->where('deleted',0)->count();
         $resultcheck = DB::table('datachecksheet_result')->where('periode',$fperiode."-01")->where('IDKantor',$fkantor)->where('deleted',0)->first();
@@ -69,7 +70,7 @@ class SummaryReportController extends Controller
         else
         {
             // $resultkpi = DB::table('datakpi_result')
-            return view('summaryreportsearch',['summary' => $summary,'kantor' => $kantor,'fperiode' => $fperiode,'fkantor' => $fkantor,'resultkpi' => $resultkpi,'resultcheck' => $resultcheck]);
+            return view('summaryreportsearch',['summary' => $summary,'kantor' => $kantor,'resultkantor' => $resultkantor,'fperiode' => $fperiode,'fkantor' => $fkantor,'resultkpi' => $resultkpi,'resultcheck' => $resultcheck]);
         }
 
     }
