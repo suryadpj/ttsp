@@ -868,11 +868,8 @@ class KpiController extends Controller
                 'kpiproses' => $finalcat * 100,
             );
             DB::table('datasummary')->where('periode', $periodeset)->where('IDKantor', $data_user->IDKantor)->update($form_data_result2);
-
-            return response()->json(['success' => 'Data KPI berhasil disimpan, silahkan periksa data anda']);
             DB::commit();
-            Log::info('kirim data request order untuk request_order_id ' . $request->hidden_id_send . ' oleh user: ' . Auth::id());
-            return response()->json(['success' => 'Data berhasil dikirim.']);
+            return response()->json(['success' => 'Data KPI berhasil disimpan, silahkan periksa data anda']);
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error dari user id ' . Auth::id() . ' pada RequestOrderController@update : ' . $e->getMessage());
