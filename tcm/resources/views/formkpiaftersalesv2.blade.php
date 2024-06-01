@@ -73,13 +73,13 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Service Ratio (1st - 7th Service) - PM Rate T-Care Lite 2nd Service (LCGC)</label>
+                            <label>Service Ratio (1st - 7th Service) - PM Rate T-Care Lite 2nd - 4th Service (LCGC)</label>
                             <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label>Service Ratio (1st - 7th Service) - PM Rate T-Care 2nd-3rd Service (Non LCGC)</label>
+                            <label>Service Ratio (1st - 7th Service) - PM Rate T-Care 2nd-5th Service (Non LCGC)</label>
                             <input type="tel" size="4" maxlength="3" onchange="changeHandler(this)" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="form-control" name="formkpi[]" placeholder="Isi skor KPI disini">
                         </div>
                     </div>

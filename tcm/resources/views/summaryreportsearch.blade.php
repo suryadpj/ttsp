@@ -116,6 +116,7 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori != 0)
                             <tr>
                                 <td rowspan="18">A.PSP Sales</td>
                                 <td rowspan="8"></td>
@@ -254,6 +255,7 @@
                              <td align="center">{{ $resultkpi->target19 }}%</td>
                              <td align="center">@if($resultkpi->result19 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
+                            @endif
                             @php
                                 $evaluation13 = $resultkpi->result25;
                                 if($resultkpi->result20+$resultkpi->result21+$resultkpi->result22 >= 2)
@@ -294,6 +296,7 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori != 0)
                             <tr >
                              <td rowspan=6 >B. DELIVERY EXPLANATION</td>
                              <td >B.1.
@@ -350,6 +353,7 @@
                              <td align="center">{{ $resultkpi->kpi24 }}%</td>
                              <td align="center">0%</td>
                             </tr>
+                            @endif
                             @php
                                 if($resultkpi->result26+$resultkpi->result27 >= 2)
                                 {
@@ -416,6 +420,7 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori > 1)
                             <tr>
                              <td rowspan=22>C. PSP SERVICE
                              GR</td>
@@ -502,12 +507,12 @@
                              <td align="center">{{ $resultkpi->target29 }}%</td>
                             </tr>
                             <tr>
-                             <td>c. PM Rate T-Care Lite 2nd Service (LCGC)</td>
+                             <td>c. PM Rate T-Care Lite 2nd - 4th Service (LCGC)</td>
                              <td align="center">{{ $resultkpi->kpi30 }}%</td>
                              <td align="center">{{ $resultkpi->target30 }}%</td>
                             </tr>
                             <tr>
-                             <td>d. PM Rate T-Care 2nd-3rd Service (Non LCGC)</td>
+                             <td>d. PM Rate T-Care 2nd-5th Service (Non LCGC)</td>
                              <td align="center">{{ $resultkpi->kpi31 }}%</td>
                              <td align="center">{{ $resultkpi->target31 }}%</td>
                             </tr>
@@ -516,7 +521,7 @@
                              <td colspan=2>Service Lead Time</td>
                              <td align="center">{{ $resultkpi->kpi42 }}</td>
                              <td align="center">02:30:00</td>
-                             <td align="center">@if($resultkpi->result42 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
+                             <td align="center">@if($resultkpi->kpi42 > "02:30:00")<span class='badge badge-danger'>X</span> @elseif($resultkpi->result42 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
                             <tr>
                              <td>C.1. Reminder Activity by MRA</td>
@@ -576,6 +581,7 @@
                              <td >&nbsp;</td>
                              <td >&nbsp;</td>
                             </tr>
+                            @endif
                             @php
                                 $cat4 =($resultkpi->result47+$resultkpi->result48)/2;
                                 if($resultkantor->kategori == 1 || $resultkantor->kategori == 2)
@@ -614,6 +620,7 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori == 3 || $resultkantor->kategori == 0)
                             <tr>
                              <td rowspan=4>D. PSP SERVICE BP</td>
                              <td >D.1. Reminder Process</td>
@@ -660,6 +667,7 @@
                              <td align="center">{{ $resultkpi->target48 }}%</td>
                              <td align="center">@if($resultkpi->result48 == 1) <span class='badge badge-success'>O</span> @elseif($resultkantor->kategori == 1 || $resultkantor->kategori == 2) @else <span class='badge badge-danger'>X</span> @endif</td>
                             </tr>
+                            @endif
                             @php
                                 if($resultcheck->grade5 >= 85)
                                 {
@@ -676,6 +684,7 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori != 0)
                             <tr>
                              <td rowspan=3>E. CUSTOMER DATABASE</td>
                              <td rowspan=2>E.1. Cleansing, Validity, &amp; Struktur Data</td>
@@ -713,6 +722,7 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                             </tr>
+                            @endif
                             @php
                                 if($resultcheck->grade6 >= 85)
                                 {
@@ -729,6 +739,7 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori != 0)
                             <tr>
                              <td rowspan=3>F. TRADE IN</td>
                              <td>F.1. Trade In
@@ -736,7 +747,7 @@
                              <td>2</td>
                              <td >{{ $resultcheck->result14 }}%</td>
                              <td align="center" rowspan=3>{!! $catrs6 !!}</td>
-                             <td >&nbsp;</td>
+                             <td >24</td>
                              <td colspan=2>Trade In Ratio</td>
                              <td align="center">{{ $resultkpi->kpi49 }}%</td>
                              <td align="center">{{ $resultkpi->target49 }}%</td>
@@ -774,6 +785,7 @@
                              <td>&nbsp;</td>
                              <td>&nbsp;</td>
                             </tr>
+                            @endif
                             @php
                                 if($resultkpi->result50+$resultkpi->result51 >= 2)
                                 {
@@ -826,16 +838,17 @@
                                 }
 
                             @endphp
+                            @if($resultkantor->kategori != 0)
                             <tr>
                              <td rowspan=4>G. MANPOWER</td>
                              <td rowspan=3>G.1. Manpower Productivity</td>
                              <td rowspan=3>3</td>
                              <td rowspan=3>{{ $resultcheck->result17 }}%</td>
                              <td align="center" rowspan=4>{!! $catrs7 !!}</td>
-                             <td>22</td>
+                             <td>25</td>
                              <td colspan=2>Salesperson Turn Over Ratio</td>
                              <td align="center">{{ $resultkpi->kpi52 }}%</td>
-                             <td align="center">{{ $resultkpi->target52 }}%</td>
+                             <td align="center"><{{ $resultkpi->target52 }}%</td>
                              <td align="center">@if($resultkpi->result52 == 1) <span class='badge badge-success'>O</span> @else <span class='badge badge-danger'>X</span> @endif</td>
                              <td align="center">{!! $catr7 !!}</td>
                              @if(auth()->user()->can('summary_report_input'))
@@ -847,11 +860,11 @@
                              @endif
                             </tr>
                             <tr>
-                             <td rowspan=2>23</td>
+                             <td rowspan=2>26</td>
                              <td rowspan=2>Staff Productivity</td>
                              <td>a. Sales (Unit/salesperson)</td>
-                             <td align="center">{{ $resultkpi->kpi50 }}%</td>
-                             <td align="center">{{ $resultkpi->target50 }}%</td>
+                             <td align="center">{{ $resultkpi->kpi50 }}</td>
+                             <td align="center">{{ $resultkantor->target_sales }}</td>
                              <td align="center" rowspan=2>{!! $evaluation25 !!}</td>
                             </tr>
                             <tr>
@@ -891,6 +904,7 @@
                                  <td>{{ $summary->action7 ?? '' }}</td>
                              @endif
                             </tr>
+                            @endif
                             @php
                                 if($resultkantor->kategori == 1 || $resultkantor->kategori == 2) {
                                     $finalcat = ($evaluation1+$evaluationshow2+$resultkpi->result11+$resultkpi->result12+$resultkpi->result13+$resultkpi->result14+$resultkpi->result15+$resultkpi->result16+$resultkpi->result17+$resultkpi->result19+$resultkpi->result49+$evaluation13+$evaluationshow14+$evaluationshow16+$evaluationshow17+$evaluationshow18+$resultkpi->result42+$resultkpi->result43+$evaluationshow19+$resultkpi->result49+$evaluationshow25+$resultkpi->result52)/22;

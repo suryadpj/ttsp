@@ -68,7 +68,7 @@
                         @endphp
                         @foreach ($data_a as $a)
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-9 col-form-label">{{ $no }}. {{ $a->nama }}</label>
+                                <label for="inputEmail3" class="col-sm-9 col-form-label">{{ $no }}. {!! $a->nama !!}</label>
                                 <div class="col-sm-3">
                                     <div class="form-group clearfix">
                                         <div class="icheck-primary d-inline">

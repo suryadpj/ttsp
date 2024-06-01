@@ -1425,6 +1425,7 @@ class ChechsheetController extends Controller
                 DB::raw('SUM(IF(IDKantor=12,nilai,0)) as u'),
                 DB::raw('SUM(IF(IDKantor=16,nilai,0)) as v'),
                 DB::raw('SUM(IF(IDKantor=4,nilai,0)) as w'),
+                DB::raw('SUM(IF(IDKantor=25,nilai,0)) as x'),
             )
             ->groupBy('fields.nama')
             ->orderBy('iddata','asc')
@@ -1463,6 +1464,7 @@ class ChechsheetController extends Controller
                 DB::raw('SUM(IF(IDKantor=12,nilai,0)) as u'),
                 DB::raw('SUM(IF(IDKantor=16,nilai,0)) as v'),
                 DB::raw('SUM(IF(IDKantor=4,nilai,0)) as w'),
+                DB::raw('SUM(IF(IDKantor=25,nilai,0)) as x'),
             )
             ->groupBy('fields.nama')
             ->orderBy('iddata','asc')

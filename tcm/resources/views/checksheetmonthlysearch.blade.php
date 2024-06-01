@@ -88,6 +88,7 @@
                                 <td>Radin Inten</td>
                                 <td>Serang</td>
                                 <td>Tangerang</td>
+                                <td>Kiaracondong</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -296,6 +297,15 @@
                                         @if ($a->w == 1 )
                                             O
                                         @elseif($a->w == 2)
+                                            X
+                                        @else
+                                            -
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($a->x == 1 )
+                                            O
+                                        @elseif($a->x == 2)
                                             X
                                         @else
                                             -
